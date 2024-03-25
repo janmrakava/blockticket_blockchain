@@ -1,0 +1,54 @@
+{
+  "faq": [
+    {
+      "question": {
+        "cs": "Co je to Ticketfast/eTicket?",
+        "en": "What is Ticketfast/eTicket?"
+      },
+      "answer": {
+        "cs": "Ticketfast nebo eTicket je elektronický typ vstupenky, který je doručován e-mailem a obvykle obsahuje čárový kód. Tuto vstupenku můžete vytisknout nebo předložit elektronicky při vstupu na akci.",
+        "en": "Ticketfast or eTicket is an electronic type of ticket delivered via email and typically includes a barcode. This ticket can be printed or presented electronically for entry to the event."
+      }
+    },
+    {
+      "question": {
+        "cs": "Neobdržel/a jsem moje eTickety, co mám dělat?",
+        "en": "I haven't received my eTickets, what should I do?"
+      },
+      "answer": {
+        "cs": "Pokud jste nerozšířili e-mailovou složku s nevyžádanou poštou (spam), zkontrolujte, zda vám byly eTickety odeslány. V opačném případě kontaktujte naši zákaznickou podporu pro řešení problému.",
+        "en": "If you haven't checked your email's spam folder, ensure your eTickets haven't been sent there. Otherwise, contact our customer support for assistance in resolving the issue."
+      }
+    },
+    {
+      "question": {
+        "cs": "Mám problémy s tiskem eTicketu, co mám dělat?",
+        "en": "I'm having trouble printing my eTicket, what should I do?"
+      },
+      "answer": {
+        "cs": "Ujistěte se, že máte správně nainstalovanou tiskárnu a dostatek inkoustu nebo toneru. Alternativně můžete eTicket předložit elektronicky na svém chytrém telefonu nebo tabletu při vstupu na akci.",
+        "en": "Make sure you have a properly installed printer with enough ink or toner. Alternatively, you can present your eTicket electronically on your smartphone or tablet for entry to the event."
+      }
+    },
+    {
+      "question": {
+        "cs": "Musím vytisknout Ticketfast/eTicket barevně?",
+        "en": "Do I need to print Ticketfast/eTicket in color?"
+      },
+      "answer": {
+        "cs": "Většinou není nutné tisknout Ticketfast/eTicket barevně. Černobílá tiskárna by měla být dostačující, ale ujistěte se, že kód je čitelný a nebyl znehodnocen.",
+        "en": "Most of the time, it's not necessary to print Ticketfast/eTicket in color. A black and white printer should be sufficient, but ensure the barcode is readable and hasn't been distorted."
+      }
+    },
+    {
+      "question": {
+        "cs": "Lze TicketFast/eTicket vyměnit za jiný typ vstupenky (papírová vstupenka, nebo Collector ticket)?",
+        "en": "Can TicketFast/eTicket be exchanged for a different type of ticket (paper ticket or Collector ticket)?"
+      },
+      "answer": {
+        "cs": "Většinou není možné měnit typ Ticketfast/eTicket za jiný typ vstupenky. Pokud máte zvláštní požadavky, kontaktujte naši zákaznickou podporu pro poskytnutí informací a možných řešení.",
+        "en": "In most cases, it's not possible to exchange Ticketfast/eTicket for a different type of ticket. If you have special requests, contact our customer support for information and possible solutions."
+      }
+    }
+  ]
+}

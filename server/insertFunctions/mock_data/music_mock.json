@@ -1,0 +1,1223 @@
+[
+ {
+    "name": {
+      "en": "Beyoncé",
+      "cs": "Beyoncé"
+    },
+   "category_of_event": "Music",
+    "description": {
+      "en": "Experience the enchanting performance of the legendary Beyoncé in a night of music, dance, and star power.",
+      "cs": "Zažijte kouzelné vystoupení legendární Beyoncé v noc plnou hudby, tance a hvězdného lesku."
+    },
+    "date_of_the_event": "2024-03-10",
+    "date_of_start_sell_tickets": "2024-04-14",
+    "capacity": 15123,
+    "ticket_availability": false,
+    "ticket_types": [
+      {
+        "category": "Standard",
+        "ticket_name": {
+          "en": "Standard Ticket",
+          "cs": "Standardní vstupenka"
+        },
+       "description": {
+          "en": "Choose from a range of standard tickets. Depending on demand, the price of standard tickets can change dynamically.",
+          "cs": "Vyberte si z nabídky standardních vstupenek. V závislosti na poptávce se může cena standardních vstupenek dynamicky měnit."
+        },
+          "prices":{
+          "USD": 30,
+          "CZK": 699,
+          "EUR": 28
+        },
+        "quantity": 10000,
+        "sold": 10000
+      },
+      {
+        "category": "Gold",
+        "ticket_name": {
+          "en": "Gold Ticket",
+          "cs": "Gold vstupenka"
+        },
+        "description": {
+          "en": "Experience the ultimate Gold treatment with exclusive benefits, including priority access through a dedicated entrance and front-row seating right by the stage.",
+          "cs": "Zažijte vrcholný Gold servis s exkluzivními výhodami, včetně prioritního vstupu skrze vlastní vchod a místa v první řadě přímo u jeviště."
+        },
+         "prices":{
+          "USD": 34,
+          "CZK": 799,
+          "EUR": 32
+        },
+        "quantity": 4000,
+        "sold": 4000
+      },
+       {
+        "category": "VIP",
+        "ticket_name": {
+           "en": "VIP Ticket",
+          "cs": "VIP vstupenka"
+        },
+        "description": {
+          "en": "Enhance your experience with a VIP ticket. In addition to the benefits of a Gold Ticket, you can also enjoy access to a soundcheck to see what it's like behind the scenes.",
+          "cs": "Vylepšete svůj záitek díky VIP vstupence. Kromě výhod Gold vstupenky si také můžete užít přístup k zvukové zkoušce, kde se podíváte, jak to chodí za scénou."
+        },
+         "prices":{
+          "USD": 38,
+          "CZK": 899,
+          "EUR": 36
+        },
+        "quantity": 1003,
+        "sold": 1003
+      },
+       {
+        "category": "Platinum",
+        "ticket_name": {
+          "en": "Platinum ticket",
+          "cs": "Platinová vstupenka"
+        },
+        "description": {
+          "en": "Upgrade to the Platinum Ticket for the ultimate experience. In addition to all the VIP and Gold benefits, you'll also enjoy exclusive access to backstage areas and the opportunity to meet the performers in person.",
+          "cs": "Vylepšte svůj záitek s Platinovou vstupenkou. Kromě všech výhod VIP a Gold vstupenky získáte také exkluzivní přístup do zákulisí a moýnost setkání s umělci osobně."
+        },
+        "prices":{
+          "USD": 51,
+          "CZK": 1199,
+          "EUR": 49
+        },
+        "quantity": 100,
+        "sold": 100
+      }
+    ],
+    "image": "/img/music/beyonce.jpg",
+    "popular": true,
+    "address_id": "653501fa7da9c818ee46b402",
+    "event_admin": "65317b25cd427452610a570f"
+  },  
+  { 
+    "name": {
+      "en": "Drake",
+      "cs": "Drake"
+    },
+    "category_of_event": "Music",
+
+    "description": {
+      "en": "Experience the mesmerizing performance of the iconic artist Drake in a night of music, rhythm, and chart-topping hits.",
+      "cs": "Zažijte úchvatné vystoupení ikonického umělce Drake v noc plnou hudby, rytmu a hitů, které se dostaly na vrchol žebříčků."
+    },
+    "date_of_the_event": "2024-02-27",
+    "date_of_start_sell_tickets": "2024-11-17",
+    "capacity": 10000,
+    "ticket_availability": false,
+        "ticket_types": [
+      {
+        "category": "Standard",
+        "ticket_name": {
+          "en": "Standard Ticket",
+          "cs": "Standardní vstupenka"
+        },
+       "description": {
+          "en": "Choose from a range of standard tickets. Depending on demand, the price of standard tickets can change dynamically.",
+          "cs": "Vyberte si z nabídky standardních vstupenek. V závislosti na poptávce se může cena standardních vstupenek dynamicky měnit."
+        },
+        "prices":{
+          "USD": 69,
+          "CZK": 1599,
+          "EUR": 65
+        },
+        "quantity": 8000,
+        "sold": 8000
+      },
+      {
+        "category": "Gold",
+        "ticket_name": {
+          "en": "Gold Ticket",
+          "cs": "Gold vstupenka"
+        },
+        "description": {
+          "en": "Experience the ultimate Gold treatment with exclusive benefits, including priority access through a dedicated entrance and front-row seating right by the stage.",
+          "cs": "Zažijte vrcholný Gold servis s exkluzivními výhodami, včetně prioritního vstupu skrze vlastní vchod a místa v první řadě přímo u jeviště."
+        },
+         "prices":{
+          "USD": 77,
+          "CZK": 1799,
+          "EUR": 73
+        },
+        "quantity": 1500,
+        "sold": 1500
+      },
+       {
+        "category": "VIP",
+        "ticket_name": {
+           "en": "VIP Ticket",
+          "cs": "VIP vstupenka"
+        },
+        "description": {
+          "en": "Enhance your experience with a VIP ticket. In addition to the benefits of a Gold Ticket, you can also enjoy access to a soundcheck to see what it's like behind the scenes.",
+          "cs": "Vylepšete svůj záitek díky VIP vstupence. Kromě výhod Gold vstupenky si také můžete užít přístup k zvukové zkoušce, kde se podíváte, jak to chodí za scénou."
+        },
+         "prices":{
+          "USD": 86,
+          "CZK": 1999,
+          "EUR": 81
+        },
+        "quantity": 280,
+        "sold": 280
+      },
+       {
+        "category": "Platinum",
+        "ticket_name": {
+          "en": "Platinum ticket",
+          "cs": "Platinová vstupenka"
+        },
+        "description": {
+          "en": "Upgrade to the Platinum Ticket for the ultimate experience. In addition to all the VIP and Gold benefits, you'll also enjoy exclusive access to backstage areas and the opportunity to meet the performers in person.",
+          "cs": "Vylepšte svůj záitek s Platinovou vstupenkou. Kromě všech výhod VIP a Gold vstupenky získáte také exkluzivní přístup do zákulisí a moýnost setkání s umělci osobně."
+        },
+        "prices":{
+          "USD": 120,
+          "CZK": 2799,
+          "EUR": 114
+        },
+        "quantity": 20,
+        "sold": 20
+      }
+    ],
+    "image": "/img/music/drake.jpg",
+    "popular": true,
+    "address_id": "653501fa7da9c818ee46b409",
+    "event_admin": "65317b25cd427452610a570f"
+  },
+  {
+    "name": {
+      "en": "Adele",
+      "cs": "Adele"
+    },    
+    "category_of_event": "Music",
+
+ "description": {
+  "en": "Experience the captivating performance of the renowned artist Adele in a night of soulful melodies, powerful vocals, and emotional ballads.",
+  "cs": "Zažijte úchvatné vystoupení renomované umělkyně Adele v noc plnou duševních melodií, silných vokálů a emotivních balad."
+},
+    "date_of_the_event": "2024-08-25",
+    "date_of_start_sell_tickets": "2024-08-29",
+    "capacity": 12474,
+    "ticket_availability": false,
+        "ticket_types": [
+      {
+        "category": "Standard",
+        "ticket_name": {
+          "en": "Standard Ticket",
+          "cs": "Standardní vstupenka"
+        },
+       "description": {
+          "en": "Choose from a range of standard tickets. Depending on demand, the price of standard tickets can change dynamically.",
+          "cs": "Vyberte si z nabídky standardních vstupenek. V závislosti na poptávce se může cena standardních vstupenek dynamicky měnit."
+        },
+      "prices":{
+          "USD": 43,
+          "CZK": 999,
+          "EUR": 40
+        },
+        "quantity": 10000,
+        "sold": 10000
+      },
+      {
+        "category": "Gold",
+        "ticket_name": {
+          "en": "Gold Ticket",
+          "cs": "Gold vstupenka"
+        },
+        "description": {
+          "en": "Experience the ultimate Gold treatment with exclusive benefits, including priority access through a dedicated entrance and front-row seating right by the stage.",
+          "cs": "Zažijte vrcholný Gold servis s exkluzivními výhodami, včetně prioritního vstupu skrze vlastní vchod a místa v první řadě přímo u jeviště."
+        },
+          "prices":{
+          "USD": 51,
+          "CZK": 1199,
+          "EUR": 49
+        },
+        "quantity": 1500,
+        "sold": 1500
+      },
+       {
+        "category": "VIP",
+        "ticket_name": {
+           "en": "VIP Ticket",
+          "cs": "VIP vstupenka"
+        },
+        "description": {
+          "en": "Enhance your experience with a VIP ticket. In addition to the benefits of a Gold Ticket, you can also enjoy access to a soundcheck to see what it's like behind the scenes.",
+          "cs": "Vylepšete svůj záitek díky VIP vstupence. Kromě výhod Gold vstupenky si také můžete užít přístup k zvukové zkoušce, kde se podíváte, jak to chodí za scénou."
+        },
+           "prices":{
+          "USD": 60,
+          "CZK": 1399,
+          "EUR": 57
+        },
+        "quantity": 900,
+        "sold": 900
+      },
+       {
+        "category": "Platinum",
+        "ticket_name": {
+          "en": "Platinum ticket",
+          "cs": "Platinová vstupenka"
+        },
+        "description": {
+          "en": "Upgrade to the Platinum Ticket for the ultimate experience. In addition to all the VIP and Gold benefits, you'll also enjoy exclusive access to backstage areas and the opportunity to meet the performers in person.",
+          "cs": "Vylepšte svůj záitek s Platinovou vstupenkou. Kromě všech výhod VIP a Gold vstupenky získáte také exkluzivní přístup do zákulisí a moýnost setkání s umělci osobně."
+        },
+           "prices":{
+          "USD": 69,
+          "CZK": 1599,
+          "EUR": 65
+        },
+        "quantity": 74,
+        "sold": 74
+      }
+    ],
+    "image": "/img/music/adele.jpg",
+    "popular": false,
+    "address_id": "653501fa7da9c818ee46b405",
+    "event_admin": "65317b25cd427452610a570f"
+  },
+    {
+    "name": {
+      "en": "Bruno Mars",
+      "cs": "Bruno Mars"
+    },
+   "category_of_event": "Music",
+
+    "description": {
+      "en": "Experience the dynamic performance of the charismatic artist Bruno Mars in a night filled with groovy tunes, high-energy dancing, and infectious vibes.",
+      "cs": "Zažijte dynamické vystoupení charismatického umělce Bruno Mars v noci plné groovy melodií, energického tance a nakažlivé atmosféry."
+    },
+    "date_of_the_event": "2024-04-03",
+    "date_of_start_sell_tickets": "2024-03-21",
+    "capacity": 12474,
+    "ticket_availability": false,
+        "ticket_types": [
+      {
+        "category": "Standard",
+        "ticket_name": {
+          "en": "Standard Ticket",
+          "cs": "Standardní vstupenka"
+        },
+       "description": {
+          "en": "Choose from a range of standard tickets. Depending on demand, the price of standard tickets can change dynamically.",
+          "cs": "Vyberte si z nabídky standardních vstupenek. V závislosti na poptávce se může cena standardních vstupenek dynamicky měnit."
+        },
+          "prices":{
+          "USD": 51,
+          "CZK": 1199,
+          "EUR": 49
+        },
+        "quantity": 10000,
+        "sold": 10000
+      },
+      {
+        "category": "Gold",
+        "ticket_name": {
+          "en": "Gold Ticket",
+          "cs": "Gold vstupenka"
+        },
+        "description": {
+          "en": "Experience the ultimate Gold treatment with exclusive benefits, including priority access through a dedicated entrance and front-row seating right by the stage.",
+          "cs": "Zažijte vrcholný Gold servis s exkluzivními výhodami, včetně prioritního vstupu skrze vlastní vchod a místa v první řadě přímo u jeviště."
+        },
+         "prices":{
+          "USD": 64,
+          "CZK": 1499,
+          "EUR": 61
+        },
+        "quantity": 1500,
+        "sold": 1500
+      },
+       {
+        "category": "VIP",
+        "ticket_name": {
+           "en": "VIP Ticket",
+          "cs": "VIP vstupenka"
+        },
+        "description": {
+          "en": "Enhance your experience with a VIP ticket. In addition to the benefits of a Gold Ticket, you can also enjoy access to a soundcheck to see what it's like behind the scenes.",
+          "cs": "Vylepšete svůj záitek díky VIP vstupence. Kromě výhod Gold vstupenky si také můžete užít přístup k zvukové zkoušce, kde se podíváte, jak to chodí za scénou."
+        },
+        "prices":{
+          "USD": 77,
+          "CZK": 1799,
+          "EUR": 73
+        },
+        "quantity": 900,
+        "sold": 900
+      },
+       {
+        "category": "Platinum",
+        "ticket_name": {
+          "en": "Platinum ticket",
+          "cs": "Platinová vstupenka"
+        },
+        "description": {
+          "en": "Upgrade to the Platinum Ticket for the ultimate experience. In addition to all the VIP and Gold benefits, you'll also enjoy exclusive access to backstage areas and the opportunity to meet the performers in person.",
+          "cs": "Vylepšte svůj záitek s Platinovou vstupenkou. Kromě všech výhod VIP a Gold vstupenky získáte také exkluzivní přístup do zákulisí a moýnost setkání s umělci osobně."
+        },
+        "prices":{
+          "USD": 90,
+          "CZK": 2099,
+          "EUR": 85
+        },
+        "quantity": 74,
+        "sold": 74
+      }
+    ],
+    "image": "/img/music/bruno.jpg",
+    "popular": false,
+    "address_id": "653501fa7da9c818ee46b405",
+    "event_admin": "65317b25cd427452610a570f"
+  }, 
+ 
+  {
+
+   "name": {
+      "en": "The Weeknd",
+      "cs": "The Weeknd"
+    },
+   "category_of_event": "Music",
+
+  "description": {
+    "en": "Immerse yourself in the electrifying performance of the enigmatic artist The Weeknd in a night of soulful music, mesmerizing vocals, and an unforgettable atmosphere.",
+    "cs": "Ponořte se do elektrizujícího vystoupení záhadného umělce The Weeknd v noci plné duševní hudby, okouzlujícího zpěvu a nezapomenutelné atmosféry."
+  },
+    "date_of_the_event": "2024-03-20",
+    "date_of_start_sell_tickets": "2024-06-05",
+    "capacity": 11700,
+    "ticket_availability": false,
+        "ticket_types": [
+      {
+        "category": "Standard",
+        "ticket_name": {
+          "en": "Standard Ticket",
+          "cs": "Standardní vstupenka"
+        },
+       "description": {
+          "en": "Choose from a range of standard tickets. Depending on demand, the price of standard tickets can change dynamically.",
+          "cs": "Vyberte si z nabídky standardních vstupenek. V závislosti na poptávce se může cena standardních vstupenek dynamicky měnit."
+        },
+        "prices":{
+          "USD": 38,
+          "CZK": 899,
+          "EUR": 36
+        },
+        "quantity": 10000,
+        "sold": 10000
+      },
+      {
+        "category": "Gold",
+        "ticket_name": {
+          "en": "Gold Ticket",
+          "cs": "Gold vstupenka"
+        },
+        "description": {
+          "en": "Experience the ultimate Gold treatment with exclusive benefits, including priority access through a dedicated entrance and front-row seating right by the stage.",
+          "cs": "Zažijte vrcholný Gold servis s exkluzivními výhodami, včetně prioritního vstupu skrze vlastní vchod a místa v první řadě přímo u jeviště."
+        },
+         "prices":{
+          "USD": 47,
+          "CZK": 1099,
+          "EUR": 44
+        },
+        "quantity": 1000,
+        "sold": 1000
+      },
+       {
+        "category": "VIP",
+        "ticket_name": {
+           "en": "VIP Ticket",
+          "cs": "VIP vstupenka"
+        },
+        "description": {
+          "en": "Enhance your experience with a VIP ticket. In addition to the benefits of a Gold Ticket, you can also enjoy access to a soundcheck to see what it's like behind the scenes.",
+          "cs": "Vylepšete svůj záitek díky VIP vstupence. Kromě výhod Gold vstupenky si také můžete užít přístup k zvukové zkoušce, kde se podíváte, jak to chodí za scénou."
+        },
+           "prices":{
+          "USD": 60,
+          "CZK": 1399,
+          "EUR": 57
+        },
+        "quantity": 650,
+        "sold": 650
+      },
+       {
+        "category": "Platinum",
+        "ticket_name": {
+          "en": "Platinum ticket",
+          "cs": "Platinová vstupenka"
+        },
+        "description": {
+          "en": "Upgrade to the Platinum Ticket for the ultimate experience. In addition to all the VIP and Gold benefits, you'll also enjoy exclusive access to backstage areas and the opportunity to meet the performers in person.",
+          "cs": "Vylepšte svůj záitek s Platinovou vstupenkou. Kromě všech výhod VIP a Gold vstupenky získáte také exkluzivní přístup do zákulisí a moýnost setkání s umělci osobně."
+        },
+         "prices":{
+          "USD": 86,
+          "CZK": 1999,
+          "EUR": 81
+        },
+        "quantity": 50,
+        "sold": 50
+      }
+    ],
+    "image": "/img/music/theweeknd.jpg",
+    "popular": true,
+    "address_id": "653501fa7da9c818ee46b406",
+    "event_admin": "65317b25cd427452610a570f"
+  },
+  {
+    "name": {
+      "en": "Imagine Dragons",
+      "cs": "Imagine Dragons"
+    },
+   "category_of_event": "Music",
+
+"description": {
+  "en": "Embark on a musical journey with the chart-topping band Imagine Dragons in a night filled with anthemic hits, energetic performances, and an unforgettable concert experience.",
+  "cs": "Vydejte se na hudební cestu s kapelou Imagine Dragons, která se umístila na předních příčkách žebříčků, v noci plné hymn, energických vystoupení a nezapomenutelné koncertní zážitky."
+},
+    "date_of_the_event": "2024-01-12",
+    "date_of_start_sell_tickets": "2024-03-08",
+    "capacity": 10000,
+    "ticket_availability": false,
+        "ticket_types": [
+      {
+        "category": "Standard",
+        "ticket_name": {
+          "en": "Standard Ticket",
+          "cs": "Standardní vstupenka"
+        },
+       "description": {
+          "en": "Choose from a range of standard tickets. Depending on demand, the price of standard tickets can change dynamically.",
+          "cs": "Vyberte si z nabídky standardních vstupenek. V závislosti na poptávce se může cena standardních vstupenek dynamicky měnit."
+        },
+        "prices":{
+          "USD": 56,
+          "CZK": 1299,
+          "EUR": 53
+        },
+        "quantity": 9000,
+        "sold": 9000
+      },
+      {
+        "category": "Gold",
+        "ticket_name": {
+          "en": "Gold Ticket",
+          "cs": "Gold vstupenka"
+        },
+        "description": {
+          "en": "Experience the ultimate Gold treatment with exclusive benefits, including priority access through a dedicated entrance and front-row seating right by the stage.",
+          "cs": "Zažijte vrcholný Gold servis s exkluzivními výhodami, včetně prioritního vstupu skrze vlastní vchod a místa v první řadě přímo u jeviště."
+        },
+         "prices":{
+          "USD": 73,
+          "CZK": 1699,
+          "EUR": 69
+        },
+        "quantity": 700,
+        "sold": 700
+      },
+       {
+        "category": "VIP",
+        "ticket_name": {
+           "en": "VIP Ticket",
+          "cs": "VIP vstupenka"
+        },
+        "description": {
+          "en": "Enhance your experience with a VIP ticket. In addition to the benefits of a Gold Ticket, you can also enjoy access to a soundcheck to see what it's like behind the scenes.",
+          "cs": "Vylepšete svůj záitek díky VIP vstupence. Kromě výhod Gold vstupenky si také můžete užít přístup k zvukové zkoušce, kde se podíváte, jak to chodí za scénou."
+        },
+         "prices":{
+          "USD": 94,
+          "CZK": 2199,
+          "EUR": 89
+        },
+        "quantity": 250,
+        "sold": 250
+      },
+       {
+        "category": "Platinum",
+        "ticket_name": {
+          "en": "Platinum ticket",
+          "cs": "Platinová vstupenka"
+        },
+        "description": {
+          "en": "Upgrade to the Platinum Ticket for the ultimate experience. In addition to all the VIP and Gold benefits, you'll also enjoy exclusive access to backstage areas and the opportunity to meet the performers in person.",
+          "cs": "Vylepšte svůj záitek s Platinovou vstupenkou. Kromě všech výhod VIP a Gold vstupenky získáte také exkluzivní přístup do zákulisí a moýnost setkání s umělci osobně."
+        },
+        "prices":{
+          "USD": 120,
+          "CZK": 2799,
+          "EUR": 113
+        },
+        "quantity": 50,
+        "sold": 50
+      }
+    ],
+    "image": "/img/music/imagdragons.jpg",
+    "popular": true,
+    "address_id": "653501fa7da9c818ee46b409",
+    "event_admin": "65317b25cd427452610a570f"
+  
+  }, 
+  {
+    "name": {
+      "en": "Foo Fighters",
+      "cs": "Foo Fighters"
+    }, 
+    "category_of_event": "Music",
+
+    "description": {
+      "en": "Rock out with the legendary band Foo Fighters in a night of high-energy performances, iconic hits, and an electric atmosphere.",
+      "cs": "Přijďte si užít rockový zážitek s legendární kapelou Foo Fighters v noci plné energických vystoupení, ikonických hitů a elektrizující atmosféry."
+    },
+    "date_of-the_event": "2024-06-06",
+    "date_of_start_sell_tickets": "2024-07-07",
+    "capacity": 10000,
+    "ticket_availability": false,
+        "ticket_types": [
+      {
+        "category": "Standard",
+        "ticket_name": {
+          "en": "Standard Ticket",
+          "cs": "Standardní vstupenka"
+        },
+       "description": {
+          "en": "Choose from a range of standard tickets. Depending on demand, the price of standard tickets can change dynamically.",
+          "cs": "Vyberte si z nabídky standardních vstupenek. V závislosti na poptávce se může cena standardních vstupenek dynamicky měnit."
+        },
+        "prices":{
+          "USD": 111,
+          "CZK": 2599,
+          "EUR": 105
+        },
+        "quantity": 9000,
+        "sold": 9000
+      },
+      {
+        "category": "Gold",
+        "ticket_name": {
+          "en": "Gold Ticket",
+          "cs": "Gold vstupenka"
+        },
+        "description": {
+          "en": "Experience the ultimate Gold treatment with exclusive benefits, including priority access through a dedicated entrance and front-row seating right by the stage.",
+          "cs": "Zažijte vrcholný Gold servis s exkluzivními výhodami, včetně prioritního vstupu skrze vlastní vchod a místa v první řadě přímo u jeviště."
+        },
+         "prices":{
+          "USD": 128,
+          "CZK": 2999,
+          "EUR": 121
+        },
+        "quantity": 800,
+        "sold": 800
+      },
+       {
+        "category": "VIP",
+        "ticket_name": {
+           "en": "VIP Ticket",
+          "cs": "VIP vstupenka"
+        },
+        "description": {
+          "en": "Enhance your experience with a VIP ticket. In addition to the benefits of a Gold Ticket, you can also enjoy access to a soundcheck to see what it's like behind the scenes.",
+          "cs": "Vylepšete svůj záitek díky VIP vstupence. Kromě výhod Gold vstupenky si také můžete užít přístup k zvukové zkoušce, kde se podíváte, jak to chodí za scénou."
+        },
+         "prices":{
+          "USD": 163,
+          "CZK": 3799,
+          "EUR": 154
+        },
+        "quantity": 180,
+        "sold": 180
+      },
+       {
+        "category": "Platinum",
+        "ticket_name": {
+          "en": "Platinum ticket",
+          "cs": "Platinová vstupenka"
+        },
+        "description": {
+          "en": "Upgrade to the Platinum Ticket for the ultimate experience. In addition to all the VIP and Gold benefits, you'll also enjoy exclusive access to backstage areas and the opportunity to meet the performers in person.",
+          "cs": "Vylepšte svůj záitek s Platinovou vstupenkou. Kromě všech výhod VIP a Gold vstupenky získáte také exkluzivní přístup do zákulisí a moýnost setkání s umělci osobně."
+        },
+        "prices":{
+          "USD": 199,
+          "CZK": 4599,
+          "EUR": 186
+        },
+        "quantity": 20,
+        "sold": 20
+      }
+    ],
+    "image": "/img/music/foofighters.jpg",
+    "popular": false,
+    "address_id": "653501fa7da9c818ee46b40a",
+    "event_admin": "65317b25cd427452610a570f"
+  },
+
+  {
+    "name": {
+      "en": "Post Malone",
+      "cs": "Ppst Malone"
+    },
+     "category_of_event": "Music",
+
+    "description": {
+      "en": "Dive into the world of music with the sensational artist Post Malone in a night filled with genre-blending tunes, electrifying performances, and an unforgettable concert experience.",
+      "cs": "Ponořte se do světa hudby s sensationálním umělcem Post Malone v noci plné hudebního stylů, elektrizujících vystoupení a nezapomenutelné koncertní zážitky."
+    },
+    "date_of_the_event": "2024-10-08",
+    "date_of_start_sell_tickets": "2024-03-17",
+    "capacity": 19200,
+    "ticket_availability": false,
+       "ticket_types": [
+      {
+        "category": "Standard",
+        "ticket_name": {
+          "en": "Standard Ticket",
+          "cs": "Standardní vstupenka"
+        },
+       "description": {
+          "en": "Choose from a range of standard tickets. Depending on demand, the price of standard tickets can change dynamically.",
+          "cs": "Vyberte si z nabídky standardních vstupenek. V závislosti na poptávce se může cena standardních vstupenek dynamicky měnit."
+        },
+        "prices":{
+          "USD": 56,
+          "CZK": 1299,
+          "EUR": 53
+        },
+        "quantity": 18000,
+        "sold": 18000
+      },
+      {
+        "category": "Gold",
+        "ticket_name": {
+          "en": "Gold Ticket",
+          "cs": "Gold vstupenka"
+        },
+        "description": {
+          "en": "Experience the ultimate Gold treatment with exclusive benefits, including priority access through a dedicated entrance and front-row seating right by the stage.",
+          "cs": "Zažijte vrcholný Gold servis s exkluzivními výhodami, včetně prioritního vstupu skrze vlastní vchod a místa v první řadě přímo u jeviště."
+        },
+         "prices":{
+          "USD": 73,
+          "CZK": 1699,
+          "EUR": 69
+        },
+        "quantity": 1000,
+        "sold": 1000
+      },
+       {
+        "category": "VIP",
+        "ticket_name": {
+           "en": "VIP Ticket",
+          "cs": "VIP vstupenka"
+        },
+        "description": {
+          "en": "Enhance your experience with a VIP ticket. In addition to the benefits of a Gold Ticket, you can also enjoy access to a soundcheck to see what it's like behind the scenes.",
+          "cs": "Vylepšete svůj záitek díky VIP vstupence. Kromě výhod Gold vstupenky si také můžete užít přístup k zvukové zkoušce, kde se podíváte, jak to chodí za scénou."
+        },
+        "prices":{
+          "USD": 90,
+          "CZK": 2099,
+          "EUR": 85
+        },
+        "quantity": 180,
+        "sold": 180
+      },
+       {
+        "category": "Platinum",
+        "ticket_name": {
+          "en": "Platinum ticket",
+          "cs": "Platinová vstupenka"
+        },
+        "description": {
+          "en": "Upgrade to the Platinum Ticket for the ultimate experience. In addition to all the VIP and Gold benefits, you'll also enjoy exclusive access to backstage areas and the opportunity to meet the performers in person.",
+          "cs": "Vylepšte svůj záitek s Platinovou vstupenkou. Kromě všech výhod VIP a Gold vstupenky získáte také exkluzivní přístup do zákulisí a moýnost setkání s umělci osobně."
+        },
+         "prices":{
+          "USD": 128,
+          "CZK": 2999,
+          "EUR": 121
+        },
+        "quantity": 20,
+        "sold": 20
+      }
+    ],
+    "image": "/img/music/postmalone.jpg",
+    "popular": false,
+    "address_id": "653501fa7da9c818ee46b3ff",
+    "event_admin": "65317b25cd427452610a570f"
+  },  
+  {
+    "name": {
+      "en": "Eminem",
+      "cs": "Eminem"
+    },    
+    "category_of_event": "Music",
+
+    "description": {
+      "en": "Witness a historic moment as the iconic rapper Eminem graces the Czech Republic with his first-ever concert, delivering an unforgettable night of lyrical genius, high-energy performances, and a memorable experience for fans.",
+      "cs": "Buďte svědkem historické chvíle, kdy ikonický rapper Eminem poprvé vystoupí v České republice, přinesou nezapomenutelný večer lyrického génia, vysokoenergetická vystoupení a památný zážitek pro fanoušky."
+    },
+    "date_of_the_event": "2024-10-26",
+    "date_of_start_sell_tickets": "2024-05-15",
+    "capacity": 18887,
+    "ticket_availability": false,
+        "ticket_types": [
+      {
+        "category": "Standard",
+        "ticket_name": {
+          "en": "Standard Ticket",
+          "cs": "Standardní vstupenka"
+        },
+       "description": {
+          "en": "Choose from a range of standard tickets. Depending on demand, the price of standard tickets can change dynamically.",
+          "cs": "Vyberte si z nabídky standardních vstupenek. V závislosti na poptávce se může cena standardních vstupenek dynamicky měnit."
+        },
+         "prices":{
+          "USD": 86,
+          "CZK": 1999,
+          "EUR": 81
+        },
+        "quantity": 18000,
+        "sold": 18000
+      },
+      {
+        "category": "Gold",
+        "ticket_name": {
+          "en": "Gold Ticket",
+          "cs": "Gold vstupenka"
+        },
+        "description": {
+          "en": "Experience the ultimate Gold treatment with exclusive benefits, including priority access through a dedicated entrance and front-row seating right by the stage.",
+          "cs": "Zažijte vrcholný Gold servis s exkluzivními výhodami, včetně prioritního vstupu skrze vlastní vchod a místa v první řadě přímo u jeviště."
+        },
+         "prices":{
+          "USD": 120,
+          "CZK": 2799,
+          "EUR": 113
+        },
+        "quantity": 500,
+        "sold": 500
+      },
+       {
+        "category": "VIP",
+        "ticket_name": {
+           "en": "VIP Ticket",
+          "cs": "VIP vstupenka"
+        },
+        "description": {
+          "en": "Enhance your experience with a VIP ticket. In addition to the benefits of a Gold Ticket, you can also enjoy access to a soundcheck to see what it's like behind the scenes.",
+          "cs": "Vylepšete svůj záitek díky VIP vstupence. Kromě výhod Gold vstupenky si také můžete užít přístup k zvukové zkoušce, kde se podíváte, jak to chodí za scénou."
+        },
+         "prices":{
+          "USD": 159,
+          "CZK": 3699,
+          "EUR": 150
+        },
+        "quantity": 380,
+        "sold": 380
+      },
+       {
+        "category": "Platinum",
+        "ticket_name": {
+          "en": "Platinum ticket",
+          "cs": "Platinová vstupenka"
+        },
+        "description": {
+          "en": "Upgrade to the Platinum Ticket for the ultimate experience. In addition to all the VIP and Gold benefits, you'll also enjoy exclusive access to backstage areas and the opportunity to meet the performers in person.",
+          "cs": "Vylepšte svůj záitek s Platinovou vstupenkou. Kromě všech výhod VIP a Gold vstupenky získáte také exkluzivní přístup do zákulisí a moýnost setkání s umělci osobně."
+        },
+        "prices":{
+          "USD": 320,
+          "CZK": 7499,
+          "EUR": 300
+        },
+        "quantity": 7,
+        "sold": 7
+      }
+    ],
+    "image": "/img/music/eminem.jpg",
+    "popular": true,
+    "address_id": "653501fa7da9c818ee46b401",
+    "event_admin": "65317b25cd427452610a570f"
+  },
+{
+    "name": {
+      "en": "Metallica",
+      "cs": "Metallica"
+    },
+   "category_of_event": "Music",
+  "description": {
+    "en": "Get ready for an electrifying night with the legendary rock band Metallica, as they take the stage to deliver a high-octane performance filled with their iconic hits, powerful riffs, and an unforgettable concert experience.",
+    "cs": "Připravte se na elektrizující noc s legendární rockovou kapelou Metallica, která vystoupí na pódium, aby přinesla vysokoenergetické vystoupení plné svých ikonických hitů, silných riffů a nezapomenutelný koncertní zážitek."
+  },
+  "date_of_the_event": "2024-12-22",
+  "date_of_start_sell_tickets": "2024-05-08",
+  "capacity": 11700,
+  "ticket_availability": false,
+      "ticket_types": [
+      {
+        "category": "Standard",
+        "ticket_name": {
+          "en": "Standard Ticket",
+          "cs": "Standardní vstupenka"
+        },
+       "description": {
+          "en": "Choose from a range of standard tickets. Depending on demand, the price of standard tickets can change dynamically.",
+          "cs": "Vyberte si z nabídky standardních vstupenek. V závislosti na poptávce se může cena standardních vstupenek dynamicky měnit."
+        },
+         "prices":{
+          "USD": 73,
+          "CZK": 1699,
+          "EUR": 69
+        },
+        "quantity": 10000,
+        "sold": 10000
+      },
+      {
+        "category": "Gold",
+        "ticket_name": {
+          "en": "Gold Ticket",
+          "cs": "Gold vstupenka"
+        },
+        "description": {
+          "en": "Experience the ultimate Gold treatment with exclusive benefits, including priority access through a dedicated entrance and front-row seating right by the stage.",
+          "cs": "Zažijte vrcholný Gold servis s exkluzivními výhodami, včetně prioritního vstupu skrze vlastní vchod a místa v první řadě přímo u jeviště."
+        },
+        "prices":{
+          "USD": 90,
+          "CZK": 2099,
+          "EUR": 85
+        },
+        "quantity": 1000,
+        "sold": 1000
+      },
+       {
+        "category": "VIP",
+        "ticket_name": {
+           "en": "VIP Ticket",
+          "cs": "VIP vstupenka"
+        },
+        "description": {
+          "en": "Enhance your experience with a VIP ticket. In addition to the benefits of a Gold Ticket, you can also enjoy access to a soundcheck to see what it's like behind the scenes.",
+          "cs": "Vylepšete svůj záitek díky VIP vstupence. Kromě výhod Gold vstupenky si také můžete užít přístup k zvukové zkoušce, kde se podíváte, jak to chodí za scénou."
+        },
+         "prices":{
+          "USD": 128,
+          "CZK": 2999,
+          "EUR": 121
+        },
+        "quantity": 650,
+        "sold": 650
+      },
+       {
+        "category": "Platinum",
+        "ticket_name": {
+          "en": "Platinum ticket",
+          "cs": "Platinová vstupenka"
+        },
+        "description": {
+          "en": "Upgrade to the Platinum Ticket for the ultimate experience. In addition to all the VIP and Gold benefits, you'll also enjoy exclusive access to backstage areas and the opportunity to meet the performers in person.",
+          "cs": "Vylepšte svůj záitek s Platinovou vstupenkou. Kromě všech výhod VIP a Gold vstupenky získáte také exkluzivní přístup do zákulisí a moýnost setkání s umělci osobně."
+        },
+        "prices":{
+          "USD": 210,
+          "CZK": 4999,
+          "EUR": 200
+        },
+        "quantity": 50,
+        "sold": 50
+      }
+    ],
+  "image": "/img/music/metallica.jpg",
+  "popular": true,
+  "address_id": "653501fa7da9c818ee46b406",
+  "event_admin": "65317b25cd427452610a570f"
+},
+ {
+    "name": {
+      "en": "Ektor",
+      "cs": "Ektor"
+    },  
+     "category_of_event": "Music",
+    "description": {
+      "en": "Experience the lyrical brilliance and captivating stage presence of the Czech artist Ektor in a night filled with thought-provoking rhymes, groovy beats, and an unforgettable musical performance.",
+      "cs": "Zažijte lyrickou brilanci a poutavou scénickou přítomnost českého umělce Ektor v noci plné úvah vyvolávajících rýmů, groovy beatů a nezapomenutelné hudebního vystoupení."
+    },
+  "date_of_the_event": "2024-04-04",
+  "date_of_start_sell_tickets": "2024-02-11",
+  "capacity": 38000,
+  "ticket_availability": false,
+      "ticket_types": [
+      {
+        "category": "Standard",
+        "ticket_name": {
+          "en": "Standard Ticket",
+          "cs": "Standardní vstupenka"
+        },
+       "description": {
+          "en": "Choose from a range of standard tickets. Depending on demand, the price of standard tickets can change dynamically.",
+          "cs": "Vyberte si z nabídky standardních vstupenek. V závislosti na poptávce se může cena standardních vstupenek dynamicky měnit."
+        },
+     "prices":{
+          "USD": 43,
+          "CZK": 999,
+          "EUR": 40
+        },
+        "quantity": 37000,
+        "sold": 37000
+      },
+      {
+        "category": "Gold",
+        "ticket_name": {
+          "en": "Gold Ticket",
+          "cs": "Gold vstupenka"
+        },
+        "description": {
+          "en": "Experience the ultimate Gold treatment with exclusive benefits, including priority access through a dedicated entrance and front-row seating right by the stage.",
+          "cs": "Zažijte vrcholný Gold servis s exkluzivními výhodami, včetně prioritního vstupu skrze vlastní vchod a místa v první řadě přímo u jeviště."
+        },
+           "prices":{
+          "USD": 60,
+          "CZK": 1399,
+          "EUR": 57
+        },
+        "quantity": 800,
+        "sold": 800
+      },
+       {
+        "category": "VIP",
+        "ticket_name": {
+           "en": "VIP Ticket",
+          "cs": "VIP vstupenka"
+        },
+        "description": {
+          "en": "Enhance your experience with a VIP ticket. In addition to the benefits of a Gold Ticket, you can also enjoy access to a soundcheck to see what it's like behind the scenes.",
+          "cs": "Vylepšete svůj záitek díky VIP vstupence. Kromě výhod Gold vstupenky si také můžete užít přístup k zvukové zkoušce, kde se podíváte, jak to chodí za scénou."
+        },
+         "prices":{
+          "USD": 81,
+          "CZK": 1899,
+          "EUR": 77
+        },
+        "quantity": 198,
+        "sold": 198
+      },
+       {
+        "category": "Platinum",
+        "ticket_name": {
+          "en": "Platinum ticket",
+          "cs": "Platinová vstupenka"
+        },
+        "description": {
+          "en": "Upgrade to the Platinum Ticket for the ultimate experience. In addition to all the VIP and Gold benefits, you'll also enjoy exclusive access to backstage areas and the opportunity to meet the performers in person.",
+          "cs": "Vylepšte svůj záitek s Platinovou vstupenkou. Kromě všech výhod VIP a Gold vstupenky získáte také exkluzivní přístup do zákulisí a moýnost setkání s umělci osobně."
+        },
+        "prices":{
+          "USD": 137,
+          "CZK": 3199,
+          "EUR": 130
+        },
+        "quantity": 2,
+        "sold": 2
+      }
+    ],
+  "image": "/img/music/ektor.jpg",
+  "popular": true,
+  "address_id": "653501fa7da9c818ee46b3fc",
+  "event_admin": "65317b25cd427452610a570f"
+},
+ {
+    "name": {
+      "en": "Viktor Sheen",
+      "cs": "Viktor Sheen"
+    },   
+    "category_of_event": "Music",
+    "description": {
+      "en": "Immerse yourself in the world of hip-hop with the charismatic Czech artist Viktor Sheen in a night filled with powerful verses, infectious beats, and an unforgettable rap performance.",
+      "cs": "Ponořte se do světa hip-hopu s charismatickým českým umělcem Viktorem Sheenem v noci plné silných veršů, nakažlivých beatů a nezapomenutelného rapového vystoupení."
+    },
+  "date_of_the_event": "2024-02-18",
+  "date_of_start_sell_tickets": "2024-08-19",
+  "capacity": 18221,
+  "ticket_availabiity": false,
+     "ticket_types": [
+      {
+        "category": "Standard",
+        "ticket_name": {
+          "en": "Standard Ticket",
+          "cs": "Standardní vstupenka"
+        },
+       "description": {
+          "en": "Choose from a range of standard tickets. Depending on demand, the price of standard tickets can change dynamically.",
+          "cs": "Vyberte si z nabídky standardních vstupenek. V závislosti na poptávce se může cena standardních vstupenek dynamicky měnit."
+        },
+     "prices":{
+          "USD": 43,
+          "CZK": 999,
+          "EUR": 40
+        },
+        "quantity": 17500,
+        "sold": 17500
+      },
+      {
+        "category": "Gold",
+        "ticket_name": {
+          "en": "Gold Ticket",
+          "cs": "Gold vstupenka"
+        },
+        "description": {
+          "en": "Experience the ultimate Gold treatment with exclusive benefits, including priority access through a dedicated entrance and front-row seating right by the stage.",
+          "cs": "Zažijte vrcholný Gold servis s exkluzivními výhodami, včetně prioritního vstupu skrze vlastní vchod a místa v první řadě přímo u jeviště."
+        },
+           "prices":{
+          "USD": 60,
+          "CZK": 1399,
+          "EUR": 57
+        },
+        "quantity": 500,
+        "sold": 500
+      },
+       {
+        "category": "VIP",
+        "ticket_name": {
+           "en": "VIP Ticket",
+          "cs": "VIP vstupenka"
+        },
+        "description": {
+          "en": "Enhance your experience with a VIP ticket. In addition to the benefits of a Gold Ticket, you can also enjoy access to a soundcheck to see what it's like behind the scenes.",
+          "cs": "Vylepšete svůj záitek díky VIP vstupence. Kromě výhod Gold vstupenky si také můžete užít přístup k zvukové zkoušce, kde se podíváte, jak to chodí za scénou."
+        },
+        "prices":{
+          "USD": 81,
+          "CZK": 1899,
+          "EUR": 77
+        },
+        "quantity": 200,
+        "sold": 200
+      },
+       {
+        "category": "Platinum",
+        "ticket_name": {
+          "en": "Platinum ticket",
+          "cs": "Platinová vstupenka"
+        },
+        "description": {
+          "en": "Upgrade to the Platinum Ticket for the ultimate experience. In addition to all the VIP and Gold benefits, you'll also enjoy exclusive access to backstage areas and the opportunity to meet the performers in person.",
+          "cs": "Vylepšte svůj záitek s Platinovou vstupenkou. Kromě všech výhod VIP a Gold vstupenky získáte také exkluzivní přístup do zákulisí a moýnost setkání s umělci osobně."
+        },
+        "prices":{
+          "USD": 107,
+          "CZK": 2499,
+          "EUR": 100
+        },
+        "quantity": 21,
+        "sold": 21
+      }
+    ],
+  "image": "/img/music/sheen.jpg",
+  "popular": false,
+  "address_id": "653501fa7da9c818ee46b401",
+  "event_admin": "65317b25cd427452610a570f"
+},
+{
+    "name": {
+      "en": "NF Real Music",
+      "cs": "NF Real Music"
+    },
+   "category_of_event": "Music",
+  "description": {
+    "en": "Immerse yourself in the emotional and lyrical depth of the American artist NF, known for his raw and honest music, in a night filled with introspective verses, powerful beats, and an unforgettable musical experience.",
+    "cs": "Ponořte se do emocionální a lyrické hloubky amerického umělce NF, známého pro svou upřímnou hudbu, v noci plné introvertních veršů, silných beatů a nezapomenutelného hudebního zážitku."
+  },
+  "date_of_the_event": "2024-08-23",
+  "date_of_start_sell_tickets": "2024-12-03",
+  "capacity": 10194,
+  "ticket_availability": false,
+     "ticket_types": [
+      {
+        "category": "Standard",
+        "ticket_name": {
+          "en": "Standard Ticket",
+          "cs": "Standardní vstupenka"
+        },
+       "description": {
+          "en": "Choose from a range of standard tickets. Depending on demand, the price of standard tickets can change dynamically.",
+          "cs": "Vyberte si z nabídky standardních vstupenek. V závislosti na poptávce se může cena standardních vstupenek dynamicky měnit."
+        },
+         "prices":{
+          "USD": 64,
+          "CZK": 1499,
+          "EUR": 61
+        },
+        "quantity": 9500,
+        "sold": 9500      
+      },
+      {
+        "category": "Gold",
+        "ticket_name": {
+          "en": "Gold Ticket",
+          "cs": "Gold vstupenka"
+        },
+        "description": {
+          "en": "Experience the ultimate Gold treatment with exclusive benefits, including priority access through a dedicated entrance and front-row seating right by the stage.",
+          "cs": "Zažijte vrcholný Gold servis s exkluzivními výhodami, včetně prioritního vstupu skrze vlastní vchod a místa v první řadě přímo u jeviště."
+        },
+         "prices":{
+          "USD": 86,
+          "CZK": 1999,
+          "EUR": 81
+        },
+        "quantity": 600,
+        "sold": 600
+      },
+       {
+        "category": "VIP",
+        "ticket_name": {
+           "en": "VIP Ticket",
+          "cs": "VIP vstupenka"
+        },
+        "description": {
+          "en": "Enhance your experience with a VIP ticket. In addition to the benefits of a Gold Ticket, you can also enjoy access to a soundcheck to see what it's like behind the scenes.",
+          "cs": "Vylepšete svůj záitek díky VIP vstupence. Kromě výhod Gold vstupenky si také můžete užít přístup k zvukové zkoušce, kde se podíváte, jak to chodí za scénou."
+        },
+       "prices":{
+          "USD": 111,
+          "CZK": 2599,
+          "EUR": 105
+        },
+        "quantity": 74,
+        "sold": 74
+      },
+       {
+        "category": "Platinum",
+        "ticket_name": {
+          "en": "Platinum ticket",
+          "cs": "Platinová vstupenka"
+        },
+        "description": {
+          "en": "Upgrade to the Platinum Ticket for the ultimate experience. In addition to all the VIP and Gold benefits, you'll also enjoy exclusive access to backstage areas and the opportunity to meet the performers in person.",
+          "cs": "Vylepšte svůj záitek s Platinovou vstupenkou. Kromě všech výhod VIP a Gold vstupenky získáte také exkluzivní přístup do zákulisí a moýnost setkání s umělci osobně."
+        },
+        "prices":{
+          "USD": 170,
+          "CZK": 3999,
+          "EUR": 162
+        },
+        "quantity": 24,
+        "sold": 24
+      }
+    ],
+  "image": "/img/music/nf.jpg",
+  "popular": false,
+  "address_id": "653501fa7da9c818ee46b408",
+  "event_admin": "65317b25cd427452610a570f"
+}
+]

@@ -1,0 +1,234 @@
+{
+  "faq": [
+    {
+      "question": {
+        "cs": "Nový způsob přihlášení",
+        "en": "New login method"
+      },
+      "answer": {
+        "cs": "Nový způsob přihlášení představuje aktualizovaný proces, jakým můžete přistupovat ke svému účtu na našem webu. Může zahrnovat nové bezpečnostní prvky nebo metody ověření.",
+        "en": "The new login method introduces an updated process for accessing your account on our website. It may include new security features or verification methods."
+      }
+    },
+    {
+      "question": {
+        "cs": "Jak se mění způsob, jakým přistupuji ke svému účtu?",
+        "en": "How is the way I access my account changing?"
+      },
+      "answer": {
+        "cs": "Způsob, jakým přistupujete ke svému účtu, může být nový, s důrazem na bezpečnost a pohodlí. Podrobnosti naleznete ve zprávách o nových funkcích přihlášení.",
+        "en": "The way you access your account may be new, with an emphasis on security and convenience. Details can be found in announcements about new login features."
+      }
+    },
+    {
+      "question": {
+        "cs": "Proč BlockTicket zavádí tyto změny?",
+        "en": "Why is BlockTicket introducing these changes?"
+      },
+      "answer": {
+        "cs": "Zavedení nového způsobu přihlášení může být motivováno snahou zlepšit bezpečnost účtů a poskytnout uživatelům modernější a efektivnější způsob správy jejich přístupu.",
+        "en": "Introducing a new login method may be motivated by a desire to enhance account security and provide users with a more modern and efficient way to manage their access."
+      }
+    },
+    {
+      "question": {
+        "cs": "Na kterých trzích bude k dispozici?",
+        "en": "On which markets will this be available?"
+      },
+      "answer": {
+        "cs": "Dostupnost nového způsobu přihlášení může záviset na regionu. Aktuální informace o dostupnosti naleznete na našem webu nebo v oznámeních pro uživatele.",
+        "en": "The availability of the new login method may depend on the region. Current information on availability can be found on our website or in user announcements."
+      }
+    },
+    {
+      "question": {
+        "cs": "Budou údaje o mém účtu použity jinak?",
+        "en": "Will my account information be used differently?"
+      },
+      "answer": {
+        "cs": "Nový způsob přihlášení nemění způsob, jakým jsou vaše údaje využívány. Vaše informace budou nadále chráněny a používány v souladu s naší politikou ochrany osobních údajů.",
+        "en": "The new login method does not change how your information is utilized. Your details will continue to be protected and used in accordance with our privacy policy."
+      }
+    },
+    {
+      "question": {
+        "cs": "Jak budou moje údaje sdíleny?",
+        "en": "How will my information be shared?"
+      },
+      "answer": {
+        "cs": "Vaše údaje budou sdíleny pouze v souladu s našimi pravidly ochrany osobních údajů. Nový způsob přihlášení nemění podmínky sdílení informací.",
+        "en": "Your information will only be shared in accordance with our privacy rules. The new login method does not change the conditions of information sharing."
+      }
+    },
+    {
+      "question": {
+        "cs": "Mohu používat jedno heslo pro všechny své účty?",
+        "en": "Can I use one password for all my accounts?"
+      },
+      "answer": {
+        "cs": "V závislosti na nastavení účtu můžete mít možnost používat jedno heslo pro více účtů. Doporučujeme však silná a unikátní hesla pro každý účet.",
+        "en": "Depending on account settings, you may have the option to use one password for multiple accounts. However, we recommend strong and unique passwords for each account."
+      }
+    },
+    {
+      "question": {
+        "cs": "Musím ke svému účtu přidat telefon?",
+        "en": "Do I have to add a phone to my account?"
+      },
+      "answer": {
+        "cs": "Přidání telefonu k účtu může být doporučeno pro další zabezpečení. Nicméně, to může být volitelná funkce a záleží na preferencích uživatele.",
+        "en": "Adding a phone to your account may be recommended for additional security. However, it may be an optional feature and depends on user preferences."
+      }
+    },
+    {
+      "question": {
+        "cs": "Co když mám další účty s různými e-maily?",
+        "en": "What if I have additional accounts with different emails?"
+      },
+      "answer": {
+        "cs": "Pokud máte více účtů s různými e-maily, nový způsob přihlášení by měl umožnit správu více účtů pod jedním přihlašovacím údajem. Podrobnosti naleznete v dokumentaci.",
+        "en": "If you have multiple accounts with different emails, the new login method should allow managing multiple accounts under one set of login credentials. Details can be found in the documentation."
+      }
+    },
+    {
+      "question": {
+        "cs": "Co když nechci propojit nový účet pro více trhů?",
+        "en": "What if I don't want to link the new account for multiple markets?"
+      },
+      "answer": {
+        "cs": "Pokud nechcete propojit nový účet pro více trhů, může to být volitelné. Některé funkce mohou být omezeny, ale měli byste mít možnost používat účet pro jednotlivé trhy.",
+        "en": "If you don't want to link the new account for multiple markets, it may be optional. Some features may be limited, but you should have the option to use the account for individual markets."
+      }
+    },
+    {
+      "question": {
+        "cs": "Jak nás kontaktovat",
+        "en": "How to contact us"
+      },
+      "answer": {
+        "cs": "Můžete nás kontaktovat prostřednictvím našeho kontaktního formuláře na webu, telefonicky na naší zákaznické podpoře nebo e-mailem. Více informací naleznete na stránce 'Kontakt'.",
+        "en": "You can contact us through our contact form on the website, by phone at our customer support, or via email. More information can be found on the 'Contact' page."
+      }
+    },
+    {
+      "question": {
+        "cs": "Vytvoření účtu BlockTicket",
+        "en": "Creating a BlockTicket account"
+      },
+      "answer": {
+        "cs": "Pro vytvoření účtu na BlockTicket se přihlaste na našem webu a postupujte podle instrukcí na stránce 'Registrace'. Během procesu vyplníte požadované informace a zvolíte přihlašovací údaje.",
+        "en": "To create a BlockTicket account, sign up on our website and follow the instructions on the 'Registration' page. During the process, you will fill in the required information and choose login credentials."
+      }
+    },
+    {
+      "question": {
+        "cs": "Jaké jsou výhody registrace u společnosti BlockTicket?",
+        "en": "What are the benefits of registering with BlockTicket?"
+      },
+      "answer": {
+        "cs": "Registrace u BlockTicket může nabídnout různé výhody, včetně rychlejšího dokončení nákupu, sledování událostí a dostávání personalizovaných nabídek. Registrací získáte také možnost spravovat své vlastní údaje.",
+        "en": "Registering with BlockTicket can offer various benefits, including faster checkout, event tracking, and receiving personalized offers. Registration also provides the ability to manage your own information."
+      }
+    },
+    {
+      "question": {
+        "cs": "Nelze se přihlásit k mému účtu",
+        "en": "Cannot log in to my account"
+      },
+      "answer": {
+        "cs": "Pokud máte problémy s přihlášením, zkontrolujte správnost přihlašovacích údajů. Můžete také využít funkci obnovení hesla nebo nás kontaktovat pro další asistenci.",
+        "en": "If you are having trouble logging in, check the accuracy of your login credentials. You can also use the password reset feature or contact us for further assistance."
+      }
+    },
+    {
+      "question": {
+        "cs": "Jak resetuji heslo ke svému účtu?",
+        "en": "How do I reset my account password?"
+      },
+      "answer": {
+        "cs": "Pro resetování hesla použijte možnost 'Zapomenuté heslo' na přihlašovací stránce. Postupujte podle instrukcí zaslaných na váš e-mail a vytvořte nové heslo.",
+        "en": "To reset your password, use the 'Forgot Password' option on the login page. Follow the instructions sent to your email and create a new password."
+      }
+    },
+    {
+      "question": {
+        "cs": "Neobdržel(a) jsem e-mail pro obnovení hesla",
+        "en": "I haven't received the password reset email"
+      },
+      "answer": {
+        "cs": "Zkontrolujte složku s nevyžádanou poštou (spam) ve vašem e-mailovém účtu. Pokud e-mail neobdržíte, ověřte správnost zadaného e-mailu nebo zkontaktujte naši zákaznickou podporu.",
+        "en": "Check your email's spam folder for the password reset email. If you haven't received it, verify the correctness of the entered email or contact our customer support."
+      }
+    },
+    {
+      "question": {
+        "cs": "Aktualizace informací v profilu Můj účet",
+        "en": "Updating information in My Account profile"
+      },
+      "answer": {
+        "cs": "Pro aktualizaci informací v profilu Můj účet přihlaste se na webu a přejděte na stránku s nastavením účtu. Zde můžete upravit své osobní údaje, platební informace a další.",
+        "en": "To update information in your My Account profile, log in to the website and go to the account settings page. Here, you can edit your personal details, payment information, and more."
+      }
+    },
+    {
+      "question": {
+        "cs": "Nemohu najít svou objednávku v mém účtu?",
+        "en": "I can't find my order in My Account?"
+      },
+      "answer": {
+        "cs": "Pokud nemůžete najít svou objednávku, zkontrolujte, zda jste přihlášeni k účtu, který jste při nákupu použili. Pokud máte stále problémy, kontaktujte naši zákaznickou podporu.",
+        "en": "If you can't find your order, make sure you are logged into the account you used for the purchase. If you still have issues, contact our customer support."
+      }
+    },
+    {
+      "question": {
+        "cs": "Jak mohu aktualizovat platební kartu Mém účtu?",
+        "en": "How can I update the payment card in My Account?"
+      },
+      "answer": {
+        "cs": "Pro aktualizaci platební karty přihlaste se k účtu a přejděte na stránku s platebními informacemi. Zde můžete přidat novou kartu a odebrat nebo aktualizovat existující.",
+        "en": "To update the payment card, log in to your account and go to the payment information page. Here, you can add a new card and remove or update existing ones."
+      }
+    },
+    {
+      "question": {
+        "cs": "Ověřte svůj účet telefonicky",
+        "en": "Verify your account by phone"
+      },
+      "answer": {
+        "cs": "Ověření účtu telefonicky může být jedním z bezpečnostních opatření. Postupujte podle pokynů poskytnutých na stránce 'Ověření účtu' ve svém profilu.",
+        "en": "Verifying your account by phone may be one of the security measures. Follow the instructions provided on the 'Account Verification' page in your profile."
+      }
+    },
+    {
+      "question": {
+        "cs": "Kde mohu vidět své zakoupené vstupenky?",
+        "en": "Where can I see my purchased tickets?"
+      },
+      "answer": {
+        "cs": "Zakoupené vstupenky můžete nalézt ve svém účtu na stránce 'Moje objednávky' nebo 'Moje vstupenky'. Zde naleznete přehled všech svých nákupů.",
+        "en": "Purchased tickets can be found in your account on the 'My Orders' or 'My Tickets' page. Here, you will find an overview of all your purchases."
+      }
+    },
+    {
+      "question": {
+        "cs": "Proč nedostávám upozornění na umělce nebo koncerty?",
+        "en": "Why am I not receiving notifications about artists or concerts?"
+      },
+      "answer": {
+        "cs": "Zkontrolujte nastavení oznámení ve svém účtu a ujistěte se, že máte povoleny upozornění na umělce a koncerty. Můžete také zkontrolovat, zda e-maily nekončí ve spamu.",
+        "en": "Check the notification settings in your account and make sure you have notifications for artists and concerts enabled. You can also check if emails are not ending up in your spam folder."
+      }
+    },
+    {
+      "question": {
+        "cs": "Mé osobní údaje / GDPR",
+        "en": "My personal data / GDPR"
+      },
+      "answer": {
+        "cs": "Ochrana osobních údajů je pro nás důležitá. Naše politiky ochrany osobních údajů jsou v souladu s nařízením GDPR. Více informací o tom, jak zpracováváme vaše údaje, naleznete v naší zásadě ochrany osobních údajů.",
+        "en": "Protecting personal data is important to us. Our privacy policies comply with GDPR regulations. More information on how we process your data can be found in our privacy policy."
+      }
+    }
+  ]
+}

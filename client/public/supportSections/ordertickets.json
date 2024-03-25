@@ -1,0 +1,154 @@
+{
+  "faq": [
+    {
+      "question": {
+        "cs": "Jak naleznu akci, o kterou mám zájem, na vašem webu?",
+        "en": "How do I find an event I'm interested in on your website?"
+      },
+      "answer": {
+        "cs": "Na našem webu můžete použít vyhledávací funkci nebo procházet kategorie akcí, abyste našli událost dle svých zájmů.",
+        "en": "You can use the search function on our website or browse event categories to find an event that matches your interests."
+      }
+    },
+    {
+      "question": {
+        "cs": "Proč nemohu najít svou událost u BlockTicket?",
+        "en": "Why can't I find my event on BlockTicket?"
+      },
+      "answer": {
+        "cs": "Možná událost není prodávána přes BlockTicket. Zkuste zkontrolovat jiné prodejce nebo oficiální stránku události.",
+        "en": "The event may not be sold through BlockTicket. Try checking other vendors or the official event page."
+      }
+    },
+    {
+      "question": {
+        "cs": "Jak objednám vstupenky online?",
+        "en": "How do I order tickets online?"
+      },
+      "answer": {
+        "cs": "Vstupenky můžete objednat online přes naši webovou stránku. Vyberte událost, vyberte sedadlo a postupujte podle pokynů k dokončení objednávky.",
+        "en": "You can order tickets online through our website. Choose the event, select your seats, and follow the instructions to complete the order."
+      }
+    },
+    {
+      "question": {
+        "cs": "Byla moje objednávka úspěšná?",
+        "en": "Was my order successful?"
+      },
+      "answer": {
+        "cs": "Po úspěšné objednávce obdržíte potvrzovací e-mail s informacemi o vaší rezervaci a vstupenkách.",
+        "en": "After a successful order, you will receive a confirmation email with details about your reservation and tickets."
+      }
+    },
+    {
+      "question": {
+        "cs": "Mohu vrátit, nebo vyměnit zakoupené vstupenky?",
+        "en": "Can I return or exchange purchased tickets?"
+      },
+      "answer": {
+        "cs": "Podmínky vrácení a výměny vstupenek se liší podle konkrétních pravidel a politiky události. Zkontrolujte prosím naše obchodní podmínky.",
+        "en": "Return and exchange policies for tickets vary based on the specific rules and policies of the event. Please check our terms and conditions."
+      }
+    },
+    {
+      "question": {
+        "cs": "Proč nyní nabízíte lepší vstupenky a proč nebyly k dispozici v momentě, kdy jsem uskutečnil/a nákup vstupenek?",
+        "en": "Why are better tickets available now, and why weren't they available at the time of my ticket purchase?"
+      },
+      "answer": {
+        "cs": "Nabídka vstupenek se může měnit v čase a závisí na dostupnosti. Lepší vstupenky mohou být uvolněny později nebo v důsledku zrušených rezervací.",
+        "en": "Ticket availability can change over time, and it depends on availability. Better tickets may be released later or due to canceled reservations."
+      }
+    },
+    {
+      "question": {
+        "cs": "Co znamená 'V současné době nejsou k dispozici žádné vstupenky'?",
+        "en": "What does 'Currently no tickets available' mean?"
+      },
+      "answer": {
+        "cs": "'V současné době nejsou k dispozici žádné vstupenky' znamená, že na danou událost momentálně nejsou v prodeji žádné vstupenky. Může to být způsobeno vyprodáním nebo dočasným pozastavením prodeje.",
+        "en": "'Currently no tickets available' means that there are currently no tickets on sale for the event. This could be due to it being sold out or temporarily paused ticket sales."
+      }
+    },
+    {
+      "question": {
+        "cs": "Proč nemohu objednávat určité množství vstupenek na některé akce (např. pouze 4 vstupenky)?",
+        "en": "Why can't I order a specific quantity of tickets for some events (e.g., only 4 tickets)?"
+      },
+      "answer": {
+        "cs": "Omezení množství zakoupených vstupenek může být nastaveno organizátorem události nebo z důvodů dostupnosti. Zkuste snížit počet vybraných vstupenek nebo kontaktujte zákaznickou podporu.",
+        "en": "Limitations on the quantity of purchased tickets may be set by the event organizer or due to availability. Try reducing the number of selected tickets or contact customer support."
+      }
+    },
+    {
+      "question": {
+        "cs": "Nabízíte výběr konkrétních míst z mapy sedadel na všechny akce?",
+        "en": "Do you offer the option to choose specific seats from a seating map for all events?"
+      },
+      "answer": {
+        "cs": "Nabídka výběru konkrétních sedadel může záviset na konkrétní události. Některé události umožňují výběr sedadel z mapy, zatímco u jiných může být přidělení náhodné.",
+        "en": "The option to choose specific seats may depend on the specific event. Some events allow seat selection from a map, while others may have assigned seating."
+      }
+    },
+    {
+      "question": {
+        "cs": "Proč nemohu při výběru sedadel ponechat jednotlivé místo volné?",
+        "en": "Why can't I leave individual seats empty when selecting seats?"
+      },
+      "answer": {
+        "cs": "Některé akce mohou mít pravidla, která vyžadují obsazení všech sedadel v řadě. Pokud máte specifické požadavky, zkuste kontaktovat zákaznickou podporu nebo vybrat jiná volná místa.",
+        "en": "Some events may have rules that require all seats in a row to be filled. If you have specific requirements, try contacting customer support or choose other available seats."
+      }
+    },
+    {
+      "question": {
+        "cs": "Jak mohu získat slevu pro studenty, seniory, atd.?",
+        "en": "How can I get discounts for students, seniors, etc.?"
+      },
+      "answer": {
+        "cs": "Informace o slevách pro studenty, seniory a další skupiny obvykle najdete v sekci s popisem akce nebo v nabídce cen vstupenek. Sledujte také aktuální nabídky a akce.",
+        "en": "Information about discounts for students, seniors, and other groups is usually available in the event description section or in the ticket pricing options. Also, keep an eye on current offers and promotions."
+      }
+    },
+    {
+      "question": {
+        "cs": "Pokud zakoupím zlevněné (studentské, seniorské, atd) vstupenky, musím v místě konání akce prokázat, že mám na slevu nárok?",
+        "en": "If I purchase discounted (student, senior, etc.) tickets, do I need to prove my eligibility at the event venue?"
+      },
+      "answer": {
+        "cs": "Některé akce mohou vyžadovat prokázání nároku na slevu při vstupu. O této podmínce se dozvíte při nákupu vstupenek nebo v potvrzovacím e-mailu.",
+        "en": "Some events may require proof of eligibility for the discount upon entry. You will be informed of this condition during the ticket purchase or in the confirmation email."
+      }
+    },
+    {
+      "question": {
+        "cs": "Co je to předprodej akce (před oficiálním zahájením prodeje)?",
+        "en": "What is presale (before the official start of sales)?"
+      },
+      "answer": {
+        "cs": "Předprodej je období před oficiálním spuštěním prodeje vstupenek, kdy mohou někteří zákazníci získat přednostní přístup k nákupu. Kódy pro předprodej mohou být poskytnuty určitým skupinám.",
+        "en": "Presale is a period before the official ticket sales launch when some customers can get priority access to purchase. Presale codes may be provided to specific groups."
+      }
+    },
+    {
+      "question": {
+        "cs": "Nabízí předprodej také nejlepší vstupenky?",
+        "en": "Does presale also offer the best tickets?"
+      },
+      "answer": {
+        "cs": "Předprodej může zahrnovat nabídku některých lepších vstupenek, ale dostupnost závisí na politice konkrétní události. Doporučujeme sledovat podmínky předprodeje.",
+        "en": "Presale may include the offer of some better tickets, but availability depends on the specific event's policy. We recommend monitoring presale terms."
+      }
+    },
+    {
+      "question": {
+        "cs": "Jak mohu dostávat oznámení o blížících se akcích?",
+        "en": "How can I receive notifications about upcoming events?"
+      },
+      "answer": {
+        "cs": "Pro oznámení o blížících se akcích můžete nastavit e-mailová upozornění ve svém uživatelském účtu nebo stáhnout naši mobilní aplikaci, která vám poskytne aktualizace o událostech.",
+        "en": "To receive notifications about upcoming events, you can set up email alerts in your user account or download our mobile app, which provides event updates."
+      }
+    }
+  ]
+}

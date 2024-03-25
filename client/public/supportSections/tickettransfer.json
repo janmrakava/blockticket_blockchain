@@ -1,0 +1,54 @@
+{
+  "faq": [
+    {
+      "question": {
+        "cs": "Co je služba Ticket Transfer?",
+        "en": "What is the Ticket Transfer service?"
+      },
+      "answer": {
+        "cs": "Ticket Transfer je služba umožňující převod vstupenek mezi různými účty. To umožňuje jednoduché sdílení vstupenek s přáteli nebo rodinnými členy bez nutnosti fyzického předání papírových vstupenek.",
+        "en": "Ticket Transfer is a service that allows the transfer of tickets between different accounts. This enables easy sharing of tickets with friends or family members without the need for physically handing over paper tickets."
+      }
+    },
+    {
+      "question": {
+        "cs": "Jak převést vstupenku?",
+        "en": "How to transfer a ticket?"
+      },
+      "answer": {
+        "cs": "Pro převod vstupenky se přihlaste do svého účtu, přejděte na stránku s detaily vstupenky a vyberte možnost převodu. Postupujte podle instrukcí k zadání informací o příjemci a dokončení převodu.",
+        "en": "To transfer a ticket, log in to your account, go to the ticket details page, and select the transfer option. Follow the instructions to enter the recipient's information and complete the transfer."
+      }
+    },
+    {
+      "question": {
+        "cs": "Jak mohu zrušit převod?",
+        "en": "How can I cancel a transfer?"
+      },
+      "answer": {
+        "cs": "Zrušení převodu závisí na pravidlech a podmínkách konkrétního poskytovatele. Obvykle můžete zrušit převod předtím, než příjemce potvrdí převod nebo dokončí přijetí vstupenky.",
+        "en": "Canceling a transfer depends on the rules and conditions of the specific provider. Usually, you can cancel the transfer before the recipient confirms the transfer or completes the acceptance of the ticket."
+      }
+    },
+    {
+      "question": {
+        "cs": "Jak přijmu převáděné vstupenky?",
+        "en": "How do I accept transferred tickets?"
+      },
+      "answer": {
+        "cs": "Pokud vám byly převedeny vstupenky, obvykle obdržíte e-mailové oznámení s instrukcemi. Přihlaste se do svého účtu, přejděte na stránku s přijatými vstupenkami a dokončete proces přijetí.",
+        "en": "If tickets have been transferred to you, you will typically receive an email notification with instructions. Log in to your account, go to the accepted tickets page, and complete the acceptance process."
+      }
+    },
+    {
+      "question": {
+        "cs": "Mohu převést vstupenky, které mi byly převedeny?",
+        "en": "Can I transfer tickets that were transferred to me?"
+      },
+      "answer": {
+        "cs": "Pravidla převodu mohou záviset na konkrétních podmínkách a poskytovateli. Některé platformy mohou omezovat další převody, zatímco jiné mohou umožňovat další přenosy vstupenek.",
+        "en": "The rules for transferring may depend on specific conditions and providers. Some platforms may restrict additional transfers, while others may allow further ticket transfers."
+      }
+    }
+  ]
+}

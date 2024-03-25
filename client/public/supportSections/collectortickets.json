@@ -1,0 +1,64 @@
+{
+  "faq": [
+    {
+      "question": {
+        "cs": "Co je Collector Ticket?",
+        "en": "What is a Collector Ticket?"
+      },
+      "answer": {
+        "cs": "Collector Ticket je speciální typ vstupenky, která slouží nejen jako vstup na událost, ale také jako sběratelský suvenýr. Collector Ticket bývá často vyvedený v exkluzivním designu spojeném s konkrétní událostí.",
+        "en": "A Collector Ticket is a special type of ticket that serves not only as entry to an event but also as a collectible souvenir. Collector Tickets are often designed with exclusive artwork related to the specific event."
+      }
+    },
+    {
+      "question": {
+        "cs": "Mohu objednat jednu Collector Ticket a jednu standardní vstupenku ve stejné objednávce?",
+        "en": "Can I order one Collector Ticket and one standard ticket in the same order?"
+      },
+      "answer": {
+        "cs": "Možnost objednat jednu Collector Ticket a jednu standardní vstupenku ve stejné objednávce závisí na pravidlech konkrétního poskytovatele. Některé události umožňují kombinovat různé typy vstupenek, zatímco jiné mohou mít omezení.",
+        "en": "The ability to order one Collector Ticket and one standard ticket in the same order depends on the rules of the specific provider. Some events allow combining different types of tickets, while others may have restrictions."
+      }
+    },
+    {
+      "question": {
+        "cs": "Kdy obdržím moje Collector Tickets?",
+        "en": "When will I receive my Collector Tickets?"
+      },
+      "answer": {
+        "cs": "Termíny doručení Collector Tickets se mohou lišit v závislosti na konkrétních podmínkách a pravidlech pro danou událost. Obvykle jsou Collector Tickets rozesílány v určitém období před datem konání akce.",
+        "en": "Delivery timelines for Collector Tickets may vary depending on the specific conditions and rules for a given event. Typically, Collector Tickets are dispatched within a certain period before the event date."
+      }
+    },
+    {
+      "question": {
+        "cs": "Jak Collector Tickets fungují?",
+        "en": "How do Collector Tickets work?"
+      },
+      "answer": {
+        "cs": "Collector Tickets fungují stejně jako běžné vstupenky, umožňují vstup na událost. Navíc slouží jako sběratelský suvenýr s exkluzivním designem spojeným s konkrétní událostí. Po události si můžete Collector Ticket ponechat jako památku.",
+        "en": "Collector Tickets work just like regular tickets, allowing entry to the event. Additionally, they serve as a collectible souvenir with exclusive artwork related to the specific event. After the event, you can keep the Collector Ticket as a memento."
+      }
+    },
+    {
+      "question": {
+        "cs": "Musím nosit Collector Ticket viditelně na krku?",
+        "en": "Do I have to wear the Collector Ticket visibly around my neck?"
+      },
+      "answer": {
+        "cs": "Obvykle není nutné nosit Collector Ticket viditelně na krku. Stačí mít jej s sebou při vstupu na událost, aby bylo možné provést kontrolu vstupenky.",
+        "en": "It is usually not necessary to wear the Collector Ticket visibly around your neck. Simply having it with you at the event entrance for ticket inspection is sufficient."
+      }
+    },
+    {
+      "question": {
+        "cs": "Jaká je cena za nákup Collector Ticket?",
+        "en": "What is the price for purchasing a Collector Ticket?"
+      },
+      "answer": {
+        "cs": "Cena za nákup Collector Ticket se může lišit v závislosti na události a poskytovateli. Collector Tickets často zahrnují náklady na sběratelský design a mohou být dražší než běžné vstupenky.",
+        "en": "The price for purchasing a Collector Ticket may vary depending on the event and provider. Collector Tickets often include costs for collectible design and may be more expensive than regular tickets."
+      }
+    }
+  ]
+}

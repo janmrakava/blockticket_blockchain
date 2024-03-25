@@ -1,0 +1,154 @@
+{
+  "faq": [
+    {
+      "question": {
+        "cs": "Jak zakoupím vstupenky pro přeprodej?",
+        "en": "How do I purchase tickets for resale?"
+      },
+      "answer": {
+        "cs": "Pro nákup vstupenek pro přeprodej se přihlaste do svého účtu a vyberte možnost přeprodej nebo prodej vstupenek. Postupujte podle instrukcí k zadání informací o vstupenkách a dokončení nákupu.",
+        "en": "To purchase tickets for resale, log in to your account and choose the resale or ticket selling option. Follow the instructions to enter ticket details and complete the purchase."
+      }
+    },
+    {
+      "question": {
+        "cs": "Moje plány se změnily, mohu získat refundaci (vrácení peněz)/výměnu?",
+        "en": "My plans have changed, can I get a refund/exchange?"
+      },
+      "answer": {
+        "cs": "Podmínky vrácení peněz nebo výměny závisí na pravidlech daného poskytovatele. Některé platformy mohou umožňovat vrácení peněz nebo nabízet možnost výměny, zatímco jiné nemusí.",
+        "en": "Refund or exchange conditions depend on the rules of the specific provider. Some platforms may allow refunds or offer exchange options, while others may not."
+      }
+    },
+    {
+      "question": {
+        "cs": "Jak mohu zaplatit za přeprodávané vstupenky?",
+        "en": "How can I pay for the resold tickets?"
+      },
+      "answer": {
+        "cs": "Způsoby platby za přeprodané vstupenky závisí na nastavení daného prodejce. Obvykle můžete využít kreditní karty, platební karty nebo jiné online platební metody.",
+        "en": "Payment methods for resold tickets depend on the settings of the specific seller. Typically, you can use credit cards, debit cards, or other online payment methods."
+      }
+    },
+    {
+      "question": {
+        "cs": "Proč se zobrazují stejné vstupenky za jinou cenu?",
+        "en": "Why are the same tickets displayed at a different price?"
+      },
+      "answer": {
+        "cs": "Různé ceny za stejné vstupenky mohou být důsledkem různých nabídek od různých prodejců nebo možností zakoupení od jiných uživatelů.",
+        "en": "Different prices for the same tickets may result from various offers from different sellers or the option to buy from other users."
+      }
+    },
+    {
+      "question": {
+        "cs": "Proč si mohu koupit pouze určitý počet vstupenek?",
+        "en": "Why can I only purchase a certain number of tickets?"
+      },
+      "answer": {
+        "cs": "Omezení počtu zakoupených vstupenek může být stanoveno pro prevenci spekulace nebo aby se zajistilo, že co nejvíce lidí má přístup k vstupenkám.",
+        "en": "Limitations on the number of purchased tickets may be set to prevent speculation or to ensure that as many people as possible have access to the tickets."
+      }
+    },
+    {
+      "question": {
+        "cs": "Kdy obdržím své vstupenky z přeprodeje? Jak prodám svoje vstupenky?",
+        "en": "When will I receive my tickets from resale? How do I sell my tickets?"
+      },
+      "answer": {
+        "cs": "Čas dodání vstupenek z přeprodeje a postup pro prodej vlastních vstupenek závisí na pravidlech dané platformy. Obvykle obdržíte instrukce a oznámení e-mailem.",
+        "en": "The delivery time for tickets from resale and the process for selling your own tickets depend on the rules of the specific platform. You will typically receive instructions and notifications by email."
+      }
+    },
+    {
+      "question": {
+        "cs": "Proč nemohu prodat své vstupenky?",
+        "en": "Why can't I sell my tickets?"
+      },
+      "answer": {
+        "cs": "Problémy s prodejem vstupenek mohou být způsobeny různými faktory, včetně omezení prodeje, technických problémů nebo pravidel dané platformy. Kontaktujte zákaznickou podporu pro další asistenci.",
+        "en": "Issues with selling tickets can be caused by various factors, including selling restrictions, technical issues, or platform-specific rules. Contact customer support for further assistance."
+      }
+    },
+    {
+      "question": {
+        "cs": "Jak zruším moji nabídku vstupenek?",
+        "en": "How do I cancel my ticket listing?"
+      },
+      "answer": {
+        "cs": "Pro zrušení nabídky vstupenek se přihlaste do svého účtu, najděte možnost správy prodejů nebo nabídek a vyberte možnost zrušení příslušné nabídky.",
+        "en": "To cancel a ticket listing, log in to your account, find the option for managing sales or listings, and choose the option to cancel the relevant listing."
+      }
+    },
+    {
+      "question": {
+        "cs": "Co se stane po prodeji vstupenek?",
+        "en": "What happens after the tickets are sold?"
+      },
+      "answer": {
+        "cs": "Po úspěšném prodeji vstupenek bývá obvyklé, že obdržíte potvrzovací e-mail a prostředky za prodej jsou vám připsány podle pravidel platforem.",
+        "en": "After a successful ticket sale, you typically receive a confirmation email, and the funds from the sale are credited to you according to the platform's rules."
+      }
+    },
+    {
+      "question": {
+        "cs": "Co když se vstupenky neprodají?",
+        "en": "What if the tickets don't sell?"
+      },
+      "answer": {
+        "cs": "Pokud se vstupenky neprodají, může být možné, že se vrátíte k původním vlastníkům nebo podle pravidel platformy můžete mít jiné možnosti, jako například snížení ceny.",
+        "en": "If the tickets don't sell, you may have the option to revert to the original owners, or according to the platform's rules, you may have other options, such as reducing the price."
+      }
+    },
+    {
+      "question": {
+        "cs": "Mohu prodat již přeprodanou vstupenku?",
+        "en": "Can I resell a ticket that has already been resold?"
+      },
+      "answer": {
+        "cs": "Pravidla ohledně opětovného přeprodeje mohou záviset na politikách dané platformy. Některé platformy mohou povolovat opakovaný přeprodej, zatímco jiné mohou mít omezení.",
+        "en": "Rules regarding reselling a ticket that has already been resold may depend on the policies of the specific platform. Some platforms may allow for repeated resale, while others may have restrictions."
+      }
+    },
+    {
+      "question": {
+        "cs": "Kdy a jak dostanu zaplaceno?",
+        "en": "When and how do I get paid?"
+      },
+      "answer": {
+        "cs": "Čas a způsob vyplacení prostředků po prodeji vstupenek se řídí pravidly dané platformy. Obvykle můžete vybrat mezi různými metodami, jako jsou bankovní převody nebo elektronické peněženky.",
+        "en": "The timing and method of payment after selling tickets are governed by the rules of the specific platform. Typically, you can choose from various methods, such as bank transfers or electronic wallets."
+      }
+    },
+    {
+      "question": {
+        "cs": "Jak aktualizuji své platební údaje?",
+        "en": "How do I update my payment details?"
+      },
+      "answer": {
+        "cs": "Pro aktualizaci platebních údajů se přihlaste do svého účtu a přejděte na stránku s platebními informacemi. Zde můžete přidat nové údaje a odebrat nebo aktualizovat existující.",
+        "en": "To update payment details, log in to your account and go to the payment information page. Here, you can add new details and remove or update existing ones."
+      }
+    },
+    {
+      "question": {
+        "cs": "Byl jsem požádán, abych ověřil, kdo jsem (KYC)?",
+        "en": "I have been asked to verify my identity (KYC), what should I do?"
+      },
+      "answer": {
+        "cs": "Požadavky na ověření totožnosti mohou být stanoveny daným poskytovatelem nebo v souladu s právními předpisy. Postupujte podle instrukcí poskytnutých v rámci ověřovacího procesu.",
+        "en": "Requirements for identity verification may be set by the specific provider or in accordance with legal regulations. Follow the instructions provided as part of the verification process."
+      }
+    },
+    {
+      "question": {
+        "cs": "Jaké jsou podporované země pro zadání bankovních údajů k výplatě za prodané vstupenky?",
+        "en": "Which countries are supported for entering bank details for ticket sale payouts?"
+      },
+      "answer": {
+        "cs": "Dostupnost podporovaných zemí pro zadání bankovních údajů může být omezena politikami dané platformy. Obvykle jsou podporovány široce používané bankovní systémy.",
+        "en": "The availability of supported countries for entering bank details may be restricted by the policies of the specific platform. Typically, widely used banking systems are supported."
+      }
+    }
+  ]
+}

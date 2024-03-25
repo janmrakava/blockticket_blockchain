@@ -1,0 +1,397 @@
+[
+{
+  "name":{
+    "en": "Children's carnival in the city park",
+    "cs": "Dětský karneval v městském parku"
+  },
+  "category_of_event": "Family",
+ "description": {
+  "en": "Join us for a day of laughter and fun at the Children's Carnival in the City Park. Bring your little ones for a joyful experience filled with colorful costumes, exciting games, delicious treats, and a parade of happiness that will create lasting memories.",
+  "cs": "Přijďte si k nám užít den smíchu a zábavy na Dětském karnevalu v Městském parku. Přiveďte své nejmenší pro radostný zážitek plný barevných kostýmů, vzrušujících her, lahodných dobrot a průvodu štěstí, který vytvoří trvalé vzpomínky."
+},
+  "date_of_the_event": "2024-10-26",
+  "date_of_start_sell_tickets": "2023-12-18",
+  "capacity": 750,
+  "ticket_availabiity": false,
+  "ticket_types": [
+      {
+        "category": "Standard",
+        "ticket_name": {
+          "en": "Standard Ticket",
+          "cs": "Standardní vstupenka"
+        },
+   "description": {
+          "en": "Choose from a range of standard tickets. Depending on demand, the price of standard tickets can change dynamically.",
+          "cs": "Vyberte si z nabídky standardních vstupenek. V závislosti na poptávce se může cena standardních vstupenek dynamicky měnit."
+        },
+        "prices":{
+          "USD": 25,
+          "CZK": 599,
+          "EUR": 24
+        },
+        "quantity": 750,
+        "sold": 750
+      }      
+     ],
+  "image": "/img/family/childcarnival.jpg",
+  "popular": false,
+  "address_id": "653501fa7da9c818ee46b43a",
+  "event_admin": "65317b25cd427452610a570f"
+},
+ {
+  "name":{
+    "en": "A day full of fun on the playground and hammocks",
+    "cs": "Den plný zábavy na hřišti a houpacích sítích"
+  },
+ "category_of_event": "Family",
+ "description": {
+  "en": "Join us for a day filled with fun on the playground and in the hammock nets. Bring your friends and family for a joyful experience of games, laughter, and relaxation, as you swing, climb, and enjoy the great outdoors in a carefree atmosphere.",
+  "cs": "Připojte se k nám na den plný zábavy na hřišti a v houpacích sítích. Přiveďte své přátele a rodinu pro radostný zážitek plný her, smíchu a odpočinku, kdy budete houpat se, lézt a užívat si venku v bezstarostném prostředí."
+},
+  "date_of_the_event": "2024-08-04",
+  "date_of_start_sell_tickets": "2024-07-21",
+  "capacity": 1640,
+  "ticket_availabiity": false,
+  "ticket_types": [
+      {
+        "category": "Standard",
+        "ticket_name": {
+          "en": "Standard Ticket",
+          "cs": "Standardní vstupenka"
+        },
+   "description": {
+          "en": "Choose from a range of standard tickets. Depending on demand, the price of standard tickets can change dynamically.",
+          "cs": "Vyberte si z nabídky standardních vstupenek. V závislosti na poptávce se může cena standardních vstupenek dynamicky měnit."
+        },
+        "prices":{
+          "USD": 21,
+          "CZK": 499,
+          "EUR": 20
+        },
+        "quantity": 1640,
+        "sold": 1640
+      }
+
+     ],
+  "image": "/img/family/childfield.jpg",
+  "popular": false,
+  "address_id": "653501fa7da9c818ee46b438",
+  "event_admin": "65317b25cd427452610a570f"
+  
+},
+{
+  "name": {
+    "en": "Children's theatre performance with a fairy-tale grandfather",
+    "cs": "Dětské divadelní představení s pohádkovým dědečkem"
+  },
+ "category_of_event": "Family",
+"description": {
+  "en": "Join us for a magical journey as we present a Children's Theater Performance with a Fairytale Grandfather. Bring your kids for an enchanting experience filled with captivating stories, lively characters, and a touch of whimsy that will transport them to a world of wonder and imagination.",
+  "cs": "Připojte se k nám na kouzelnou cestu, kdy vám představíme Dětské divadelní představení s Pohádkovým Dědečkem. Přiveďte své děti pro okouzlující zážitek plný poutavých příběhů, živých postav a špetky fantazie, která je přenesou do světa zázraků a představivosti."
+},
+  "date_of_the_event": "2024-11-09",
+  "date_of_start_sell_tickets": "2023-12-12",
+  "capacity": 800,
+  "ticket_availabiity": false,
+  "ticket_types": [
+      {
+        "category": "Standard",
+        "ticket_name": {
+          "en": "Standard Ticket",
+          "cs": "Standardní vstupenka"
+        },
+   "description": {
+          "en": "Choose from a range of standard tickets. Depending on demand, the price of standard tickets can change dynamically.",
+          "cs": "Vyberte si z nabídky standardních vstupenek. V závislosti na poptávce se může cena standardních vstupenek dynamicky měnit."
+        },
+        "prices":{
+          "USD": 17,
+          "CZK": 399,
+          "EUR": 16
+        },
+        "quantity": 800,
+        "sold": 800
+      }
+     ],
+  "image": "/img/family/childtheater.jpg",
+  "popular": false,
+  "address_id": "653501fa7da9c818ee46b439",
+  "event_admin": "65317b25cd427452610a570f"
+},
+{
+  "name": {
+    "en": "Family festival with music and dance",
+    "cs": "Rodinný festival s hudbou a tancem"
+  },
+ "category_of_event": "Family",
+ "description": {
+  "en": "Join us for a day of family fun at the Music and Dance Family Festival. Bring your loved ones for a joyful celebration filled with lively music, exciting dance performances, and activities that will have everyone tapping their feet and grooving to the rhythm.",
+  "cs": "Připojte se k nám na den rodinné zábavy na Hudebním a Tanec Rodinném festivalu. Přiveďte své blízké k radostnému oslavování plné živé hudby, vzrušujících tanečních vystoupení a aktivit, které dostanou každého do rytmu a tance."
+},
+  "date_of_the_event": "2024-03-24",
+  "date_of_start_sell_tickets": "2024-07-06",
+  "capacity": 5100,
+  "ticket_availabiity": false,
+  "ticket_types": [
+      {
+        "category": "Standard",
+        "ticket_name": {
+          "en": "Standard Ticket",
+          "cs": "Standardní vstupenka"
+        },
+   "description": {
+          "en": "Choose from a range of standard tickets. Depending on demand, the price of standard tickets can change dynamically.",
+          "cs": "Vyberte si z nabídky standardních vstupenek. V závislosti na poptávce se může cena standardních vstupenek dynamicky měnit."
+        },
+        "prices":{
+          "USD": 21,
+          "CZK": 499,
+          "EUR": 20
+        },
+        "quantity": 5100,
+        "sold": 5100
+      }
+
+     ],
+  "image": "/img/family/familyfestival.jpg",
+  "popular": false,
+  "address_id": "653501fa7da9c818ee46b429",
+  "event_admin": "65317b25cd427452610a570f"
+},
+{
+  "name": {
+    "en": "Family summer creative workshops",
+    "cs": "Rodinné letní tvořivé dílny a workshop"
+    },
+ "category_of_event": "Family",
+ "description": {
+  "en": "Join us for a summer of creativity at the Family Summer Creative Workshops. Bring your family for a season of artistic exploration and hands-on workshops where everyone can unleash their imagination and create beautiful works of art.",
+  "cs": "Připojte se k nám na léto plné kreativity na Rodinných letních tvořivých dílnách a workshopech. Přiveďte svou rodinu na sezonu uměleckého objevování a praktických workshopů, kde každý může propustit svou fantazii a vytvořit nádherná umělecká díla."
+},
+  "date_of_the_event": "2024-06-21",
+  "date_of_start_sell_tickets": "2024-01-27",
+  "capacity": 1780,
+  "ticket_availabiity": true,
+  "ticket_types": [
+      {
+        "category": "Standard",
+        "ticket_name": {
+          "en": "Standard Ticket",
+          "cs": "Standardní vstupenka"
+        },
+   "description": {
+          "en": "Choose from a range of standard tickets. Depending on demand, the price of standard tickets can change dynamically.",
+          "cs": "Vyberte si z nabídky standardních vstupenek. V závislosti na poptávce se může cena standardních vstupenek dynamicky měnit."
+        },
+        "prices":{
+          "USD": 34,
+          "CZK": 799,
+          "EUR": 32
+        },
+        "quantity": 1780,
+        "sold": 1537
+
+      }
+     ],
+  "image": "/img/family/familycreative,jpg",
+  "popular": false,
+  "address_id": "653501fa7da9c818ee46b437",
+  "event_admin": "65317b25cd427452610a570f"
+},
+{
+ "name": {
+    "en": "Games and competitions at the family sports day",
+    "cs": "Hry a soutěže na rodinném sportovním dni"
+  },
+ "category_of_event": "Family",
+ "description": {
+  "en": "Join us for a day of family-friendly competition at the Family Sports Day with Games and Contests. Bring your loved ones for a fun-filled day of sports, games, and friendly contests that will bring out the spirit of teamwork and sportsmanship.",
+  "cs": "Připojte se k nám na den rodinné soutěže na Rodinném sportovním dni s hrami a soutěžemi. Přiveďte své blízké na den plný sportu, her a přátelských soutěží, které rozvinou duch týmové spolupráce a sportovního ducha."
+},
+  "date_of_the_event": "2024-01-25",
+  "date_of_start_sell_tickets": "2024-03-10",
+  "capacity": 2400,
+  "ticket_availabiity": false,
+  "ticket_types": [
+      {
+        "category": "Standard",
+        "ticket_name": {
+          "en": "Standard Ticket",
+          "cs": "Standardní vstupenka"
+        },
+   "description": {
+          "en": "Choose from a range of standard tickets. Depending on demand, the price of standard tickets can change dynamically.",
+          "cs": "Vyberte si z nabídky standardních vstupenek. V závislosti na poptávce se může cena standardních vstupenek dynamicky měnit."
+        },
+          "prices":{
+          "USD": 25,
+          "CZK": 599,
+          "EUR": 24
+        },
+        "quantity": 2400,
+        "sold": 2400
+      }
+     ],
+  "image": "/img/family/familysport.jpg",
+  "popular": false,
+  "address_id": "653501fa7da9c818ee46b435",
+  "event_admin": "65317b25cd427452610a570f"
+},
+{
+ "name": {
+    "en": "Family movie evening under the open sky",
+    "cs": "Rodinný filmový večer pod otevřeným nebem"
+  },
+  "category_of_event": "Family",
+  "description": {
+  "en": "Join us for a night of family entertainment at the Family Open-Air Movie Night. Bring your loved ones for an unforgettable evening under the stars, featuring a family-friendly film that will transport you to a world of adventure and laughter.",
+  "cs": "Připojte se k nám na noc rodinné zábavy na Rodinném filmovém večeru pod otevřeným nebem. Přiveďte své blízké na nezapomenutelný večer pod hvězdami, s rodinným filmem, který vás zavede do světa dobrodružství a smíchu."
+},
+  "date_of_the_event": "2024-05-21",
+  "date_of_start_sell_tickets": "2024-02-29",
+  "capacity": 1900,
+  "ticket_availabiity": false,
+  "ticket_types": [
+      {
+        "category": "Standard",
+        "ticket_name": {
+          "en": "Standard Ticket",
+          "cs": "Standardní vstupenka"
+        },
+   "description": {
+          "en": "Choose from a range of standard tickets. Depending on demand, the price of standard tickets can change dynamically.",
+          "cs": "Vyberte si z nabídky standardních vstupenek. V závislosti na poptávce se může cena standardních vstupenek dynamicky měnit."
+        },
+         "prices":{
+          "USD": 13,
+          "CZK": 299,
+          "EUR": 12
+        },
+        "quantity": 1900,
+        "sold": 1900
+      }
+     ],
+  "image": "/img/family/outdoormovienight.jpg",
+  "popular": false,
+  "address_id": "653501fa7da9c818ee46b436",
+  "event_admin": "65317b25cd427452610a570f"
+},
+{
+ "name": {
+    "en": "Children's fairy tale day with making your own fairy tales",
+    "cs": "Dětský pohádkový den s výrobou vlastních pohádek"
+  },
+ "category_of_event": "Family",
+ "description": {
+  "en": "Join us for a magical day at the Children's Fairy Tale Day with the Creation of Your Own Fairy Tales. Bring your kids for an enchanting experience filled with storytelling, creative workshops, and the opportunity to craft their very own fairy tales, sparking their imagination and creativity.",
+  "cs": "Připojte se k nám na kouzelný den na Dětském dni pohádek s tvorbou vlastních pohádek. Přiveďte své děti pro okouzlující zážitek plný vyprávění, kreativních dílen a příležitost vytvořit své vlastní pohádky, které rozvinou jejich představivost a kreativitu."
+},
+  "date_of_the_event": "2024-03-08",
+  "date_of_start_sell_tickets": "2024-04-07",
+  "capacity": 3016,
+  "ticket_availabiity": true,
+  "ticket_types": [
+      {
+        "category": "Standard",
+        "ticket_name": {
+          "en": "Standard Ticket",
+          "cs": "Standardní vstupenka"
+        },
+   "description": {
+          "en": "Choose from a range of standard tickets. Depending on demand, the price of standard tickets can change dynamically.",
+          "cs": "Vyberte si z nabídky standardních vstupenek. V závislosti na poptávce se může cena standardních vstupenek dynamicky měnit."
+        },
+        "prices":{
+          "USD": 21,
+          "CZK": 499,
+          "EUR": 20
+        },
+        "quantity": 3016,
+        "sold": 2928
+      } 
+     ],
+  "image": "/img/family/owncartoons.jpg",
+  "popular": false,
+  "address_id": "653501fa7da9c818ee46b433",
+  "event_admin": "65317b25cd427452610a570f"
+},
+ {
+   "name": {
+    "en": "A family day full of remarkable magic and tricks",
+    "cs": "Rodinný den plný pozoruhodných kouzel a triků"
+  },
+ "category_of_event": "Family",
+"description": {
+  "en": "Join us for a day of family fun at the Family Day of Astonishing Magic and Tricks. Bring your loved ones for a delightful experience filled with mind-bending illusions, jaw-dropping tricks, and enchanting performances that will leave you in awe.",
+  "cs": "Připojte se k nám na den rodinné zábavy na Rodinném dni ohromující magie a triků. Přiveďte své blízké pro rozkošný zážitek plný záhadných iluzí, ohromujících triků a kouzelných vystoupení, které vás nechají v úžasu."
+},
+  "date_of_the_event": "2024-06-14",
+  "date_of_start_sell_tickets": "2023-12-19",
+  "capacity": 4600,
+  "ticket_availabiity": false,
+  "ticket_types": [
+      {
+        "category": "Standard",
+        "ticket_name": {
+          "en": "Standard Ticket",
+          "cs": "Standardní vstupenka"
+        },
+   "description": {
+          "en": "Choose from a range of standard tickets. Depending on demand, the price of standard tickets can change dynamically.",
+          "cs": "Vyberte si z nabídky standardních vstupenek. V závislosti na poptávce se může cena standardních vstupenek dynamicky měnit."
+        },
+         "prices":{
+          "USD": 17,
+          "CZK": 399,
+          "EUR": 16
+        },
+        "quantity": 4600,
+        "sold": 4600
+      }
+     ],
+  "image": "/img/family/magictricks.jpg",
+  "popular": false,
+  "address_id": "653501fa7da9c818ee46b42b",
+  "event_admin": "65317b25cd427452610a570f"
+},
+{
+  "name": {
+    "en": "Family adventure park day with ropes courses",
+    "cs": "Rodinný adventure park den s lanovými dráhami"
+  },
+  "category_of_event": "Family",
+ "description": {
+  "en": "Join us for a day of family adventure at the Family Adventure Park Day with Ropes Courses. Bring your loved ones for an exhilarating experience filled with challenging ropes courses, exciting obstacles, and outdoor thrills that will create unforgettable family memories.",
+  "cs": "Připojte se k nám na den rodinného dobrodružství na Rodinném dni v dobrodružném parku s lanovými dráhami. Přiveďte své blízké pro vzrušující zážitek plný náročných lanových drah, vzrušujících překážek a outdoorové zábavy, které vytvoří nezapomenutelné rodinné vzpomínky."
+},
+  "date_of_the_event": "2024-08-23",
+  "date_of_start_sell_tickets": "2024-02-20",
+  "capacity": 4000,
+  "ticket_availabiity": false,
+  "ticket_types": [
+      {
+        "category": "Standard",
+        "ticket_name": {
+          "en": "Standard Ticket",
+          "cs": "Standardní vstupenka"
+        },
+   "description": {
+          "en": "Choose from a range of standard tickets. Depending on demand, the price of standard tickets can change dynamically.",
+          "cs": "Vyberte si z nabídky standardních vstupenek. V závislosti na poptávce se může cena standardních vstupenek dynamicky měnit."
+        },
+        "prices":{
+          "USD": 38,
+          "CZK": 899,
+          "EUR": 36
+        },
+        "quantity": 4000,
+        "sold": 4000
+      }
+     ],
+  "image": "/img/family/childrenpark.jpg",
+  "popular": false,
+  "address_id": "653501fa7da9c818ee46b42e",
+  "event_admin": "65317b25cd427452610a570f"
+}
+]
+

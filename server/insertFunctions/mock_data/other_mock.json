@@ -1,0 +1,236 @@
+[
+{
+"name": {
+  "en": "Artistic Excursion - Galleries and Wine",
+  "cs": "Umělecká Exkurze - Galerie a Víno"
+},
+ "category_of_event": "Other", 
+"description": {
+  "en": "Experience the perfect blend of art and wine at our 'Artistic Excursion - Galleries and Wine' event. Explore exquisite artworks while savoring the finest wines. An evening of culture, elegance, and sensory delights awaits you.",
+  "cs": "Zažijte dokonalou kombinaci umění a vína na naší události 'Umělecká Exkurze - Galerie a Víno'. Objevujte vynikající umělecká díla při ochutnávce nejlepších vín. Čeká vás večer plný kultury, elegance a smyslových potěšení."
+},
+  "date_of_the_event": "2024-07-25",
+  "date_of_start_sell_tickets": "2024-05-28",
+  "capacity": 800,
+  "ticket_availabiity": false,
+  "ticket_types": [
+      {
+        "category": "Standard",
+        "ticket_name": {
+          "en": "Standard Ticket",
+          "cs": "Standardní vstupenka"
+        },
+        "description": {
+          "en": "Choose from a range of standard tickets. Depending on demand, the price of standard tickets can change dynamically.",
+          "cs": "Vyberte si z nabídky standardních vstupenek. V závislosti na poptávce se může cena standardních vstupenek dynamicky měnit."
+        },
+        "prices":{
+          "USD": 43,
+          "CZK": 999,
+          "EUR": 40
+        },
+        "quantity": 750,
+        "sold": 50
+      },
+      {
+        "category": "Gold",
+        "ticket_name": {
+          "en": "Gold Ticket",
+          "cs": "Gold vstupenka"
+        },
+  "description": {
+          "en": "Experience the ultimate Gold treatment with exclusive benefits, including priority access through a dedicated entrance and front-row seating right by the stage.",
+          "cs": "Zažijte vrcholný Gold servis s exkluzivními výhodami, včetně prioritního vstupu skrze vlastní vchod a místa v první řadě přímo u jeviště."
+        },
+         "prices":{
+          "USD": 55,
+          "CZK": 1299,
+          "EUR": 53
+        },
+        "quantity": 50,
+        "sold": 50
+
+
+      }
+  ],
+  "image": "/img/other/wine.jpeg",
+  "popular": false,
+  "address_id": "653501fa7da9c818ee46b439",
+  "event_admin": "65317b25cd427452610a570f"
+},
+{
+"name": {
+  "en": "Travelers' Talk and Exotic Dishes",
+  "cs": "Cestovatelská Beseda a Exotické Pokrmy"
+},
+ "category_of_event": "Other", 
+"description": {
+  "en": "Embark on a culinary journey to far-off lands with our 'Travelers' Talk and Exotic Dishes' event. Explore exotic flavors and stories from globetrotters while savoring delicious dishes. An evening of adventure, taste, and cultural insights awaits you.",
+  "cs": "Vydejte se na kulinářskou cestu do vzdálených zemí na naší události 'Cestovatelská Beseda a Exotické Pokrmy'. Objevujte exotické chutě a příběhy od globetrotterů při ochutnávce lahodných pokrmů. Čeká vás večer dobrodružství, chutí a kulturních poznatků."
+},
+  "date_of_the_event": "2024-03-09",
+  "date_of_start_sell_tickets": "2024-04-21",
+  "capacity": 750,
+  "sold_tickets": 750,
+  "ticket_availabiity": false,
+  "ticket_types": [
+      {
+        "category": "Standard",
+        "ticket_name": {
+          "en": "Standard Ticket",
+          "cs": "Standardní vstupenka"
+        },
+        "description": {
+          "en": "Choose from a range of standard tickets. Depending on demand, the price of standard tickets can change dynamically.",
+          "cs": "Vyberte si z nabídky standardních vstupenek. V závislosti na poptávce se může cena standardních vstupenek dynamicky měnit."
+        },
+        "prices":{
+          "USD": 51,
+          "CZK": 1199,
+          "EUR": 49
+        },
+        "quantity": 700,
+        "sold": 700
+      },
+      {
+        "category": "Gold",
+        "ticket_name": {
+          "en": "Gold Ticket",
+          "cs": "Gold vstupenka"
+        },
+  "description": {
+          "en": "Experience the ultimate Gold treatment with exclusive benefits, including priority access through a dedicated entrance and front-row seating right by the stage.",
+          "cs": "Zažijte vrcholný Gold servis s exkluzivními výhodami, včetně prioritního vstupu skrze vlastní vchod a místa v první řadě přímo u jeviště."
+        },
+         "prices":{
+          "USD": 69,
+          "CZK": 1599,
+          "EUR": 65
+        },
+        "quantity": 50,
+        "sold": 50
+      }
+    ],
+  "image": "/img/other/travel.jpg",
+  "popular": false,
+  "address_id": "653501fa7da9c818ee46b43a",
+  "event_admin": "65317b25cd427452610a570f"
+},
+{
+"name": {
+  "en": "Vintage Market and Retro Music",
+  "cs": "Vintage Trh a Retro Hudba"
+},
+  "category_of_event": "Other", 
+"description": {
+  "en": "Step back in time at our 'Vintage Market and Retro Music' event. Explore a treasure trove of retro finds while grooving to the timeless beats of retro music. An evening of nostalgia, style, and musical memories awaits you.",
+  "cs": "Vraťte se zpět v čase na naší události 'Vintage Trh a Retro Hudba'. Objevujte poklady z minulosti a tančete na nezapomenutelné rytmy retro hudby. Čeká vás večer nostalgických vzpomínek, stylu a hudebních vzpomínek."
+},
+
+  "date_of_the_event": "2024-06-16",
+  "date_of_start_sell_tickets": "2024-01-02",
+  "capacity": 2400,
+  "sold_tickets": 2400,
+  "ticket_availabiity": false,
+  "ticket_types": [
+      {
+        "category": "Standard",
+        "ticket_name": {
+          "en": "Standard Ticket",
+          "cs": "Standardní vstupenka"
+        },
+        "description": {
+          "en": "Choose from a range of standard tickets. Depending on demand, the price of standard tickets can change dynamically.",
+          "cs": "Vyberte si z nabídky standardních vstupenek. V závislosti na poptávce se může cena standardních vstupenek dynamicky měnit."
+        },
+        "prices":{
+          "USD": 26,
+          "CZK": 599,
+          "EUR": 25
+        },
+        "quantity": 2200,
+        "sold": 2200
+      },
+      {
+        "category": "Gold",
+        "ticket_name": {
+          "en": "Gold Ticket",
+          "cs": "Gold vstupenka"
+        },
+  "description": {
+          "en": "Experience the ultimate Gold treatment with exclusive benefits, including priority access through a dedicated entrance and front-row seating right by the stage.",
+          "cs": "Zažijte vrcholný Gold servis s exkluzivními výhodami, včetně prioritního vstupu skrze vlastní vchod a místa v první řadě přímo u jeviště."
+        },
+         "prices":{
+          "USD": 34,
+          "CZK": 799,
+          "EUR": 32
+        },
+        "quantity": 200,
+        "sold": 200
+      }
+    ],
+  "image": "/img/other/summer.jpg",
+  "popular": true,
+  "address_id": "653501fa7da9c818ee46b435",
+  "event_admin": "65317b25cd427452610a570f"
+},
+{
+"name": {
+  "en": "Summer festival of joy",
+  "cs": "Letní festival radosti"
+},
+  "category_of_event": "Other", 
+"description": {
+  "en": "Celebrate the season at our 'Summer Festival of Joy.' Immerse yourself in the vibrant atmosphere, enjoy live music, delicious food, and fun activities. An evening of pure joy and summer vibes awaits you.",
+  "cs": "Oslavte roční období na našem 'Letním Festivalu Radosti.' Ponořte se do živé atmosféry, užijte si živou hudbu, lahodné jídlo a zábavné aktivity. Čeká vás večer plný radosti a letních vibrací."
+},
+  "date_of_the_event": "2024-09-07",
+  "date_of_start_sell_tickets": "2024-05-28",
+  "capacity": 3016,
+  "sold_tickets": 3016,
+  "ticket_availabiity": false,
+  "ticket_types": [
+      {
+        "category": "Standard",
+        "ticket_name": {
+          "en": "Standard Ticket",
+          "cs": "Standardní vstupenka"
+        },
+        "description": {
+          "en": "Choose from a range of standard tickets. Depending on demand, the price of standard tickets can change dynamically.",
+          "cs": "Vyberte si z nabídky standardních vstupenek. V závislosti na poptávce se může cena standardních vstupenek dynamicky měnit."
+        },
+        "prices":{
+          "USD": 17,
+          "CZK": 399,
+          "EUR": 16
+        },
+        "quantity": 2816,
+        "sold": 2816
+      },
+      {
+        "category": "Gold",
+        "ticket_name": {
+          "en": "Gold Ticket",
+          "cs": "Gold vstupenka"
+        },
+  "description": {
+          "en": "Experience the ultimate Gold treatment with exclusive benefits, including priority access through a dedicated entrance and front-row seating right by the stage.",
+          "cs": "Zažijte vrcholný Gold servis s exkluzivními výhodami, včetně prioritního vstupu skrze vlastní vchod a místa v první řadě přímo u jeviště."
+        },
+         "prices":{
+          "USD": 30,
+          "CZK": 699,
+          "EUR": 29
+        },
+        "quantity": 200,
+        "sold": 200
+      }
+    ],
+  "image": "/img/other/vintage.jpg",
+  "popular": false,
+  "address_id": "653501fa7da9c818ee46b433",
+  "event_admin": "65317b25cd427452610a570f"
+}
+]

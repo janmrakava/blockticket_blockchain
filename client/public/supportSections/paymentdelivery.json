@@ -1,0 +1,74 @@
+{
+  "faq": [
+    {
+      "question": {
+        "cs": "Mohu změnit svou adresu pro doručení po objednání svých lístků?",
+        "en": "Can I change my delivery address after ordering my tickets?"
+      },
+      "answer": {
+        "cs": "Ano, pokud potřebujete změnit adresu doručení, obraťte se na naši zákaznickou podporu co nejdříve a poskytněte nové údaje pro doručení.",
+        "en": "Yes, if you need to change the delivery address, please contact our customer support as soon as possible and provide the new delivery details."
+      }
+    },
+    {
+      "question": {
+        "cs": "Objednal/a jsem vstupenky s doručením poštou a doposud nepřišly, co mohu dělat?",
+        "en": "I ordered tickets with postal delivery, and they haven't arrived yet. What can I do?"
+      },
+      "answer": {
+        "cs": "V případě, že vaše vstupenky s doručením poštou nedorazily včas, kontaktujte naši zákaznickou podporu, abychom mohli situaci prověřit a poskytnout řešení.",
+        "en": "If your postal delivery tickets haven't arrived on time, contact our customer support so we can investigate the situation and provide a solution."
+      }
+    },
+    {
+      "question": {
+        "cs": "Co je zabezpečení 3D Secure 2.0?",
+        "en": "What is 3D Secure 2.0 security?"
+      },
+      "answer": {
+        "cs": "3D Secure 2.0 je bezpečnostní protokol pro online transakce, který poskytuje další vrstvu ochrany tím, že vyžaduje ověření identity držitele karty během nákupu.",
+        "en": "3D Secure 2.0 is a security protocol for online transactions that provides an additional layer of protection by requiring cardholder identity verification during the purchase."
+      }
+    },
+    {
+      "question": {
+        "cs": "Proč toto řešení 3D Secure 2.0 zavádíte?",
+        "en": "Why are you implementing this 3D Secure 2.0 solution?"
+      },
+      "answer": {
+        "cs": "Zavedení 3D Secure 2.0 pomáhá zlepšit bezpečnost online plateb a chrání držitele karty před neoprávněným užitím jejich kreditní karty při nákupu vstupenek.",
+        "en": "Implementing 3D Secure 2.0 helps enhance the security of online payments and protects cardholders from unauthorized use of their credit cards when purchasing tickets."
+      }
+    },
+    {
+      "question": {
+        "cs": "Jak zabezpečení 3D Secure 2.0 změní způsob nákupu vstupenek?",
+        "en": "How will 3D Secure 2.0 security change the ticket purchase process?"
+      },
+      "answer": {
+        "cs": "Při nákupu vstupenek může být vyžadováno ověření identity držitele karty prostřednictvím 3D Secure 2.0, což přidá další krok k bezpečnému dokončení transakce.",
+        "en": "When purchasing tickets, cardholder identity verification through 3D Secure 2.0 may be required, adding an extra step to secure the transaction."
+      }
+    },
+    {
+      "question": {
+        "cs": "Musím v souvislosti se zavedením zabezpečení 3D Secure 2.0 něco udělat?",
+        "en": "Do I need to do anything in relation to the implementation of 3D Secure 2.0 security?"
+      },
+      "answer": {
+        "cs": "Většinou bude proces ověření probíhat automaticky, ale v případě potíží nebo dotazů se můžete obrátit na naši zákaznickou podporu pro další asistenci.",
+        "en": "Most of the time, the verification process will happen automatically, but if you encounter any issues or have questions, you can contact our customer support for further assistance."
+      }
+    },
+    {
+      "question": {
+        "cs": "Co mám udělat, pokud neobdržím ověřovací kód nebo budu mít jiné potíže s ověřením platby pomocí 3D Secure?",
+        "en": "What should I do if I don't receive the verification code or encounter other issues with 3D Secure payment verification?"
+      },
+      "answer": {
+        "cs": "V případě, že neobdržíte ověřovací kód nebo máte jiné potíže, kontaktujte naši zákaznickou podporu, která vám poskytne nezbytnou pomoc při dokončení platby.",
+        "en": "If you don't receive the verification code or encounter other issues, contact our customer support for assistance in completing the payment."
+      }
+    }
+  ]
+}

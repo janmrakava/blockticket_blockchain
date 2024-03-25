@@ -1,0 +1,14 @@
+{
+  "faq": [
+    {
+      "question": {
+        "cs": "Lze vystavit duplikáty vstupenek?",
+        "en": "Can duplicate tickets be issued?"
+      },
+      "answer": {
+        "cs": "Většina poskytovatelů vstupenek nedoporučuje nebo neumožňuje vystavení duplikátů vstupenek. Pokud ztratíte nebo poškodíte svou vstupenku, kontaktujte okamžitě zákaznickou podporu pro řešení situace.",
+        "en": "Most ticket providers do not recommend or allow the issuance of duplicate tickets. If you lose or damage your ticket, contact customer support immediately for assistance in resolving the situation."
+      }
+    }
+  ]
+}

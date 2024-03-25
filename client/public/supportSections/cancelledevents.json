@@ -1,0 +1,34 @@
+{
+  "faq": [
+    {
+      "question": {
+        "cs": "Jak obdržím informace o zrušení, nebo jiné změně (např. data, místa konání) akce?",
+        "en": "How will I receive information about the cancellation or other changes (e.g., date, venue) of an event?"
+      },
+      "answer": {
+        "cs": "O změnách v akcích, jako je zrušení nebo změna data nebo místa konání, budete informováni prostřednictvím e-mailu a/nebo notifikací ve vašem uživatelském účtu na našem webu.",
+        "en": "You will be notified about changes in events, such as cancellation or changes in date or venue, via email and/or notifications in your user account on our website."
+      }
+    },
+    {
+      "question": {
+        "cs": "Pokud je akce, na kterou mám zakoupené vstupenky, zrušena, co mám dělat?",
+        "en": "If the event for which I have purchased tickets is canceled, what should I do?"
+      },
+      "answer": {
+        "cs": "V případě zrušení akce vám budou poskytnuty informace o možnostech vrácení peněz nebo nabídce náhradních opatření. Pro podrobnosti kontaktujte naši zákaznickou podporu.",
+        "en": "In case of event cancellation, you will be provided with information about refund options or alternative arrangements. For details, contact our customer support."
+      }
+    },
+    {
+      "question": {
+        "cs": "Pokud je akce, na kterou mám zakoupené vstupenky, přesunuta na jiné datum, nebo místo konání akce, mohu vrátit vstupenky?",
+        "en": "If the event for which I have purchased tickets is rescheduled to a different date or venue, can I return the tickets?"
+      },
+      "answer": {
+        "cs": "V případě přesunutí akce na jiné datum nebo místo obvykle platí možnost vrácení vstupenek nebo úprava na nové datum. Kontaktujte zákaznickou podporu pro další informace a řešení.",
+        "en": "In the case of event rescheduling to a different date or venue, there is usually an option for ticket refunds or adjustments to the new date. Contact customer support for further information and solutions."
+      }
+    }
+  ]
+}

@@ -1,0 +1,810 @@
+[
+{
+"name": {
+  "en": "Visual Poetics: New Media in Art",
+  "cs": "Vizuální Poetika: Nová Média v Umění"
+},
+"category_of_event": "Art",
+"description": {
+  "en": "Explore the convergence of art and technology at Visual Poetics: New Media in Art, featuring visionary artists and cutting-edge installations.",
+  "cs": "Přijďte objevit setkání umění a technologie na akci Vizuální Poetika: Nová Média v Umění, s vizionářskými umělci a nejnovějšími instalacemi."
+},
+  "date_of_the_event": "2024-06-23",
+  "date_of_start_sell_tickets": "2024-08-21",
+  "capacity": 2456,
+  "ticket_availabiity": false,
+  "ticket_types": [
+      {
+        "category": "Standard",
+        "ticket_name": {
+          "en": "Standard Ticket",
+          "cs": "Standardní vstupenka"
+        },
+   "description": {
+          "en": "Choose from a range of standard tickets. Depending on demand, the price of standard tickets can change dynamically.",
+          "cs": "Vyberte si z nabídky standardních vstupenek. V závislosti na poptávce se může cena standardních vstupenek dynamicky měnit."
+        },
+        "prices":{
+          "USD": 30,
+          "CZK": 699,
+          "EUR": 28
+        },
+        "quantity": 2256,
+        "sold": 2256
+      },
+      {
+        "category": "Gold",
+        "ticket_name": {
+          "en": "Gold Ticket",
+          "cs": "Gold vstupenka"
+        },
+   "description": {
+          "en": "Open the door to the world of art with our Gold Ticket and experience an art event like no other. With a Gold ticket, you'll get an unforgettable experience, including a private tour of the exhibition, a meet and greet with the artists and an exclusive front row seat in the Gold Zone. Immerse yourself in the art world with us and discover the beauty and inspiration in every painting.",
+          "cs": "Otevřete dveře do světa umění s naší Gold vstupenkou a zažijte uměleckou akci jako žádnou jinou. S Gold vstupenkou získáte nezapomenutelný zážitek, včetně soukromé prohlídky výstavy, setkání s umělci a exkluzivního místa v první řadě v Gold zóně. Ponořte se do uměleckého světa s námi a objevte krásu a inspiraci v každém obraze."
+        },
+         "prices":{
+          "USD": 38,
+          "CZK": 899,
+          "EUR": 36
+        },
+        "quantity": 200,
+        "sold": 200
+      } 
+    ],
+  "image": "/img/art/newmedia.jpg",
+  "popular": false,
+  "address_id": "6539545abfbab0b758d40b85",
+  "event_admin": "65317b25cd427452610a570f"
+},
+{
+"name": {
+  "en": "Landscape and Inspiration: Paintings from the West Coast",
+  "cs": "Krajina a Inspirace: Malby ze Západního Pobřeží"
+},
+"category_of_event": "Art",
+ "description": {
+  "en": "Immerse yourself in the stunning landscapes and inspirational paintings of the West Coast at Landscape and Inspiration: Paintings from the West Coast.",
+  "cs": "Ponořte se do úchvatných krajinek a inspirativních obrazů ze Západního pobřeží na akci Krajina a Inspirace: Malby ze Západního Pobřeží."
+},
+  "date_of_the_event": "2024-10-08",
+  "date_of_start_sell_tickets": "2024-01-28",
+  "capacity": 1640,
+  "ticket_availabiity": false,
+  "ticket_types": [
+      {
+        "category": "Standard",
+        "ticket_name": {
+          "en": "Standard Ticket",
+          "cs": "Standardní vstupenka"
+        },
+   "description": {
+          "en": "Choose from a range of standard tickets. Depending on demand, the price of standard tickets can change dynamically.",
+          "cs": "Vyberte si z nabídky standardních vstupenek. V závislosti na poptávce se může cena standardních vstupenek dynamicky měnit."
+        },
+        "prices":{
+          "USD": 26,
+          "CZK": 599,
+          "EUR": 24
+        },
+        "quantity": 1440,
+        "sold": 1440
+      },
+      {
+        "category": "Gold",
+        "ticket_name": {
+          "en": "Gold Ticket",
+          "cs": "Gold vstupenka"
+        },
+   "description": {
+          "en": "Open the door to the world of art with our Gold Ticket and experience an art event like no other. With a Gold ticket, you'll get an unforgettable experience, including a private tour of the exhibition, a meet and greet with the artists and an exclusive front row seat in the Gold Zone. Immerse yourself in the art world with us and discover the beauty and inspiration in every painting.",
+          "cs": "Otevřete dveře do světa umění s naší Gold vstupenkou a zažijte uměleckou akci jako žádnou jinou. S Gold vstupenkou získáte nezapomenutelný zážitek, včetně soukromé prohlídky výstavy, setkání s umělci a exkluzivního místa v první řadě v Gold zóně. Ponořte se do uměleckého světa s námi a objevte krásu a inspiraci v každém obraze."
+        },
+         "prices":{
+          "USD": 34,
+          "CZK": 799,
+          "EUR": 32
+        },
+        "quantity": 200,
+        "sold": 200
+      }
+  ],
+  "image": "/img/art/westcoast.jpg",
+  "popular": true,
+  "address_id": "653501fa7da9c818ee46b438",
+  "event_admin": "65317b25cd427452610a570f"
+},
+
+{
+"name": {
+  "en": "Abstract Expressionism: Painting in the 21st Century",
+  "cs": "Abstraktní Expresionismus: Malba v 21. Století"
+},
+"category_of_event": "Art",
+"description": {
+  "en": "Dive into the world of abstract expressionism in the 21st century through a dynamic showcase of painting at Abstract Expressionism: Painting in the 21st Century.",
+  "cs": "Ponořte se do světa abstraktního expresionismu ve 21. století skrze dynamickou výstavu malby na akci Abstraktní Expresionismus: Malba v 21. Století."
+},
+  "date_of_the_event": "2024-08-29",
+  "date_of_start_sell_tickets": "2024-04-22",
+  "capacity": 1780,
+  "ticket_availabiity": false,
+  "ticket_types": [
+      {
+        "category": "Standard",
+        "ticket_name": {
+          "en": "Standard Ticket",
+          "cs": "Standardní vstupenka"
+        },
+   "description": {
+          "en": "Choose from a range of standard tickets. Depending on demand, the price of standard tickets can change dynamically.",
+          "cs": "Vyberte si z nabídky standardních vstupenek. V závislosti na poptávce se může cena standardních vstupenek dynamicky měnit."
+        },
+       "prices":{
+          "USD": 34,
+          "CZK": 799,
+          "EUR": 32
+        },
+        "quantity": 1580,
+        "sold": 1580
+      },
+      {
+        "category": "Gold",
+        "ticket_name": {
+          "en": "Gold Ticket",
+          "cs": "Gold vstupenka"
+        },
+   "description": {
+          "en": "Open the door to the world of art with our Gold Ticket and experience an art event like no other. With a Gold ticket, you'll get an unforgettable experience, including a private tour of the exhibition, a meet and greet with the artists and an exclusive front row seat in the Gold Zone. Immerse yourself in the art world with us and discover the beauty and inspiration in every painting.",
+          "cs": "Otevřete dveře do světa umění s naší Gold vstupenkou a zažijte uměleckou akci jako žádnou jinou. S Gold vstupenkou získáte nezapomenutelný zážitek, včetně soukromé prohlídky výstavy, setkání s umělci a exkluzivního místa v první řadě v Gold zóně. Ponořte se do uměleckého světa s námi a objevte krásu a inspiraci v každém obraze."
+                },
+         "prices":{
+          "USD": 43,
+          "CZK": 999,
+          "EUR": 40
+        },
+        "quantity": 200,
+        "sold": 200
+      }
+     ],
+  "image": "/img/art/abstractexpresionism.jpg",
+  "popular": false,
+  "address_id": "653501fa7da9c818ee46b437",
+  "event_admin": "65317b25cd427452610a570f"
+},
+{
+"name": {
+  "en": "World Below the Surface: Underwater Photography",
+  "cs": "Svět pod Hladinou: Podvodní Fotografie"
+},
+ "category_of_event": "Art",
+"description": {
+  "en": "Explore the mesmerizing world beneath the waves through the lens of underwater photography at World Beneath the Surface: Underwater Photography.",
+  "cs": "Prozkoumejte fascinující svět pod hladinou skrze objektiv podvodní fotografie na akci Svět pod Hladinou: Podvodní Fotografie."
+},
+  "date_of_the_event": "2024-04-18",
+  "date_of_start_sell_tickets": "2024-03-18",
+  "capacity": 2456,
+  "ticket_availabiity": false,
+  "ticket_types": [
+      {
+        "category": "Standard",
+        "ticket_name": {
+          "en": "Standard Ticket",
+          "cs": "Standardní vstupenka"
+        },
+   "description": {
+          "en": "Choose from a range of standard tickets. Depending on demand, the price of standard tickets can change dynamically.",
+          "cs": "Vyberte si z nabídky standardních vstupenek. V závislosti na poptávce se může cena standardních vstupenek dynamicky měnit."
+        },
+        "prices":{
+          "USD": 17,
+          "CZK": 399,
+          "EUR": 16
+        },
+        "quantity": 2256,
+        "sold": 2256
+      },
+      {
+        "category": "Gold",
+        "ticket_name": {
+          "en": "Gold Ticket",
+          "cs": "Gold vstupenka"
+        },
+   "description": {
+          "en": "Open the door to the world of art with our Gold Ticket and experience an art event like no other. With a Gold ticket, you'll get an unforgettable experience, including a private tour of the exhibition, a meet and greet with the artists and an exclusive front row seat in the Gold Zone. Immerse yourself in the art world with us and discover the beauty and inspiration in every painting.",
+          "cs": "Otevřete dveře do světa umění s naší Gold vstupenkou a zažijte uměleckou akci jako žádnou jinou. S Gold vstupenkou získáte nezapomenutelný zážitek, včetně soukromé prohlídky výstavy, setkání s umělci a exkluzivního místa v první řadě v Gold zóně. Ponořte se do uměleckého světa s námi a objevte krásu a inspiraci v každém obraze."
+        },
+        "prices":{
+          "USD": 34,
+          "CZK": 799,
+          "EUR": 32
+        },
+        "quantity": 200,
+        "sold": 200
+      } 
+    ],
+  "image": "/img/art/worldunderwater.jpg",
+  "popular": true,
+  "address_id": "653501fa7da9c818ee46b434",
+  "event_admin": "65317b25cd427452610a570f"
+},
+{
+"name": {
+  "en": "Art in the Digital Age: Interactive Installations",
+  "cs": "Umění v Digitálním Věku: Interaktivní Instalace"
+},
+
+  "category_of_event": "Art",
+"description": {
+  "en": "Immerse yourself in the world of digital art through interactive installations at Art in the Digital Age: Interactive Installations.",
+  "cs": "Ponořte se do světa digitálního umění prostřednictvím interaktivních instalací na akci Umění v Digitálním Věku: Interaktivní Instalace."
+},
+  "date_of_the_event": "2024-09-25",
+  "date_of_start_sell_tickets": "2024-08-06",
+  "capacity": 2456,
+  "ticket_availabiity": false,
+  "ticket_types": [
+      {
+        "category": "Standard",
+        "ticket_name": {
+          "en": "Standard Ticket",
+          "cs": "Standardní vstupenka"
+        },
+   "description": {
+          "en": "Choose from a range of standard tickets. Depending on demand, the price of standard tickets can change dynamically.",
+          "cs": "Vyberte si z nabídky standardních vstupenek. V závislosti na poptávce se může cena standardních vstupenek dynamicky měnit."
+        },
+        "prices":{
+          "USD": 51,
+          "CZK": 1199,
+          "EUR": 49
+        },
+        "quantity": 2256,
+        "sold": 2256
+      },
+      {
+        "category": "Gold",
+        "ticket_name": {
+          "en": "Gold Ticket",
+          "cs": "Gold vstupenka"
+        },
+   "description": {
+          "en": "Open the door to the world of art with our Gold Ticket and experience an art event like no other. With a Gold ticket, you'll get an unforgettable experience, including a private tour of the exhibition, a meet and greet with the artists and an exclusive front row seat in the Gold Zone. Immerse yourself in the art world with us and discover the beauty and inspiration in every painting.",
+          "cs": "Otevřete dveře do světa umění s naší Gold vstupenkou a zažijte uměleckou akci jako žádnou jinou. S Gold vstupenkou získáte nezapomenutelný zážitek, včetně soukromé prohlídky výstavy, setkání s umělci a exkluzivního místa v první řadě v Gold zóně. Ponořte se do uměleckého světa s námi a objevte krásu a inspiraci v každém obraze."
+        },
+         "prices":{
+          "USD": 47,
+          "CZK": 1499,
+          "EUR": 44
+        },
+        "quantity": 200,
+        "sold": 200
+      } 
+    ],
+  "image": "/img/art/interactiveinstalation.jpg",
+  "popular": true,
+  "address_id": "653501fa7da9c818ee46b434",
+  "event_admin": "65317b25cd427452610a570f"
+},
+{
+"name": {
+  "en": "Landscape and Seasons: Painting at the Seasonal Turn",
+  "cs": "Krajina a Sezóny: Malba na Přelomu Ročních Období"
+},
+"category_of_event": "Art",
+"description": {
+  "en": "Experience the beauty of changing seasons through landscape paintings at Landscape and Seasons: Painting at the Turn of the Seasons.",
+  "cs": "Přiveďte si krásu změn ročních období prostřednictvím krajinářských obrazů na akci Krajina a Sezóny: Malba na Přelomu Ročních Období."
+},
+  "date_of_the_event": "2024-08-26",
+  "date_of_start_sell_tickets": "2024-10-10",
+  "capacity": 3016,
+  "ticket_availabiity": false,
+  "ticket_types": [
+      {
+        "category": "Standard",
+        "ticket_name": {
+          "en": "Standard Ticket",
+          "cs": "Standardní vstupenka"
+        },
+    "description": {
+          "en": "Choose from a range of standard tickets. Depending on demand, the price of standard tickets can change dynamically.",
+          "cs": "Vyberte si z nabídky standardních vstupenek. V závislosti na poptávce se může cena standardních vstupenek dynamicky měnit."
+        },
+      "prices":{
+          "USD": 64,
+          "CZK": 1499,
+          "EUR": 61
+        },
+        "quantity": 2816,
+        "sold": 2816
+      },
+      {
+        "category": "Gold",
+        "ticket_name": {
+          "en": "Gold Ticket",
+          "cs": "Gold vstupenka"
+        },
+   "description": {
+          "en": "Open the door to the world of art with our Gold Ticket and experience an art event like no other. With a Gold ticket, you'll get an unforgettable experience, including a private tour of the exhibition, a meet and greet with the artists and an exclusive front row seat in the Gold Zone. Immerse yourself in the art world with us and discover the beauty and inspiration in every painting.",
+          "cs": "Otevřete dveře do světa umění s naší Gold vstupenkou a zažijte uměleckou akci jako žádnou jinou. S Gold vstupenkou získáte nezapomenutelný zážitek, včetně soukromé prohlídky výstavy, setkání s umělci a exkluzivního místa v první řadě v Gold zóně. Ponořte se do uměleckého světa s námi a objevte krásu a inspiraci v každém obraze."
+        },
+          "prices":{
+          "USD": 30,
+          "CZK": 699,
+          "EUR": 28
+        },
+        "quantity": 200,
+        "sold": 200
+      }
+     ],
+  "image": "/img/art/seasons.jpg",
+  "popular": true,
+  "address_id": "653501fa7da9c818ee46b433",
+  "event_admin": "65317b25cd427452610a570f"
+},
+{
+"name": {
+  "en": "Jazz in Images: Music Inspires Art",
+  "cs": "Jazz v Obrazech: Hudba Inspiruje Malbu"
+},
+ "category_of_event": "Art",
+"description": {
+  "en": "Experience the fusion of music and art as jazz inspires paintings at Jazz in Images: Music Inspires Painting.",
+  "cs": "Pocítejte s fúzí hudby a umění, kdy jazz inspiruje malby na akci Jazz v Obrazech: Hudba Inspiruje Malbu."
+},
+  "date_of_the_event": "2024-07-07",
+  "date_of_start_sell_tickets": "2024-04-08",
+  "capacity": 3016,
+  "ticket_availabiity": false,
+  "ticket_types": [
+      {
+        "category": "Standard",
+        "ticket_name": {
+          "en": "Standard Ticket",
+          "cs": "Standardní vstupenka" 
+        },
+   "description": {
+          "en": "Choose from a range of standard tickets. Depending on demand, the price of standard tickets can change dynamically.",
+          "cs": "Vyberte si z nabídky standardních vstupenek. V závislosti na poptávce se může cena standardních vstupenek dynamicky měnit."
+        },
+        "prices":{
+          "USD": 30,
+          "CZK": 699,
+          "EUR": 28
+        },
+        "quantity": 2816,
+        "sold": 2816
+      },
+      {
+        "category": "Gold",
+        "ticket_name": {
+          "en": "Gold Ticket",
+          "cs": "Gold vstupenka"           
+        },
+   "description": {
+          "en": "Open the door to the world of art with our Gold Ticket and experience an art event like no other. With a Gold ticket, you'll get an unforgettable experience, including a private tour of the exhibition, a meet and greet with the artists and an exclusive front row seat in the Gold Zone. Immerse yourself in the art world with us and discover the beauty and inspiration in every painting.",
+          "cs": "Otevřete dveře do světa umění s naší Gold vstupenkou a zažijte uměleckou akci jako žádnou jinou. S Gold vstupenkou získáte nezapomenutelný zážitek, včetně soukromé prohlídky výstavy, setkání s umělci a exkluzivního místa v první řadě v Gold zóně. Ponořte se do uměleckého světa s námi a objevte krásu a inspiraci v každém obraze."
+        },
+        "prices":{
+          "USD": 43,
+          "CZK": 999,
+          "EUR": 40
+        },
+        "quantity": 200,
+        "sold": 200
+      } 
+    ],
+  "image": "/img/art/jazzinpicture.jpg",
+  "popular": true,
+  "address_id": "653501fa7da9c818ee46b433",
+  "event_admin": "65317b25cd427452610a570f"
+},
+{
+"name": {
+  "en": "Street Stories: Photography from Urban Life",
+  "cs": "Příběhy ulice: Fotografie z Městského Života"
+},
+"category_of_event": "Art",
+"description": {
+  "en": "Dive into the narratives of the street through urban life photography at Street Stories: Photography from Urban Life.",
+  "cs": "Ponořte se do příběhů ulice prostřednictvím fotografie z městského života na akci Příběhy ulice: Fotografie z Městského Života."
+},
+  "date_of_the_event": "2024-05-06",
+  "date_of_start_sell_tickets": "2024-07-07",
+  "capacity": 2456,
+  "ticket_availabiity": false,
+  "ticket_types": [
+      {
+        "category": "Standard",
+        "ticket_name": {
+          "en": "Standard Ticket",
+          "cs": "Standardní vstupenka"
+        },
+   "description": {
+          "en": "Choose from a range of standard tickets. Depending on demand, the price of standard tickets can change dynamically.",
+          "cs": "Vyberte si z nabídky standardních vstupenek. V závislosti na poptávce se může cena standardních vstupenek dynamicky měnit."
+   },
+       "prices":{
+          "USD": 17,
+          "CZK": 399,
+          "EUR": 16
+        },
+        "quantity": 2256,
+        "sold": 2256
+      },
+      {
+        "category": "Gold",
+        "ticket_name": {
+          "en": "Gold Ticket",
+          "cs": "Gold vstupenka"
+           
+        },
+   "description": {
+          "en": "Open the door to the world of art with our Gold Ticket and experience an art event like no other. With a Gold ticket, you'll get an unforgettable experience, including a private tour of the exhibition, a meet and greet with the artists and an exclusive front row seat in the Gold Zone. Immerse yourself in the art world with us and discover the beauty and inspiration in every painting.",
+          "cs": "Otevřete dveře do světa umění s naší Gold vstupenkou a zažijte uměleckou akci jako žádnou jinou. S Gold vstupenkou získáte nezapomenutelný zážitek, včetně soukromé prohlídky výstavy, setkání s umělci a exkluzivního místa v první řadě v Gold zóně. Ponořte se do uměleckého světa s námi a objevte krásu a inspiraci v každém obraze."
+        },
+      "prices":{
+          "USD": 21,
+          "CZK": 499,
+          "EUR": 20
+        },
+        "quantity": 200,
+        "sold": 200
+      } 
+    ],
+  "image": "/img/art/urbanlife.jpg",
+  "popular": false,
+  "address_id": "653501fa7da9c818ee46b434",
+  "event_admin": "65317b25cd427452610a570f"
+},
+{
+"name": {
+  "en": "Light and Shadow: Shadows in Photography",
+  "cs": "Světlo a Stín: Stíny ve Fotografii"
+},
+ "category_of_event": "Art",
+
+"description": {
+  "en": "Explore the interplay of light and shadow in photography at Light and Shadow: Shadows in Photography.",
+  "cs": "Prozkoumejte interakci světla a stínu ve fotografii na akci Světlo a Stín: Stíny ve Fotografii."
+},
+  "date_of_the_event": "2024-06-06",
+  "date_of_start_sell_tickets": "2024-07-03",
+  "capacity": 1780,
+  "ticket_availabiity": false,
+  "ticket_types": [
+      {
+        "category": "Standard",
+        "ticket_name": {
+          "en": "Standard Ticket",
+          "cs": "Standardní vstupenka" 
+        },
+   "description": {
+          "en": "Choose from a range of standard tickets. Depending on demand, the price of standard tickets can change dynamically.",
+          "cs": "Vyberte si z nabídky standardních vstupenek. V závislosti na poptávce se může cena standardních vstupenek dynamicky měnit."
+        },
+          "prices":{
+          "USD": 26,
+          "CZK": 599,
+          "EUR": 24
+        },
+        "quantity": 1580,
+        "sold": 1580
+      },
+      {
+        "category": "Gold",
+        "ticket_name": {
+          "en": "Gold Ticket",
+          "cs": "Gold vstupenka"
+           
+        },
+   "description": {
+          "en": "Open the door to the world of art with our Gold Ticket and experience an art event like no other. With a Gold ticket, you'll get an unforgettable experience, including a private tour of the exhibition, a meet and greet with the artists and an exclusive front row seat in the Gold Zone. Immerse yourself in the art world with us and discover the beauty and inspiration in every painting.",
+          "cs": "Otevřete dveře do světa umění s naší Gold vstupenkou a zažijte uměleckou akci jako žádnou jinou. S Gold vstupenkou získáte nezapomenutelný zážitek, včetně soukromé prohlídky výstavy, setkání s umělci a exkluzivního místa v první řadě v Gold zóně. Ponořte se do uměleckého světa s námi a objevte krásu a inspiraci v každém obraze."
+        },
+      "prices":{
+          "USD": 38,
+          "CZK": 899,
+          "EUR": 36
+        },
+        "quantity": 200,
+        "sold": 200
+      }
+     ],
+  "image": "/img/art/shadowsinphoto.jpg",
+  "popular": true,
+  "address_id": "653501fa7da9c818ee46b437",
+  "event_admin": "65317b25cd427452610a570f"
+},
+{
+"name": {
+  "en": "Fantasy and Reality: Surrealist Collections",
+  "cs": "Fantazie a Realita: Surrealistické Kolekce"
+},
+"category_of_event": "Art",
+"description": {
+  "en": "Journey into the realm of fantasy and reality through surrealistic collections at Fantasy and Reality: Surrealistic Collections.",
+  "cs": "Vstupte do říše fantazie a reality prostřednictvím surrealistických sbírek na akci Fantazie a Realita: Surrealistické Kolekce."
+},
+  "date_of_the_event": "2024-09-23",
+  "date_of_start_sell_tickets": "2024-04-08",
+  "capacity": 2400,
+  "ticket_availabiity": false,
+  "ticket_types": [
+      {
+        "category": "Standard",
+        "ticket_name": {
+          "en": "Standard Ticket",
+          "cs": "Standardní vstupenka" 
+        },
+   "description": {
+          "en": "Choose from a range of standard tickets. Depending on demand, the price of standard tickets can change dynamically.",
+          "cs": "Vyberte si z nabídky standardních vstupenek. V závislosti na poptávce se může cena standardních vstupenek dynamicky měnit." 
+        },
+        "prices":{
+          "USD": 60,
+          "CZK": 1399,
+          "EUR": 57
+        },
+        "quantity": 2200,
+        "sold": 2200
+      },
+      {
+        "category": "Gold",
+        "ticket_name": {
+          "en": "Gold Ticket",
+          "cs": "Gold vstupenka"
+           
+        },
+   "description": {
+          "en": "Open the door to the world of art with our Gold Ticket and experience an art event like no other. With a Gold ticket, you'll get an unforgettable experience, including a private tour of the exhibition, a meet and greet with the artists and an exclusive front row seat in the Gold Zone. Immerse yourself in the art world with us and discover the beauty and inspiration in every painting.",
+          "cs": "Otevřete dveře do světa umění s naší Gold vstupenkou a zažijte uměleckou akci jako žádnou jinou. S Gold vstupenkou získáte nezapomenutelný zážitek, včetně soukromé prohlídky výstavy, setkání s umělci a exkluzivního místa v první řadě v Gold zóně. Ponořte se do uměleckého světa s námi a objevte krásu a inspiraci v každém obraze."  
+        },
+         "prices":{
+          "USD": 77,
+          "CZK": 1799,
+          "EUR": 73
+        },
+        "quantity": 200,
+        "sold": 200
+      } 
+    ],
+  "image": "/img/art/surrealisticollection.jpg",
+  "popular": true,
+  "address_id": "653501fa7da9c818ee46b435",
+  "event_admin": "65317b25cd427452610a570f"
+},
+{
+"name": {
+  "en": "Blossoming Your Own Creativity: Newcomers Exhibition",
+  "cs": "Rozkvět Vlastní Kreativity: Výstava Nováčků"
+},
+"category_of_event": "Art",
+"description": {
+  "en": "Witness the blossoming of creativity among newcomers at Blossoming Your Own Creativity: Newcomers' Exhibition.",
+  "cs": "Buďte svědky rozkvětu kreativity mezi nováčky na akci Rozkvět Vlastní Kreativity: Výstava Nováčků."
+},
+  "date_of_the_event": "2024-11-14",
+  "date_of_start_sell_tickets": "2024-06-05",
+  "capacity": 1900,
+  "ticket_availabiity": false,
+  "ticket_types": [
+      {
+        "category": "Standard",
+        "ticket_name": {
+          "en": "Standard Ticket",
+          "cs": "Standardní vstupenka" 
+        },
+   "description": {
+          "en": "Choose from a range of standard tickets. Depending on demand, the price of standard tickets can change dynamically.",
+          "cs": "Vyberte si z nabídky standardních vstupenek. V závislosti na poptávce se může cena standardních vstupenek dynamicky měnit." 
+        },
+         "prices":{
+          "USD": 21,
+          "CZK": 499,
+          "EUR": 20
+        },
+        "quantity": 1700,
+        "sold": 1700
+      },
+      {
+        "category": "Gold",
+        "ticket_name": {
+          "en": "Gold Ticket",
+          "cs": "Gold vstupenka"
+           
+        },
+   "description": {
+          "en": "Open the door to the world of art with our Gold Ticket and experience an art event like no other. With a Gold ticket, you'll get an unforgettable experience, including a private tour of the exhibition, a meet and greet with the artists and an exclusive front row seat in the Gold Zone. Immerse yourself in the art world with us and discover the beauty and inspiration in every painting.",
+          "cs": "Otevřete dveře do světa umění s naší Gold vstupenkou a zažijte uměleckou akci jako žádnou jinou. S Gold vstupenkou získáte nezapomenutelný zážitek, včetně soukromé prohlídky výstavy, setkání s umělci a exkluzivního místa v první řadě v Gold zóně. Ponořte se do uměleckého světa s námi a objevte krásu a inspiraci v každém obraze."  
+        },
+         "prices":{
+          "USD": 30,
+          "CZK": 699,
+          "EUR": 28
+        },
+        "quantity": 200,
+        "sold": 200
+      }
+     ],
+  "image": "/img/art/newart.jpg",
+  "popular": false,
+  "address_id": "653501fa7da9c818ee46b436",
+  "event_admin": "65317b25cd427452610a570f"
+},
+{
+"name": {
+  "en": "Natural Elegance: Landscape Art",
+  "cs": "Přírodní Elegance: Umění Krajiny"
+},
+ "category_of_event": "Art",
+"description": {
+  "en": "Immerse yourself in the natural elegance of landscape art at Natural Elegance: Art of Landscape.",
+  "cs": "Ponořte se do přírodní elegance krajinného umění na akci Přírodní Elegance: Umění Krajiny."
+},
+  "date_of_the_event": "2024-10-20",
+  "date_of_start_sell_tickets": "2024-08-28",
+  "capacity": 750,
+  "ticket_availabiity": false,
+  "ticket_types": [
+      {
+        "category": "Standard",
+        "ticket_name": {
+          "en": "Standard Ticket",
+          "cs": "Standardní vstupenka" 
+        },
+   "description": {
+          "en": "Choose from a range of standard tickets. Depending on demand, the price of standard tickets can change dynamically.",
+          "cs": "Vyberte si z nabídky standardních vstupenek. V závislosti na poptávce se může cena standardních vstupenek dynamicky měnit." 
+        },
+      "prices":{
+          "USD": 17,
+          "CZK": 399,
+          "EUR": 16
+        },
+        "quantity": 700,
+        "sold": 700
+      },
+      {
+        "category": "Gold",
+        "ticket_name": {
+          "en": "Gold Ticket",
+          "cs": "Gold vstupenka"
+           
+        },
+   "description": {
+          "en": "Open the door to the world of art with our Gold Ticket and experience an art event like no other. With a Gold ticket, you'll get an unforgettable experience, including a private tour of the exhibition, a meet and greet with the artists and an exclusive front row seat in the Gold Zone. Immerse yourself in the art world with us and discover the beauty and inspiration in every painting.",
+          "cs": "Otevřete dveře do světa umění s naší Gold vstupenkou a zažijte uměleckou akci jako žádnou jinou. S Gold vstupenkou získáte nezapomenutelný zážitek, včetně soukromé prohlídky výstavy, setkání s umělci a exkluzivního místa v první řadě v Gold zóně. Ponořte se do uměleckého světa s námi a objevte krásu a inspiraci v každém obraze."  
+        },
+          "prices":{
+          "USD": 21,
+          "CZK": 499,
+          "EUR": 20
+        },
+        "quantity": 50,
+        "sold": 50
+          }
+    ],
+  "image": "/img/art/landscapeart.jpg",
+  "popular": true,
+  "address_id": "653501fa7da9c818ee46b43a",
+  "event_admin": "65317b25cd427452610a570f"
+},
+{
+"name": {
+  "en": "Cities in Photographs: Streets and People",
+  "cs": "Města ve Fotografiích: Ulice a Lidé"
+},
+ "category_of_event": "Art",
+"description": {
+  "en": "Explore the essence of urban life through street and people photography at Cities in Photographs: Streets and People.",
+  "cs": "Prozkoumejte podstatu městského života prostřednictvím fotografie ulic a lidí na akci Města ve Fotografiích: Ulice a Lidé."
+},
+  "date_of_the_event": "2024-11-05",
+  "date_of_start_sell_tickets": "2024-08-18",
+  "capacity": 800,
+  "ticket_availabiity": false,
+  "ticket_types": [
+      {
+        "category": "Standard",
+        "ticket_name": {
+          "en": "Standard Ticket",
+          "cs": "Standardní vstupenka" 
+        },
+   "description": {
+          "en": "Choose from a range of standard tickets. Depending on demand, the price of standard tickets can change dynamically.",
+          "cs": "Vyberte si z nabídky standardních vstupenek. V závislosti na poptávce se může cena standardních vstupenek dynamicky měnit." 
+        },
+           "prices":{
+          "USD": 21,
+          "CZK": 499,
+          "EUR": 20
+        },
+        "quantity": 750,
+        "sold": 750
+      },
+      {
+        "category": "Gold",
+        "ticket_name": {
+          "en": "Gold Ticket",
+          "cs": "Gold vstupenka"
+           
+        },
+   "description": {
+          "en": "Open the door to the world of art with our Gold Ticket and experience an art event like no other. With a Gold ticket, you'll get an unforgettable experience, including a private tour of the exhibition, a meet and greet with the artists and an exclusive front row seat in the Gold Zone. Immerse yourself in the art world with us and discover the beauty and inspiration in every painting.",
+          "cs": "Otevřete dveře do světa umění s naší Gold vstupenkou a zažijte uměleckou akci jako žádnou jinou. S Gold vstupenkou získáte nezapomenutelný zážitek, včetně soukromé prohlídky výstavy, setkání s umělci a exkluzivního místa v první řadě v Gold zóně. Ponořte se do uměleckého světa s námi a objevte krásu a inspiraci v každém obraze."  
+        },
+          "prices":{
+          "USD": 34,
+          "CZK": 799,
+          "EUR": 32
+        },
+        "quantity": 50,
+        "sold": 50
+         }
+    ],
+  "image": "/img/art/peopleincity.jpg",
+  "popular": false,
+  "address_id": "653501fa7da9c818ee46b439",
+  "event_admin": "65317b25cd427452610a570f"
+},
+ {
+"name": {
+  "en": "Detachment from Reality: Postmodern Expressionism",
+  "cs": "Odtržení od Reality: Postmoderní Expresionismus"
+},
+ "category_of_event": "Art",
+ "description": {
+  "en": "Explore the detachment from reality through postmodern expressionism at Detachment from Reality: Postmodern Expressionism.",
+  "cs": "Prozkoumejte oddělení od reality prostřednictvím postmoderního expresionismu na akci Odtržení od Reality: Postmoderní Expresionismus."
+},
+  "date_of_the_event": "2024-09-02",
+  "date_of_start_sell_tickets": "2024-11-02",
+  "capacity": 1640,
+  "ticket_availabiity": false,
+  "ticket_types": [
+      {
+        "category": "Standard",
+        "ticket_name": {
+          "en": "Standard Ticket",
+          "cs": "Standardní vstupenka" 
+        },
+   "description": {
+          "en": "Choose from a range of standard tickets. Depending on demand, the price of standard tickets can change dynamically.",
+          "cs": "Vyberte si z nabídky standardních vstupenek. V závislosti na poptávce se může cena standardních vstupenek dynamicky měnit." 
+        },
+        "prices":{
+          "USD": 69,
+          "CZK": 1599,
+          "EUR": 65
+        },
+        "quantity": 1600,
+        "sold": 1600
+      },
+      {
+        "category": "Gold",
+        "ticket_name": {
+          "en": "Gold Ticket",
+          "cs": "Gold vstupenka"
+           
+        },
+   "description": {
+          "en": "Open the door to the world of art with our Gold Ticket and experience an art event like no other. With a Gold ticket, you'll get an unforgettable experience, including a private tour of the exhibition, a meet and greet with the artists and an exclusive front row seat in the Gold Zone. Immerse yourself in the art world with us and discover the beauty and inspiration in every painting.",
+          "cs": "Otevřete dveře do světa umění s naší Gold vstupenkou a zažijte uměleckou akci jako žádnou jinou. S Gold vstupenkou získáte nezapomenutelný zážitek, včetně soukromé prohlídky výstavy, setkání s umělci a exkluzivního místa v první řadě v Gold zóně. Ponořte se do uměleckého světa s námi a objevte krásu a inspiraci v každém obraze."  
+        },
+         "prices":{
+          "USD": 86,
+          "CZK": 1999,
+          "EUR": 81
+        },
+        "quantity": 40,
+        "sold": 40
+        }
+    ],
+  "image": "/img/art/postmodernexpress.jpg",
+  "popular": true,
+  "address_id": "653501fa7da9c818ee46b438",
+  "event_admin": "65317b25cd427452610a570f"
+}
+]

@@ -1,0 +1,10 @@
+## Odkazy
+
+MONGODB TIPS & TRICKS
+https://www.freecodecamp.org/news/build-a-restful-api-using-node-express-and-mongodb/
+https://medium.com/@akhilanand.ak01/setup-a-basic-node-js-server-using-expressjs-mongoose-65f2a6dbfd58
+https://www.digitalocean.com/community/tutorials/how-to-use-aggregations-in-mongodb
+
+# Blockchain URLS
+https://blog.logrocket.com/interacting-smart-contracts-via-nodejs-api/
+

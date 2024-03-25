@@ -1,0 +1,578 @@
+[
+{
+"name": {
+  "en": "VIP Night in Fashion Paradise",
+  "cs": "VIP noc v módním ráji"
+},
+ "category_of_event": "VIP", 
+"description": {
+  "en": "Experience the epitome of style and glamour at the VIP Night in Fashion Paradise. Join us for a night of luxury, where you can revel in the latest fashion trends and get a glimpse of the most renowned artists in the industry.",
+  "cs": "Přijďte zažít vrchol stylu a módy na VIP noc v Módním ráji. Připojte se k nám na večer luxusu, kde se můžete potěšit nejnovějšími módními trendy a zahlédnout nejuznávanější umělce v oboru."
+},
+  "date_of_the_event": "2024-11-22",
+  "date_of_start_sell_tickets": "2024-12-03",
+  "capacity": 750,
+  "ticket_availabiity": false,
+      "ticket_types": [
+      {
+        "category": "Standard",
+        "ticket_name": {
+          "en": "Standard Ticket",
+          "cs": "Standardní vstupenka"
+        },
+       "description": {
+          "en": "Choose from a range of standard tickets. Depending on demand, the price of standard tickets can change dynamically.",
+          "cs": "Vyberte si z nabídky standardních vstupenek. V závislosti na poptávce se může cena standardních vstupenek dynamicky měnit."
+        },
+        "prices":{
+          "USD": 68,
+          "CZK": 1599,
+          "EUR": 65
+        },
+        "quantity": 700,
+        "sold": 700
+      },     
+       {
+        "category": "VIP",
+        "ticket_name": {
+           "en": "VIP Ticket",
+          "cs": "VIP vstupenka"
+        },
+        "description": {
+          "en": "Open the door to the most exclusive artistic experience with our VIP ticket. Enjoy a private tour of the exhibition, meet the artists, luxury front row seats, gourmet treats and an exclusive atmosphere. VIP tickets are limited in number, so secure this unique art experience now.",
+          "cs": "Otevřete si dveře k nejexkluzivnějšímu uměleckému zážitku s naší VIP vstupenkou. Užijte si privátní prohlídku výstavy, setkání s umělci, luxusní sedadla v první řadě, gurmánské pochoutky a exkluzivní atmosféru. Počet VIP vstupenek je omezený, takže si zajistěte tuto jedinečnou zkušenost s uměním hned teď."
+        },
+         "prices":{
+          "USD": 85,
+          "CZK": 1999,
+          "EUR": 80
+        },
+        "quantity": 50,
+        "sold": 50
+      }      
+    ],
+  "image": "/img/vip/fashion.jpg",
+  "popular": true,
+  "address_id": "653501fa7da9c818ee46b43a",
+  "event_admin": "65317b25cd427452610a570f"
+},
+{
+"name": {
+  "en": "An Evening with Musical Legends in the VIP Circle",
+  "cs": "Večer s hudebními legendami ve VIP kruhu"
+},
+  "category_of_event": "VIP", 
+"description": {
+  "en": "An enchanting evening awaits you at the Night with Music Legends in the VIP Circle. Join us for a memorable night where you can enjoy the timeless tunes of music legends and rub shoulders with the industry's finest.",
+  "cs": "Očekává vás kouzelný večer na Večeru s hudebními legendami ve VIP kruhu. Připojte se k nám pro nezapomenutelný večer, kde si můžete vychutnat časem prověřené hudební skladby legend a potkat se s těmi nejlepšími v branži."
+},
+  "date_of_the_event": "2024-02-13",
+  "date_of_start_sell_tickets": "2023-12-25",
+  "capacity": 800,
+  "ticket_availabiity": false,
+      "ticket_types": [
+      {
+        "category": "Standard",
+        "ticket_name": {
+          "en": "Standard Ticket",
+          "cs": "Standardní vstupenka"
+        },
+       "description": {
+          "en": "Choose from a range of standard tickets. Depending on demand, the price of standard tickets can change dynamically.",
+          "cs": "Vyberte si z nabídky standardních vstupenek. V závislosti na poptávce se může cena standardních vstupenek dynamicky měnit."
+        },
+        "prices":{
+          "USD": 38,
+          "CZK": 899,
+          "EUR": 36
+        },
+        "quantity": 700,
+        "sold": 700
+      },     
+             {
+        "category": "VIP",
+        "ticket_name": {
+           "en": "VIP Ticket",
+          "cs": "VIP vstupenka"
+        },
+        "description": {
+          "en": "Open the door to the most exclusive artistic experience with our VIP ticket. Enjoy a private tour of the exhibition, meet the artists, luxury front row seats, gourmet treats and an exclusive atmosphere. VIP tickets are limited in number, so secure this unique art experience now.",
+          "cs": "Otevřete si dveře k nejexkluzivnějšímu uměleckému zážitku s naší VIP vstupenkou. Užijte si privátní prohlídku výstavy, setkání s umělci, luxusní sedadla v první řadě, gurmánské pochoutky a exkluzivní atmosféru. Počet VIP vstupenek je omezený, takže si zajistěte tuto jedinečnou zkušenost s uměním hned teď."
+        },
+         "prices":{
+          "USD": 47,
+          "CZK": 1099,
+          "EUR": 45
+        },
+        "quantity": 100,
+        "sold": 100
+      }    
+    ],
+  "image": "/img/vip/musiclegends.jpg",
+  "popular": false,
+  "address_id": "653501fa7da9c818ee46b439",
+    "event_admin": "65317b25cd427452610a570f"
+
+},
+ {
+"name": {
+  "en": "Elegant VIP Vernissage at the Modern Art Gallery",
+  "cs": "Elegantní VIP vernisáž v galerii moderního umění"
+},
+ "category_of_event": "VIP", 
+"description": {
+  "en": "Step into the world of artistic elegance at the Elegant VIP Vernissage in the Modern Art Gallery. Join us for a sophisticated evening where you can explore the latest masterpieces of modern art, meet renowned artists, and revel in the beauty of creativity.",
+  "cs": "Vstupte do světa umělecké elegance na Elegantní VIP vernisáži v Galerii moderního umění. Připojte se k nám na sofistikovaný večer, kde si můžete prohlédnout nejnovější mistrovská díla moderního umění, setkat se s uznávanými umělci a užít si krásu kreativity."
+},
+  "date_of_the_event": "2024-06-24",
+  "date_of_start_sell_tickets": "2023-12-02",
+  "capacity": 750,
+  "ticket_availabiity": false,
+      "ticket_types": [
+      {
+        "category": "Standard",
+        "ticket_name": {
+          "en": "Standard Ticket",
+          "cs": "Standardní vstupenka"
+        },
+       "description": {
+          "en": "Choose from a range of standard tickets. Depending on demand, the price of standard tickets can change dynamically.",
+          "cs": "Vyberte si z nabídky standardních vstupenek. V závislosti na poptávce se může cena standardních vstupenek dynamicky měnit."
+        },
+        "prices":{
+          "USD": 21,
+          "CZK": 499,
+          "EUR": 20
+        },
+        "quantity": 700,
+        "sold": 700
+      },     
+             {
+        "category": "VIP",
+        "ticket_name": {
+           "en": "VIP Ticket",
+          "cs": "VIP vstupenka"
+        },
+        "description": {
+          "en": "Open the door to the most exclusive artistic experience with our VIP ticket. Enjoy a private tour of the exhibition, meet the artists, luxury front row seats, gourmet treats and an exclusive atmosphere. VIP tickets are limited in number, so secure this unique art experience now.",
+          "cs": "Otevřete si dveře k nejexkluzivnějšímu uměleckému zážitku s naší VIP vstupenkou. Užijte si privátní prohlídku výstavy, setkání s umělci, luxusní sedadla v první řadě, gurmánské pochoutky a exkluzivní atmosféru. Počet VIP vstupenek je omezený, takže si zajistěte tuto jedinečnou zkušenost s uměním hned teď."
+        },
+         "prices":{
+          "USD": 34,
+          "CZK": 799,
+          "EUR": 32
+        },
+        "quantity": 50,
+        "sold": 50
+      }    
+    ],
+  "image": "/img/vip/modernart.jpg",
+  "popular": true,
+  "address_id": "653501fa7da9c818ee46b43a",
+    "event_admin": "65317b25cd427452610a570f"
+
+},
+{
+"name": {
+  "en": "VIP Tour of Art Treasures",
+  "cs": "VIP prohlídka uměleckých pokladů"
+},
+ "category_of_event": "VIP", 
+"description": {
+  "en": "Embark on an exclusive journey through art history at the VIP Tour of Artistic Treasures. Join us for a privileged experience, where you can explore the hidden gems of the art world, guided by experts, and gain unique insights into the beauty of these treasures.",
+  "cs": "Vydejte se na exkluzivní cestu historií umění na VIP prohlídce Uměleckých pokladů. Připojte se k nám pro privilegovaný zážitek, kde můžete prozkoumat skryté poklady světa umění, provázeni odborníky, a získat unikátní pohledy na krásu těchto pokladů."
+},
+  "date_of_the_event": "2024-02-06",
+  "date_of_start_sell_tickets": "2024-06-10",
+  "capacity": 800,
+  "ticket_availabiity": true,
+      "ticket_types": [
+      {
+        "category": "Standard",
+        "ticket_name": {
+          "en": "Standard Ticket",
+          "cs": "Standardní vstupenka"
+        },
+       "description": {
+          "en": "Choose from a range of standard tickets. Depending on demand, the price of standard tickets can change dynamically.",
+          "cs": "Vyberte si z nabídky standardních vstupenek. V závislosti na poptávce se může cena standardních vstupenek dynamicky měnit."
+        },
+        "prices":{
+          "USD": 25,
+          "CZK": 599,
+          "EUR": 25
+        },
+        "quantity": 700,
+        "sold": 700
+      },     
+             {
+        "category": "VIP",
+        "ticket_name": {
+           "en": "VIP Ticket",
+          "cs": "VIP vstupenka"
+        },
+        "description": {
+          "en": "Open the door to the most exclusive artistic experience with our VIP ticket. Enjoy a private tour of the exhibition, meet the artists, luxury front row seats, gourmet treats and an exclusive atmosphere. VIP tickets are limited in number, so secure this unique art experience now.",
+          "cs": "Otevřete si dveře k nejexkluzivnějšímu uměleckému zážitku s naší VIP vstupenkou. Užijte si privátní prohlídku výstavy, setkání s umělci, luxusní sedadla v první řadě, gurmánské pochoutky a exkluzivní atmosféru. Počet VIP vstupenek je omezený, takže si zajistěte tuto jedinečnou zkušenost s uměním hned teď."
+        },
+         "prices":{
+          "USD": 34,
+          "CZK": 799,
+          "EUR": 32
+        },
+        "quantity": 50,
+        "sold": 50
+      }    
+    ],
+  "image": "/img/vip/arttreasure.jpg",
+  "popular": false,
+  "address_id": "653501fa7da9c818ee46b439",
+    "event_admin": "65317b25cd427452610a570f"
+
+},
+{
+"name": {
+  "en": "VIP Seating at the Diamond Stage",
+  "cs": "VIP sezení u diamantového pódia"
+},
+ "category_of_event": "VIP", 
+ "description": {
+  "en": "Indulge in a night of pure luxury with VIP Seating at the Diamond Stage. Join us for an extraordinary evening, where you can enjoy front-row views of the dazzling performances on the diamond stage and experience the glamour like never before.",
+  "cs": "Ponořte se do noci plné luxusu se VIP sezením u Diamantového pódia. Připojte se k nám na nevšední večer, kde si můžete užít výhledy z první řady na ohromující vystoupení na diamantovém pódiu a zažít glamour jako nikdy předtím."
+},
+  "date_of_the_event": "2024-04-24",
+  "date_of_start_sell_tickets": "2024-03-18",
+  "capacity": 750,
+  "ticket_availabiity": false,
+      "ticket_types": [
+      {
+        "category": "Standard",
+        "ticket_name": {
+          "en": "Standard Ticket",
+          "cs": "Standardní vstupenka"
+        },
+       "description": {
+          "en": "Choose from a range of standard tickets. Depending on demand, the price of standard tickets can change dynamically.",
+          "cs": "Vyberte si z nabídky standardních vstupenek. V závislosti na poptávce se může cena standardních vstupenek dynamicky měnit."
+        },
+        "prices":{
+          "USD": 55,
+          "CZK": 1299,
+          "EUR": 53
+        },
+        "quantity": 700,
+        "sold": 700
+      },     
+             {
+        "category": "VIP",
+        "ticket_name": {
+           "en": "VIP Ticket",
+          "cs": "VIP vstupenka"
+        },
+        "description": {
+          "en": "Open the door to the most exclusive artistic experience with our VIP ticket. Enjoy a private tour of the exhibition, meet the artists, luxury front row seats, gourmet treats and an exclusive atmosphere. VIP tickets are limited in number, so secure this unique art experience now.",
+          "cs": "Otevřete si dveře k nejexkluzivnějšímu uměleckému zážitku s naší VIP vstupenkou. Užijte si privátní prohlídku výstavy, setkání s umělci, luxusní sedadla v první řadě, gurmánské pochoutky a exkluzivní atmosféru. Počet VIP vstupenek je omezený, takže si zajistěte tuto jedinečnou zkušenost s uměním hned teď."
+        },
+         "prices":{
+          "USD": 85,
+          "CZK": 1999,
+          "EUR": 80
+        },
+        "quantity": 50,
+        "sold": 50
+      }    
+    ],
+  "image": "/img/vip/diamonds.jpg",
+  "popular": true,
+  "address_id": "653501fa7da9c818ee46b43a",
+  "event_admin": "65317b25cd427452610a570f"
+
+},
+ {
+"name": {
+  "en": "VIP Red Carpet Experience",
+  "cs": "VIP zážitek na červeném koberci"
+},
+ "category_of_event": "VIP", 
+"description": {
+  "en": "Step into the world of glamour and fame with a VIP Red Carpet Experience. Join us for an unforgettable night where you can walk the red carpet like a star, meet celebrities, and bask in the glitz and glamour of the entertainment industry.",
+  "cs": "Vstupte do světa glamouru a slávy s VIP zážitkem na červeném koberci. Připojte se k nám na nezapomenutelný večer, kde si můžete projít červeným kobercem jako hvězda, potkat celebritu a užít si lesk a glamour zábavního průmyslu."
+},
+  "date_of_the_event": "2024-10-13",
+  "date_of_start_sell_tickets": "2024-08-21",
+  "capacity": 750,
+  "ticket_availabiity": false,
+      "ticket_types": [
+      {
+        "category": "Standard",
+        "ticket_name": {
+          "en": "Standard Ticket",
+          "cs": "Standardní vstupenka"
+        },
+       "description": {
+          "en": "Choose from a range of standard tickets. Depending on demand, the price of standard tickets can change dynamically.",
+          "cs": "Vyberte si z nabídky standardních vstupenek. V závislosti na poptávce se může cena standardních vstupenek dynamicky měnit."
+        },
+        "prices":{
+          "USD": 30,
+          "CZK": 699,
+          "EUR": 28
+        },
+        "quantity": 720,
+        "sold": 720
+      },     
+             {
+        "category": "VIP",
+        "ticket_name": {
+           "en": "VIP Ticket",
+          "cs": "VIP vstupenka"
+        },
+        "description": {
+          "en": "Open the door to the most exclusive artistic experience with our VIP ticket. Enjoy a private tour of the exhibition, meet the artists, luxury front row seats, gourmet treats and an exclusive atmosphere. VIP tickets are limited in number, so secure this unique art experience now.",
+          "cs": "Otevřete si dveře k nejexkluzivnějšímu uměleckému zážitku s naší VIP vstupenkou. Užijte si privátní prohlídku výstavy, setkání s umělci, luxusní sedadla v první řadě, gurmánské pochoutky a exkluzivní atmosféru. Počet VIP vstupenek je omezený, takže si zajistěte tuto jedinečnou zkušenost s uměním hned teď."
+        },
+         "prices":{
+          "USD": 43,
+          "CZK": 999,
+          "EUR": 40
+        },
+        "quantity": 30,
+        "sold": 30
+      }    
+    ],
+  "image": "/img/vip/redcarpet.jpg",
+  "popular": false,
+  "address_id": "653501fa7da9c818ee46b43a",
+  "event_admin": "65317b25cd427452610a570f"
+
+},
+{
+"name": {
+  "en": "Luxurious Cocktails at the Palace of Elegance",
+  "cs": "Luxusní koktejly v paláci elegance"
+},
+ "category_of_event": "VIP", 
+ "description": {
+  "en": "Savor the opulence of the evening with Luxurious Cocktails in the Palace of Elegance. Join us for a night of refined indulgence, where you can enjoy bespoke cocktails crafted with the finest ingredients, all within the grandeur of an elegant palace.",
+  "cs": "Užijte si nádech večerního luxusu s Luxusními koktejly v Paláci Elegance. Připojte se k nám na večer jemného potěšení, kde si můžete vychutnat koktejly na míru vyrobené z nejkvalitnějších surovin, všemu to v nádheře elegantního paláce."
+},
+  "date_of_the_event": "2024-08-06",
+  "date_of_start_sell_tickets": "2024-05-14",
+  "capacity": 800,
+  "ticket_availabiity": true,
+      "ticket_types": [
+      {
+        "category": "Standard",
+        "ticket_name": {
+          "en": "Standard Ticket",
+          "cs": "Standardní vstupenka"
+        },
+       "description": {
+          "en": "Choose from a range of standard tickets. Depending on demand, the price of standard tickets can change dynamically.",
+          "cs": "Vyberte si z nabídky standardních vstupenek. V závislosti na poptávce se může cena standardních vstupenek dynamicky měnit."
+        },
+           "prices":{
+          "USD": 30,
+          "CZK": 699,
+          "EUR": 28
+        },
+        "quantity": 780,
+        "sold": 780      
+      },     
+             {
+        "category": "VIP",
+        "ticket_name": {
+           "en": "VIP Ticket",
+          "cs": "VIP vstupenka"
+        },
+        "description": {
+          "en": "Open the door to the most exclusive artistic experience with our VIP ticket. Enjoy a private tour of the exhibition, meet the artists, luxury front row seats, gourmet treats and an exclusive atmosphere. VIP tickets are limited in number, so secure this unique art experience now.",
+          "cs": "Otevřete si dveře k nejexkluzivnějšímu uměleckému zážitku s naší VIP vstupenkou. Užijte si privátní prohlídku výstavy, setkání s umělci, luxusní sedadla v první řadě, gurmánské pochoutky a exkluzivní atmosféru. Počet VIP vstupenek je omezený, takže si zajistěte tuto jedinečnou zkušenost s uměním hned teď."
+        },
+      "prices":{
+          "USD": 43,
+          "CZK": 999,
+          "EUR": 40
+        },
+        "quantity": 9,
+        "sold": 9
+      }    
+    ],
+  "image": "/img/vip/luxurycocktails.jpg",
+  "popular": false,
+  "address_id": "653501fa7da9c818ee46b439",
+  "event_admin": "65317b25cd427452610a570f"
+},
+{
+"name": {
+  "en": "VIP Roadshow of Luxury Cars and Exclusive Design",
+  "cs": "VIP roadshow luxusních aut a exkluzivního designu"
+},
+  "category_of_event": "VIP", 
+"description": {
+  "en": "Embark on an exclusive journey through the world of luxury cars and exclusive design at the VIP Roadshow. Join us for an extraordinary experience, where you can get up close with the latest luxury automobile models and witness the pinnacle of exclusive design in a single event.",
+  "cs": "Vydajte se na exkluzivní cestu světem luxusních aut a exkluzivního designu na VIP Roadshow. Připojte se k nám pro nevšední zážitek, kde si můžete prohlédnout nejnovější modely luxusních automobilů a spatřit vrchol exkluzivního designu na jednom místě."
+},
+  "date_of_the_event": "2024-07-12",
+  "date_of_start_sell_tickets": "2024-09-02",
+  "capacity": 800,
+  "ticket_availabiity": false,
+      "ticket_types": [
+      {
+        "category": "Standard",
+        "ticket_name": {
+          "en": "Standard Ticket",
+          "cs": "Standardní vstupenka"
+        },
+       "description": {
+          "en": "Choose from a range of standard tickets. Depending on demand, the price of standard tickets can change dynamically.",
+          "cs": "Vyberte si z nabídky standardních vstupenek. V závislosti na poptávce se může cena standardních vstupenek dynamicky měnit."
+        },
+        "prices":{
+          "USD": 47,
+          "CZK": 1099,
+          "EUR": 45
+        },
+        "quantity": 790,
+        "sold": 790
+      },     
+             {
+        "category": "VIP",
+        "ticket_name": {
+           "en": "VIP Ticket",
+          "cs": "VIP vstupenka"
+        },
+        "description": {
+          "en": "Open the door to the most exclusive artistic experience with our VIP ticket. Enjoy a private tour of the exhibition, meet the artists, luxury front row seats, gourmet treats and an exclusive atmosphere. VIP tickets are limited in number, so secure this unique art experience now.",
+          "cs": "Otevřete si dveře k nejexkluzivnějšímu uměleckému zážitku s naší VIP vstupenkou. Užijte si privátní prohlídku výstavy, setkání s umělci, luxusní sedadla v první řadě, gurmánské pochoutky a exkluzivní atmosféru. Počet VIP vstupenek je omezený, takže si zajistěte tuto jedinečnou zkušenost s uměním hned teď."
+        },
+         "prices":{
+          "USD": 77,
+          "CZK": 1799,
+          "EUR": 73
+        },
+        "quantity": 10,
+        "sold": 10
+      }    
+    ],
+  "image": "/img/vip/luxurycars.jpg",
+  "popular": true,
+  "address_id": "653501fa7da9c818ee46b439",
+  "event_admin": "65317b25cd427452610a570f"
+},
+{
+"name": {
+  "en": "VIP Night with Music Icons at the Crystal Castle",
+  "cs": "VIP noc s hudebními ikonami v zámku Krystalů"
+},
+ "category_of_event": "VIP", 
+ "description": {
+  "en": "Experience a night of musical magic at the VIP Night with Music Icons at the Crystal Castle. Join us for an enchanting evening where you can enjoy the timeless hits of music icons in the majestic surroundings of the Crystal Castle.",
+  "cs": "Přijměte pozvání na noc hudební magie na VIP noc s hudebními ikonami v zámku Krystalů. Připojte se k nám pro kouzelný večer, kde si můžete užít věčné hity hudebních ikon v majestátním prostředí zámku Krystalů."
+},
+  "date_of_the_event": "2024-08-14",
+  "date_of_start_sell_tickets": "2024-05-05",
+  "capacity": 750,
+  "ticket_availabiity": false,
+      "ticket_types": [
+      {
+        "category": "Standard",
+        "ticket_name": {
+          "en": "Standard Ticket",
+          "cs": "Standardní vstupenka"
+        },
+       "description": {
+          "en": "Choose from a range of standard tickets. Depending on demand, the price of standard tickets can change dynamically.",
+          "cs": "Vyberte si z nabídky standardních vstupenek. V závislosti na poptávce se může cena standardních vstupenek dynamicky měnit."
+        },
+        "prices":{
+          "USD": 26,
+          "CZK": 599,
+          "EUR": 24
+        },
+        "quantity": 730,
+        "sold": 730
+      },     
+             {
+        "category": "VIP",
+        "ticket_name": {
+           "en": "VIP Ticket",
+          "cs": "VIP vstupenka"
+        },
+        "description": {
+          "en": "Open the door to the most exclusive artistic experience with our VIP ticket. Enjoy a private tour of the exhibition, meet the artists, luxury front row seats, gourmet treats and an exclusive atmosphere. VIP tickets are limited in number, so secure this unique art experience now.",
+          "cs": "Otevřete si dveře k nejexkluzivnějšímu uměleckému zážitku s naší VIP vstupenkou. Užijte si privátní prohlídku výstavy, setkání s umělci, luxusní sedadla v první řadě, gurmánské pochoutky a exkluzivní atmosféru. Počet VIP vstupenek je omezený, takže si zajistěte tuto jedinečnou zkušenost s uměním hned teď."
+        },
+         "prices":{
+          "USD": 38,
+          "CZK": 899,
+          "EUR": 36
+        },
+        "quantity": 20,
+        "sold": 20
+      }    
+    ],
+  "image": "/img/vip/musicicons.jpg",
+  "popular": true,
+  "address_id": "653501fa7da9c818ee46b43a",
+  "event_admin": "65317b25cd427452610a570f"
+},
+{
+"name": {
+  "en": "VIP Gourmet Tasting with Michelin Star Chefs",
+  "cs": "VIP degustace gurmánských pokrmů s michelinovými šéfkuchaři"
+},
+  "category_of_event": "VIP", 
+"description": {
+  "en": "Embark on a culinary journey of a lifetime with VIP Gourmet Tasting featuring Michelin-Star Chefs. Join us for an exquisite experience where you can savor the art of gastronomy created by Michelin-starred master chefs, and indulge in a symphony of flavors that will tantalize your taste buds.",
+  "cs": "Vydejte se na kulinářskou cestu života na VIP degustaci gurmánských pokrmů s michelinovými šéfkuchaři. Připojte se k nám pro vynikající zážitek, kde si můžete vychutnat umění gastronomie vytvořené Michelinovými šéfkuchaři a nechat se hýčkat symfonií chutí, které okouzlí vaše chuťové buňky."
+},
+  "date_of_the_event": "2024-08-16",
+  "date_of_start_sell_tickets": "2023-12-09",
+  "capacity": 800,
+  "ticket_availabiity": false,
+      "ticket_types": [
+      {
+        "category": "Standard",
+        "ticket_name": {
+          "en": "Standard Ticket",
+          "cs": "Standardní vstupenka"
+        },
+       "description": {
+          "en": "Choose from a range of standard tickets. Depending on demand, the price of standard tickets can change dynamically.",
+          "cs": "Vyberte si z nabídky standardních vstupenek. V závislosti na poptávce se může cena standardních vstupenek dynamicky měnit."
+        },
+        "prices":{
+          "USD": 85,
+          "CZK": 1999,
+          "EUR": 80
+        },
+        "quantity": 750,
+        "sold": 750
+      },     
+             {
+        "category": "VIP",
+        "ticket_name": {
+           "en": "VIP Ticket",
+          "cs": "VIP vstupenka"
+        },
+        "description": {
+          "en": "Open the door to the most exclusive artistic experience with our VIP ticket. Enjoy a private tour of the exhibition, meet the artists, luxury front row seats, gourmet treats and an exclusive atmosphere. VIP tickets are limited in number, so secure this unique art experience now.",
+          "cs": "Otevřete si dveře k nejexkluzivnějšímu uměleckému zážitku s naší VIP vstupenkou. Užijte si privátní prohlídku výstavy, setkání s umělci, luxusní sedadla v první řadě, gurmánské pochoutky a exkluzivní atmosféru. Počet VIP vstupenek je omezený, takže si zajistěte tuto jedinečnou zkušenost s uměním hned teď."
+        },
+         "prices":{
+          "USD": 110,
+          "CZK": 2599,
+          "EUR": 105
+        },
+        "quantity": 50,
+        "sold": 50
+      }    
+    ],
+  "image": "/img/vip/michelinchef.jpg",
+  "popular": true,
+  "address_id": "653501fa7da9c818ee46b439",
+  "event_admin": "65317b25cd427452610a570f"
+
+}
+]

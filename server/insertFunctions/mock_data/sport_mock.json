@@ -1,0 +1,915 @@
+[
+{
+  "name": {
+      "en": "Real Madrid vs. FC Barcelona: El Clásico",
+      "cs": "Real Madrid vs. FC Barcelona: El Clásico"
+    },
+ "category_of_event": "Sport", 
+"description": {
+  "en": "Experience the intense rivalry of Spanish football as Real Madrid faces off against FC Barcelona in the legendary El Clásico, but with a unique twist. For the first time in history, this iconic match will take place outside of Spain, right here in the Czech Republic. Watch in awe as two of the world's most iconic football clubs go head to head in a battle for supremacy. The atmosphere is electric, and the stakes are high, promising a match filled with skill, passion, and unforgettable moments.",
+  "cs": "Přijďte zažít intenzivní rivalitu španělského fotbalu, když Real Madrid čelí FC Barcelona v legendárním zápase El Clásico, ale s jedinečným twistem. Poprvé v historii se tento ikonický zápas odehraje mimo Španělsko, a to přímo v České republice. S úžasem sledujte, jak se dvě z nejznámějších fotbalových klubů na světě střetnou v boji o převahu. Atmosféra je elektrizující a sázky jsou vysoké, slibujíc nezapomenutelný zápas plný dovedností, vášně a nezapomenutelných okamžiků."
+},
+  "date_of_the_event": "2024-06-21",
+  "date_of_start_sell_tickets": "2024-09-25",
+  "capacity": 38000,
+  "ticket_availabiity": false,
+  "ticket_types": [
+      {
+        "category": "Standard",
+        "ticket_name": {
+          "en": "Standard Ticket",
+          "cs": "Standardní vstupenka"
+        },
+        "description": {
+          "en": "Choose from a range of standard tickets. Depending on demand, the price of standard tickets can change dynamically.",
+          "cs": "Vyberte si z nabídky standardních vstupenek. V závislosti na poptávce se může cena standardních vstupenek dynamicky měnit."
+        },
+        "prices":{
+          "USD": 125,
+          "CZK": 2899,
+          "EUR": 119
+        },
+        "quantity": 36500,
+        "sold": 36500
+      },      
+       {
+        "category": "VIP",
+        "ticket_name": {
+           "en": "VIP Ticket",
+          "cs": "VIP vstupenka"
+        },
+        "description": {
+          "en": "Elevate your sports event experience with the VIP Ticket. Enjoy exclusive perks including fast-track entry through a dedicated entrance, prime seating right near the action, and access to premium hospitality areas.",
+          "cs": "Zvýšte svůj zážitek ze sportovního utkání s VIP vstupenkou. Užijte si exkluzivní výhody, včetně rychlého vstupu přes vlastní vchod, prvotřídních sedadel přímo u dění na hřišti a přístupu k premium hostitelským prostorům."
+        },
+         "prices":{
+          "USD": 258,
+          "CZK": 5999,
+          "EUR": 249
+        },
+        "quantity": 1500,
+        "sold": 1500
+      }    
+    ],
+  "image": "/img/sport/elclasico.jpg",
+  "popular": true,
+  "address_id": "653501fa7da9c818ee46b3fc",
+  "event_admin": "65317b25cd427452610a570f"
+},
+ {
+  "name":{
+    "en": "Manchester United vs. Liverpool FC: English Premier League Derby",
+    "cs": "Manchester United vs. Liverpool FC: Derby anglické Premier League"
+    },
+ "category_of_event": "Sport", 
+"description": {
+  "en": "Get ready for an electrifying showdown in the English Premier League as Manchester United takes on Liverpool FC in a highly anticipated Derby. But this time, it's not on English soil; it's a historic event as these two football giants clash on Czech Republic's turf. Witness the intensity, passion, and skill as they battle for supremacy in a unique and unforgettable setting. This derby promises to be a memorable football experience like no other.",
+  "cs": "Připravte se na elektrizující souboj v anglické Premier League, když se Manchester United střetne s Liverpool FC v dlouho očekávaném derby. Tentokrát však nejde o anglickou půdu; je to historická událost, kdy tyto dvě fotbalové velikány narazí na půdě České republiky. Sledujte intenzitu, vášeň a dovednost, jak bojují o převahu v jedinečném a nezapomenutelném prostředí. Toto derby slibuje nezapomenutelný fotbalový zážitek jako žádný jiný."
+},
+  "date_of_the_event": "2024-10-03",
+  "date_of_start_sell_tickets": "2024-01-04",
+  "capacity": 38000,
+  "ticket_availabiity": false,
+   "ticket_types": [
+      {
+        "category": "Standard",
+        "ticket_name": {
+          "en": "Standard Ticket",
+          "cs": "Standardní vstupenka"
+        },
+        "description": {
+          "en": "Choose from a range of standard tickets. Depending on demand, the price of standard tickets can change dynamically.",
+          "cs": "Vyberte si z nabídky standardních vstupenek. V závislosti na poptávce se může cena standardních vstupenek dynamicky měnit."
+        },
+        "prices":{
+          "USD": 129,
+          "CZK": 2999,
+          "EUR": 122
+        },
+        "quantity": 36500,
+        "sold": 36500
+      },      
+       {
+        "category": "VIP",
+        "ticket_name": {
+           "en": "VIP Ticket",
+          "cs": "VIP vstupenka"
+        },
+        "description": {
+          "en": "Elevate your sports event experience with the VIP Ticket. Enjoy exclusive perks including fast-track entry through a dedicated entrance, prime seating right near the action, and access to premium hospitality areas.",
+          "cs": "Zvýšte svůj zážitek ze sportovního utkání s VIP vstupenkou. Užijte si exkluzivní výhody, včetně rychlého vstupu přes vlastní vchod, prvotřídních sedadel přímo u dění na hřišti a přístupu k premium hostitelským prostorům."
+        },
+         "prices":{
+          "USD": 215,
+          "CZK": 4999,
+          "EUR": 200
+        },
+        "quantity": 1500,
+        "sold": 1500
+      }    
+    ],
+  "image": "/img/sport/unitedvslive.jpg",
+  "popular": true,
+  "address_id": "653501fa7da9c818ee46b3fc",
+  "event_admin": "65317b25cd427452610a570f"
+
+},
+{
+  "name":{
+    "en": "Juventus FC vs. Bayern Mnichov: UEFA Champions League match",
+    "cs": "Juventus FC vs. Bayern Mnichov: Zápas Ligy mistrů UEFA"
+  },
+ "category_of_event": "Sport", 
+"description": {
+  "en": "Prepare for an epic clash in the UEFA Champions League as Juventus FC faces off against Bayern Munich. It's a showdown of European football giants, and the stage is set for a thrilling encounter. This time, the match takes an unexpected turn as it unfolds on Czech Republic soil, marking a historic moment in the world of football. Watch in awe as these two renowned teams go head to head, showcasing their skill, determination, and passion for the game. Don't miss this unique opportunity to witness football history being made right here in the heart of the Czech Republic.",
+  "cs": "Připravte se na epický střet v UEFA Champions League, když Juventus FC čelí Bayernu Mnichov. Je to souboj evropských fotbalových velikánů a je nastaveno na vzrušující setkání. Tentokrát má zápas nečekaný obrat, když se odehrává na půdě České republiky, což představuje historický okamžik ve světě fotbalu. Sledujte s úžasem, jak se tyto dvě renomované týmy střetnou, předvádějí svou dovednost, odhodlání a vášeň pro hru. Nezmeškejte tuto jedinečnou příležitost sledovat, jak se píše fotbalová historie, a to přímo zde, v srdci České republiky."
+},
+  "date_of_the_event": "2024-08-31",
+  "date_of_start_sell_tickets": "2024-12-30",
+  "capacity": 38000,
+  "ticket_availabiity": false,
+   "ticket_types": [
+      {
+        "category": "Standard",
+        "ticket_name": {
+          "en": "Standard Ticket",
+          "cs": "Standardní vstupenka"
+        },
+        "description": {
+          "en": "Choose from a range of standard tickets. Depending on demand, the price of standard tickets can change dynamically.",
+          "cs": "Vyberte si z nabídky standardních vstupenek. V závislosti na poptávce se může cena standardních vstupenek dynamicky měnit."
+        },
+        "prices":{
+          "USD": 125,
+          "CZK": 2899,
+          "EUR": 118
+        },
+        "quantity": 36500,
+        "sold": 36500
+      },      
+       {
+        "category": "VIP",
+        "ticket_name": {
+          "en": "VIP Ticket",
+          "cs": "VIP vstupenka"
+        },
+        "description": {
+          "en": "Elevate your sports event experience with the VIP Ticket. Enjoy exclusive perks including fast-track entry through a dedicated entrance, prime seating right near the action, and access to premium hospitality areas.",
+          "cs": "Zvýšte svůj zážitek ze sportovního utkání s VIP vstupenkou. Užijte si exkluzivní výhody, včetně rychlého vstupu přes vlastní vchod, prvotřídních sedadel přímo u dění na hřišti a přístupu k premium hostitelským prostorům."
+        },
+         "prices":{
+          "USD": 200,
+          "CZK": 4699,
+          "EUR": 190
+        },
+        "quantity": 1500,
+        "sold": 1500
+      }    
+    ],
+  "image": "/img/sport/juvevsbayern.jpg",
+  "popular": false,
+  "address_id": "653501fa7da9c818ee46b3fc",
+  "event_admin": "65317b25cd427452610a570f"
+},
+{
+  "name":{
+    "en": "Paris Saint-Germain vs. AC Milan: UEFA Champions League match",
+    "cs": "Paris Saint-Germain vs. AC Milan: Zápas Ligy mistrů UEFA"
+  },
+ "category_of_event": "Sport", 
+"description": {
+  "en": "Get ready for a riveting encounter in the UEFA Champions League as Paris Saint-Germain takes on AC Milan. It's a battle of European football heavyweights, and the anticipation is building. In an unprecedented move, this prestigious match will unfold on Czech Republic's turf, making it a landmark moment in the world of football. Witness the magic of these two renowned teams as they clash, displaying their skills, determination, and love for the game. Don't miss this exceptional opportunity to be a part of football history, right here in the heart of the Czech Republic.",
+  "cs": "Připravte se na vzrušující střet v UEFA Champions League, když Paris Saint-Germain čelí AC Milan. Jde o bitvu evropských fotbalových těžkých vah a očekávání stoupá. V bezprecedentním kroku se tento prestižní zápas odehraje na půdě České republiky, což z něj činí mezník v historii světového fotbalu. Sledujte kouzlo těchto dvou renomovaných týmů, jak se střetávají a předvádějí své dovednosti, odhodlání a lásku k hře. Nezmeškejte tuto výjimečnou příležitost stát se součástí fotbalové historie, přímo zde, v srdci České republiky."
+},
+  "date_of_the_event": "2023-11-18",
+  "date_of_start_sell_tickets": "2024-05-12",
+  "capacity": 18887,
+  "ticket_availabiity": false,
+   "ticket_types": [
+      {
+        "category": "Standard",
+        "ticket_name": {
+          "en": "Standard Ticket",
+          "cs": "Standardní vstupenka"
+        },
+        "description": {
+          "en": "Choose from a range of standard tickets. Depending on demand, the price of standard tickets can change dynamically.",
+          "cs": "Vyberte si z nabídky standardních vstupenek. V závislosti na poptávce se může cena standardních vstupenek dynamicky měnit."
+        },
+        "prices":{
+          "USD": 129,
+          "CZK": 2999,
+          "EUR": 122
+        },
+        "quantity": 16887,
+        "sold": 16887
+      },      
+       {
+        "category": "VIP",
+        "ticket_name": {
+           "en": "VIP Ticket",
+          "cs": "VIP vstupenka"
+        },
+        "description": {
+          "en": "Elevate your sports event experience with the VIP Ticket. Enjoy exclusive perks including fast-track entry through a dedicated entrance, prime seating right near the action, and access to premium hospitality areas.",
+          "cs": "Zvýšte svůj zážitek ze sportovního utkání s VIP vstupenkou. Užijte si exkluzivní výhody, včetně rychlého vstupu přes vlastní vchod, prvotřídních sedadel přímo u dění na hřišti a přístupu k premium hostitelským prostorům."
+        },
+         "prices":{
+          "USD": 215,
+          "CZK": 4999,
+          "EUR": 200
+        },
+        "quantity": 2000,
+        "sold": 2000
+      }    
+    ],
+  "image": "/img/sport/psgvsmilan.jpg",
+  "popular": false,
+  "address_id": "653501fa7da9c818ee46b400",
+  "event_admin": "65317b25cd427452610a570f"
+},
+{
+  "name":{
+    "en": "Chelsea CF vs. Borussia Dortmund: UEFA Champions League match",
+    "cs": "Chelsea CF vs. Borussia Dortmund: Zápas Ligy mistrů UEFA"
+  },
+ "category_of_event": "Sport", 
+"description": {
+  "en": "Prepare for an exhilarating showdown in the UEFA Champions League as Chelsea FC takes on Borussia Dortmund. It's a clash of European football titans, and the excitement is palpable. In a historic move, this prestigious match will unfold on Czech Republic's turf, making it an iconic moment in the world of football. Witness the brilliance of these two renowned teams as they go head to head, showcasing their skills, determination, and love for the game. Don't miss this extraordinary opportunity to be a part of football history, right here in the heart of the Czech Republic.",
+  "cs": "Připravte se na vzrušující souboj v UEFA Champions League, když Chelsea FC čelí Borussii Dortmund. Jde o střet evropských fotbalových titanů a vzrušení je cítit na každém kroku. V historickém kroku se tento prestižní zápas odehraje na půdě České republiky, čímž se stane ikonickým okamžikem ve světě fotbalu. Buďte svědkem brilance těchto dvou renomovaných týmů, jak se střetávají a předvádějí své dovednosti, odhodlání a lásku k hře. Nezmeškejte tuto mimořádnou příležitost stát se součástí fotbalové historie, přímo zde, v srdci České republiky."
+},
+  "date_of_the_event": "2024-01-13",
+  "date_of_start_sell_tickets": "2024-10-12",
+  "capacity": 38000,
+  "ticket_availabiity": false,
+   "ticket_types": [
+      {
+        "category": "Standard",
+        "ticket_name": {
+          "en": "Standard Ticket",
+          "cs": "Standardní vstupenka"
+        },
+        "description": {
+          "en": "Choose from a range of standard tickets. Depending on demand, the price of standard tickets can change dynamically.",
+          "cs": "Vyberte si z nabídky standardních vstupenek. V závislosti na poptávce se může cena standardních vstupenek dynamicky měnit."
+        },
+        "prices":{
+          "USD": 69,
+          "CZK": 1599,
+          "EUR": 65
+        },
+        "quantity": 36500,
+        "sold": 36500
+      },      
+       {
+        "category": "VIP",
+        "ticket_name": {
+           "en": "VIP Ticket",
+          "cs": "VIP vstupenka"
+        },
+        "description": {
+          "en": "Elevate your sports event experience with the VIP Ticket. Enjoy exclusive perks including fast-track entry through a dedicated entrance, prime seating right near the action, and access to premium hospitality areas.",
+          "cs": "Zvýšte svůj zážitek ze sportovního utkání s VIP vstupenkou. Užijte si exkluzivní výhody, včetně rychlého vstupu přes vlastní vchod, prvotřídních sedadel přímo u dění na hřišti a přístupu k premium hostitelským prostorům."
+        },
+         "prices":{
+          "USD": 109,
+          "CZK": 2499,
+          "EUR": 100
+        },
+        "quantity": 1500,
+        "sold": 1500
+      }    
+    ],
+  "image": "/img/sport/chelseavsdortmund.jpg",
+  "popular": false,
+  "address_id": "653501fa7da9c818ee46b3fc",
+  "event_admin": "65317b25cd427452610a570f"
+},
+ {
+  "name":{
+    "en": "Arsenal FC vs. Manchester City: English Premier League Derby",
+    "cs": "Arsenal FC vs. Manchester City FC: Derby anglické Premier League"
+  },
+ "category_of_event": "Sport", 
+"description": {
+  "en": "Get ready for an explosive encounter in the English Premier League as Arsenal FC faces off against Manchester City in a high-octane Derby. The anticipation is at fever pitch as two of England's football powerhouses collide. In a surprising twist, this derby will take place on Czech Republic's turf, making it an unforgettable moment in the football world. Watch in awe as these two iconic teams go head to head, showcasing their skill, determination, and love for the game. Don't miss this exceptional opportunity to be a part of football history, right here in the heart of the Czech Republic.",
+  "cs": "Připravte se na explozivní střet v anglické Premier League, když Arsenal FC čelí Manchesteru City v napínavém derby. Očekávání dosahuje vrcholu, když se dvě z fotbalových velikánů Anglie střetnou. V překvapivém zvratu se toto derby uskuteční na půdě České republiky, což z něj činí nezapomenutelný okamžik ve fotbalovém světě. Sledujte s úžasem, jak se tyto dvě ikonické týmy střetnou a předvedou své dovednosti, odhodlání a lásku k hře. Nezmeškejte tuto výjimečnou příležitost stát se součástí fotbalové historie, přímo zde, v srdci České republiky."
+},
+  "date_of_the_event": "2024-09-24",
+  "date_of_start_sell_tickets": "2024-10-20",
+  "capacity": 38000,
+  "ticket_availabiity": false,
+   "ticket_types": [
+      {
+        "category": "Standard",
+        "ticket_name": {
+          "en": "Standard Ticket",
+          "cs": "Standardní vstupenka"
+        },
+        "description": {
+          "en": "Choose from a range of standard tickets. Depending on demand, the price of standard tickets can change dynamically.",
+          "cs": "Vyberte si z nabídky standardních vstupenek. V závislosti na poptávce se může cena standardních vstupenek dynamicky měnit."
+        },
+        "prices":{
+          "USD": 150,
+          "CZK": 3499,
+          "EUR": 141
+        },
+        "quantity": 36500,
+        "sold": 36500
+      },      
+       {
+        "category": "VIP",
+        "ticket_name": {
+           "en": "VIP Ticket",
+          "cs": "VIP vstupenka"
+        },
+        "description": {
+          "en": "Elevate your sports event experience with the VIP Ticket. Enjoy exclusive perks including fast-track entry through a dedicated entrance, prime seating right near the action, and access to premium hospitality areas.",
+          "cs": "Zvýšte svůj zážitek ze sportovního utkání s VIP vstupenkou. Užijte si exkluzivní výhody, včetně rychlého vstupu přes vlastní vchod, prvotřídních sedadel přímo u dění na hřišti a přístupu k premium hostitelským prostorům."
+        },
+         "prices":{
+          "USD": 320,
+          "CZK": 7499,
+          "EUR": 304
+        },
+        "quantity": 1500,
+        "sold": 1500
+      }    
+    ],
+  "image": "/img/sport/arsenalvsmancity.jpg",
+  "popular": true,
+  "address_id": "653501fa7da9c818ee46b3fc",
+  "event_admin": "65317b25cd427452610a570f"
+},
+ {
+  "name":{
+    "en": "Atlético Madrid vs. Inter Milán: UEFA Champions League Match",
+    "cs": "Atlético Madrid vs. Inter Milán: Zápas Ligy mistrů UEFA"
+  },
+ "category_of_event": "Sport", 
+"description": {
+  "en": "Get ready for a thrilling encounter in the UEFA Champions League as Atlético Madrid takes on Inter Milan. It's a clash of European football titans, and the excitement is palpable. In a historic twist, this prestigious match will unfold on Czech Republic's turf, making it an iconic moment in the world of football. Witness the excellence of these two renowned teams as they go head to head, displaying their skills, determination, and love for the game. Don't miss this extraordinary opportunity to be a part of football history, right here in the heart of the Czech Republic.",
+  "cs": "Připravte se na vzrušující střet v UEFA Champions League, když Atlético Madrid čelí Interu Milán. Jde o střet evropských fotbalových titanů a vzrušení je cítit na každém kroku. V historickém zvratu se tento prestižní zápas odehraje na půdě České republiky, což z něj činí ikonický okamžik ve světě fotbalu. Buďte svědkem excelence těchto dvou renomovaných týmů, jak se střetávají a předvádějí své dovednosti, odhodlání a lásku k hře. Nezmeškejte tuto mimořádnou příležitost stát se součástí fotbalové historie, přímo zde, v srdci České republiky."
+},
+  "date_of_the_event": "2024-02-10",
+  "date_of_start_sell_tickets": "2024-10-07",
+  "capacity": 18887,
+  "ticket_availabiity": false,
+   "ticket_types": [
+      {
+        "category": "Standard",
+        "ticket_name": {
+          "en": "Standard Ticket",
+          "cs": "Standardní vstupenka"
+        },
+        "description": {
+          "en": "Choose from a range of standard tickets. Depending on demand, the price of standard tickets can change dynamically.",
+          "cs": "Vyberte si z nabídky standardních vstupenek. V závislosti na poptávce se může cena standardních vstupenek dynamicky měnit."
+        },
+        "prices":{
+          "USD": 129,
+          "CZK": 2999,
+          "EUR": 122
+        },
+        "quantity": 16887,
+        "sold": 16887
+      },      
+       {
+        "category": "VIP",
+        "ticket_name": {
+           "en": "VIP Ticket",
+          "cs": "VIP vstupenka"
+        },
+        "description": {
+          "en": "Elevate your sports event experience with the VIP Ticket. Enjoy exclusive perks including fast-track entry through a dedicated entrance, prime seating right near the action, and access to premium hospitality areas.",
+          "cs": "Zvýšte svůj zážitek ze sportovního utkání s VIP vstupenkou. Užijte si exkluzivní výhody, včetně rychlého vstupu přes vlastní vchod, prvotřídních sedadel přímo u dění na hřišti a přístupu k premium hostitelským prostorům."
+        },
+         "prices":{
+          "USD": 185,
+          "CZK": 4299,
+          "EUR": 175
+        },
+        "quantity": 2000,
+        "sold": 2000
+      }    
+    ],
+  "image": "/img/sport/atleticovsinter.jpg",
+  "popular": true,
+  "address_id": "653501fa7da9c818ee46b400",
+  "event_admin": "65317b25cd427452610a570f"
+},
+{
+  "name":{
+    "en": "FC Porto vs FC Barcelona: UEFA Champions League Match",
+    "cs": "FC Porto vs. FC Barcelona: Zápas Ligy mistrů UEFA"
+  },
+ "category_of_event": "Sport", 
+"description": {
+  "en": "Prepare for an epic clash in the UEFA Champions League as FC Porto takes on FC Barcelona. It's a showdown between European football giants, and the excitement is soaring. In an unexpected twist, this prestigious match will unfold on Czech Republic's turf, making it a memorable moment in the world of football. Witness the brilliance of these two renowned teams as they go head to head, showcasing their skills, determination, and love for the game. Don't miss this extraordinary opportunity to be a part of football history, right here in the heart of the Czech Republic.",
+  "cs": "Připravte se na epický střet v UEFA Champions League, když FC Porto čelí FC Barcelona. Jde o souboj evropských fotbalových velikánů a vzrušení dosahuje vrcholu. V nečekaném zvratu se tento prestižní zápas odehraje na půdě České republiky, což z něj činí nezapomenutelný okamžik ve světě fotbalu. Buďte svědkem brilance těchto dvou renomovaných týmů, jak se střetávají a předvádějí své dovednosti, odhodlání a lásku k hře. Nezmeškejte tuto výjimečnou příležitost stát se součástí fotbalové historie, přímo zde, v srdci České republiky."
+},
+  "date_of_the_event": "2024-09-27",
+  "date_of_start_sell_tickets": "2024-11-13",
+  "capacity": 38000,
+  "ticket_availabiity": false,
+  "ticket_types": [
+      {
+        "category": "Standard",
+        "ticket_name": {
+          "en": "Standard Ticket",
+          "cs": "Standardní vstupenka"
+        },
+        "description": {
+          "en": "Choose from a range of standard tickets. Depending on demand, the price of standard tickets can change dynamically.",
+          "cs": "Vyberte si z nabídky standardních vstupenek. V závislosti na poptávce se může cena standardních vstupenek dynamicky měnit."
+        },
+        "prices":{
+          "USD": 200,
+          "CZK": 4699,
+          "EUR": 190
+        },
+        "quantity": 36500,
+        "sold": 36500
+      },      
+       {
+        "category": "VIP",
+        "ticket_name": {
+           "en": "VIP Ticket",
+          "cs": "VIP vstupenka"
+        },
+        "description": {
+          "en": "Elevate your sports event experience with the VIP Ticket. Enjoy exclusive perks including fast-track entry through a dedicated entrance, prime seating right near the action, and access to premium hospitality areas.",
+          "cs": "Zvýšte svůj zážitek ze sportovního utkání s VIP vstupenkou. Užijte si exkluzivní výhody, včetně rychlého vstupu přes vlastní vchod, prvotřídních sedadel přímo u dění na hřišti a přístupu k premium hostitelským prostorům."
+        },
+         "prices":{
+          "USD": 342,
+          "CZK": 7999,
+          "EUR": 325
+        },
+        "quantity": 1500,
+        "sold": 1500
+      }    
+    ],
+  "image": "/img/sport/barcavsporto.jpg",
+  "popular": true,
+  "address_id": "653501fa7da9c818ee46b3fc",
+  "event_admin": "65317b25cd427452610a570f"
+},
+{
+  "name":{
+    "en": "Valencia CF vs. SS Lazio: UEFA Champions League match",
+    "cs": "Valencia CF vs. SS Lazio: Zápas Ligy mistrů UEFA"
+  },
+  "category_of_event": "Sport", 
+"description": {
+  "en": "Get ready for an exciting showdown in the UEFA Champions League as Valencia CF takes on SS Lazio. It's a battle of European football titans, and the anticipation is building. In an unexpected turn of events, this prestigious match will take place on Czech Republic's turf, making it a memorable moment in the world of football. Witness the brilliance of these two renowned teams as they go head to head, displaying their skills, determination, and love for the game. Don't miss this extraordinary opportunity to be a part of football history, right here in the heart of the Czech Republic.",
+  "cs": "Připravte se na vzrušující střet v UEFA Champions League, když Valencia CF čelí SS Lazio. Jde o souboj evropských fotbalových velikánů a očekávání stoupá. V nečekaném obratu se tento prestižní zápas odehraje na půdě České republiky, což z něj činí nezapomenutelný okamžik ve světě fotbalu. Buďte svědkem brilance těchto dvou renomovaných týmů, jak se střetávají a předvádějí své dovednosti, odhodlání a lásku k hře. Nezmeškejte tuto výjimečnou příležitost stát se součástí fotbalové historie, přímo zde, v srdci České republiky."
+},
+  "date_of_the_event": "2024-07-17",
+  "date_of_start_sell_tickets": "2024-05-29",
+  "capacity": 18887,
+  "ticket_availabiity": false,
+   "ticket_types": [
+      {
+        "category": "Standard",
+        "ticket_name": {
+          "en": "Standard Ticket",
+          "cs": "Standardní vstupenka"
+        },
+        "description": {
+          "en": "Choose from a range of standard tickets. Depending on demand, the price of standard tickets can change dynamically.",
+          "cs": "Vyberte si z nabídky standardních vstupenek. V závislosti na poptávce se může cena standardních vstupenek dynamicky měnit."
+        },
+        "prices":{
+          "USD": 81,
+          "CZK": 1899,
+          "EUR": 77
+        },
+        "quantity": 16887,
+        "sold": 16887
+      },      
+       {
+        "category": "VIP",
+        "ticket_name": {
+           "en": "VIP Ticket",
+          "cs": "VIP vstupenka"
+        },
+        "description": {
+          "en": "Elevate your sports event experience with the VIP Ticket. Enjoy exclusive perks including fast-track entry through a dedicated entrance, prime seating right near the action, and access to premium hospitality areas.",
+          "cs": "Zvýšte svůj zážitek ze sportovního utkání s VIP vstupenkou. Užijte si exkluzivní výhody, včetně rychlého vstupu přes vlastní vchod, prvotřídních sedadel přímo u dění na hřišti a přístupu k premium hostitelským prostorům."
+        },
+         "prices":{
+          "USD": 116,
+          "CZK": 2699,
+          "EUR": 110
+        },
+        "quantity": 2000,
+        "sold": 2000
+      }    
+    ],
+  "image": "/img/sport/valenciavslazio.jpg",
+  "popular": false,
+  "address_id": "653501fa7da9c818ee46b400",
+  "event_admin": "65317b25cd427452610a570f"
+},
+{
+  "name":{
+    "en": "FC Barcelona vs. Manchester United: UEFA Champions League Final",
+    "cs": "FC Barcelona vs. Manchester United: Finále Ligy mistrů UEFA"
+  }, 
+  "category_of_event": "Sport", 
+"description": {
+  "en": "Get ready for the football event of the year as FC Barcelona takes on Manchester United in the UEFA Champions League Final. It's a clash of titans, a showdown of epic proportions, and the world is watching. This historic final will be hosted in the heart of the Czech Republic, marking a momentous occasion in the football world. Watch in awe as these two legendary teams go head to head, displaying their incredible skills, unwavering determination, and unmatched love for the game. Don't miss this extraordinary opportunity to be part of football history, right here in the Czech Republic.",
+  "cs": "Připravte se na fotbalovou událost roku, kdy FC Barcelona čelí Manchesteru United ve finále UEFA Champions League. Jde o střet titánů, epickou bitvu obrovských rozměrů a celý svět sleduje. Toto historické finále se bude konat v srdci České republiky, což představuje významnou událost ve světě fotbalu. Sledujte s úžasem, jak se tyto dvě legendární týmy střetnou, předvádějíce své úžasné dovednosti, neochvějné odhodlání a bezkonkurenční lásku k hře. Nezmeškejte tuto mimořádnou příležitost stát se součástí fotbalové historie, přímo zde, v České republice."
+},
+  "date_of_the_event": "2024-02-24",
+  "date_of_start_sell_tickets": "2023-12-03",
+  "capacity": 38000,
+  "ticket_availabiity": false,
+   "ticket_types": [
+      {
+        "category": "Standard",
+        "ticket_name": {
+          "en": "Standard Ticket",
+          "cs": "Standardní vstupenka"
+        },
+        "description": {
+          "en": "Choose from a range of standard tickets. Depending on demand, the price of standard tickets can change dynamically.",
+          "cs": "Vyberte si z nabídky standardních vstupenek. V závislosti na poptávce se může cena standardních vstupenek dynamicky měnit."
+        },
+        "prices":{
+          "USD": 163,
+          "CZK": 3799,
+          "EUR": 155
+        },
+        "quantity": 36500,
+        "sold": 36500
+      },      
+       {
+        "category": "VIP",
+        "ticket_name": {
+           "en": "VIP Ticket",
+          "cs": "VIP vstupenka"
+        },
+        "description": {
+          "en": "Elevate your sports event experience with the VIP Ticket. Enjoy exclusive perks including fast-track entry through a dedicated entrance, prime seating right near the action, and access to premium hospitality areas.",
+          "cs": "Zvýšte svůj zážitek ze sportovního utkání s VIP vstupenkou. Užijte si exkluzivní výhody, včetně rychlého vstupu přes vlastní vchod, prvotřídních sedadel přímo u dění na hřišti a přístupu k premium hostitelským prostorům."
+        },
+         "prices":{
+          "USD": 227,
+          "CZK": 5299,
+          "EUR": 215
+        },
+        "quantity": 1500,
+        "sold": 1500
+      }    
+    ],
+  "image": "/img/sport/barcavsunited.jpg",
+  "popular": true,
+  "address_id": "653501fa7da9c818ee46b3fc",
+  "event_admin": "65317b25cd427452610a570f"
+},
+{
+  "name":{
+    "en": "Liverpool FC vs. Juventus FC: UEFA Champions League Final",
+    "cs": "Liverpool FC vs. Juventus FC: Finále Ligy mistrů UEFA"
+  }, 
+ "category_of_event": "Sport", 
+"description": {
+  "en": "Get ready for an intense battle in the UEFA Champions League Semifinal as Liverpool FC takes on Juventus FC. It's a clash of European football giants, and the stakes are higher than ever. This pivotal semifinal will be hosted in the heart of the Czech Republic, making it a momentous occasion in the world of football. Watch in awe as these two legendary teams go head to head, displaying their extraordinary skills, unwavering determination, and unmatched love for the game. Don't miss this extraordinary opportunity to be part of football history, right here in the Czech Republic.",
+  "cs": "Připravte se na napínavý souboj v semifinále UEFA Champions League, když Liverpool FC čelí Juventus FC. Jde o střet evropských fotbalových velikánů, a sázky jsou vyšší než kdy jindy. Toto klíčové semifinále se uskuteční v srdci České republiky, což představuje významnou událost ve světě fotbalu. Sledujte s úžasem, jak se tyto dvě legendární týmy střetnou, předvádějíce své mimořádné dovednosti, neochvějnou odhodlanost a bezkonkurenční lásku k hře. Nezmeškejte tuto mimořádnou příležitost stát se součástí fotbalové historie, přímo zde, v České republice."
+},
+  "date_of_the_event": "2024-05-29",
+  "date_of_start_sell_tickets": "2024-03-21",
+  "capacity": 18887,
+  "ticket_availabiity": true,
+   "ticket_types": [
+      {
+        "category": "Standard",
+        "ticket_name": {
+          "en": "Standard Ticket",
+          "cs": "Standardní vstupenka"
+        },
+        "description": {
+          "en": "Choose from a range of standard tickets. Depending on demand, the price of standard tickets can change dynamically.",
+          "cs": "Vyberte si z nabídky standardních vstupenek. V závislosti na poptávce se může cena standardních vstupenek dynamicky měnit."
+        },
+      "prices":{
+          "USD": 150,
+          "CZK": 3499,
+          "EUR": 141
+        },
+        "quantity": 16887,
+        "sold": 16885
+      },      
+       {
+        "category": "VIP",
+        "ticket_name": {
+           "en": "VIP Ticket",
+          "cs": "VIP vstupenka"
+        },
+        "description": {
+          "en": "Elevate your sports event experience with the VIP Ticket. Enjoy exclusive perks including fast-track entry through a dedicated entrance, prime seating right near the action, and access to premium hospitality areas.",
+          "cs": "Zvýšte svůj zážitek ze sportovního utkání s VIP vstupenkou. Užijte si exkluzivní výhody, včetně rychlého vstupu přes vlastní vchod, prvotřídních sedadel přímo u dění na hřišti a přístupu k premium hostitelským prostorům."
+        },
+         "prices":{
+          "USD": 215,
+          "CZK": 4999,
+          "EUR": 200
+        },
+        "quantity": 2000,
+        "sold": 2000
+      }    
+    ],
+  "image": "/img/sport/juvevslive.jpg",
+  "popular": true,
+  "address_id": "653501fa7da9c818ee46b400",
+  "event_admin": "65317b25cd427452610a570f"
+},
+{
+  "name":{
+    "en": "Montreal Canadiens vs. Toronto Maple Leafs: NHL league match",
+    "cs": "Montreal Canadiens vs. Toronto Maple Leafs: NHL: Zápas ligy NHL"
+  }, 
+   "category_of_event": "Sport", 
+"description": {
+  "en": "Get ready for an exhilarating clash in the NHL league as the Montreal Canadiens go head to head with the Toronto Maple Leafs. It's a rivalry that runs deep, and the excitement is palpable. This thrilling league match will be hosted in the heart of the Czech Republic, making it a significant moment in the world of ice hockey. Witness the skill and passion of these two iconic teams as they battle for supremacy on Czech soil. Don't miss this extraordinary opportunity to be part of hockey history, right here in the Czech Republic.",
+  "cs": "Připravte se na vzrušující střet v NHL lize, když se Montreal Canadiens střetnou s Toronto Maple Leafs. Je to rivalita, která má hluboké kořeny, a vzrušení je cítit na každém kroku. Tento vzrušující ligový zápas se bude konat v srdci České republiky, což představuje významný okamžik ve světě ledního hokeje. Buďte svědkem dovednosti a vášně těchto dvou ikonických týmů, jak bojují o převahu na české půdě. Nezmeškejte tuto mimořádnou příležitost stát se součástí hokejové historie, přímo zde, v České republice."
+},
+  "date_of_the_event": "2024-02-29",
+  "date_of_start_sell_tickets": "2024-08-30",
+  "capacity": 20000,
+  "ticket_availabiity": false,
+  "ticket_types": [
+      {
+        "category": "Standard",
+        "ticket_name": {
+          "en": "Standard Ticket",
+          "cs": "Standardní vstupenka"
+        },
+        "description": {
+          "en": "Choose from a range of standard tickets. Depending on demand, the price of standard tickets can change dynamically.",
+          "cs": "Vyberte si z nabídky standardních vstupenek. V závislosti na poptávce se může cena standardních vstupenek dynamicky měnit."
+        },
+        "prices":{
+          "USD": 100,
+          "CZK": 2335,
+          "EUR": 95
+        },
+        "quantity": 18000,
+        "sold": 18000
+      },      
+       {
+        "category": "VIP",
+        "ticket_name": {
+           "en": "VIP Ticket",
+          "cs": "VIP vstupenka"
+        },
+        "description": {
+          "en": "Elevate your sports event experience with the VIP Ticket. Enjoy exclusive perks including fast-track entry through a dedicated entrance, prime seating right near the action, and access to premium hospitality areas.",
+          "cs": "Zvýšte svůj zážitek ze sportovního utkání s VIP vstupenkou. Užijte si exkluzivní výhody, včetně rychlého vstupu přes vlastní vchod, prvotřídních sedadel přímo u dění na hřišti a přístupu k premium hostitelským prostorům."
+        },
+         "prices":{
+          "USD": 250,
+          "CZK": 5839,
+          "EUR": 234
+        },
+        "quantity": 2000,
+        "sold": 2000
+      }    
+    ],
+  "image": "/img/sport/montrealvstoronto.jpg",
+  "popular": true,
+  "address_id": "653501fa7da9c818ee46b3fe",
+  "event_admin": "65317b25cd427452610a570f"
+},
+{
+  "name":{
+    "en": "Boston Bruins vs. Chicago Blackhawks: NHL league match",
+    "cs": "Boston Bruins vs. Chicago Blackhawks: NHL: Zápas ligy NHL"
+  }, 
+ "category_of_event": "Sport", 
+"description": {
+  "en": "Prepare for an electrifying showdown in the NHL league as the Boston Bruins face off against the Chicago Blackhawks. It's a matchup with a rich history, and the anticipation is building. This thrilling league match will be hosted in the heart of the Czech Republic, making it a significant moment in the world of ice hockey. Witness the skill and passion of these two iconic teams as they battle for supremacy on Czech soil. Don't miss this extraordinary opportunity to be part of hockey history, right here in the Czech Republic.",
+  "cs": "Připravte se na elektrizující střet v NHL lize, když Boston Bruins čelí Chicago Blackhawks. Jde o střet s bohatou historií a očekávání stoupá. Tento vzrušující ligový zápas se bude konat v srdci České republiky, což představuje významný okamžik ve světě ledního hokeje. Buďte svědkem dovednosti a vášně těchto dvou ikonických týmů, jak bojují o převahu na české půdě. Nezmeškejte tuto mimořádnou příležitost stát se součástí hokejové historie, přímo zde, v České republice."
+},
+  "date_of_the_event": "2024-04-26",
+  "date_of_start_sell_tickets": "2024-10-04",
+  "capacity": 20000,
+  "ticket_availabiity": false,
+ "ticket_types": [
+      {
+        "category": "Standard",
+        "ticket_name": {
+          "en": "Standard Ticket",
+          "cs": "Standardní vstupenka"
+        },
+        "description": {
+          "en": "Choose from a range of standard tickets. Depending on demand, the price of standard tickets can change dynamically.",
+          "cs": "Vyberte si z nabídky standardních vstupenek. V závislosti na poptávce se může cena standardních vstupenek dynamicky měnit."
+        },
+        "prices":{
+          "USD": 119,
+          "CZK": 2776,
+          "EUR": 112
+        },
+        "quantity": 18000,
+        "sold": 18000
+      },      
+       {
+        "category": "VIP",
+        "ticket_name": {
+           "en": "VIP Ticket",
+          "cs": "VIP vstupenka"
+        },
+        "description": {
+          "en": "Elevate your sports event experience with the VIP Ticket. Enjoy exclusive perks including fast-track entry through a dedicated entrance, prime seating right near the action, and access to premium hospitality areas.",
+          "cs": "Zvýšte svůj zážitek ze sportovního utkání s VIP vstupenkou. Užijte si exkluzivní výhody, včetně rychlého vstupu přes vlastní vchod, prvotřídních sedadel přímo u dění na hřišti a přístupu k premium hostitelským prostorům."
+        },
+         "prices":{
+          "USD": 219,
+          "CZK": 5108,
+          "EUR": 208
+        },
+        "quantity": 2000,
+        "sold": 2000
+      }    
+    ],
+  "image": "/img/sport/bostonvschicago.jpg",
+  "popular": false,
+  "address_id": "653501fa7da9c818ee46b3fe",
+  "event_admin": "65317b25cd427452610a570f"
+},
+{
+  "name":{
+    "en": "Los Angeles Kings vs. Washington Capitals: NHL league match",
+    "cs": "Los Angeles Kings vs. Washington Capitals: NHL: Zápas ligy NHL"
+  }, 
+ "category_of_event": "Sport", 
+"description": {
+  "en": "Get ready for an exciting showdown in the NHL league as the Los Angeles Kings go head to head with the Washington Capitals. It's a clash of hockey titans, and the anticipation is at its peak. This thrilling league match will be hosted in the heart of the Czech Republic, making it a significant moment in the world of ice hockey. Witness the skill and passion of these two iconic teams as they battle for supremacy on Czech soil. Don't miss this extraordinary opportunity to be part of hockey history, right here in the Czech Republic.",
+  "cs": "Připravte se na vzrušující souboj v NHL lize, když se Los Angeles Kings střetnou s Washington Capitals. Jde o střet hokejových titanů a očekávání dosahuje vrcholu. Tento vzrušující ligový zápas se bude konat v srdci České republiky, což představuje významný okamžik ve světě ledního hokeje. Buďte svědkem dovednosti a vášně těchto dvou ikonických týmů, jak bojují o převahu na české půdě. Nezmeškejte tuto mimořádnou příležitost stát se součástí hokejové historie, přímo zde, v České republice."
+},
+  "date_of_the_event": "2024-05-29",
+  "date_of_start_sell_tickets": "2024-01-13",
+  "capacity": 20000,
+  "ticket_availabiity": false,
+  "ticket_types": [
+      {
+        "category": "Standard",
+        "ticket_name": {
+          "en": "Standard Ticket",
+          "cs": "Standardní vstupenka"
+        },
+        "description": {
+          "en": "Choose from a range of standard tickets. Depending on demand, the price of standard tickets can change dynamically.",
+          "cs": "Vyberte si z nabídky standardních vstupenek. V závislosti na poptávce se může cena standardních vstupenek dynamicky měnit."
+        },
+        "prices":{
+          "USD": 139,
+          "CZK": 3245,
+          "EUR": 132
+        },
+        "quantity": 18000,
+        "sold": 18000
+      },      
+       {
+        "category": "VIP",
+        "ticket_name": {
+           "en": "VIP Ticket",
+          "cs": "VIP vstupenka"
+        },
+        "description": {
+          "en": "Elevate your sports event experience with the VIP Ticket. Enjoy exclusive perks including fast-track entry through a dedicated entrance, prime seating right near the action, and access to premium hospitality areas.",
+          "cs": "Zvýšte svůj zážitek ze sportovního utkání s VIP vstupenkou. Užijte si exkluzivní výhody, včetně rychlého vstupu přes vlastní vchod, prvotřídních sedadel přímo u dění na hřišti a přístupu k premium hostitelským prostorům."
+        },
+         "prices":{
+          "USD": 199,
+          "CZK": 4645,
+          "EUR": 189
+        },
+        "quantity": 2000,
+        "sold": 2000
+      }    
+    ],
+  "image": "/img/sport/lavswashington",
+  "popular": false,
+  "address_id": "653501fa7da9c818ee46b3fe",
+  "event_admin": "65317b25cd427452610a570f"
+},
+{
+  "name":{
+    "en": "Vancouver Canucks vs. St. Louis Blues: NHL league match",
+    "cs": "Vancouver Canucks vs. St. Louis Blues: NHL: Zápas ligy NHL"
+  }, 
+  "category_of_event": "Sport", 
+"description": {
+  "en": "Get ready for an action-packed encounter in the NHL league as the Vancouver Canucks face off against the St. Louis Blues. It's a clash of hockey titans, and the excitement is at a fever pitch. This thrilling league match will be hosted in the heart of the Czech Republic, making it a significant moment in the world of ice hockey. Witness the skill and passion of these two iconic teams as they battle for supremacy on Czech soil. Don't miss this extraordinary opportunity to be part of hockey history, right here in the Czech Republic.",
+  "cs": "Připravte se na napínavý střet v NHL lize, když se Vancouver Canucks střetnou se St. Louis Blues. Jde o souboj hokejových titanů a vzrušení dosahuje vrcholu. Tento vzrušující ligový zápas se bude konat v srdci České republiky, což představuje významný okamžik ve světě ledního hokeje. Buďte svědkem dovednosti a vášně těchto dvou ikonických týmů, jak bojují o převahu na české půdě. Nezmeškejte tuto mimořádnou příležitost stát se součástí hokejové historie, přímo zde, v České republice."
+},
+  "date_of_the_event": "2024-07-27",
+  "date_of_start_sell_tickets": "2024-07-14",
+  "capacity": 20000,
+  "ticket_availabiity": false,
+  "ticket_types": [
+      {
+        "category": "Standard",
+        "ticket_name": {
+          "en": "Standard Ticket",
+          "cs": "Standardní vstupenka"
+        },
+        "description": {
+          "en": "Choose from a range of standard tickets. Depending on demand, the price of standard tickets can change dynamically.",
+          "cs": "Vyberte si z nabídky standardních vstupenek. V závislosti na poptávce se může cena standardních vstupenek dynamicky měnit."
+        },
+         "prices":{
+          "USD": 199,
+          "CZK": 4645,
+          "EUR": 189
+        },
+        "quantity": 18000,
+        "sold": 18000
+      },      
+       {
+        "category": "VIP",
+        "ticket_name": {
+           "en": "VIP Ticket",
+          "cs": "VIP vstupenka"
+        },
+        "description": {
+          "en": "Elevate your sports event experience with the VIP Ticket. Enjoy exclusive perks including fast-track entry through a dedicated entrance, prime seating right near the action, and access to premium hospitality areas.",
+          "cs": "Zvýšte svůj zážitek ze sportovního utkání s VIP vstupenkou. Užijte si exkluzivní výhody, včetně rychlého vstupu přes vlastní vchod, prvotřídních sedadel přímo u dění na hřišti a přístupu k premium hostitelským prostorům."
+        },
+         "prices":{
+          "USD": 299,
+          "CZK": 6999,
+          "EUR": 284
+        },
+        "quantity": 2000,
+        "sold": 2000
+      }    
+    ],
+  "image": "/img/sport/stlouisvsvancouver.jpg",
+  "popular": false,
+  "address_id": "653501fa7da9c818ee46b3fe",
+  "event_admin": "65317b25cd427452610a570f"
+},
+{
+  "name":{
+    "en": "Tampa Bay Lightning vs. San Jose Sharks: NHL league match",
+    "cs": "Tampa Bay Lightning vs. San Jose Sharks: NHL: Zápas ligy NHL"
+  },
+  "category_of_event": "Sport", 
+"description": {
+  "en": "Get ready for an electrifying showdown in the NHL league as the Tampa Bay Lightning takes on the San Jose Sharks. It's a clash of hockey titans, and the excitement is off the charts. This thrilling league match will be hosted in the heart of the Czech Republic, making it a significant moment in the world of ice hockey. Witness the skill and passion of these two iconic teams as they battle for supremacy on Czech soil. Don't miss this extraordinary opportunity to be part of hockey history, right here in the Czech Republic.",
+  "cs": "Připravte se na elektrizující souboj v NHL lize, když se Tampa Bay Lightning střetne se San Jose Sharks. Jde o střet hokejových titanů a vzrušení dosahuje vrcholu. Tento vzrušující ligový zápas se bude konat v srdci České republiky, což představuje významný okamžik ve světě ledního hokeje. Buďte svědkem dovednosti a vášně těchto dvou ikonických týmů, jak bojují o převahu na české půdě. Nezmeškejte tuto mimořádnou příležitost stát se součástí hokejové historie, přímo zde, v České republice."
+},
+  "date_of_the_event": "2024-01-29",
+  "date_of_start_sell_tickets": "2024-02-06",
+  "capacity": 20000,
+  "ticket_availabiity": false,
+  "ticket_types": [
+      {
+        "category": "Standard",
+        "ticket_name": {
+          "en": "Standard Ticket",
+          "cs": "Standardní vstupenka"
+        },
+        "description": {
+          "en": "Choose from a range of standard tickets. Depending on demand, the price of standard tickets can change dynamically.",
+          "cs": "Vyberte si z nabídky standardních vstupenek. V závislosti na poptávce se může cena standardních vstupenek dynamicky měnit."
+        },
+        "prices":{
+          "USD": 219,
+          "CZK": 5099,
+          "EUR": 208
+        },
+        "quantity": 18000,
+        "sold": 18000
+      },      
+       {
+        "category": "VIP",
+        "ticket_name": {
+           "en": "VIP Ticket",
+          "cs": "VIP vstupenka"
+        },
+        "description": {
+          "en": "Elevate your sports event experience with the VIP Ticket. Enjoy exclusive perks including fast-track entry through a dedicated entrance, prime seating right near the action, and access to premium hospitality areas.",
+          "cs": "Zvýšte svůj zážitek ze sportovního utkání s VIP vstupenkou. Užijte si exkluzivní výhody, včetně rychlého vstupu přes vlastní vchod, prvotřídních sedadel přímo u dění na hřišti a přístupu k premium hostitelským prostorům."
+        },
+         "prices":{
+          "USD": 349,
+          "CZK": 8142,
+          "EUR": 330
+        },
+        "quantity": 2000,
+        "sold": 2000
+      }    
+    ],
+  "image": "/img/sport/tampabayvssanjose.jpg",
+  "popular": true,
+  "address_id": "653501fa7da9c818ee46b3fe",
+  "event_admin": "65317b25cd427452610a570f"
+}
+]               

@@ -1,0 +1,54 @@
+{
+  "faq": [
+    {
+      "question": {
+        "cs": "Kde mohu zakoupit Dárkovou poukázku BlockTicket?",
+        "en": "Where can I purchase a BlockTicket Gift Card?"
+      },
+      "answer": {
+        "cs": "Dárkové poukázky BlockTicket můžete zakoupit online na oficiálních webových stránkách BlockTicket nebo prostřednictvím autorizovaných prodejců. Někdy jsou také k dispozici v kamenných prodejnách.",
+        "en": "BlockTicket Gift Cards can be purchased online on the official BlockTicket website or through authorized retailers. They may also be available at physical retail locations."
+      }
+    },
+    {
+      "question": {
+        "cs": "Co je e-Dárková poukázka?",
+        "en": "What is an e-Gift Card?"
+      },
+      "answer": {
+        "cs": "e-Dárková poukázka je digitální verze Dárkové poukázky, kterou lze zakoupit a odeslat elektronicky. Obdarovaný obdrží e-mail s informacemi o Dárkové poukázce a instrukcemi k jejímu použití.",
+        "en": "An e-Gift Card is a digital version of a Gift Card that can be purchased and sent electronically. The recipient will receive an email with information about the Gift Card and instructions on how to use it."
+      }
+    },
+    {
+      "question": {
+        "cs": "Kde mohu svou Dárkovou poukázku / e-Dárkovou poukázku uplatnit?",
+        "en": "Where can I redeem my Gift Card / e-Gift Card?"
+      },
+      "answer": {
+        "cs": "Dárkovou poukázku / e-Dárkovou poukázku můžete uplatnit při nákupu vstupenek na oficiálních webových stránkách BlockTicket nebo u autorizovaných prodejců, kteří akceptují Dárkové poukázky BlockTicket.",
+        "en": "You can redeem your Gift Card / e-Gift Card when purchasing tickets on the official BlockTicket website or at authorized retailers that accept BlockTicket Gift Cards."
+      }
+    },
+    {
+      "question": {
+        "cs": "Jak mohu svou Dárkovou poukázku / e-Dárkovou poukázku uplatnit na webových stránkách BlockTicket?",
+        "en": "How can I redeem my Gift Card / e-Gift Card on the BlockTicket website?"
+      },
+      "answer": {
+        "cs": "Při dokončení nákupu na webových stránkách BlockTicket vyberte možnost platby pomocí Dárkové poukázky / e-Dárkové poukázky a postupujte podle instrukcí k zadání údajů z vaší poukázky.",
+        "en": "When completing a purchase on the BlockTicket website, choose the option to pay with a Gift Card / e-Gift Card and follow the instructions to enter your card details."
+      }
+    },
+    {
+      "question": {
+        "cs": "Jak mohu zkontrolovat výši zůstatku na své Dárkové poukázce / e-Dárkové poukázce?",
+        "en": "How can I check the balance on my Gift Card / e-Gift Card?"
+      },
+      "answer": {
+        "cs": "Výši zůstatku na Dárkové poukázce / e-Dárkové poukázce můžete zkontrolovat přihlášením do svého účtu na oficiálních webových stránkách BlockTicket nebo kontaktováním zákaznické podpory.",
+        "en": "You can check the balance on your Gift Card / e-Gift Card by logging into your account on the official BlockTicket website or by contacting customer support."
+      }
+    }
+  ]
+}
