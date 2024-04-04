@@ -5,12 +5,17 @@ interface IResultRegistrationProps {
   result: boolean;
   handleResetRegistration: () => void;
 }
+enum Role {
+  Admin = 'Admin',
+  User = 'User'
+}
 interface IPersonalInfo {
   firstName: string;
   lastName: string;
   email: string;
   dateOfBirth: Date;
   gender: string;
+  role: Role;
 }
 interface IPasswordInfo {
   password: string;
@@ -30,6 +35,7 @@ interface IPersonalInfoProps {
   email: string;
   dateOfBirth: Date;
   gender: string;
+  role: Role;
   handleChange: (event: ChangeEvent<HTMLInputElement | { value: string; name?: string }>) => void;
   handleDateChange: (value) => void;
   handleNext: () => void;

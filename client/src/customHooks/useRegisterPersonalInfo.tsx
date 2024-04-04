@@ -1,7 +1,10 @@
 import { useState } from 'react';
 import { type UniqueEmailResult } from '../pages/Register';
 import { checkEmail } from '../api/users/user';
-
+enum Role {
+  Admin = 'Admin',
+  User = 'User'
+}
 export function useRegisterPersonalInfo(): any {
   const [warningMessage, setWarningMessage] = useState<string>('');
 
@@ -10,7 +13,8 @@ export function useRegisterPersonalInfo(): any {
     lastName: '',
     email: '',
     dateOfBirth: new Date(),
-    gender: ''
+    gender: '',
+    role: Role.User
   });
   const handleDateChange = (value: Date): void => {
     const dateWithoutTime = new Date(value);

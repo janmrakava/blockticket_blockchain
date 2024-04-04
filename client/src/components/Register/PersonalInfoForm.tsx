@@ -19,12 +19,17 @@ import cs from 'date-fns/locale/de';
 import { FormattedMessage } from 'react-intl';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
+enum Role {
+  Admin = 'Admin',
+  User = 'User'
+}
 const PersonalForm: React.FC<IPersonalInfoProps> = ({
   firstName,
   lastName,
   email,
   dateOfBirth,
   gender,
+  role,
   handleChange,
   handleDateChange,
   handleNext
@@ -100,13 +105,28 @@ const PersonalForm: React.FC<IPersonalInfoProps> = ({
               value={gender}
               onChange={handleChange}
               sx={{ background: '#4B4958', color: '#80797B' }}
-              name="gender"
-            >
+              name="gender">
               <MenuItem value={'Male'}>{appLanguage === 'cs' ? 'Muž' : 'Man'}</MenuItem>
               <MenuItem value={'Female'}>{appLanguage === 'cs' ? 'Žena' : 'Woman'}</MenuItem>
               <MenuItem value={'Not specified'}>
                 {appLanguage === 'cs' ? 'Neuvádět' : 'Do not specify'}
               </MenuItem>
+            </Select>
+          </FormControl>
+          <FormControl fullWidth>
+            <InputLabel id="demo-simple-select-label">
+              {appLanguage === 'cs' ? 'Role' : 'Role'}
+            </InputLabel>
+            <Select
+              labelId="demo-simple-select-label"
+              id="demo-simple-select"
+              value={role}
+              onChange={handleChange}
+              defaultValue={Role.User}
+              sx={{ background: '#4B4958', color: '#80797B' }}
+              name="role">
+              <MenuItem value={Role.User}>{appLanguage === 'cs' ? 'Uživatel' : 'User'}</MenuItem>
+              <MenuItem value={Role.Admin}>{appLanguage === 'cs' ? 'Admin' : 'Admin'}</MenuItem>
             </Select>
           </FormControl>
         </form>

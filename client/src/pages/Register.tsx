@@ -174,6 +174,7 @@ const Register: React.FC = () => {
               email={personalInfo.email}
               dateOfBirth={personalInfo.dateOfBirth}
               gender={personalInfo.gender}
+              role={personalInfo.role}
               handleChange={handleChangePersonalInfo}
               handleDateChange={handleDateChange}
               handleNext={handleNext}

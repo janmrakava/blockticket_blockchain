@@ -9,6 +9,7 @@ interface IPersonalInfo {
   email: string;
   dateOfBirth: Date;
   gender: string;
+  role: Role;
 }
 interface IPasswordInfo {
   password: string;
@@ -76,6 +77,7 @@ export const registerUser = async (
         firstName: personalInfo.firstName,
         lastName: personalInfo.lastName,
         email: personalInfo.email,
+        role: personalInfo.role,
         telNumber: passwordInfo.phoneNumber,
         password: passwordInfo.password,
         dateOfBirth: personalInfo.dateOfBirth,
