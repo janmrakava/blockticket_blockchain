@@ -8,6 +8,7 @@ import SupportImg from '../../../../../../public/icons_imgs/Support.png';
 import OrderImg from '../../../../../../public/icons_imgs/Orders.png';
 import TicketImg from '../../../../../../public/icons_imgs/Ticket.png';
 import FavoritesImg from '../../../../../../public/icons_imgs/Favorites.png';
+import AddEvent from '../../../../../../public/icons_imgs/AddEvent.png';
 
 import { Avatar, Box } from '@mui/material';
 
@@ -97,6 +98,12 @@ const UserClick: React.FC<IUserClickProps> = ({ menuShow, setMenuShow }) => {
         <DividerThinner />
         <UserClickItem text="support" imgSrc={SupportImg} />
         <DividerThinner />
+        {userData?.role === 'Admin' && (
+          <>
+            <UserClickItem text="createevent" imgSrc={AddEvent} />
+            <DividerThinner />
+          </>
+        )}
         <LogoutItem />
         <DividerThicker />
       </UserClickBox>

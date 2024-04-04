@@ -11,6 +11,7 @@
   "app.userClick.orders": "Previous orders",
   "app.userClick.mytickets": "My tickets",
   "app.userClick.favorites": "Favorites",
+  "app.userClick.createevent": "Create new event",
   "app.userClick.support": "Support",
   "app.userClick.logout": "Logout",
   "app.choosetop.czech": "Czechia",
@@ -205,7 +206,14 @@
   "app.transactionpage.price": "Price in CZK",
   "app.transactionpage.count": "Number of tickets",
   "app.transactionpage.state": "Order status",
-  "app.transactionpage.method": "Payment method"
+  "app.transactionpage.method": "Payment method",
+
+  "app.createevent.heading": "Create new event",
+  "app.createevent.buttontext": "Create new event!",
+  "app.createevent.baddate": "Bad date"
+
+
+
 
 
 }

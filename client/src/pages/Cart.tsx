@@ -39,8 +39,7 @@ const Cart: React.FC = () => {
         color: '#fff',
         maxWidth: '1228px',
         margin: '0 auto'
-      }}
-    >
+      }}>
       <Grid item xs={12} md={12} lg={12}>
         <Typography sx={{ fontSize: '40px', fontWeight: 900, padding: '20px' }}>
           <FormattedMessage id="app.cartpage.heading" />

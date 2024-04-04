@@ -13,6 +13,7 @@
   "app.userClick.favorites": "Oblíbené",
   "app.userClick.support": "Podpora",
   "app.userClick.logout": "Odhlásit se",
+  "app.userClick.createevent": "Vytvořit novou událost",
   "app.choosetop.czech": "Česká republika",
   "app.choosetop.slovak": "Slovenská republika",
   "app.reviewcart.heading": "Košík",
@@ -205,13 +206,10 @@
   "app.transactionpage.state": "Stav objednávky",
   "app.transactionpage.method": "Metoda platby",
 
-
-
-
-
-
-
-
   "app.mytickets.heading": "Moje vstupenky",
-  "app.previousorders.heading": "Minulé objednávky"
+  "app.previousorders.heading": "Minulé objednávky",
+
+  "app.createevent.heading": "Tvorba nové události",
+  "app.createevent.buttontext": "Vytvořit novou událost!",
+  "app.createevent.baddate": "Špatné datum"
 }

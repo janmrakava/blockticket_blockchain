@@ -22,6 +22,7 @@ import MyTickets from './MyTickets';
 import PreviousOrders from './PreviousOrders';
 import TicketInfo from './TicketInfo';
 import TransactionInfo from './TransactionInfo';
+import CreateEvent from './CreateEvent';
 
 const App: React.FC = () => {
   const theme = createTheme();
@@ -109,6 +110,14 @@ const App: React.FC = () => {
                 element={
                   <ProtectedRoute>
                     <TransactionInfo />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/createevent"
+                element={
+                  <ProtectedRoute>
+                    <CreateEvent />
                   </ProtectedRoute>
                 }
               />
