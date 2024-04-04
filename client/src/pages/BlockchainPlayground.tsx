@@ -2,7 +2,9 @@
 /* eslint-disable @typescript-eslint/strict-boolean-expressions */
 
 import { useSDK } from '@metamask/sdk-react';
+import { Grid } from '@mui/material';
 import { useState } from 'react';
+import Web3 from 'web3';
 
 /* eslint-disable @typescript-eslint/no-misused-promises */
 const BlockchainPlayground: React.FC = () => {
@@ -18,8 +20,40 @@ const BlockchainPlayground: React.FC = () => {
     }
   };
 
+  const handleSubmit = async (e: React.MouseEvent) => {
+    e.preventDefault();
+
+    if (connected && !connecting && provider) {
+      const web3 = new Web3(provider);
+
+      try {
+        const contract = new web3.eth.Contract(
+          eventjson,
+          '0x9C9AB70F993EEadcdCb4BF8c52254baA2EEF828e'
+        );
+
+        const events = await contract.methods.getAllEvents().call();
+        console.log(events);
+      } catch (error) {
+        console.error('Error calling contract method:', error);
+      }
+    } else {
+      console.error('MetaMask is not connected.');
+    }
+  };
+
   return (
-    <div className="App">
+    <Grid
+      container
+      sx={{
+        maxWidth: '1228px',
+        margin: '0 auto',
+        border: '1px solid red',
+        color: '#fff',
+        alignItems: 'center',
+        flexDirection: 'column',
+        gap: '50px'
+      }}>
       <button style={{ padding: 10, margin: 10 }} onClick={connect}>
         Connect
       </button>
@@ -32,7 +66,11 @@ const BlockchainPlayground: React.FC = () => {
           </>
         </div>
       )}
-    </div>
+
+      <button style={{ padding: 10, margin: 10 }} onClick={handleSubmit}>
+        Get info
+      </button>
+    </Grid>
   );
 };
 

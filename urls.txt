@@ -8,3 +8,6 @@ https://www.digitalocean.com/community/tutorials/how-to-use-aggregations-in-mong
 # Blockchain URLS
 https://blog.logrocket.com/interacting-smart-contracts-via-nodejs-api/
 
+
+
+https://medium.com/@erinlim555/building-a-web3-app-with-react-f85843db2f47

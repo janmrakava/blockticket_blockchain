@@ -13,7 +13,7 @@ import { Transaction } from '../models/Transactions';
 export const UserController = Router();
 
 UserController.post('/register', async (req: Request, res: Response) => {
-  const { firstName, lastName, email, dateOfBirth, gender, telNumber, password, address } = req.body;
+  const { firstName, lastName, email, dateOfBirth, role, gender, telNumber, password, address } = req.body;
 
   const genderToSend = gender === '' ? 'Not specified' : gender;
   try {
@@ -39,11 +39,10 @@ UserController.post('/register', async (req: Request, res: Response) => {
       date_registration: new Date(),
       date_of_birth: dateOfBirth,
       gender: genderToSend,
-      role: 'User',
+      role: role,
       last_login: null,
       avatar: null,
       prefered_language: 'cs',
-      favorite_events: Array,
       address: savedAddress._id,
     });
 

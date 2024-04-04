@@ -9,6 +9,7 @@
     "prettier": "prettier --write "
   },
   "dependencies": {
+    "@truffle/contract": "^4.6.31",
     "cors": "^2.8.5",
     "dotenv": "^16.3.1",
     "eslint-config-prettier": "^9.0.0",
@@ -16,7 +17,8 @@
     "ip": "^2.0.1",
     "mongodb": "^5.9.2",
     "mongoose": "^7.3.4",
-    "prettier": "^3.0.3"
+    "prettier": "^3.0.3",
+    "web3": "^4.6.0"
   },
   "devDependencies": {
     "@types/bcrypt": "^5.0.1",

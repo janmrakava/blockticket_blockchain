@@ -22,7 +22,6 @@ import MyTickets from './MyTickets';
 import PreviousOrders from './PreviousOrders';
 import TicketInfo from './TicketInfo';
 import TransactionInfo from './TransactionInfo';
-import BlockchainPlayground from './BlockchainPlayground';
 
 const App: React.FC = () => {
   const theme = createTheme();
@@ -113,7 +112,6 @@ const App: React.FC = () => {
                   </ProtectedRoute>
                 }
               />
-              <Route path="/blockchain" element={<BlockchainPlayground />} />
               <Route path="*" element={<NoMatch />} />
             </Routes>
           </Layout>

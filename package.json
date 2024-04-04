@@ -46,6 +46,7 @@
     "body-parser": "^1.20.2",
     "dayjs": "^1.11.10",
     "eslint-plugin-node": "^11.1.0",
+    "ethers": "^6.11.1",
     "express-validator": "^7.0.1",
     "i": "^0.3.7",
     "ip": "^2.0.1",
@@ -64,6 +65,7 @@
     "styled-components": "^6.1.0",
     "ts-node": "^10.9.1",
     "universal-cookie": "^7.1.0",
-    "vite": "^5.1.4"
+    "vite": "^5.1.4",
+    "web3": "^4.6.0"
   }
 }
