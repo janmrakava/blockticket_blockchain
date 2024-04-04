@@ -9,7 +9,6 @@
     "prettier": "prettier --write "
   },
   "dependencies": {
-    "@truffle/contract": "^4.6.31",
     "cors": "^2.8.5",
     "dotenv": "^16.3.1",
     "eslint-config-prettier": "^9.0.0",
