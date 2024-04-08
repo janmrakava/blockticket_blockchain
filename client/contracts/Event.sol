@@ -8,47 +8,27 @@ contract ContractEvent {
   struct Event {
     bytes32 eventID;
     string eventName;
-    string placeName;
-    string placeAddress;
-    string eventDescription;
-    string eventCategory;
-    address ownerOfEvent;
-    string imageSrc;
     uint64 dateOfEvent;
     uint64 numberOfTickets;
     uint64 ticketPrice;
-    bool exists;
   }
 
   event EventCreated(bytes32 eventID);
-
-  modifier isEventExists(bytes32 eventID) {
-    require(allEvents[eventID].exists, 'Event with this id does not exit!');
-    _;
-  }
 
   //function to create an event
   function createEvent(
     bytes32 _eventID,
     string memory _eventName,
-    string memory _placeName,
-    string memory _placeAddress,
-    string memory _eventDescription,
-    string memory _eventCategory,
-    string memory _imageSrc,
     uint64 _dateOfEvent,
     uint64 _numberOfTickets,
     uint64 _ticketPrice
   ) external {
-    require(!allEvents[_eventID].exists, 'Event with this ID already exists!');
-    require(_numberOfTickets <= 0, 'Cannot create an event without tickets');
-    allEvents[_eventID].exists = true;
+    for (uint i = 0; i < eventIdsList.length; i++) {
+      require(eventIdsList[i] != _eventID, 'Event with this ID already exists');
+    }
+
     allEvents[_eventID].eventName = _eventName;
-    allEvents[_eventID].placeName = _placeName;
-    allEvents[_eventID].placeAddress = _placeAddress;
-    allEvents[_eventID].eventDescription = _eventDescription;
-    allEvents[_eventID].eventCategory = _eventCategory;
-    allEvents[_eventID].imageSrc = _imageSrc;
+    allEvents[_eventID].eventID = _eventID;
     allEvents[_eventID].dateOfEvent = _dateOfEvent;
     allEvents[_eventID].numberOfTickets = _numberOfTickets;
     allEvents[_eventID].ticketPrice = _ticketPrice;
@@ -57,43 +37,31 @@ contract ContractEvent {
   }
 
   //function to get events IDs
-  function getEvents() external view returns (bytes32[] memory eventList) {
-    return eventIdsList;
+  function getEvents() external view returns (Event[] memory eventList) {
+    eventList = new Event[](eventIdsList.length);
+    for (uint i = 0; i < eventIdsList.length; i++) {
+      eventList[i] = allEvents[eventIdsList[i]];
+    }
+    return eventList;
   }
   //function to get info about event with given ID
   function getEventInfo(
-    bytes32 eventID
+    bytes32 _eventID
   )
     external
     view
-    isEventExists(eventID)
     returns (
-      bytes32 id,
+      bytes32 eventId,
       string memory eventName,
-      string memory placeName,
-      string memory placeAddress,
-      string memory eventDescription,
-      string memory eventCategory,
-      address ownerOfEvent,
-      string memory imageSrc,
       uint64 dateOfEvent,
       uint64 numberOfTickets,
       uint64 ticketPrice
     )
   {
-    Event memory _event = allEvents[eventID];
-    return (
-      _event.eventID,
-      _event.eventName,
-      _event.placeName,
-      _event.placeAddress,
-      _event.eventDescription,
-      _event.eventCategory,
-      _event.ownerOfEvent,
-      _event.imageSrc,
-      _event.dateOfEvent,
-      _event.numberOfTickets,
-      _event.ticketPrice
-    );
+    eventId = allEvents[_eventID].eventID;
+    eventName = allEvents[_eventID].eventName;
+    dateOfEvent = allEvents[_eventID].dateOfEvent;
+    numberOfTickets = allEvents[_eventID].numberOfTickets;
+    ticketPrice = allEvents[_eventID].ticketPrice;
   }
 }

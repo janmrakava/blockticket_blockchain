@@ -1,5 +1,5 @@
-const Event = artifacts.require("Event");
+const ContractEvent = artifacts.require("ContractEvent");
 
 module.exports = function (deployer) {
- deployer.deploy(Event);
+ deployer.deploy(ContractEvent);
 };
