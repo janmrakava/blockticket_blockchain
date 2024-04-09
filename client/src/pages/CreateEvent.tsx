@@ -2,7 +2,12 @@ import {
   Alert,
   Box,
   Button,
+  FormControl,
   Grid,
+  InputLabel,
+  MenuItem,
+  Select,
+  SelectChangeEvent,
   Snackbar,
   TextareaAutosize,
   TextField,
@@ -27,7 +32,6 @@ interface INewEvent {
   dateOfTheEvent: Date;
   numberOfTicket: number;
   placeName: string;
-  placeAddress: string;
   imageSrc?: string;
   description: string;
   category: string;
@@ -43,16 +47,19 @@ const CreateEvent: React.FC = () => {
     numberOfTicket: 0,
     dateOfTheEvent: new Date(),
     placeName: '',
-    placeAddress: '',
     imageSrc: '',
     description: '',
     category: '',
     popular: false
   });
 
-  const handleChange = (event: React.ChangeEvent<HTMLTextAreaElement>): void => {
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>): void => {
     const { value, name } = event.target;
     setnewEventInfo({ ...newEventInfo, [name]: value });
+  };
+  const handleCategoryChange = (event: SelectChangeEvent<string>): void => {
+    const { value } = event.target;
+    setnewEventInfo({ ...newEventInfo, category: value });
   };
   const handleDateChange = (value: Date | null): void => {
     if (value !== null) {
@@ -60,17 +67,13 @@ const CreateEvent: React.FC = () => {
       setnewEventInfo({ ...newEventInfo, dateOfTheEvent: date });
     }
   };
-  const handleCreateEvent = (): void => {
-    const todayDate = new Date();
-    if (todayDate > newEventInfo.dateOfTheEvent) {
-      setShowSnackBar(true);
-      setTimeout(() => {
-        setShowSnackBar(false);
-      }, 2500);
-    } else {
-      console.log('New Event Created! ', newEventInfo);
-    }
+  const dateToUint64 = (date: Date): bigint => {
+    const startDate = new Date('1970-01-01');
+    const secondsDiff = Math.floor((date.getTime() - startDate.getTime()) / 1000);
+    const uint64Value = BigInt(secondsDiff);
+    return uint64Value;
   };
+
   const theme = useTheme();
   const showLogo = useMediaQuery(theme.breakpoints.down('md'));
   // WEB3 PART
@@ -80,57 +83,62 @@ const CreateEvent: React.FC = () => {
   const contractABI = EventContract;
 
   const contractInstance = new web3.eth.Contract(contractABI.abi, contractAddress);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const handleCreateEvent = async (): Promise<void> => {
+    try {
+      const todayDate = new Date();
 
-  console.log('contractInstance', contractInstance);
-
-  const handleCallMethodFromContract = async () => {
-    /*  try {
-      const response = await contractInstance.methods
-        .createEvent(
-          '0x4b6172656c204b72796c00000000000000000000000000000000000000000000',
-          'EventName3'
-        )
-        .send({
-          from: '0xDBF015bBc43350151d639e7660669a0DA08Fc85c',
-          gas: '200000'
-        });
-      console.log(response);
+      if (todayDate > newEventInfo.dateOfTheEvent) {
+        setShowSnackBar(true);
+        setTimeout(() => {
+          setShowSnackBar(false);
+        }, 2500);
+      } else {
+        const eventID = convertToBytes32(newEventInfo.eventName);
+        const dateUINT64 = dateToUint64(newEventInfo.dateOfTheEvent);
+        // eslint-disable-next-line @typescript-eslint/await-thenable
+        const response = await contractInstance.methods
+          .createEvent(
+            eventID,
+            newEventInfo.eventName,
+            dateUINT64,
+            newEventInfo.numberOfTicket,
+            newEventInfo.ticketPrice,
+            newEventInfo.placeName,
+            newEventInfo.description,
+            newEventInfo.category,
+            newEventInfo.imageSrc
+          )
+          .send({
+            from: '0xDBF015bBc43350151d639e7660669a0DA08Fc85c',
+            gas: '300000'
+          });
+        console.log(response);
+      }
     } catch (error) {
       console.log('Event with this ID already exists');
-    } */
-
-    const response = await contractInstance.methods
-      .createEvent(
-        '0x4596656e746e616d653900000000000000000000000000000000000000000000',
-        'EventName1',
-        1735644800,
-        100,
-        499,
-        '02 Aréna',
-        'Event Description',
-        'Sport',
-        'EventImage'
-      )
-      .send({
-        from: '0xDBF015bBc43350151d639e7660669a0DA08Fc85c',
-        gas: '300000'
-      });
-    console.log(response);
+    }
   };
 
-  const handleGetEventsFromFromContract = async (): void => {
+  console.log('contractInstance', contractInstance);
+  const convertToBytes32 = (str: string): string => {
+    const bytes32Value = web3.utils.utf8ToHex(str).padEnd(66, '0'); // 66 znaků (64 + '0x')
+    return bytes32Value;
+  };
+
+  const handleGetEventsFromFromContract = async (): Promise<void> => {
     const response = await contractInstance.methods.getEvents().call();
     console.log(response);
   };
 
-  const handleGetInfoOneEvent = async (): void => {
+  const handleGetInfoOneEvent = async (): Promise<void> => {
     const response = await contractInstance.methods
       .getEventInfo('0x4576656e746e616d653900000000000000000000000000000000000000000000')
       .call();
     console.log(response);
   };
 
-  const getEventsByCategory = async (): void => {
+  const getEventsByCategory = async (): Promise<void> => {
     const response = await contractInstance.methods.getEventsByCategory('Music').call();
     console.log(response);
   };
@@ -217,22 +225,24 @@ const CreateEvent: React.FC = () => {
                   padding: '10px'
                 }}
               />
-              <TextField
-                label={
-                  appLanguage === 'cs'
-                    ? 'Kategorie (Music, Art, Sport, Family, VIP) '
-                    : 'Category (Music, Art, Sport, Family, VIP)'
-                }
-                variant="filled"
-                value={newEventInfo.category}
-                name="category"
-                onChange={handleChange}
-                sx={{ background: '#4B4958', borderRadius: '5px' }}
-                InputProps={{
-                  style: { color: '#80797B' }
-                }}
-                fullWidth
-              />
+              <FormControl fullWidth>
+                <InputLabel id="demo-simple-select-label">
+                  {appLanguage === 'cs' ? 'Kategorie' : 'Category'}
+                </InputLabel>
+                <Select
+                  labelId="demo-simple-select-label"
+                  id="demo-simple-select"
+                  value={newEventInfo.category}
+                  onChange={handleCategoryChange}
+                  sx={{ background: '#4B4958', color: '#80797B' }}
+                  name="category">
+                  <MenuItem value={'Music'}>{appLanguage === 'cs' ? 'Hudba' : 'Music'}</MenuItem>
+                  <MenuItem value={'Sport'}>{appLanguage === 'cs' ? 'Sport' : 'Sport'}</MenuItem>
+                  <MenuItem value={'Family'}>{appLanguage === 'cs' ? 'Rodiny' : 'Family'}</MenuItem>
+                  <MenuItem value={'VIP'}>{appLanguage === 'cs' ? 'VIP' : 'VIP'}</MenuItem>
+                  <MenuItem value={'Art'}>{appLanguage === 'cs' ? 'Kultura' : 'Art'}</MenuItem>
+                </Select>
+              </FormControl>
               <DatePicker
                 label={appLanguage === 'cs' ? 'Datum události' : 'Date of the event'}
                 name="dateOfBirth"
@@ -285,18 +295,7 @@ const CreateEvent: React.FC = () => {
                 }}
                 fullWidth
               />
-              <TextField
-                label={appLanguage === 'cs' ? 'Adresa místa konání' : 'Address of the venue'}
-                variant="filled"
-                value={newEventInfo.placeAddress}
-                name="placeAddress"
-                onChange={handleChange}
-                sx={{ background: '#4B4958', borderRadius: '5px' }}
-                InputProps={{
-                  style: { color: '#80797B' }
-                }}
-                fullWidth
-              />
+
               <TextField
                 label={appLanguage === 'cs' ? 'Volitelný obrázek' : 'Optional image'}
                 variant="filled"
@@ -310,13 +309,7 @@ const CreateEvent: React.FC = () => {
                 fullWidth
               />
             </form>
-            <Button
-              variant="contained"
-              // eslint-disable-next-line @typescript-eslint/no-misused-promises
-              onClick={handleCallMethodFromContract}
-              sx={{ width: '100%', marginTop: '20px' }}>
-              <FormattedMessage id="app.createevent.buttontext" />
-            </Button>
+
             <Button
               variant="contained"
               // eslint-disable-next-line @typescript-eslint/no-misused-promises
@@ -337,6 +330,13 @@ const CreateEvent: React.FC = () => {
               onClick={getEventsByCategory}
               sx={{ width: '100%', marginTop: '20px' }}>
               Event dle kategorie
+            </Button>
+            <Button
+              variant="contained"
+              // eslint-disable-next-line @typescript-eslint/no-misused-promises
+              onClick={handleCreateEvent}
+              sx={{ width: '100%', marginTop: '20px' }}>
+              <FormattedMessage id="app.createevent.buttontext" />
             </Button>
           </Grid>
         </Box>
