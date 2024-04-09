@@ -76,13 +76,13 @@ const CreateEvent: React.FC = () => {
   // WEB3 PART
 
   const web3 = new Web3(new Web3.providers.HttpProvider('http://127.0.0.1:8545'));
-  const contractAddress = '0x8Ddeff5A9Fc27f0a029d3EEE85ef29b107ED36eC';
+  const contractAddress = '0xAceb4700e4A5C91Eed722277dFe0B1463708e80E';
   const contractABI = EventContract;
 
   const contractInstance = new web3.eth.Contract(contractABI.abi, contractAddress);
 
   console.log('contractInstance', contractInstance);
-  /*
+
   const handleCallMethodFromContract = async () => {
     /*  try {
       const response = await contractInstance.methods
@@ -98,43 +98,42 @@ const CreateEvent: React.FC = () => {
     } catch (error) {
       console.log('Event with this ID already exists');
     } */
-  /*
+
     const response = await contractInstance.methods
       .createEvent(
-        '0x4576656e746e616d650000000000000000000000000000000000000000000000',
-        'EventName',
+        '0x4596656e746e616d653900000000000000000000000000000000000000000000',
+        'EventName1',
         1735644800,
         100,
-        499
+        499,
+        '02 Aréna',
+        'Event Description',
+        'Sport',
+        'EventImage'
       )
       .send({
         from: '0xDBF015bBc43350151d639e7660669a0DA08Fc85c',
-        gas: '200000'
+        gas: '300000'
       });
     console.log(response);
-  */
+  };
 
-  /*  const handleCallMethodFromContract = async (): any => {
+  const handleGetEventsFromFromContract = async (): void => {
     const response = await contractInstance.methods.getEvents().call();
     console.log(response);
-  }; */
-  const handleCallMethodFromContract = async (): any => {
+  };
+
+  const handleGetInfoOneEvent = async (): void => {
     const response = await contractInstance.methods
-      .getEventInfo('0x4b6172656c204b72796c00000000000000000000000000000000000000000000')
+      .getEventInfo('0x4576656e746e616d653900000000000000000000000000000000000000000000')
       .call();
     console.log(response);
   };
 
-  async function getEventHistory(): void {
-    const events = await contractInstance.getPastEvents('EventCreated', {
-      fromBlock: 0, // Od jakého bloku získávat události
-      toBlock: 'latest' // Do jakého bloku získávat události (nejnovější)
-    });
-
-    // Zde zpracujte získané události dle potřeby
-    console.log(events);
-  }
-
+  const getEventsByCategory = async (): void => {
+    const response = await contractInstance.methods.getEventsByCategory('Music').call();
+    console.log(response);
+  };
   return (
     <LocalizationProvider dateAdapter={AdapterDateFns} adapterLocale={cs}>
       <Grid
@@ -321,9 +320,23 @@ const CreateEvent: React.FC = () => {
             <Button
               variant="contained"
               // eslint-disable-next-line @typescript-eslint/no-misused-promises
-              onClick={getEventHistory}
+              onClick={handleGetEventsFromFromContract}
               sx={{ width: '100%', marginTop: '20px' }}>
-              <FormattedMessage id="app.createevent.buttontext" />
+              Všechny eventy
+            </Button>
+            <Button
+              variant="contained"
+              // eslint-disable-next-line @typescript-eslint/no-misused-promises
+              onClick={handleGetInfoOneEvent}
+              sx={{ width: '100%', marginTop: '20px' }}>
+              Jeden Event s ID
+            </Button>
+            <Button
+              variant="contained"
+              // eslint-disable-next-line @typescript-eslint/no-misused-promises
+              onClick={getEventsByCategory}
+              sx={{ width: '100%', marginTop: '20px' }}>
+              Event dle kategorie
             </Button>
           </Grid>
         </Box>
