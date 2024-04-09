@@ -7,7 +7,7 @@ import {
   InputLabel,
   MenuItem,
   Select,
-  SelectChangeEvent,
+  type SelectChangeEvent,
   Snackbar,
   TextareaAutosize,
   TextField,
@@ -19,12 +19,13 @@ import { DatePicker, LocalizationProvider } from '@mui/x-date-pickers';
 import { FormattedMessage } from 'react-intl';
 import { useSelector } from 'react-redux';
 import { type RootState } from './store';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import cs from 'date-fns/locale/de';
 import { RegisterLogo } from '../components/Register/RegisterLogo';
 import Web3 from 'web3';
 import EventContract from '../../build/contracts/ContractEvent.json';
+import { useSDK } from '@metamask/sdk-react';
 
 interface INewEvent {
   eventName: string;
@@ -41,6 +42,8 @@ interface INewEvent {
 const CreateEvent: React.FC = () => {
   const appLanguage = useSelector((state: RootState) => state.language.appLanguage);
   const [showSnackBar, setShowSnackBar] = useState<boolean>(false);
+  const [account, setAccount] = useState<string>();
+  const { sdk } = useSDK();
   const [newEventInfo, setnewEventInfo] = useState<INewEvent>({
     eventName: '',
     ticketPrice: 0,
@@ -52,6 +55,19 @@ const CreateEvent: React.FC = () => {
     category: '',
     popular: false
   });
+  useEffect(() => {
+    const connect = async (): Promise<void> => {
+      try {
+        const accounts = await sdk?.connect();
+        setAccount(accounts?.[0]);
+      } catch (err) {
+        console.warn('failed to connect..', err);
+      }
+    };
+
+    // eslint-disable-next-line @typescript-eslint/no-confusing-void-expression
+    void connect();
+  }, []);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>): void => {
     const { value, name } = event.target;
@@ -96,6 +112,7 @@ const CreateEvent: React.FC = () => {
       } else {
         const eventID = convertToBytes32(newEventInfo.eventName);
         const dateUINT64 = dateToUint64(newEventInfo.dateOfTheEvent);
+
         // eslint-disable-next-line @typescript-eslint/await-thenable
         const response = await contractInstance.methods
           .createEvent(
@@ -110,7 +127,7 @@ const CreateEvent: React.FC = () => {
             newEventInfo.imageSrc
           )
           .send({
-            from: '0xDBF015bBc43350151d639e7660669a0DA08Fc85c',
+            from: account,
             gas: '300000'
           });
         console.log(response);
