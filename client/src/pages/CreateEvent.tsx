@@ -25,6 +25,7 @@ import cs from 'date-fns/locale/de';
 import { RegisterLogo } from '../components/Register/RegisterLogo';
 import Web3 from 'web3';
 import EventContract from '../../build/contracts/ContractEvent.json';
+import EventContractAddress from '../../contractsAddress/EventContractAddress.json';
 import { useSDK } from '@metamask/sdk-react';
 
 interface INewEvent {
@@ -95,10 +96,9 @@ const CreateEvent: React.FC = () => {
   // WEB3 PART
 
   const web3 = new Web3(new Web3.providers.HttpProvider('http://127.0.0.1:8545'));
-  const contractAddress = '0xAceb4700e4A5C91Eed722277dFe0B1463708e80E';
   const contractABI = EventContract;
 
-  const contractInstance = new web3.eth.Contract(contractABI.abi, contractAddress);
+  const contractInstance = new web3.eth.Contract(contractABI.abi, EventContractAddress.address);
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const handleCreateEvent = async (): Promise<void> => {
     try {
@@ -137,24 +137,23 @@ const CreateEvent: React.FC = () => {
     }
   };
 
-  console.log('contractInstance', contractInstance);
   const convertToBytes32 = (str: string): string => {
-    const bytes32Value = web3.utils.utf8ToHex(str).padEnd(66, '0'); // 66 znaků (64 + '0x')
+    const bytes32Value = web3.utils.utf8ToHex(str).padEnd(66, '0');
     return bytes32Value;
   };
-
+  // EXAMPLE METHOD
   const handleGetEventsFromFromContract = async (): Promise<void> => {
     const response = await contractInstance.methods.getEvents().call();
     console.log(response);
   };
-
+  // EXAMPLE METHOD
   const handleGetInfoOneEvent = async (): Promise<void> => {
     const response = await contractInstance.methods
       .getEventInfo('0x4576656e746e616d653900000000000000000000000000000000000000000000')
       .call();
     console.log(response);
   };
-
+  // EXAMPLE METHOD
   const getEventsByCategory = async (): Promise<void> => {
     const response = await contractInstance.methods.getEventsByCategory('Music').call();
     console.log(response);

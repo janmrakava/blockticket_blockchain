@@ -5,6 +5,7 @@ contract ContractEvent {
   mapping(bytes32 => Event) public allEvents;
   bytes32[] public eventIdsList;
 
+  // All attributes for the Events (Maybe i need to add number of sell tickets?)
   struct Event {
     bytes32 eventID;
     string eventName;
@@ -50,7 +51,11 @@ contract ContractEvent {
     emit EventCreated(_eventID);
   }
 
-  //function to get events IDs
+  function getEventIDs() external view returns (bytes32[] memory eventList) {
+    return eventIdsList;
+  }
+
+  //function to get all events
   function getEvents() external view returns (Event[] memory eventList) {
     eventList = new Event[](eventIdsList.length);
     for (uint i = 0; i < eventIdsList.length; i++) {
@@ -88,23 +93,27 @@ contract ContractEvent {
     eventOwner = allEvents[_eventID].eventOwner;
     eventImage = allEvents[_eventID].eventImage;
   }
-
+  //function to get events by selected category
   function getEventsByCategory(string memory _category) external view returns (Event[] memory) {
     uint256 count = 0;
     for (uint256 i = 0; i < eventIdsList.length; i++) {
-        if (keccak256(bytes(allEvents[eventIdsList[i]].eventCategory)) == keccak256(bytes(_category))) {
-            count++;
-        }
+      if (
+        keccak256(bytes(allEvents[eventIdsList[i]].eventCategory)) == keccak256(bytes(_category))
+      ) {
+        count++;
+      }
     }
     Event[] memory categoryEvents = new Event[](count);
     uint256 index = 0;
 
     for (uint256 j = 0; j < eventIdsList.length; j++) {
-        if (keccak256(bytes(allEvents[eventIdsList[j]].eventCategory)) == keccak256(bytes(_category))) {
-            categoryEvents[index] = allEvents[eventIdsList[j]];
-            index++;
-        }
+      if (
+        keccak256(bytes(allEvents[eventIdsList[j]].eventCategory)) == keccak256(bytes(_category))
+      ) {
+        categoryEvents[index] = allEvents[eventIdsList[j]];
+        index++;
+      }
     }
     return categoryEvents;
-}
+  }
 }
