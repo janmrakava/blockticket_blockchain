@@ -1,18 +1,18 @@
 /* eslint-disable react/prop-types */
 import { Box, Grid, Typography } from '@mui/material';
 import { memo } from 'react';
-import { countDate, countTime } from '../../utils/dateFunctions';
 import { EventInfoBoxText } from '../../pages/OneEvent/styled';
+import { convertToDate, countDate } from '../../utils/function';
 
 const GetTicketsEventBanner: React.FC<EventBannerProps> = ({
   eventImg,
   eventName,
   date,
-  place,
-  city
+  place
 }) => {
-  const formatDate = countDate(date);
-  const formatTime = countTime(date);
+  const convertedDate = convertToDate(date);
+  const dateToRender = countDate(convertedDate);
+
   return (
     <>
       <Grid item xs={12} md={6} lg={6}>
@@ -42,17 +42,17 @@ const GetTicketsEventBanner: React.FC<EventBannerProps> = ({
         </Typography>
         <EventInfoBoxText>
           <img src="/icons_imgs/Location.png" style={{ height: '25px' }} />
-          <Typography>
-            {city}, {place}
-          </Typography>
+          <Typography>{place}</Typography>
         </EventInfoBoxText>
         <EventInfoBoxText>
           <img src="/icons_imgs/Calendar.png" style={{ height: '25px' }} />
-          <Typography>{formatDate}</Typography>
+          <Typography>{dateToRender}</Typography>
         </EventInfoBoxText>
         <EventInfoBoxText>
           <img src="/icons_imgs/Time.png" style={{ height: '25px' }} />
-          <Typography>{formatTime}</Typography>
+          <Typography>
+            {convertedDate.getHours()}:{convertedDate.getMinutes()}
+          </Typography>
         </EventInfoBoxText>
       </Grid>
     </>

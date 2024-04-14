@@ -12,7 +12,7 @@ import {
 } from './styled';
 import { useSelector } from 'react-redux';
 import { type RootState } from '../../../../../pages/store';
-import { countDate } from '../../../../../utils/dateFunctions';
+import { countDate } from '../../../../../utils/function';
 
 const CartItem: React.FC<ICartItemProps> = ({ artist, imgSrc, date, quantity, ticketType }) => {
   const appLanguage = useSelector((state: RootState) => state.language.appLanguage);

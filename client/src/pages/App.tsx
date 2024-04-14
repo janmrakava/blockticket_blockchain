@@ -9,7 +9,7 @@ import Layout from '../components/Layout';
 import Support from './Support';
 import SupportSection from '../components/Support/SupportSection';
 import Event from './OneEvent/Event';
-import GetTicketsPage from './GetTicketsPage';
+import GetTicketsPage from './GetTickets/GetTicketsPage';
 import Cart from './Cart';
 import Checkout from './Checkout';
 import OrderComplete from './OrderComplete';

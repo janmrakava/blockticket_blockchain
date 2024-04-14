@@ -56,7 +56,7 @@ const Event: React.FC = () => {
       setRoute(decideRoute);
     }
   }, []);
-
+  console.log(event);
   return (
     <Grid container sx={{ color: 'white' }}>
       {isLoading ? (
@@ -112,7 +112,7 @@ const Event: React.FC = () => {
                 userFavoriteEvents={userData ? userData.favorite_event : []}
                 userLoggedIn={userLoggedIn}
               />
-              <GetTickets id={event.eventID} />
+              <GetTickets id={event.eventId} />
             </Grid>
             <Grid
               item
