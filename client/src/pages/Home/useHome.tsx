@@ -8,7 +8,6 @@ import { useSelector } from 'react-redux';
 import Cookies from 'universal-cookie';
 import { jwtDecode } from 'jwt-decode';
 import { getUserInfo, type IUserData } from '../../api/users/user';
-import { getAllEventsFromContract } from '../../utils/smartContractFunctions/EventContract';
 
 export interface DecodedToken {
   userId: string;
@@ -56,6 +55,7 @@ export const useHome = (): any => {
     activeButton,
     handleChangeActiveButton,
     userData,
-    userLoggedIn
+    userLoggedIn,
+    appLanguage
   };
 };

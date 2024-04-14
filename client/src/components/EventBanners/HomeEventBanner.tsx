@@ -20,7 +20,7 @@ import InFavorite from '../../../public/icons_imgs/InFavorite.png';
 /* import FavoritesDark from '../../../public/icons_imgs/FavoritesDark.png';
  */
 import { FormattedMessage } from 'react-intl';
-import { convertToDate, countDate, countTickets } from '../../utils/function';
+import { convertToDate, countDate } from '../../utils/function';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { addToFavorites } from '../../api/users/user';
@@ -76,12 +76,10 @@ const HomeEventBanner: React.FC<IEventProps> = ({
     navigate(`/event/${id}`);
   };
   const dateToConvert = date.toString();
-  console.log(dateToConvert);
   const convertedDate = convertToDate(dateToConvert);
-  console.log(convertedDate);
 
   const newDate = countDate(convertedDate);
-  const ticketSoldUpdated = countTickets(ticketsSold);
+  const ticketSoldUpdated = ticketsSold.toString();
 
   return (
     <MobileEventBannerGrid

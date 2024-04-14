@@ -9,7 +9,7 @@ import { useHome } from './useHome';
 import { getAllEventsFromContract } from '../../utils/smartContractFunctions/EventContract';
 import { CircularProgress, Grid } from '@mui/material';
 import HomeEventBanner from '../../components/EventBanners/HomeEventBanner';
-interface IEvent {
+export interface IEventContract {
   dateOfEvent: bigint;
   eventCategory: string;
   eventDescription: string;
@@ -24,7 +24,7 @@ interface IEvent {
 
 const Home: React.FC = () => {
   const { activeButton, handleChangeActiveButton, userData, userLoggedIn } = useHome();
-  const [events, setEvents] = useState<IEvent[]>();
+  const [events, setEvents] = useState<IEventContract[]>();
   const [error, setError] = useState(false);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   useEffect(() => {
@@ -76,9 +76,9 @@ const Home: React.FC = () => {
             );
           })
         )}
+        {error && <div>Něco se nepovedlo...</div>}
       </Grid>
       <FavoriteBanner />
-
       <MobileAppBanner />
       <BuyMoreBanner />
     </>

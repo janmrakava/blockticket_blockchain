@@ -15,7 +15,7 @@ import Checkout from './Checkout';
 import OrderComplete from './OrderComplete';
 import Login from './Login';
 import Register from './Register';
-import EventsByCategory from './EventsByCategory';
+import EventsByCategory from './EventCategory/EventsByCategory';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoutes';
 import Favorites from './Favorites';
 import MyTickets from './MyTickets';

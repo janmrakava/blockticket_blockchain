@@ -31,8 +31,8 @@ export const getEventInfo = async (eventID: string): Promise<any> => {
   return response;
 };
 // METHOD TO GET INFO ABOUT EVENT WITH CATEGORY
-export const getEventsByCategory = async (): Promise<any> => {
-  const response = await contractInstance.methods.getEventsByCategory('Music').call();
+export const getEventsByCategory = async (category: string): Promise<any> => {
+  const response = await contractInstance.methods.getEventsByCategory(category).call();
   return response;
 };
 
