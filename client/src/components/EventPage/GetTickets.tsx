@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import { FormattedMessage } from 'react-intl';
-import { GetTicketsContainer } from '../OneEvent/styled';
+import { GetTicketsContainer } from '../../pages/OneEvent/styled';
 import { useNavigate } from 'react-router-dom';
 
 interface IGetTicketsProps {

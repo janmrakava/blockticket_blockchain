@@ -1,43 +1,36 @@
 /* eslint-disable @typescript-eslint/strict-boolean-expressions */
 import { Box, CircularProgress, Grid } from '@mui/material';
-import { useEvent } from '../../customHooks/useEvent';
+import { useEvent } from './useEvent';
 
-import EventHeading from '../EventPage/EventHeading';
-import BreadcrumbNavigation from '../EventPage/BreadcrumbNavigation';
-import EventInfo from '../EventPage/EventInfo';
-import GetTickets from '../EventPage/GetTickets';
-import EventDescription from '../EventPage/EventDescription';
-import NoMatch from '../NoMatch';
+import EventHeading from '../../components/EventPage/EventHeading';
+import BreadcrumbNavigation from '../../components/EventPage/BreadcrumbNavigation';
+import EventInfo from '../../components/EventPage/EventInfo';
+import GetTickets from '../../components/EventPage/GetTickets';
+import EventDescription from '../../components/EventPage/EventDescription';
 import { FormattedMessage } from 'react-intl';
 import { EventDescriptionDivider, SimilarEventsHeading } from './styled';
-import SimilarEventBanner from '../EventPage/SimilarEventBanner';
+import SimilarEventBanner from '../../components/EventPage/SimilarEventBanner';
 import { useEffect, useState } from 'react';
+import { type IEventContract } from '../Home/Home';
 
 const Event: React.FC = () => {
   const {
-    eventData,
-    eventQueryError,
-    eventQueryIsLoading,
-    appLanguage,
-    similarEventData,
-    eventsByCategoryError,
-    eventsByCatagoryIsLoading,
     userLoggedIn,
-    userData
+    userData,
+    event,
+    isLoading,
+    error,
+    similarEvents,
+    isLoadingSimilar,
+    errorSimilar
   } = useEvent();
 
-  // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
-  if (eventQueryError) {
-    return <NoMatch />;
-  }
+  const threeSimilar = similarEvents?.slice(0, 6);
 
-  const threeSimilar = similarEventData?.slice(6, 9);
-
-  const renderSimilar = threeSimilar?.map((item: IEvent, index: number) => {
-    const lang = appLanguage === 'cs' ? 'cs' : 'en';
+  const renderSimilar = threeSimilar?.map((event: IEventContract, index: number) => {
     return (
       <Grid item xs={12} md={4} lg={4} key={index}>
-        <SimilarEventBanner artist={item.name[lang]} image={item.image} id={item._id} />
+        <SimilarEventBanner artist={event.eventName} image={event.eventImage} id={event.eventID} />
       </Grid>
     );
   });
@@ -45,19 +38,19 @@ const Event: React.FC = () => {
   const [route, setRoute] = useState<string>('');
 
   useEffect(() => {
-    if (eventData) {
+    if (event) {
       const decideRoute =
-        eventData.category_of_event === 'Sport'
+        event.eventCategory === 'Sport'
           ? 'sport'
-          : eventData.category_of_event === 'Music'
+          : event.eventCategory === 'Music'
           ? 'music'
-          : eventData.category_of_event === 'Family'
+          : event.eventCategory === 'Family'
           ? 'family'
-          : eventData.category_of_event === 'Art'
+          : event.eventCategory === 'Art'
           ? 'art'
-          : eventData.category_of_event === 'Deals'
+          : event.eventCategory === 'Deals'
           ? 'deals'
-          : eventData.category_of_event === 'VIP'
+          : event.eventCategory === 'VIP'
           ? 'vip'
           : '';
       setRoute(decideRoute);
@@ -66,20 +59,20 @@ const Event: React.FC = () => {
 
   return (
     <Grid container sx={{ color: 'white' }}>
-      {(eventQueryIsLoading as boolean) ? (
+      {isLoading ? (
         <CircularProgress />
       ) : (
         <>
-          <EventHeading eventName={eventData.name[appLanguage]} />
+          <EventHeading eventName={event.eventName} />
           <BreadcrumbNavigation
             items={[
               { to: '/', label: 'home' },
-              { to: '/events', label: 'events' },
+              { to: '/event', label: 'events' },
               {
-                to: `/events/${route}`,
-                label: `${eventData.category_of_event}`
+                to: `/event/${route}`,
+                label: `${event.eventCategory}`
               },
-              { to: `/event/${eventData._id}`, label: `${eventData.name[appLanguage]}` }
+              { to: `/event/${event.eventID}`, label: `${event.eventName}` }
             ]}
           />
           <Grid
@@ -102,25 +95,24 @@ const Event: React.FC = () => {
                   marginTop: '20px'
                 }}>
                 <img
-                  src={`${eventData.image}`}
-                  alt={`Artist ${eventData.name[appLanguage]}`}
+                  src={`${event.eventImage}`}
+                  alt={`Artist ${event.eventName}`}
                   style={{ maxWidth: '100%', maxHeight: '100%' }}
                 />
               </Box>
             </Grid>
             <Grid item xs={12} md={4} lg={5} sx={{ marginTop: '20px' }}>
               <EventInfo
-                artist={eventData.name[appLanguage]}
-                eventId={eventData._id}
-                city={eventData.address_id.city}
-                location={eventData.address_id.name_of_place}
-                date={eventData.date_of_the_event}
-                prices={eventData.ticket_types}
+                eventName={event.eventName}
+                eventID={event.eventID}
+                placeName={event.placeName}
+                dateOfEvent={event.dateOfEvent}
+                ticketPrice={event.ticketPrice}
                 userId={userData ? userData._id : ''}
-                userFavoriteEvents={userData ? userData.favorite_events : []}
+                userFavoriteEvents={userData ? userData.favorite_event : []}
                 userLoggedIn={userLoggedIn}
               />
-              <GetTickets id={eventData._id} />
+              <GetTickets id={event.eventID} />
             </Grid>
             <Grid
               item
@@ -135,8 +127,9 @@ const Event: React.FC = () => {
                 justifyContent: 'center'
               }}>
               <EventDescription
-                description={eventData.description[appLanguage]}
-                tickets={eventData.ticket_types}
+                description={event.eventDescription}
+                ticketPrice={event.ticketPrice}
+                numberOfTickets={event.numberOfTickets}
               />
             </Grid>
           </Grid>
@@ -147,9 +140,9 @@ const Event: React.FC = () => {
             <EventDescriptionDivider />
           </Grid>
           <Grid container>
-            {eventsByCategoryError ? (
+            {errorSimilar ? (
               <p>Error, sorry :( </p>
-            ) : eventsByCatagoryIsLoading ? (
+            ) : isLoadingSimilar ? (
               <CircularProgress />
             ) : (
               renderSimilar
@@ -161,6 +154,7 @@ const Event: React.FC = () => {
           </Grid>
         </>
       )}
+      {error && <div>Něco se nepovedlo...</div>}
     </Grid>
   );
 };

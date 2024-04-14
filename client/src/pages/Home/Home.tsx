@@ -40,7 +40,6 @@ const Home: React.FC = () => {
     };
     void fetchEvents();
   }, []);
-  console.log(events);
 
   return (
     <>

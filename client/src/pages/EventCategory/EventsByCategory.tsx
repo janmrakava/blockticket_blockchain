@@ -14,8 +14,6 @@ export interface DecodedToken {
 const EventsByCategory: React.FC = () => {
   const { category, events, isLoading, error, userData, userLoggedIn } = useEventsByCategory();
 
-  console.log(events);
-
   return (
     <Grid
       container

@@ -43,7 +43,7 @@ export interface IEventProps {
 const HomeEventBanner: React.FC<IEventProps> = ({
   eventId,
   userId,
-  name = 'Unknown name',
+  name,
   date,
   place,
   popular,

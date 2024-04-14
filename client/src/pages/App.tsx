@@ -8,7 +8,7 @@ import Home from './Home/Home';
 import Layout from '../components/Layout';
 import Support from './Support';
 import SupportSection from '../components/Support/SupportSection';
-import Event from '../components/OneEvent/Event';
+import Event from './OneEvent/Event';
 import GetTicketsPage from './GetTicketsPage';
 import Cart from './Cart';
 import Checkout from './Checkout';
@@ -36,10 +36,11 @@ const App: React.FC = () => {
             <Routes>
               <Route path="/events" element={<Events />} />
               <Route path="/events/:category" element={<EventsByCategory />} />
+              <Route path="/event/:eventId" element={<Event />} />
+
               <Route path="/" element={<Home />} />
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Register />} />
-              <Route path="/event/:eventId" element={<Event />} />
               <Route path="/support" element={<Support />} />
               <Route path="/support/:section" element={<SupportSection />} />
               <Route
