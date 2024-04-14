@@ -121,6 +121,7 @@ const EventsByCategory: React.FC = () => {
           })
         )}
         {error && <div>Něco se nepovedlo...</div>}
+        {events?.length === 0 && <div>Žádné události v dané kategorii neexistují.</div>}
       </Grid>
     </Grid>
   );
