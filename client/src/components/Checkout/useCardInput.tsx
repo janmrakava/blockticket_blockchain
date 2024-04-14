@@ -6,7 +6,7 @@ import { createNewTicket } from '../../api/ticket/ticket';
 import { type Ticket } from '../../utils/interfaces';
 import Cookies from 'universal-cookie';
 import { jwtDecode } from 'jwt-decode';
-import { type DecodedToken } from '../../customHooks/useHome';
+import { type DecodedToken } from '../../pages/Home/useHome';
 import { clearCart } from '../../features/cartSlice';
 
 export function useCardInput(

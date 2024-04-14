@@ -10,10 +10,8 @@ const contractInstance = new web3.eth.Contract(contractABI.abi, EventContractAdd
 
 // METHOD TO CONVERT DATE TO UINT64 VALUE
 export const dateToUint64 = (date: Date): bigint => {
-  const startDate = new Date('1970-01-01');
-  const secondsDiff = Math.floor((date.getTime() - startDate.getTime()) / 1000);
-  const uint64Value = BigInt(secondsDiff);
-  return uint64Value;
+  const uint64Value = date.getTime();
+  return uint64Value as unknown as bigint;
 };
 
 // METHOD TO CREATE EVENTID IN BYTES32 FORMAT

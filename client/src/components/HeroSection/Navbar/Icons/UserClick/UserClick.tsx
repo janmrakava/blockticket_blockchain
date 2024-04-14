@@ -24,7 +24,7 @@ import LogoutItem from './LogoutItem';
 import Cookies from 'universal-cookie';
 import { jwtDecode } from 'jwt-decode';
 import { useGetUserInfo } from '../../../../../api/userQueries';
-import { type DecodedToken } from '../../../../../customHooks/useHome';
+import { type DecodedToken } from '../../../../../pages/Home/useHome';
 
 interface IUserClickProps {
   menuShow: boolean;

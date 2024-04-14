@@ -20,7 +20,7 @@ import InFavorite from '../../../public/icons_imgs/InFavorite.png';
 /* import FavoritesDark from '../../../public/icons_imgs/FavoritesDark.png';
  */
 import { FormattedMessage } from 'react-intl';
-import { countDate, countTickets } from '../../utils/function';
+import { convertToDate, countDate, countTickets } from '../../utils/function';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { addToFavorites } from '../../api/users/user';
@@ -29,7 +29,7 @@ export interface IEventProps {
   eventId: string;
   userId: string;
   name: string;
-  date: Date;
+  date: bigint;
   place: string;
   category_of_event?: string;
   popular?: boolean;
@@ -40,7 +40,7 @@ export interface IEventProps {
   userFavoritesEvent: string[];
 }
 
-const EventBanner: React.FC<IEventProps> = ({
+const HomeEventBanner: React.FC<IEventProps> = ({
   eventId,
   userId,
   name = 'Unknown name',
@@ -75,7 +75,12 @@ const EventBanner: React.FC<IEventProps> = ({
   const handleClick = (id: string): void => {
     navigate(`/event/${id}`);
   };
-  const newDate = countDate(date);
+  const dateToConvert = date.toString();
+  console.log(dateToConvert);
+  const convertedDate = convertToDate(dateToConvert);
+  console.log(convertedDate);
+
+  const newDate = countDate(convertedDate);
   const ticketSoldUpdated = countTickets(ticketsSold);
 
   return (
@@ -148,4 +153,4 @@ const EventBanner: React.FC<IEventProps> = ({
   );
 };
 
-export default EventBanner;
+export default HomeEventBanner;

@@ -2,7 +2,7 @@
 import { jwtDecode } from 'jwt-decode';
 import { useState, useEffect } from 'react';
 
-import { type DecodedToken } from './useHome';
+import { type DecodedToken } from '../pages/Home/useHome';
 import Cookies from 'universal-cookie';
 import { useGetUserTransactions } from '../api/userQueries';
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material';

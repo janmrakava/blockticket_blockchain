@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/strict-boolean-expressions */
 import { useParams } from 'react-router-dom';
-import { type IEventProps } from '../components/EventBanners/MobileEventBanner';
+import { type IEventProps } from '../components/EventBanners/HomeEventBanner';
 import { useGetOneEvent } from '../api/eventQueries';
 
 import { useSelector } from 'react-redux';
@@ -9,7 +9,7 @@ import { useEventsByCategory } from '../api/homeQueries';
 import Cookies from 'universal-cookie';
 import { useEffect, useState } from 'react';
 import { jwtDecode } from 'jwt-decode';
-import { type DecodedToken } from './useHome';
+import { type DecodedToken } from '../pages/Home/useHome';
 import { type IUserData, getUserInfo } from '../api/users/user';
 
 export const useEvent = (): any => {

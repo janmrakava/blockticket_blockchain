@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import { Alert, Box, IconButton, Snackbar, Typography } from '@mui/material';
-import { type IEventProps } from './MobileEventBanner';
+import { type IEventProps } from './HomeEventBanner';
 import { countDate, countTickets } from '../../utils/function';
 import {
   BoxFlexCenterSpaceBetween,

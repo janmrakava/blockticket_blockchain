@@ -1,6 +1,6 @@
 import { useParams } from 'react-router-dom';
 import { useGetOneEvent } from '../api/eventQueries';
-import { type IEventProps } from '../components/EventBanners/MobileEventBanner';
+import { type IEventProps } from '../components/EventBanners/HomeEventBanner';
 import { useSelector } from 'react-redux';
 import { type RootState } from '../pages/store';
 

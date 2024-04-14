@@ -4,7 +4,7 @@ import { Routes, Route, BrowserRouter } from 'react-router-dom';
 import NoMatch from '../components/NoMatch';
 import Events from './Events';
 import { ThemeProvider, createTheme } from '@mui/material';
-import Home from './Home';
+import Home from './Home/Home';
 import Layout from '../components/Layout';
 import Support from './Support';
 import SupportSection from '../components/Support/SupportSection';

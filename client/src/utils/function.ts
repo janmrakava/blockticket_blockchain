@@ -8,3 +8,8 @@ export const countDate = (date: Date): string => {
   const goodDate = `${eventDate.getDate()}.${eventDate.getMonth() + 1}.${eventDate.getFullYear()}`;
   return goodDate;
 };
+
+export const convertToDate = (bigIntValue: string): Date => {
+  const date = new Date(Number(bigIntValue));
+  return date;
+};

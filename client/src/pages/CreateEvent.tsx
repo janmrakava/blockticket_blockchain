@@ -115,7 +115,7 @@ const CreateEvent: React.FC = () => {
         console.log(response);
       }
     } catch (error) {
-      console.log('Event with this ID already exists');
+      console.log('Event with this ID already exists', error);
     }
   };
 
