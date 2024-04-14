@@ -1,73 +1,18 @@
 /* eslint-disable @typescript-eslint/strict-boolean-expressions */
 import { CircularProgress, Grid, Typography } from '@mui/material';
 import { FormattedMessage } from 'react-intl';
-import { useParams } from 'react-router-dom';
 
-import Cookies from 'universal-cookie';
-import { useEffect, useState } from 'react';
-import { getEventsByCategory } from '../../utils/smartContractFunctions/EventContract';
 import HomeEventBanner from '../../components/EventBanners/HomeEventBanner';
+
+import { useEventsByCategory } from './useEventsByCategory';
 import { type IEventContract } from '../Home/Home';
-import { getUserInfo, type IUserData } from '../../api/users/user';
-import { jwtDecode } from 'jwt-decode';
 
 export interface DecodedToken {
   userId: string;
 }
 
 const EventsByCategory: React.FC = () => {
-  const [userLoggedIn, setUserLoggedIn] = useState<boolean>(false);
-  const [userData, setUserData] = useState<IUserData>();
-  const cookies = new Cookies();
-
-  useEffect(() => {
-    const token = cookies.get('authToken');
-
-    const getUserData = async (userId: string): Promise<IUserData> => {
-      const data = await getUserInfo(userId);
-      return data;
-    };
-
-    // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
-    if (token) {
-      setUserLoggedIn(true);
-      const decodedToken = jwtDecode<DecodedToken>(token);
-
-      getUserData(decodedToken.userId)
-        .then((data) => {
-          setUserData(data);
-        })
-        .catch((error) => {
-          console.error('Error when loading user data', error);
-        });
-    }
-  }, []);
-
-  const [events, setEvents] = useState<IEventContract[]>();
-  const [error, setError] = useState(false);
-  const [isLoading, setIsLoading] = useState<boolean>(true);
-
-  const { category } = useParams();
-
-  useEffect(() => {
-    const fetchEventsByCategory = async (): Promise<void> => {
-      try {
-        // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
-        if (!category) {
-          setError(true);
-        } else {
-          const fixCategory = category.charAt(0).toUpperCase() + category.slice(1);
-          const response = await getEventsByCategory(fixCategory);
-          setEvents(response);
-        }
-      } catch (error) {
-        setError(true);
-      } finally {
-        setIsLoading(false);
-      }
-    };
-    void fetchEventsByCategory();
-  }, [category]);
+  const { category, events, isLoading, error, userData, userLoggedIn } = useEventsByCategory();
 
   console.log(events);
 
@@ -101,7 +46,7 @@ const EventsByCategory: React.FC = () => {
         {isLoading ? (
           <CircularProgress />
         ) : (
-          events?.map((event, index) => {
+          events?.map((event: IEventContract, index: number) => {
             return (
               <HomeEventBanner
                 key={index}
