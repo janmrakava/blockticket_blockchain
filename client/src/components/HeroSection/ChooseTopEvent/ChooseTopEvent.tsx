@@ -28,8 +28,7 @@ const ChooseTopEvent: React.FC<IChooseTopEventProps> = ({ selectedType, handleCh
           <FormControl
             sx={{
               textAlign: 'center'
-            }}
-          >
+            }}>
             <SelectComp
               value={selectedType}
               onChange={(event) => {
@@ -40,8 +39,7 @@ const ChooseTopEvent: React.FC<IChooseTopEventProps> = ({ selectedType, handleCh
                   disablePadding: true
                 }
               }}
-              fullWidth
-            >
+              fullWidth>
               <MenuItemChooseType value="music">
                 <FormattedMessage id="app.navigation.music" />
               </MenuItemChooseType>

@@ -1,12 +1,10 @@
 /* eslint-disable @typescript-eslint/strict-boolean-expressions */
-import { useEffect, useState } from 'react';
 import BuyMoreBanner from '../../components/Banners/BuyMoreBanner';
 import FavoriteBanner from '../../components/Banners/FavoriteBanner';
 import MobileAppBanner from '../../components/Banners/MobileAppBanner';
 import Hero from '../../components/HeroSection/Hero';
 
 import { useHome } from './useHome';
-import { getAllEventsFromContract } from '../../utils/smartContractFunctions/EventContract';
 import { CircularProgress, Grid } from '@mui/material';
 import HomeEventBanner from '../../components/EventBanners/HomeEventBanner';
 export interface IEventContract {
@@ -23,23 +21,15 @@ export interface IEventContract {
 }
 
 const Home: React.FC = () => {
-  const { activeButton, handleChangeActiveButton, userData, userLoggedIn } = useHome();
-  const [events, setEvents] = useState<IEventContract[]>();
-  const [error, setError] = useState(false);
-  const [isLoading, setIsLoading] = useState<boolean>(true);
-  useEffect(() => {
-    const fetchEvents = async (): Promise<void> => {
-      try {
-        const response = await getAllEventsFromContract();
-        setEvents(response);
-      } catch (error) {
-        setError(true);
-      } finally {
-        setIsLoading(false);
-      }
-    };
-    void fetchEvents();
-  }, []);
+  const {
+    activeButton,
+    handleChangeActiveButton,
+    userData,
+    userLoggedIn,
+    events,
+    error,
+    isLoading
+  } = useHome();
 
   return (
     <>
@@ -56,7 +46,7 @@ const Home: React.FC = () => {
         {isLoading ? (
           <CircularProgress />
         ) : (
-          events?.map((event, index) => {
+          events?.map((event: IEventContract, index: number) => {
             return (
               <HomeEventBanner
                 key={index}
@@ -76,6 +66,11 @@ const Home: React.FC = () => {
           })
         )}
         {error && <div>Něco se nepovedlo...</div>}
+        {events?.length === 0 && (
+          <div style={{ color: '#fff', fontSize: '36px' }}>
+            Žádné eventy daté kategorie neexistují.
+          </div>
+        )}
       </Grid>
       <FavoriteBanner />
       <MobileAppBanner />
