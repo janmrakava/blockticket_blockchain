@@ -20,6 +20,19 @@ contract ContractEvent {
   }
 
   event EventCreated(bytes32 eventID);
+  event EventCancelled(bytes32 eventID);
+
+  modifier onlyEventOwner(bytes32 _eventID) {
+    require(
+      allEvents[_eventID].eventOwner == msg.sender,
+      'Only the event owner can perform this action'
+    );
+    _;
+  }
+  modifier eventExists(bytes32 _eventID) {
+    require(allEvents[_eventID].eventID == _eventID, 'Event with this ID does not exist');
+    _;
+  }
 
   //function to create an event
   function createEvent(
@@ -51,6 +64,23 @@ contract ContractEvent {
     emit EventCreated(_eventID);
   }
 
+  function cancelEvent(bytes32 _eventID) external onlyEventOwner(_eventID) {
+    require(
+      allEvents[_eventID].dateOfEvent > block.timestamp,
+      'Cannot cancel event after it has started'
+    );
+    uint64 refundedAmount = allEvents[_eventID].numberOfTickets * allEvents[_eventID].ticketPrice;
+    payable(msg.sender).transfer(refundedAmount);
+    delete allEvents[_eventID];
+    for (uint i = 0; i < eventIdsList.length; i++) {
+      if (eventIdsList[i] == _eventID) {
+        delete eventIdsList[i];
+        break;
+      }
+    }
+    emit EventCancelled(_eventID);
+  }
+
   function getEventIDs() external view returns (bytes32[] memory eventList) {
     return eventIdsList;
   }
@@ -69,6 +99,7 @@ contract ContractEvent {
   )
     external
     view
+    eventExists(_eventID)
     returns (
       bytes32 eventId,
       string memory eventName,
