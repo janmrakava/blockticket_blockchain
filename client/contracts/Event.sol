@@ -1,9 +1,12 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.10;
+import './Ticket.sol';
 
 contract ContractEvent {
   mapping(bytes32 => Event) public allEvents;
   bytes32[] public eventIdsList;
+
+  address public ticketAddress;
 
   // All attributes for the Events (Maybe i need to add number of sell tickets?)
   struct Event {
@@ -12,6 +15,7 @@ contract ContractEvent {
     uint64 dateOfEvent;
     uint64 numberOfTickets;
     uint64 ticketPrice;
+    uint64 ticketsLeft;
     string placeName;
     string eventDescription;
     string eventCategory;
@@ -21,7 +25,15 @@ contract ContractEvent {
 
   event EventCreated(bytes32 eventID);
   event EventCancelled(bytes32 eventID);
+
   event TicketPriceUpdated(bytes32 eventID, uint64 newTicketPrice);
+
+  event TicketBought(bytes32 eventID, bytes32 ticketID);
+
+  modifier isEnoughTickets(bytes32 _eventID) {
+    require(allEvents[_eventID].ticketsLeft > 0, 'There is no remaining tickets!');
+    _;
+  }
 
   modifier onlyEventOwner(bytes32 _eventID) {
     require(
@@ -56,6 +68,7 @@ contract ContractEvent {
     allEvents[_eventID].dateOfEvent = _dateOfEvent;
     allEvents[_eventID].numberOfTickets = _numberOfTickets;
     allEvents[_eventID].ticketPrice = _ticketPrice;
+    allEvents[_eventID].ticketsLeft = _numberOfTickets;
     allEvents[_eventID].placeName = _placeName;
     allEvents[_eventID].eventDescription = _eventDescription;
     allEvents[_eventID].eventCategory = _eventCategory;
@@ -114,6 +127,7 @@ contract ContractEvent {
       uint64 dateOfEvent,
       uint64 numberOfTickets,
       uint64 ticketPrice,
+      uint64 ticketsLeft,
       string memory placeName,
       string memory eventDescription,
       string memory eventCategory,
@@ -126,6 +140,7 @@ contract ContractEvent {
     dateOfEvent = allEvents[_eventID].dateOfEvent;
     numberOfTickets = allEvents[_eventID].numberOfTickets;
     ticketPrice = allEvents[_eventID].ticketPrice;
+    ticketsLeft = allEvents[_eventID].ticketsLeft;
     placeName = allEvents[_eventID].placeName;
     eventDescription = allEvents[_eventID].eventDescription;
     eventCategory = allEvents[_eventID].eventCategory;
@@ -154,5 +169,21 @@ contract ContractEvent {
       }
     }
     return categoryEvents;
+  }
+  function buyTicket(
+    bytes32 eventID
+  ) external payable eventExists(eventID) isEnoughTickets(eventID) returns (uint) {
+    require(
+      msg.value == allEvents[eventID].ticketPrice,
+      'The transaction price must match the ticket price'
+    );
+    TicketContract newTicket = TicketContract(ticketAddress);
+    uint ticketID = newTicket.buyTicket(eventID, msg.sender);
+
+    allEvents[eventID].ticketsLeft--;
+
+    emit TicketBought(eventID, ticketID);
+
+    return ticketID;
   }
 }
