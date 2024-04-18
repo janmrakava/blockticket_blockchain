@@ -31,7 +31,7 @@ import {
   dateToUint64,
   getAllEventsFromContract,
   getEventInfo,
-  getEventsByCategory
+  findEventInTransactions
 } from '../utils/smartContractFunctions/EventContract';
 
 export interface INewEvent {
@@ -130,10 +130,11 @@ const CreateEvent: React.FC = () => {
     );
     console.log(response);
   };
-  // EXAMPLE METHOD
-  const handleGetEventsByCategory = async (): Promise<void> => {
-    const response = await getEventsByCategory();
-    console.log(response);
+  // EXAMPLE
+  const handleGetTransactions = async (): Promise<void> => {
+    await findEventInTransactions(
+      '0x56696b746f7220536865656e0000000000000000000000000000000000000000'
+    );
   };
   return (
     <LocalizationProvider dateAdapter={AdapterDateFns} adapterLocale={cs}>
@@ -317,12 +318,13 @@ const CreateEvent: React.FC = () => {
               sx={{ width: '100%', marginTop: '20px' }}>
               Jeden Event s ID
             </Button>
+
             <Button
               variant="contained"
               // eslint-disable-next-line @typescript-eslint/no-misused-promises
-              onClick={handleGetEventsByCategory}
+              onClick={handleGetTransactions}
               sx={{ width: '100%', marginTop: '20px' }}>
-              Event dle kategorie
+              Dej mi transakce
             </Button>
             <Button
               variant="contained"
