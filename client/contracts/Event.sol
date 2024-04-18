@@ -21,6 +21,7 @@ contract ContractEvent {
 
   event EventCreated(bytes32 eventID);
   event EventCancelled(bytes32 eventID);
+  event TicketPriceUpdated(bytes32 eventID, uint64 newTicketPrice);
 
   modifier onlyEventOwner(bytes32 _eventID) {
     require(
@@ -79,6 +80,13 @@ contract ContractEvent {
       }
     }
     emit EventCancelled(_eventID);
+  }
+  function updateTicketPrice(
+    bytes32 _eventID,
+    uint64 _newTicketPrice
+  ) external onlyEventOwner(_eventID) eventExists(_eventID) {
+    allEvents[_eventID].ticketPrice = _newTicketPrice;
+    emit TicketPriceUpdated(_eventID, _newTicketPrice);
   }
 
   function getEventIDs() external view returns (bytes32[] memory eventList) {
