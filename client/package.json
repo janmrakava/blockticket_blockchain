@@ -13,6 +13,7 @@
   "dependencies": {
     "@metamask/sdk-react": "^0.18.0",
     "@mui/material": "^5.15.7",
+    "@openzeppelin/contracts": "^5.0.2",
     "@reduxjs/toolkit": "^1.9.7",
     "@types/react-redux": "^7.1.28",
     "ip": "^2.0.1",

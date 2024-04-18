@@ -126,7 +126,7 @@ const CreateEvent: React.FC = () => {
   // EXAMPLE METHOD
   const handleGetInfoOneEvent = async (): Promise<void> => {
     const response = await getEventInfo(
-      '0x4576656e746e616d653900000000000000000000000000000000000000000000'
+      '0x4e46205245414c204d5553495343000000000000000000000000000000000000'
     );
     console.log(response);
   };

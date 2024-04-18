@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/explicit-function-return-type */
 /* eslint-disable @typescript-eslint/strict-boolean-expressions */
 /* eslint-disable @typescript-eslint/no-misused-promises */
 import Web3, { type Transaction } from 'web3';
@@ -73,27 +74,21 @@ export async function findEventInTransactions(eventID: string) {
   const latestBlock = await web3.eth.getBlockNumber();
   let eventFound = false;
 
-  // Procházení bloků
   for (let i = 0; i <= latestBlock; i++) {
-    const block = await web3.eth.getBlock(i, true); // Získání detailů o bloku včetně transakcí
+    const block = await web3.eth.getBlock(i, true);
 
-    // Kontrola, zda blok obsahuje transakce
     if (block.transactions && block.transactions.length > 0) {
-      // Procházení transakcí v bloku
       for (let j = 0; j < block.transactions.length; j++) {
         let tx: TransactionWithHash | string = block.transactions[j];
 
         if (typeof tx === 'string') {
-          // Pokud tx je typu string (hash transakce), získáme transakci
           tx = await web3.eth.getTransaction(tx);
         }
 
         const receipt = await web3.eth.getTransactionReceipt(tx.hash);
         const logs = receipt.logs;
 
-        // Procházení logů transakce
         logs.forEach((log) => {
-          // Kontrola, zda log obsahuje událost EventCreated a zda má správné eventID
           const eventTopic = web3.eth.abi.encodeEventSignature({
             type: 'event',
             name: 'EventCreated',
@@ -110,6 +105,81 @@ export async function findEventInTransactions(eventID: string) {
                   'in transaction log:',
                   log
                 );
+                eventFound = true;
+              }
+            }
+          }
+        });
+      }
+    }
+  }
+
+  if (!eventFound) {
+    console.log('Event with eventID', eventID, 'not found in transaction logs.');
+  }
+}
+
+export async function findEventInTransactionsAllData(eventID: string) {
+  const latestBlock = await web3.eth.getBlockNumber();
+  let eventFound = false;
+
+  for (let i = 0; i <= latestBlock; i++) {
+    const block = await web3.eth.getBlock(i, true);
+
+    if (block.transactions && block.transactions.length > 0) {
+      for (let j = 0; j < block.transactions.length; j++) {
+        let tx: TransactionWithHash | string = block.transactions[j];
+
+        if (typeof tx === 'string') {
+          tx = await web3.eth.getTransaction(tx);
+        }
+
+        const receipt = await web3.eth.getTransactionReceipt(tx.hash);
+        const logs = receipt.logs;
+
+        logs.forEach((log) => {
+          const eventTopic = web3.eth.abi.encodeEventSignature({
+            type: 'event',
+            name: 'EventCreated',
+            inputs: [
+              { type: 'bytes32', name: 'eventID' },
+              { type: 'string', name: 'eventName' },
+              { type: 'uint64', name: 'dateOfEvent' },
+              { type: 'uint64', name: 'numberOfTickets' },
+              { type: 'uint64', name: 'ticketPrice' },
+              { type: 'string', name: 'placeName' },
+              { type: 'string', name: 'eventDescription' },
+              { type: 'string', name: 'eventCategory' },
+              { type: 'string', name: 'eventImage' }
+            ]
+          });
+          if (log.topics?.includes(eventTopic)) {
+            if (log.data) {
+              const decodedData = web3.eth.abi.decodeParameters(['bytes32'], log.data as string);
+              const loggedEventID = decodedData[0];
+              if (loggedEventID === eventID) {
+                console.log(
+                  'Found EventCreated event with eventID:',
+                  eventID,
+                  'in transaction log:',
+                  log
+                );
+                const decoded = web3.eth.abi.decodeLog(
+                  [
+                    { type: 'bytes32', name: 'eventID' },
+                    { type: 'string', name: 'eventName' },
+                    { type: 'uint64', name: 'dateOfEvent' },
+                    { type: 'uint64', name: 'numberOfTickets' },
+                    { type: 'uint64', name: 'ticketPrice' },
+                    { type: 'string', name: 'placeName' },
+                    { type: 'string', name: 'eventDescription' },
+                    { type: 'string', name: 'eventCategory' },
+                    { type: 'string', name: 'eventImage' }
+                  ],
+                  web3.utils.bytesToHex(log.data),
+                  log.topics.map((topic) => web3.utils.bytesToHex(topic))
+                );
+                console.log(decoded);
                 eventFound = true;
               }
             }
