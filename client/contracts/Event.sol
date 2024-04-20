@@ -21,6 +21,7 @@ contract ContractEvent {
     string eventCategory;
     address eventOwner;
     string eventImage;
+    uint64 soldTickets;
   }
 
   event EventCreated(bytes32 eventID);
@@ -74,26 +75,34 @@ contract ContractEvent {
     allEvents[_eventID].eventCategory = _eventCategory;
     allEvents[_eventID].eventOwner = msg.sender;
     allEvents[_eventID].eventImage = _eventImage;
+    allEvents[_eventID].soldTickets = 0;
     eventIdsList.push(_eventID);
     emit EventCreated(_eventID);
   }
 
   function cancelEvent(bytes32 _eventID) external onlyEventOwner(_eventID) {
+    Event storage _event = allEvents[_eventID];
     require(
-      allEvents[_eventID].dateOfEvent > block.timestamp,
+      _event[_eventID].dateOfEvent > block.timestamp,
       'Cannot cancel event after it has started'
     );
-    uint64 refundedAmount = allEvents[_eventID].numberOfTickets * allEvents[_eventID].ticketPrice;
+
+    uint64 refundedAmount = _event.numberOfTickets * _event.ticketPrice;
     payable(msg.sender).transfer(refundedAmount);
+
     delete allEvents[_eventID];
+
     for (uint i = 0; i < eventIdsList.length; i++) {
       if (eventIdsList[i] == _eventID) {
-        delete eventIdsList[i];
+        eventIdsList[i] = eventIdsList[eventIdsList.length - 1];
+        eventIdsList.pop();
         break;
       }
     }
+
     emit EventCancelled(_eventID);
   }
+
   function updateTicketPrice(
     bytes32 _eventID,
     uint64 _newTicketPrice
@@ -132,7 +141,8 @@ contract ContractEvent {
       string memory eventDescription,
       string memory eventCategory,
       address eventOwner,
-      string memory eventImage
+      string memory eventImage,
+      uint64 soldTickets
     )
   {
     eventId = allEvents[_eventID].eventID;
@@ -146,6 +156,7 @@ contract ContractEvent {
     eventCategory = allEvents[_eventID].eventCategory;
     eventOwner = allEvents[_eventID].eventOwner;
     eventImage = allEvents[_eventID].eventImage;
+    soldTickets = allEvents[_eventID].soldTickets;
   }
   //function to get events by selected category
   function getEventsByCategory(string memory _category) external view returns (Event[] memory) {
@@ -173,14 +184,21 @@ contract ContractEvent {
   function buyTicket(
     bytes32 eventID
   ) external payable eventExists(eventID) isEnoughTickets(eventID) returns (uint) {
+    Event storage _event = allEvents[_eventID];
     require(
       msg.value == allEvents[eventID].ticketPrice,
       'The transaction price must match the ticket price'
     );
+    require(_event.dateOfEvent > block.timestamp, 'Event has already occurred');
+
     TicketContract newTicket = TicketContract(ticketAddress);
     uint ticketID = newTicket.buyTicket(eventID, msg.sender);
+    _event.soldTickets++;
+    if (_event.soldTickets % 10 == 0) {
+      _event.ticketPrice += 10;
+    }
 
-    allEvents[eventID].ticketsLeft--;
+    _event.ticketsLeft--;
 
     emit TicketBought(eventID, ticketID);
 
