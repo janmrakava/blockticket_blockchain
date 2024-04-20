@@ -39,13 +39,16 @@ contract TicketContract {
   event TicketRedeemed(bytes32 ticketID, address redeemer);
   event TicketDeleted(bytes32 ticketID);
 
+  // constructor for create new instance of TicketContract
   constructor(address _eventContractAddress) {
     eventContractAddress = _eventContractAddress;
   }
+  // modifier - check if request send EventContract
   modifier onlyEventContract() {
     require(msg.sender == eventContractAddress, 'Unauthorized: caller is not the event contract');
     _;
   }
+  // modifier - check if ticket is not redeemed yet. If yes user cant sell tickets to others
   modifier isNotRedeemed(bytes32 _ticketID) {
     require(!allTickets[_ticketID].isRedeemed, 'Ticket has already been redeemed.');
     _;
@@ -59,7 +62,10 @@ contract TicketContract {
     locked = false;
   }
   // Function to create new ticket for eventID
-  // returns ID of new ticket
+  // @param _eventID is ID of event, for which is ticket
+  // @param _buyer is address of user, which ticket buy
+  // @param _tickerPrice is price of the ticket
+  // @ return - ID of new ticket
   function createNewTicket(
     bytes32 _eventID,
     address _buyer,
@@ -86,11 +92,14 @@ contract TicketContract {
 
     return ticketID;
   }
-  // change ownership of the ticket, transfer eth too
+  // function to change ownership of the ticket, its for selling tickets between users
+  // @param _eventID is ID of event, for which is ticket
+  // @param _buyer is address of user, which ticket buy
+  // @return - bool value for FE handling
   function transferTicket(
     bytes32 _ticketID,
     address _newOwner
-  ) external payable noReentrancy isNotRedeemed(_ticketID) {
+  ) external payable noReentrancy isNotRedeemed(_ticketID) returns (bool) {
     Ticket storage ticket = allTickets[_ticketID];
     require(ticket.ticketOwner == msg.sender, 'Only the ticket owner can transfer it.');
     require(msg.value > 0, 'Transfer amount must be greater than zero.');
@@ -102,6 +111,7 @@ contract TicketContract {
 
     payable(oldOwner).transfer(msg.value);
     emit TicketTransferred(_ticketID, oldOwner, _newOwner, msg.value);
+    return true;
   }
   // function return info about ticket with _ticketID
   function getTicketInfo(bytes32 _ticketID) external view returns (Ticket memory) {
