@@ -10,6 +10,7 @@ contract TicketContract {
     bool isRedeemed;
     bool isValid;
     uint256 ticketPrice;
+    uint256 originalPrice;
   }
   //mapping for allTickets for the TicketContract
   mapping(bytes32 => Ticket) public allTickets;
@@ -38,6 +39,9 @@ contract TicketContract {
   );
   event TicketRedeemed(bytes32 ticketID, address redeemer);
   event TicketDeleted(bytes32 ticketID);
+  event TicketReturned(bytes32 ticketID, address sender, uint256 refundAmount);
+  event TicketRefunded(bytes32 ticketID, address ticketOwner, uint256 refundAmount);
+  event EventCancelled(bytes32 eventID);
 
   // constructor for create new instance of TicketContract
   constructor(address _eventContractAddress) {
@@ -80,7 +84,8 @@ contract TicketContract {
       purchasedDate: _purchasedDate,
       isRedeemed: false,
       isValid: true,
-      ticketPrice: _ticketPrice
+      ticketPrice: _ticketPrice,
+      originalPrice: _ticketPrice
     });
     ticketsByEvent[_eventID].push(ticketID);
     allTicketIDs.push(ticketID);
@@ -99,10 +104,10 @@ contract TicketContract {
   function transferTicket(
     bytes32 _ticketID,
     address _newOwner
-  ) external payable noReentrancy isNotRedeemed(_ticketID) returns (bool) {
+  ) external payable noReentrancy isNotRedeemed(_ticketID) {
     Ticket storage ticket = allTickets[_ticketID];
     require(ticket.ticketOwner == msg.sender, 'Only the ticket owner can transfer it.');
-    require(msg.value > 0, 'Transfer amount must be greater than zero.');
+    require(msg.value == ticket.ticketPrice, 'Transfer amount must match the ticket price.');
     require(ticket.isValid, 'Ticket is not valid.');
 
     address oldOwner = ticket.ticketOwner;
@@ -111,7 +116,6 @@ contract TicketContract {
 
     payable(oldOwner).transfer(msg.value);
     emit TicketTransferred(_ticketID, oldOwner, _newOwner, msg.value);
-    return true;
   }
   // function return info about ticket with _ticketID
   function getTicketInfo(bytes32 _ticketID) external view returns (Ticket memory) {
@@ -186,5 +190,72 @@ contract TicketContract {
     delete allTickets[_ticketID];
 
     emit TicketDeleted(_ticketID);
+  }
+  // Function to return a ticket and refund the purchase price
+  function returnTicket(bytes32 _ticketID) external {
+    Ticket storage ticket = allTickets[_ticketID];
+    require(ticket.ticketOwner == msg.sender, 'Only the ticket owner can return the ticket.');
+    require(!ticket.isRedeemed, 'Ticket has already been redeemed.');
+    require(ticket.isValid, 'Ticket is not valid.');
+
+    uint256 refundAmount = ticket.originalPrice;
+    address payable ownerPayable = payable(msg.sender);
+
+    ownerPayable.transfer(refundAmount);
+
+    removeTicketFromEventList(ticket.eventID, _ticketID);
+    delete allTickets[_ticketID];
+    delete ticketIndexInEvent[_ticketID];
+
+    emit TicketReturned(_ticketID, msg.sender, refundAmount);
+  }
+  // Function to remove a ticket from the ticketsByEvent mapping
+  function removeTicketFromEventList(bytes32 _eventId, bytes32 _ticketID) private {
+    uint index = ticketIndexInEvent[_ticketID];
+    uint lastIndex = ticketsByEvent[_eventId].length - 1;
+    if (index != lastIndex) {
+      bytes32 lastTicketID = ticketsByEvent[_eventId][lastIndex];
+      ticketsByEvent[_eventId][index] = lastTicketID;
+      ticketIndexInEvent[lastTicketID] = index;
+    }
+    ticketsByEvent[_eventId].pop();
+  }
+  // function to delete tickets, return all eth for ticketOwners atc. when event is cancelled
+  function cancelEvent(bytes32 eventId) external {
+    bytes32[] storage tickets = ticketsByEvent[eventId];
+    for (uint i = 0; i < tickets.length; i++) {
+      bytes32 ticketId = tickets[i];
+      Ticket storage ticket = allTickets[ticketId];
+      if (ticket.isValid && !ticket.isRedeemed) {
+        uint256 refundAmount = ticket.originalPrice;
+        address payable ticketOwner = payable(ticket.ticketOwner);
+
+        ticket.isValid = false;
+
+        (bool sent, ) = ticketOwner.call{value: refundAmount}('');
+        require(sent, 'Failed to send Ether');
+
+        emit TicketRefunded(ticketId, ticketOwner, refundAmount);
+        removeTicketFromAllTickets(ticketId);
+        totalTickets--;
+      }
+      delete allTickets[ticketId];
+      delete ticketIndexInEvent[ticketId];
+    }
+    delete ticketsByEvent[eventId];
+
+    emit EventCancelled(eventId);
+  }
+  function removeTicketFromAllTickets(bytes32 ticketId) private {
+    uint index = ticketIndexInEvent[ticketId];
+    uint lastIndex = allTicketIDs.length - 1;
+
+    if (index != lastIndex) {
+      bytes32 lastTicketId = allTicketIDs[lastIndex];
+      allTicketIDs[index] = lastTicketId;
+      ticketIndexInEvent[lastTicketId] = index;
+    }
+    allTicketIDs.pop();
+    delete ticketIndexInEvent[ticketId];
   }
 }
