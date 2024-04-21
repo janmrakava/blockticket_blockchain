@@ -2,8 +2,25 @@
 pragma solidity ^0.8.10;
 import './Ticket.sol';
 
+interface ITicketContract {
+  function createNewTicket(
+    bytes32 eventID,
+    address buyer,
+    uint256 ticketPrice
+  ) external returns (bytes32);
+  function cancelAllTickets(bytes32 eventID) external;
+}
+
 contract ContractEvent {
+  ITicketContract ticketContract;
+
+  function setTicketContractAddress(address _ticketAddress) external {
+    ticketContract = ITicketContract(_ticketAddress);
+  }
+
   mapping(bytes32 => Event) public allEvents;
+  mapping(bytes32 => bool) public eventExists;
+
   bytes32[] public eventIdsList;
 
   address public ticketAddress;
@@ -28,7 +45,6 @@ contract ContractEvent {
   event EventCancelled(bytes32 eventID);
 
   event TicketPriceUpdated(bytes32 eventID, uint64 newTicketPrice);
-
   event TicketBought(bytes32 eventID, bytes32 ticketID);
 
   modifier isEnoughTickets(bytes32 _eventID) {
@@ -43,14 +59,12 @@ contract ContractEvent {
     );
     _;
   }
-  modifier eventExists(bytes32 _eventID) {
-    require(allEvents[_eventID].eventID == _eventID, 'Event with this ID does not exist');
+  modifier eventExistsModifier(bytes32 _eventID) {
+    require(eventExists[_eventID], 'Event does not exist');
     _;
   }
-
   //function to create an event
   function createEvent(
-    bytes32 _eventID,
     string memory _eventName,
     uint64 _dateOfEvent,
     uint64 _numberOfTickets,
@@ -60,53 +74,36 @@ contract ContractEvent {
     string memory _eventCategory,
     string memory _eventImage
   ) external {
-    for (uint i = 0; i < eventIdsList.length; i++) {
-      require(eventIdsList[i] != _eventID, 'Event with this ID already exists');
-    }
+    bytes32 _eventID = keccak256(abi.encodePacked(_eventName, block.timestamp));
+    require(!eventExists[_eventID], 'Event with this ID already exists');
 
-    allEvents[_eventID].eventName = _eventName;
-    allEvents[_eventID].eventID = _eventID;
-    allEvents[_eventID].dateOfEvent = _dateOfEvent;
-    allEvents[_eventID].numberOfTickets = _numberOfTickets;
-    allEvents[_eventID].ticketPrice = _ticketPrice;
-    allEvents[_eventID].ticketsLeft = _numberOfTickets;
-    allEvents[_eventID].placeName = _placeName;
-    allEvents[_eventID].eventDescription = _eventDescription;
-    allEvents[_eventID].eventCategory = _eventCategory;
-    allEvents[_eventID].eventOwner = msg.sender;
-    allEvents[_eventID].eventImage = _eventImage;
-    allEvents[_eventID].soldTickets = 0;
+    allEvents[_eventID] = Event({
+      eventID: _eventID,
+      eventName: _eventName,
+      dateOfEvent: _dateOfEvent,
+      numberOfTickets: _numberOfTickets,
+      ticketPrice: _ticketPrice,
+      ticketsLeft: _numberOfTickets,
+      placeName: _placeName,
+      eventDescription: _eventDescription,
+      eventCategory: _eventCategory,
+      eventOwner: msg.sender,
+      eventImage: _eventImage,
+      soldTickets: 0
+    });
+
     eventIdsList.push(_eventID);
+    eventExists[_eventID] = true;
+
     emit EventCreated(_eventID);
-  }
-
-  function cancelEvent(bytes32 _eventID) external onlyEventOwner(_eventID) {
-    Event storage _event = allEvents[_eventID];
-    require(
-      _event[_eventID].dateOfEvent > block.timestamp,
-      'Cannot cancel event after it has started'
-    );
-
-    uint64 refundedAmount = _event.numberOfTickets * _event.ticketPrice;
-    payable(msg.sender).transfer(refundedAmount);
-
-    delete allEvents[_eventID];
-
-    for (uint i = 0; i < eventIdsList.length; i++) {
-      if (eventIdsList[i] == _eventID) {
-        eventIdsList[i] = eventIdsList[eventIdsList.length - 1];
-        eventIdsList.pop();
-        break;
-      }
-    }
-
-    emit EventCancelled(_eventID);
   }
 
   function updateTicketPrice(
     bytes32 _eventID,
     uint64 _newTicketPrice
-  ) external onlyEventOwner(_eventID) eventExists(_eventID) {
+  ) external onlyEventOwner(_eventID) eventExistsModifier(_eventID) {
+    require(_newTicketPrice > 0, 'New ticket price must be greater than zero.');
+
     allEvents[_eventID].ticketPrice = _newTicketPrice;
     emit TicketPriceUpdated(_eventID, _newTicketPrice);
   }
@@ -126,37 +123,8 @@ contract ContractEvent {
   //function to get info about event with given ID
   function getEventInfo(
     bytes32 _eventID
-  )
-    external
-    view
-    eventExists(_eventID)
-    returns (
-      bytes32 eventId,
-      string memory eventName,
-      uint64 dateOfEvent,
-      uint64 numberOfTickets,
-      uint64 ticketPrice,
-      uint64 ticketsLeft,
-      string memory placeName,
-      string memory eventDescription,
-      string memory eventCategory,
-      address eventOwner,
-      string memory eventImage,
-      uint64 soldTickets
-    )
-  {
-    eventId = allEvents[_eventID].eventID;
-    eventName = allEvents[_eventID].eventName;
-    dateOfEvent = allEvents[_eventID].dateOfEvent;
-    numberOfTickets = allEvents[_eventID].numberOfTickets;
-    ticketPrice = allEvents[_eventID].ticketPrice;
-    ticketsLeft = allEvents[_eventID].ticketsLeft;
-    placeName = allEvents[_eventID].placeName;
-    eventDescription = allEvents[_eventID].eventDescription;
-    eventCategory = allEvents[_eventID].eventCategory;
-    eventOwner = allEvents[_eventID].eventOwner;
-    eventImage = allEvents[_eventID].eventImage;
-    soldTickets = allEvents[_eventID].soldTickets;
+  ) external view eventExistsModifier(_eventID) returns (Event memory) {
+    return allEvents[_eventID];
   }
   //function to get events by selected category
   function getEventsByCategory(string memory _category) external view returns (Event[] memory) {
@@ -181,27 +149,44 @@ contract ContractEvent {
     }
     return categoryEvents;
   }
+  // function to buy (Create) new ticket for the user
   function buyTicket(
-    bytes32 eventID
-  ) external payable eventExists(eventID) isEnoughTickets(eventID) returns (uint) {
+    bytes32 _eventID
+  ) external payable isEnoughTickets(_eventID) eventExistsModifier(_eventID) returns (bytes32) {
     Event storage _event = allEvents[_eventID];
-    require(
-      msg.value == allEvents[eventID].ticketPrice,
-      'The transaction price must match the ticket price'
-    );
-    require(_event.dateOfEvent > block.timestamp, 'Event has already occurred');
+    require(msg.value >= _event.ticketPrice, 'Insufficient funds sent');
 
-    TicketContract newTicket = TicketContract(ticketAddress);
-    uint ticketID = newTicket.buyTicket(eventID, msg.sender);
-    _event.soldTickets++;
-    if (_event.soldTickets % 10 == 0) {
-      _event.ticketPrice += 10;
+    uint256 overpaidAmount = msg.value - _event.ticketPrice;
+
+    bytes32 ticketID = ticketContract.createNewTicket(_eventID, msg.sender, _event.ticketPrice);
+    _event.ticketsLeft -= 1;
+    _event.soldTickets += 1;
+
+    emit TicketBought(_eventID, ticketID);
+    if (overpaidAmount > 0) {
+      (bool refunded, ) = msg.sender.call{value: overpaidAmount}('');
+      require(refunded, 'Failed to refund overpaid amount');
     }
 
-    _event.ticketsLeft--;
-
-    emit TicketBought(eventID, ticketID);
-
     return ticketID;
+  }
+  function cancelEvent(
+    bytes32 _eventID
+  ) external onlyEventOwner(_eventID) eventExistsModifier(_eventID) {
+    Event storage _event = allEvents[_eventID];
+    require(_event.dateOfEvent > block.timestamp, 'Cannot cancel event after it has started');
+
+    ticketContract.cancelAllTickets(_eventID);
+    delete allEvents[_eventID];
+
+    for (uint i = 0; i < eventIdsList.length; i++) {
+      if (eventIdsList[i] == _eventID) {
+        eventIdsList[i] = eventIdsList[eventIdsList.length - 1];
+        eventIdsList.pop();
+        break;
+      }
+    }
+
+    emit EventCancelled(_eventID);
   }
 }

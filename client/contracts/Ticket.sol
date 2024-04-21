@@ -221,7 +221,7 @@ contract TicketContract {
     ticketsByEvent[_eventId].pop();
   }
   // function to delete tickets, return all eth for ticketOwners atc. when event is cancelled
-  function cancelEvent(bytes32 eventId) external {
+  function cancelAllTickets(bytes32 eventId) external {
     bytes32[] storage tickets = ticketsByEvent[eventId];
     for (uint i = 0; i < tickets.length; i++) {
       bytes32 ticketId = tickets[i];
