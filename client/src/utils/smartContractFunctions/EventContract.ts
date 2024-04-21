@@ -21,12 +21,6 @@ export const dateToUint64 = (date: Date): bigint => {
   return uint64Value as unknown as bigint;
 };
 
-// METHOD TO CREATE EVENTID IN BYTES32 FORMAT
-export const convertToBytes32 = (str: string): string => {
-  const bytes32Value = web3.utils.utf8ToHex(str).padEnd(66, '0');
-  return bytes32Value;
-};
-
 //  METHOD TO GET INFO ABOUT ALL EVENTS
 export const getAllEventsFromContract = async (): Promise<any> => {
   const response = await contractInstance.methods.getEvents().call();
@@ -45,14 +39,12 @@ export const getEventsByCategory = async (category: string): Promise<any> => {
 
 // METHOD TO CREATE NEW EVENT
 export const createNewEvent = async (
-  eventID: string,
   dateUINT64: bigint,
   newEventInfo: INewEvent,
   account: any
 ): Promise<any> => {
   const response = await contractInstance.methods
     .createEvent(
-      eventID,
       newEventInfo.eventName,
       dateUINT64,
       newEventInfo.numberOfTicket,

@@ -26,7 +26,6 @@ import cs from 'date-fns/locale/de';
 import { RegisterLogo } from '../components/Register/RegisterLogo';
 import { useSDK } from '@metamask/sdk-react';
 import {
-  convertToBytes32,
   createNewEvent,
   dateToUint64,
   getAllEventsFromContract,
@@ -49,9 +48,10 @@ export interface INewEvent {
 const CreateEvent: React.FC = () => {
   const appLanguage = useSelector((state: RootState) => state.language.appLanguage);
   const [showSnackBar, setShowSnackBar] = useState<boolean>(false);
+  const [succesfullCreateSnackBar, setSuccesfullCreateSnackBar] = useState<boolean>(false);
   const [account, setAccount] = useState<string>();
   const { sdk } = useSDK();
-  const [newEventInfo, setnewEventInfo] = useState<INewEvent>({
+  const [newEventInfo, setNewEventInfo] = useState<INewEvent>({
     eventName: '',
     ticketPrice: 0,
     numberOfTicket: 0,
@@ -78,16 +78,16 @@ const CreateEvent: React.FC = () => {
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>): void => {
     const { value, name } = event.target;
-    setnewEventInfo({ ...newEventInfo, [name]: value });
+    setNewEventInfo({ ...newEventInfo, [name]: value });
   };
   const handleCategoryChange = (event: SelectChangeEvent<string>): void => {
     const { value } = event.target;
-    setnewEventInfo({ ...newEventInfo, category: value });
+    setNewEventInfo({ ...newEventInfo, category: value });
   };
   const handleDateChange = (value: Date | null): void => {
     if (value !== null) {
       const date = new Date(value);
-      setnewEventInfo({ ...newEventInfo, dateOfTheEvent: date });
+      setNewEventInfo({ ...newEventInfo, dateOfTheEvent: date });
     }
   };
 
@@ -107,12 +107,26 @@ const CreateEvent: React.FC = () => {
           setShowSnackBar(false);
         }, 2500);
       } else {
-        const eventID = convertToBytes32(newEventInfo.eventName);
         const dateUINT64 = dateToUint64(newEventInfo.dateOfTheEvent);
 
-        const response = await createNewEvent(eventID, dateUINT64, newEventInfo, account);
+        const response = await createNewEvent(dateUINT64, newEventInfo, account);
         // eslint-disable-next-line @typescript-eslint/await-thenable
         console.log(response);
+        setSuccesfullCreateSnackBar(true);
+        setTimeout(() => {
+          setSuccesfullCreateSnackBar(false);
+        }, 2500);
+        setNewEventInfo({
+          eventName: '',
+          ticketPrice: 0,
+          numberOfTicket: 0,
+          dateOfTheEvent: new Date(),
+          placeName: '',
+          imageSrc: '',
+          description: '',
+          category: '',
+          popular: false
+        });
       }
     } catch (error) {
       console.log('Event with this ID already exists', error);
@@ -342,6 +356,14 @@ const CreateEvent: React.FC = () => {
         anchorOrigin={{ vertical: 'top', horizontal: 'center' }}>
         <Alert severity="error" variant="filled" sx={{ width: '100%' }}>
           <FormattedMessage id={`app.createevent.baddate`} />
+        </Alert>
+      </Snackbar>
+      <Snackbar
+        open={succesfullCreateSnackBar}
+        autoHideDuration={5000}
+        anchorOrigin={{ vertical: 'top', horizontal: 'center' }}>
+        <Alert severity="success" variant="filled" sx={{ width: '100%' }}>
+          <FormattedMessage id={`app.createevent.eventCreated`} />
         </Alert>
       </Snackbar>
     </LocalizationProvider>

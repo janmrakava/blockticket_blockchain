@@ -210,10 +210,7 @@
 
   "app.createevent.heading": "Create new event",
   "app.createevent.buttontext": "Create new event!",
-  "app.createevent.baddate": "Bad date"
-
-
-
-
+  "app.createevent.baddate": "Bad date",
+  "app.createevent.eventCreated": "Event was created!"
 
 }

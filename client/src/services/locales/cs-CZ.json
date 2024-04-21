@@ -211,5 +211,6 @@
 
   "app.createevent.heading": "Tvorba nové události",
   "app.createevent.buttontext": "Vytvořit novou událost!",
-  "app.createevent.baddate": "Špatné datum"
+  "app.createevent.baddate": "Špatné datum",
+  "app.createevent.eventCreated": "Událost vytvořena!"
 }
