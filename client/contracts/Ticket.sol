@@ -11,6 +11,8 @@ contract TicketContract {
     bool isValid;
     uint256 ticketPrice;
     uint256 originalPrice;
+    bool forSale;
+    uint256 salePrice;
   }
   //mapping for allTickets for the TicketContract
   mapping(bytes32 => Ticket) public allTickets;
@@ -46,6 +48,15 @@ contract TicketContract {
   event TicketReturned(bytes32 ticketID, address sender, uint256 refundAmount);
   event TicketRefunded(bytes32 ticketID, address ticketOwner, uint256 refundAmount);
   event EventCancelled(bytes32 eventID);
+
+  event TicketSetForSale(bytes32 ticketID);
+  event TicketSaleCancelled(bytes32 ticketID);
+  event TicketPurchasedFromMarket(
+    bytes32 ticketID,
+    address oldOwner,
+    address newOwner,
+    uint256 price
+  );
 
   // constructor for create new instance of TicketContract
   constructor(address _eventContractAddress) {
@@ -89,7 +100,9 @@ contract TicketContract {
       isRedeemed: false,
       isValid: true,
       ticketPrice: _ticketPrice,
-      originalPrice: _ticketPrice
+      originalPrice: _ticketPrice,
+      forSale: false,
+      salePrice: 0
     });
     ticketsByEvent[_eventID].push(ticketID);
     allTicketIDs.push(ticketID);
@@ -259,5 +272,45 @@ contract TicketContract {
     }
     allTicketIDs.pop();
     delete ticketIndexInEvent[ticketId];
+  }
+
+  function setTicketForSale(bytes32 _ticketID, uint256 _price) external {
+    Ticket storage _ticket = allTickets[_ticketID];
+    require(msg.sender == _ticket.ticketOwner, 'Only the ticket owner can set it for sale.');
+    require(!_ticket.isRedeemed, 'Cannot sell a redeemed ticket.');
+    require(_ticket.isValid, 'Cannot sell an invalid ticket.');
+
+    _ticket.forSale = true;
+    _ticket.salePrice = _price;
+
+    emit TicketSetForSale(_ticketID);
+  }
+
+  function cancelTicketForSale(bytes32 _ticketID) external {
+    Ticket storage _ticket = allTickets[_ticketID];
+    require(msg.sender == _ticket.ticketOwner, 'Only the ticket owner can cancel the sale.');
+    require(_ticket.forSale, 'Ticket is not for sale.');
+
+    _ticket.forSale = false;
+    _ticket.salePrice = 0;
+
+    emit TicketSaleCancelled(_ticketID);
+  }
+  function buyTicketFromMarket(bytes32 _ticketID) external payable {
+    Ticket storage _ticket = allTickets[_ticketID];
+    require(_ticket.forSale, 'This ticket is not for sale.');
+    require(
+      msg.value == _ticket.salePrice,
+      'Please submit the asking price in order to complete the purchase.'
+    );
+    require(_ticket.isValid, 'Cannot buy an invalid ticket.');
+
+    address oldOwner = _ticket.ticketOwner;
+    _ticket.ticketOwner = msg.sender;
+    _ticket.forSale = false;
+    _ticket.salePrice = 0;
+    payable(oldOwner).transfer(msg.value);
+
+    emit TicketPurchasedFromMarket(_ticketID, oldOwner, msg.sender, msg.value);
   }
 }

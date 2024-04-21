@@ -44,7 +44,7 @@
       "type": "function"
     }
   ],
-  "metadata": "{\"compiler\":{\"version\":\"0.8.10+commit.fc410830\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"eventID\",\"type\":\"bytes32\"}],\"name\":\"cancelAllTickets\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"eventID\",\"type\":\"bytes32\"},{\"internalType\":\"address\",\"name\":\"buyer\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"ticketPrice\",\"type\":\"uint256\"}],\"name\":\"createNewTicket\",\"outputs\":[{\"internalType\":\"bytes32\",\"name\":\"\",\"type\":\"bytes32\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/Event.sol\":\"ITicketContract\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/Event.sol\":{\"keccak256\":\"0x6c0514a3fe93f0b63f27220a7d2d44d156a6563ccb38d286026d4f142b41a5dd\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://ff1794523fea4453730628e4ee2bec597b94b604aa0239f8b36d9148ce8c867a\",\"dweb:/ipfs/QmUX4c7XAdZeTuYz5B5vdt8EbMsZkRXLKAfdcviVgkmbuA\"]},\"project:/contracts/Ticket.sol\":{\"keccak256\":\"0x4bd53ff48de642789ec6c9a3b27825bdae0b7bb679cdcec1eff6241a7b81dc42\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://774504d744456abb5518bd73a6358bddaeaec966b546388e18bd97f614ce6f61\",\"dweb:/ipfs/QmfMRfZKBMudKk3AX6Uvp7WTEFxXQREdUxz8uQJLLoYYzf\"]}},\"version\":1}",
+  "metadata": "{\"compiler\":{\"version\":\"0.8.10+commit.fc410830\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"eventID\",\"type\":\"bytes32\"}],\"name\":\"cancelAllTickets\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"eventID\",\"type\":\"bytes32\"},{\"internalType\":\"address\",\"name\":\"buyer\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"ticketPrice\",\"type\":\"uint256\"}],\"name\":\"createNewTicket\",\"outputs\":[{\"internalType\":\"bytes32\",\"name\":\"\",\"type\":\"bytes32\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/Event.sol\":\"ITicketContract\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/Event.sol\":{\"keccak256\":\"0x6c0514a3fe93f0b63f27220a7d2d44d156a6563ccb38d286026d4f142b41a5dd\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://ff1794523fea4453730628e4ee2bec597b94b604aa0239f8b36d9148ce8c867a\",\"dweb:/ipfs/QmUX4c7XAdZeTuYz5B5vdt8EbMsZkRXLKAfdcviVgkmbuA\"]},\"project:/contracts/Ticket.sol\":{\"keccak256\":\"0xe25865917308338e7f3f8e8a38a9e9a52cdcf8727d4ff5d58742a219de628c50\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://34b98faf72953ca3e30f80e75af7f348b8c28b2b0317c2ed3ca0ac9a1bc594b4\",\"dweb:/ipfs/QmSnpdGY1RuxLvi4az1nUzGzDsyzdFR4mXvdu6vNcu4GRw\"]}},\"version\":1}",
   "bytecode": "0x",
   "deployedBytecode": "0x",
   "immutableReferences": {},
@@ -64,7 +64,7 @@
         19
       ],
       "TicketContract": [
-        1511
+        1708
       ]
     },
     "id": 603,
@@ -89,7 +89,7 @@
         "nameLocation": "-1:-1:-1",
         "nodeType": "ImportDirective",
         "scope": 603,
-        "sourceUnit": 1512,
+        "sourceUnit": 1709,
         "src": "57:22:0",
         "symbolAliases": [],
         "unitAlias": ""
@@ -7523,7 +7523,7 @@
   },
   "networks": {},
   "schemaVersion": "3.4.16",
-  "updatedAt": "2024-04-21T17:06:37.645Z",
+  "updatedAt": "2024-04-21T19:26:17.651Z",
   "devdoc": {
     "kind": "dev",
     "methods": {},
