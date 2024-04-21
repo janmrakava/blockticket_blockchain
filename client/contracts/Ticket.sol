@@ -273,7 +273,7 @@ contract TicketContract {
     allTicketIDs.pop();
     delete ticketIndexInEvent[ticketId];
   }
-
+  // function to set ticket for sale
   function setTicketForSale(bytes32 _ticketID, uint256 _price) external {
     Ticket storage _ticket = allTickets[_ticketID];
     require(msg.sender == _ticket.ticketOwner, 'Only the ticket owner can set it for sale.');
@@ -285,7 +285,7 @@ contract TicketContract {
 
     emit TicketSetForSale(_ticketID);
   }
-
+  // function to set ticket not for sale
   function cancelTicketForSale(bytes32 _ticketID) external {
     Ticket storage _ticket = allTickets[_ticketID];
     require(msg.sender == _ticket.ticketOwner, 'Only the ticket owner can cancel the sale.');
@@ -296,21 +296,22 @@ contract TicketContract {
 
     emit TicketSaleCancelled(_ticketID);
   }
-  function buyTicketFromMarket(bytes32 _ticketID) external payable {
+
+  // function to buy ticket from market
+  function buyTicketFromMarket(bytes32 _ticketID) external payable noReentrancy {
     Ticket storage _ticket = allTickets[_ticketID];
-    require(_ticket.forSale, 'This ticket is not for sale.');
-    require(
-      msg.value == _ticket.salePrice,
-      'Please submit the asking price in order to complete the purchase.'
-    );
-    require(_ticket.isValid, 'Cannot buy an invalid ticket.');
+    require(_ticket.forSale, "This ticket is not for sale.");
+    require(msg.value == _ticket.salePrice, "Please submit the asking price in order to complete the purchase.");
+    require(_ticket.isValid, "Cannot buy an invalid ticket.");
 
     address oldOwner = _ticket.ticketOwner;
     _ticket.ticketOwner = msg.sender;
     _ticket.forSale = false;
     _ticket.salePrice = 0;
+
     payable(oldOwner).transfer(msg.value);
 
     emit TicketPurchasedFromMarket(_ticketID, oldOwner, msg.sender, msg.value);
+    }
   }
 }

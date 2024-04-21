@@ -64,3 +64,35 @@ export const transferTicket = async (
     .send({ from: userAddress, value: ticketPrice });
   return response;
 };
+
+// METHOD FOR USER TO SET TICKET TO SALE ON MARKET
+export const setTicketForSale = async (
+  ticketID: string,
+  price: number,
+  userAddress: string
+): Promise<any> => {
+  const response = await contractInstance.methods
+    .setTicketForSale(ticketID, price)
+    .send({ from: userAddress });
+  return response;
+};
+
+// METHOD FOR USER TO SET TICKET NOT FOR SALE ON MARKET
+export const cancelTicketForSale = async (ticketID: string, userAddress: string): Promise<any> => {
+  const response = await contractInstance.methods
+    .cancelTicketForSale(ticketID)
+    .send({ from: userAddress });
+  return response;
+};
+// METHOD TO BUY TICKET FROM MARKET
+export const buyTicketFromMarket = async (
+  ticketID: string,
+  ticketPrice: string,
+  userAddress: string
+): Promise<any> => {
+  const priceInWei = web3.utils.toWei(ticketPrice, 'ether');
+  const response = await contractInstance.methods
+    .buyTicket(ticketID)
+    .send({ from: userAddress, value: priceInWei });
+  return response;
+};
