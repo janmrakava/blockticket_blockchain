@@ -33,3 +33,34 @@ export const getUserTickets = async (userAddress: string): Promise<any> => {
   const response = await contractInstance.methods.getMyTickets().call({ from: userAddress });
   return response;
 };
+//  METHOD TO MARK TICKET AS REDEEM, AFTER THAT USER CANT TRANSFER TICKET TO ANYONE ELSE
+export const redeemTicket = async (ticketID: string, userAddress: string): Promise<any> => {
+  const response = await contractInstance.methods
+    .redeemTicket(ticketID)
+    .send({ from: userAddress });
+  return response;
+};
+//  METHOD TO VERIFY TICKET FOR THE USER
+export const verifyTicket = async (ticketID: string, eventID: string): Promise<any> => {
+  const response = await contractInstance.methods.verifyTicket(ticketID, eventID).call();
+  return response;
+};
+// METHOD TO RETURN TICKET FOR THE USER
+export const returnTicket = async (ticketID: string, userAddress: string): Promise<any> => {
+  const response = await contractInstance.methods
+    .returnTicket(ticketID)
+    .send({ from: userAddress });
+  return response;
+};
+
+// METHOD TO TRANSFER TICKET FOR THE USER
+export const transferTicket = async (
+  ticketID: string,
+  ticketPrice: string,
+  userAddress: string
+): Promise<any> => {
+  const response = await contractInstance.methods
+    .transferTicket(ticketID)
+    .send({ from: userAddress, value: ticketPrice });
+  return response;
+};

@@ -106,20 +106,18 @@ contract TicketContract {
   // @param _buyer is address of user, which ticket buy
   // @return - bool value for FE handling
   function transferTicket(
-    bytes32 _ticketID,
-    address _newOwner
+    bytes32 _ticketID
   ) external payable noReentrancy isNotRedeemed(_ticketID) {
     Ticket storage ticket = allTickets[_ticketID];
-    require(ticket.ticketOwner == msg.sender, 'Only the ticket owner can transfer it.');
     require(msg.value == ticket.ticketPrice, 'Transfer amount must match the ticket price.');
     require(ticket.isValid, 'Ticket is not valid.');
 
     address oldOwner = ticket.ticketOwner;
-    ticket.ticketOwner = _newOwner;
+    ticket.ticketOwner = msg.sender;
     ticket.ticketPrice = msg.value;
 
     payable(oldOwner).transfer(msg.value);
-    emit TicketTransferred(_ticketID, oldOwner, _newOwner, msg.value);
+    emit TicketTransferred(_ticketID, oldOwner, msg.sender, msg.value);
   }
   // function return info about ticket with _ticketID
   function getTicketInfo(bytes32 _ticketID) external view returns (Ticket memory) {
