@@ -172,7 +172,7 @@ contract ContractEvent {
   }
   function cancelEvent(
     bytes32 _eventID
-  ) external onlyEventOwner(_eventID) eventExistsModifier(_eventID) {
+  ) external onlyEventOwner(_eventID) eventExistsModifier(_eventID) returns (bytes32) {
     Event storage _event = allEvents[_eventID];
     require(_event.dateOfEvent > block.timestamp, 'Cannot cancel event after it has started');
 
@@ -188,5 +188,6 @@ contract ContractEvent {
     }
 
     emit EventCancelled(_eventID);
+    return _eventID;
   }
 }

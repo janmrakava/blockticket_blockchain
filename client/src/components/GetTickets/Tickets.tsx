@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { Box, Divider, Grid } from '@mui/material';
+import { Box, Button, Divider, Grid } from '@mui/material';
 import { memo } from 'react';
 
 import { FormattedMessage } from 'react-intl';
@@ -16,6 +16,7 @@ const TicketsBanner: React.FC<ITicketsProps> = ({ ticketPrice, numberOfTickets }
           width: '100%',
           display: 'flex',
           flexDirection: 'row',
+          alignItems: 'center',
           justifyContent: 'space-between',
           marginTop: '20px'
         }}>
@@ -30,6 +31,19 @@ const TicketsBanner: React.FC<ITicketsProps> = ({ ticketPrice, numberOfTickets }
         <Box sx={{ display: 'flex', alignItems: 'center', flexDirection: 'column' }}>
           <p style={{ fontWeight: '900' }}>Počet dostupných vstupenek</p>
           <p style={{ marginTop: '20px' }}>{numberOfTickets?.toString()}</p>
+        </Box>
+        <Box
+          sx={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            flexDirection: 'column',
+            marginTop: '10px'
+          }}>
+          <p style={{ fontWeight: '900' }}>Koupit vstupenku</p>
+          <Button variant="contained" sx={{ marginTop: '10px' }}>
+            Koupit
+          </Button>
         </Box>
       </Box>
     </Grid>

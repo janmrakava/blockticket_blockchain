@@ -112,7 +112,7 @@ const Event: React.FC = () => {
                 userFavoriteEvents={userData ? userData.favorite_event : []}
                 userLoggedIn={userLoggedIn}
               />
-              <GetTickets id={event.eventId} />
+              <GetTickets id={event.eventID} />
             </Grid>
             <Grid
               item

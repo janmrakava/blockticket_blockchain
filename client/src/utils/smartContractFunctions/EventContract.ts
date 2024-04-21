@@ -41,7 +41,7 @@ export const getEventsByCategory = async (category: string): Promise<any> => {
 export const createNewEvent = async (
   dateUINT64: bigint,
   newEventInfo: INewEvent,
-  account: any
+  userAddress: string
 ): Promise<any> => {
   const response = await contractInstance.methods
     .createEvent(
@@ -55,12 +55,40 @@ export const createNewEvent = async (
       newEventInfo.imageSrc
     )
     .send({
-      from: account,
+      from: userAddress,
       gas: '300000'
     });
   return response;
 };
+// METHOD TO UPDATE TICKET PRICE
+export const updateTicketPrice = async (
+  eventID: string,
+  newTicketPrice: number,
+  userAddress: string
+): Promise<any> => {
+  const response = await contractInstance.methods
+    .updateTicketPrice(eventID, newTicketPrice)
+    .send({ from: userAddress });
+  return response;
+};
+// FUNCTION TO BUY NEW TICKET
+export const buyNewTicket = async (
+  eventID: string,
+  ticketPrice: string,
+  userAddress: string
+): Promise<any> => {
+  const priceInWei = web3.utils.toWei(ticketPrice, 'ether');
+  const response = await contractInstance.methods
+    .buyTicket(eventID)
+    .send({ from: userAddress, value: priceInWei });
+  return response;
+};
 
+// FUNCTION TO CANCEL EVENT, AND RETURN ALL FUNDS TO TICKETOWNERS
+export const cancelEvent = async (eventID: string, userAddress: string): Promise<any> => {
+  const response = await contractInstance.methods.cancelEvent(eventID).send({ from: userAddress });
+  return response;
+};
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 export async function findEventInTransactions(eventID: string) {
   const latestBlock = await web3.eth.getBlockNumber();
