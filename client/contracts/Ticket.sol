@@ -28,6 +28,10 @@ contract TicketContract {
   // mapping for better and more optimalize indexing
   mapping(bytes32 => uint256) private ticketIndexInEvent;
 
+  function setEventContractAddress(address _eventContractAddress) external {
+    eventContractAddress = _eventContractAddress;
+  }
+
   // event emitters
   event TicketTransferred(bytes32 ticketID, address from, address to, uint256 newPrice);
   event TicketCreated(
