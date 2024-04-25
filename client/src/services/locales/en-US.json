@@ -215,7 +215,10 @@
   "app.createevent.eventCreated": "Event was created!",
   "app.createevent.invalidmetamask": "Problem with wallet connection",
 
-  "app.showmyevent.heading": "My Events"
+  "app.showmyevent.heading": "My Events",
+
+  "app.myeventpage.heading": "My Event"
+
 
 
 

@@ -2,20 +2,11 @@
 pragma solidity ^0.8.10;
 import './Ticket.sol';
 
-interface ITicketContract {
-  function createNewTicket(
-    bytes32 eventID,
-    address buyer,
-    uint256 ticketPrice
-  ) external returns (bytes32);
-  function cancelAllTickets(bytes32 eventID) external;
-}
-
 contract ContractEvent {
-  ITicketContract ticketContract;
+  TicketContract ticketContract;
 
   function setTicketContractAddress(address _ticketAddress) external {
-    ticketContract = ITicketContract(_ticketAddress);
+    ticketContract = TicketContract(_ticketAddress);
   }
 
   mapping(bytes32 => Event) public allEvents;

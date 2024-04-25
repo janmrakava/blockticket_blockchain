@@ -24,10 +24,9 @@ const MyEvent: React.FC<IMyEventProps> = ({
   }.${convertedDate.getFullYear()}`;
   console.log(renderDate);
 
-  console.log(eventID);
   const navigate = useNavigate();
   const handleClickEvent = (eventID: string): void => {
-    navigate(`/myevent/${eventID}`);
+    navigate(`/myeventpage/${eventID}`);
   };
   return (
     <Grid

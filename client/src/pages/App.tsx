@@ -24,6 +24,7 @@ import TicketInfo from './TicketInfo';
 import TransactionInfo from './TransactionInfo';
 import CreateEvent from './CreateEvent';
 import ShowMyEvent from './ShowMyEvent/ShowMyEvent';
+import MyEventPage from './MyEventPage/MyEventPage';
 
 const App: React.FC = () => {
   const theme = createTheme();
@@ -128,6 +129,14 @@ const App: React.FC = () => {
                 element={
                   <ProtectedRoute>
                     <ShowMyEvent />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/myeventpage/:eventID"
+                element={
+                  <ProtectedRoute>
+                    <MyEventPage />
                   </ProtectedRoute>
                 }
               />

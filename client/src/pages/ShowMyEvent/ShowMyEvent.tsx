@@ -81,6 +81,7 @@ const ShowMyEvent: React.FC = () => {
       <Grid item xs={12} md={12} lg={12}>
         {isLoading && <CircularProgress />}
         {isError && <div>Něco se nepovedlo...</div>}
+        {myEvents?.length === 0 && <div>Nemáte žádné události</div>}
         {myEvents?.map((event, index) => {
           return (
             <MyEvent

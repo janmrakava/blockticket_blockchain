@@ -44,7 +44,7 @@
       "type": "function"
     }
   ],
-  "metadata": "{\"compiler\":{\"version\":\"0.8.10+commit.fc410830\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"eventID\",\"type\":\"bytes32\"}],\"name\":\"cancelAllTickets\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"eventID\",\"type\":\"bytes32\"},{\"internalType\":\"address\",\"name\":\"buyer\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"ticketPrice\",\"type\":\"uint256\"}],\"name\":\"createNewTicket\",\"outputs\":[{\"internalType\":\"bytes32\",\"name\":\"\",\"type\":\"bytes32\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/Event.sol\":\"ITicketContract\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/Event.sol\":{\"keccak256\":\"0x432f3f3ef5e46be6122a6a54f34209802612a397ced7d381804e70f0224e6f8c\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://53a648186ed1f838d92867ac9e27ae4289b67c410b7c8007472a3417844ff149\",\"dweb:/ipfs/QmPZi9pnn8arXuYWnqxNYuBRHkv1awufGZ89qEhD4ZyZ3W\"]},\"project:/contracts/Ticket.sol\":{\"keccak256\":\"0x8123ea3acd80ca02ecbeb63e9ab4cfe66b899bcf7a95cc59ad2f789eac22a4b2\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://c090566d1e2a5b9db7057860aff49403389eda6811504095ca9a74ea629ffb63\",\"dweb:/ipfs/QmbbPEKLoDQ8CcNdM8MdTc5o8Y1m71YJ6JB9UxWf23kKHZ\"]}},\"version\":1}",
+  "metadata": "{\"compiler\":{\"version\":\"0.8.10+commit.fc410830\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"eventID\",\"type\":\"bytes32\"}],\"name\":\"cancelAllTickets\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"eventID\",\"type\":\"bytes32\"},{\"internalType\":\"address\",\"name\":\"buyer\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"ticketPrice\",\"type\":\"uint256\"}],\"name\":\"createNewTicket\",\"outputs\":[{\"internalType\":\"bytes32\",\"name\":\"\",\"type\":\"bytes32\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/Event.sol\":\"ITicketContract\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/Event.sol\":{\"keccak256\":\"0x09d55e6ab2a90a092a43b99e720462fa4c06611fde39ebcb5616f02f62f660b6\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://31204ed482cb3a0b822ae900292213ae97b80e9bb861d655eddcb9008ca6ac23\",\"dweb:/ipfs/QmZPjLUmqWSNyYtuhEmgiYwbeoe5ST4QesML8vLfyyAFBf\"]},\"project:/contracts/Ticket.sol\":{\"keccak256\":\"0x8123ea3acd80ca02ecbeb63e9ab4cfe66b899bcf7a95cc59ad2f789eac22a4b2\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://c090566d1e2a5b9db7057860aff49403389eda6811504095ca9a74ea629ffb63\",\"dweb:/ipfs/QmbbPEKLoDQ8CcNdM8MdTc5o8Y1m71YJ6JB9UxWf23kKHZ\"]}},\"version\":1}",
   "bytecode": "0x",
   "deployedBytecode": "0x",
   "immutableReferences": {},
@@ -52,22 +52,22 @@
   "deployedGeneratedSources": [],
   "sourceMap": "",
   "deployedSourceMap": "",
-  "source": "// SPDX-License-Identifier: MIT\npragma solidity ^0.8.10;\nimport './Ticket.sol';\n\ninterface ITicketContract {\n  function createNewTicket(\n    bytes32 eventID,\n    address buyer,\n    uint256 ticketPrice\n  ) external returns (bytes32);\n  function cancelAllTickets(bytes32 eventID) external;\n}\n\ncontract ContractEvent {\n  ITicketContract ticketContract;\n\n  function setTicketContractAddress(address _ticketAddress) external {\n    ticketContract = ITicketContract(_ticketAddress);\n  }\n\n  mapping(bytes32 => Event) public allEvents;\n  mapping(bytes32 => bool) public eventExists;\n\n  bytes32[] public eventIdsList;\n\n  address public ticketAddress;\n\n  // All attributes for the Events (Maybe i need to add number of sell tickets?)\n  struct Event {\n    bytes32 eventID;\n    string eventName;\n    uint64 dateOfEvent;\n    uint64 numberOfTickets;\n    uint64 ticketPrice;\n    uint64 ticketsLeft;\n    string placeName;\n    string eventDescription;\n    string eventCategory;\n    address eventOwner;\n    string eventImage;\n    uint64 soldTickets;\n  }\n\n  event EventCreated(bytes32 eventID);\n  event EventCancelled(bytes32 eventID);\n\n  event TicketPriceUpdated(bytes32 eventID, uint64 newTicketPrice);\n  event TicketBought(bytes32 eventID, bytes32 ticketID);\n\n  modifier isEnoughTickets(bytes32 _eventID) {\n    require(allEvents[_eventID].ticketsLeft > 0, 'There is no remaining tickets!');\n    _;\n  }\n\n  modifier onlyEventOwner(bytes32 _eventID) {\n    require(\n      allEvents[_eventID].eventOwner == msg.sender,\n      'Only the event owner can perform this action'\n    );\n    _;\n  }\n  modifier eventExistsModifier(bytes32 _eventID) {\n    require(eventExists[_eventID], 'Event does not exist');\n    _;\n  }\n  //function to create an event\n  function createEvent(\n    string memory _eventName,\n    uint64 _dateOfEvent,\n    uint64 _numberOfTickets,\n    uint64 _ticketPrice,\n    string memory _placeName,\n    string memory _eventDescription,\n    string memory _eventCategory,\n    string memory _eventImage\n  ) external {\n    bytes32 _eventID = keccak256(abi.encodePacked(_eventName, block.timestamp));\n    require(!eventExists[_eventID], 'Event with this ID already exists');\n\n    allEvents[_eventID] = Event({\n      eventID: _eventID,\n      eventName: _eventName,\n      dateOfEvent: _dateOfEvent,\n      numberOfTickets: _numberOfTickets,\n      ticketPrice: _ticketPrice,\n      ticketsLeft: _numberOfTickets,\n      placeName: _placeName,\n      eventDescription: _eventDescription,\n      eventCategory: _eventCategory,\n      eventOwner: msg.sender,\n      eventImage: _eventImage,\n      soldTickets: 0\n    });\n\n    eventIdsList.push(_eventID);\n    eventExists[_eventID] = true;\n\n    emit EventCreated(_eventID);\n  }\n\n  function updateTicketPrice(\n    bytes32 _eventID,\n    uint64 _newTicketPrice\n  ) external onlyEventOwner(_eventID) eventExistsModifier(_eventID) {\n    require(_newTicketPrice > 0, 'New ticket price must be greater than zero.');\n\n    allEvents[_eventID].ticketPrice = _newTicketPrice;\n    emit TicketPriceUpdated(_eventID, _newTicketPrice);\n  }\n\n  function getEventIDs() external view returns (bytes32[] memory eventList) {\n    return eventIdsList;\n  }\n\n  //function to get all events\n  function getEvents() external view returns (Event[] memory eventList) {\n    eventList = new Event[](eventIdsList.length);\n    for (uint i = 0; i < eventIdsList.length; i++) {\n      eventList[i] = allEvents[eventIdsList[i]];\n    }\n    return eventList;\n  }\n  //function to get info about event with given ID\n  function getEventInfo(\n    bytes32 _eventID\n  ) external view eventExistsModifier(_eventID) returns (Event memory) {\n    return allEvents[_eventID];\n  }\n  //function to get events by selected category\n  function getEventsByCategory(string memory _category) external view returns (Event[] memory) {\n    uint256 count = 0;\n    for (uint256 i = 0; i < eventIdsList.length; i++) {\n      if (\n        keccak256(bytes(allEvents[eventIdsList[i]].eventCategory)) == keccak256(bytes(_category))\n      ) {\n        count++;\n      }\n    }\n    Event[] memory categoryEvents = new Event[](count);\n    uint256 index = 0;\n\n    for (uint256 j = 0; j < eventIdsList.length; j++) {\n      if (\n        keccak256(bytes(allEvents[eventIdsList[j]].eventCategory)) == keccak256(bytes(_category))\n      ) {\n        categoryEvents[index] = allEvents[eventIdsList[j]];\n        index++;\n      }\n    }\n    return categoryEvents;\n  }\n  // Function to get events owned by the caller\n  function getEventsForOwner() external view returns (Event[] memory) {\n    uint256 count = 0;\n    for (uint256 i = 0; i < eventIdsList.length; i++) {\n      if (allEvents[eventIdsList[i]].eventOwner == msg.sender) {\n        count++;\n      }\n    }\n\n    Event[] memory ownerEvents = new Event[](count);\n    uint256 index = 0;\n\n    for (uint256 j = 0; j < eventIdsList.length; j++) {\n      if (allEvents[eventIdsList[j]].eventOwner == msg.sender) {\n        ownerEvents[index] = allEvents[eventIdsList[j]];\n        index++;\n      }\n    }\n    return ownerEvents;\n  }\n  // function to buy (Create) new ticket for the user\n  function buyTicket(\n    bytes32 _eventID\n  ) external payable isEnoughTickets(_eventID) eventExistsModifier(_eventID) returns (bytes32) {\n    Event storage _event = allEvents[_eventID];\n    require(msg.value >= _event.ticketPrice, 'Insufficient funds sent');\n\n    uint256 overpaidAmount = msg.value - _event.ticketPrice;\n\n    bytes32 ticketID = ticketContract.createNewTicket(_eventID, msg.sender, _event.ticketPrice);\n    _event.ticketsLeft -= 1;\n    _event.soldTickets += 1;\n\n    emit TicketBought(_eventID, ticketID);\n    if (overpaidAmount > 0) {\n      (bool refunded, ) = msg.sender.call{value: overpaidAmount}('');\n      require(refunded, 'Failed to refund overpaid amount');\n    }\n\n    return ticketID;\n  }\n  function cancelEvent(\n    bytes32 _eventID\n  ) external onlyEventOwner(_eventID) eventExistsModifier(_eventID) returns (bytes32) {\n    Event storage _event = allEvents[_eventID];\n    require(_event.dateOfEvent > block.timestamp, 'Cannot cancel event after it has started');\n\n    ticketContract.cancelAllTickets(_eventID);\n    delete allEvents[_eventID];\n\n    for (uint i = 0; i < eventIdsList.length; i++) {\n      if (eventIdsList[i] == _eventID) {\n        eventIdsList[i] = eventIdsList[eventIdsList.length - 1];\n        eventIdsList.pop();\n        break;\n      }\n    }\n\n    emit EventCancelled(_eventID);\n    return _eventID;\n  }\n}\n",
+  "source": "// SPDX-License-Identifier: MIT\npragma solidity ^0.8.10;\nimport './Ticket.sol';\n\ninterface ITicketContract {\n  function createNewTicket(\n    bytes32 eventID,\n    address buyer,\n    uint256 ticketPrice\n  ) external returns (bytes32);\n  function cancelAllTickets(bytes32 eventID) external;\n}\n\ncontract ContractEvent {\n  ITicketContract ticketContract;\n\n  function setTicketContractAddress(address _ticketAddress) external {\n    ticketContract = ITicketContract(_ticketAddress);\n  }\n\n  mapping(bytes32 => Event) public allEvents;\n  mapping(bytes32 => bool) public eventExists;\n\n  bytes32[] public eventIdsList;\n\n  address public ticketAddress;\n\n  // All attributes for the Events (Maybe i need to add number of sell tickets?)\n  struct Event {\n    bytes32 eventID;\n    string eventName;\n    uint64 dateOfEvent;\n    uint64 numberOfTickets;\n    uint64 ticketPrice;\n    uint64 ticketsLeft;\n    string placeName;\n    string eventDescription;\n    string eventCategory;\n    address eventOwner;\n    string eventImage;\n    uint64 soldTickets;\n  }\n\n  event EventCreated(bytes32 eventID);\n  event EventCancelled(bytes32 eventID);\n\n  event TicketPriceUpdated(bytes32 eventID, uint64 newTicketPrice);\n  event TicketBought(bytes32 eventID, bytes32 ticketID);\n\n  modifier isEnoughTickets(bytes32 _eventID) {\n    require(allEvents[_eventID].ticketsLeft > 0, 'There is no remaining tickets!');\n    _;\n  }\n\n  modifier onlyEventOwner(bytes32 _eventID) {\n    require(\n      allEvents[_eventID].eventOwner == msg.sender,\n      'Only the event owner can perform this action'\n    );\n    _;\n  }\n  modifier eventExistsModifier(bytes32 _eventID) {\n    require(eventExists[_eventID], 'Event does not exist');\n    _;\n  }\n  //function to create an event\n  function createEvent(\n    string memory _eventName,\n    uint64 _dateOfEvent,\n    uint64 _numberOfTickets,\n    uint64 _ticketPrice,\n    string memory _placeName,\n    string memory _eventDescription,\n    string memory _eventCategory,\n    string memory _eventImage\n  ) external {\n    bytes32 _eventID = keccak256(abi.encodePacked(_eventName, block.timestamp));\n    require(!eventExists[_eventID], 'Event with this ID already exists');\n\n    allEvents[_eventID] = Event({\n      eventID: _eventID,\n      eventName: _eventName,\n      dateOfEvent: _dateOfEvent,\n      numberOfTickets: _numberOfTickets,\n      ticketPrice: _ticketPrice,\n      ticketsLeft: _numberOfTickets,\n      placeName: _placeName,\n      eventDescription: _eventDescription,\n      eventCategory: _eventCategory,\n      eventOwner: msg.sender,\n      eventImage: _eventImage,\n      soldTickets: 0\n    });\n\n    eventIdsList.push(_eventID);\n    eventExists[_eventID] = true;\n\n    emit EventCreated(_eventID);\n  }\n\n  function updateTicketPrice(\n    bytes32 _eventID,\n    uint64 _newTicketPrice\n  ) external onlyEventOwner(_eventID) eventExistsModifier(_eventID) {\n    require(_newTicketPrice > 0, 'New ticket price must be greater than zero.');\n\n    allEvents[_eventID].ticketPrice = _newTicketPrice;\n    emit TicketPriceUpdated(_eventID, _newTicketPrice);\n  }\n\n  function getEventIDs() external view returns (bytes32[] memory eventList) {\n    return eventIdsList;\n  }\n\n  //function to get all events\n  function getEvents() external view returns (Event[] memory eventList) {\n    eventList = new Event[](eventIdsList.length);\n    for (uint i = 0; i < eventIdsList.length; i++) {\n      eventList[i] = allEvents[eventIdsList[i]];\n    }\n    return eventList;\n  }\n  //function to get info about event with given ID\n  function getEventInfo(\n    bytes32 _eventID\n  ) external view eventExistsModifier(_eventID) returns (Event memory) {\n    return allEvents[_eventID];\n  }\n  //function to get events by selected category\n  function getEventsByCategory(string memory _category) external view returns (Event[] memory) {\n    uint256 count = 0;\n    for (uint256 i = 0; i < eventIdsList.length; i++) {\n      if (\n        keccak256(bytes(allEvents[eventIdsList[i]].eventCategory)) == keccak256(bytes(_category))\n      ) {\n        count++;\n      }\n    }\n    Event[] memory categoryEvents = new Event[](count);\n    uint256 index = 0;\n\n    for (uint256 j = 0; j < eventIdsList.length; j++) {\n      if (\n        keccak256(bytes(allEvents[eventIdsList[j]].eventCategory)) == keccak256(bytes(_category))\n      ) {\n        categoryEvents[index] = allEvents[eventIdsList[j]];\n        index++;\n      }\n    }\n    return categoryEvents;\n  }\n  // Function to get events owned by the caller\n  function getEventsForOwner() external view returns (Event[] memory) {\n    uint256 count = 0;\n    for (uint256 i = 0; i < eventIdsList.length; i++) {\n      if (allEvents[eventIdsList[i]].eventOwner == msg.sender) {\n        count++;\n      }\n    }\n\n    Event[] memory ownerEvents = new Event[](count);\n    uint256 index = 0;\n\n    for (uint256 j = 0; j < eventIdsList.length; j++) {\n      if (allEvents[eventIdsList[j]].eventOwner == msg.sender) {\n        ownerEvents[index] = allEvents[eventIdsList[j]];\n        index++;\n      }\n    }\n    return ownerEvents;\n  }\n  // function to buy (Create) new ticket for the user\n  function buyTicket(\n    bytes32 _eventID\n  ) external payable isEnoughTickets(_eventID) eventExistsModifier(_eventID) returns (bytes32) {\n    Event storage _event = allEvents[_eventID];\n    require(msg.value >= _event.ticketPrice, 'Insufficient funds sent');\n\n    uint256 overpaidAmount = msg.value - _event.ticketPrice;\n\n    bytes32 ticketID = ticketContract.createNewTicket(_eventID, msg.sender, _event.ticketPrice);\n    _event.ticketsLeft -= 1;\n    _event.soldTickets += 1;\n\n    emit TicketBought(_eventID, ticketID);\n    if (overpaidAmount > 0) {\n      (bool refunded, ) = msg.sender.call{value: overpaidAmount}('');\n      require(refunded, 'Failed to refund overpaid amount');\n    }\n\n    return ticketID;\n  }\n  function cancelEvent(bytes32 _eventID) external returns (bytes32) {\n    //Event storage _event = allEvents[_eventID];\n\n    //ticketContract.cancelAllTickets(_eventID);\n    delete allEvents[_eventID];\n\n    for (uint i = 0; i < eventIdsList.length; i++) {\n      if (eventIdsList[i] == _eventID) {\n        eventIdsList[i] = eventIdsList[eventIdsList.length - 1];\n        eventIdsList.pop();\n        break;\n      }\n    }\n\n    emit EventCancelled(_eventID);\n    return _eventID;\n  }\n}\n",
   "sourcePath": "/Users/janmrakava/Documents/GitHub/blockticket_blockchain/client/contracts/Event.sol",
   "ast": {
     "absolutePath": "project:/contracts/Event.sol",
     "exportedSymbols": {
       "ContractEvent": [
-        696
+        668
       ],
       "ITicketContract": [
         19
       ],
       "TicketContract": [
-        1804
+        1776
       ]
     },
-    "id": 697,
+    "id": 669,
     "license": "MIT",
     "nodeType": "SourceUnit",
     "nodes": [
@@ -88,8 +88,8 @@
         "id": 2,
         "nameLocation": "-1:-1:-1",
         "nodeType": "ImportDirective",
-        "scope": 697,
-        "sourceUnit": 1805,
+        "scope": 669,
+        "sourceUnit": 1777,
         "src": "57:22:0",
         "symbolAliases": [],
         "unitAlias": ""
@@ -303,7 +303,7 @@
             "visibility": "external"
           }
         ],
-        "scope": 697,
+        "scope": 669,
         "src": "81:208:0",
         "usedErrors": []
       },
@@ -314,9 +314,9 @@
         "contractDependencies": [],
         "contractKind": "contract",
         "fullyImplemented": true,
-        "id": 696,
+        "id": 668,
         "linearizedBaseContracts": [
-          696
+          668
         ],
         "name": "ContractEvent",
         "nameLocation": "300:13:0",
@@ -329,7 +329,7 @@
             "name": "ticketContract",
             "nameLocation": "334:14:0",
             "nodeType": "VariableDeclaration",
-            "scope": 696,
+            "scope": 668,
             "src": "318:30:0",
             "stateVariable": true,
             "storageLocation": "default",
@@ -492,7 +492,7 @@
               "parameters": [],
               "src": "420:0:0"
             },
-            "scope": 696,
+            "scope": 668,
             "src": "353:126:0",
             "stateMutability": "nonpayable",
             "virtual": false,
@@ -506,7 +506,7 @@
             "name": "allEvents",
             "nameLocation": "516:9:0",
             "nodeType": "VariableDeclaration",
-            "scope": 696,
+            "scope": 668,
             "src": "483:42:0",
             "stateVariable": true,
             "storageLocation": "default",
@@ -560,7 +560,7 @@
             "name": "eventExists",
             "nameLocation": "561:11:0",
             "nodeType": "VariableDeclaration",
-            "scope": 696,
+            "scope": 668,
             "src": "529:43:0",
             "stateVariable": true,
             "storageLocation": "default",
@@ -607,7 +607,7 @@
             "name": "eventIdsList",
             "nameLocation": "594:12:0",
             "nodeType": "VariableDeclaration",
-            "scope": 696,
+            "scope": 668,
             "src": "577:29:0",
             "stateVariable": true,
             "storageLocation": "default",
@@ -644,7 +644,7 @@
             "name": "ticketAddress",
             "nameLocation": "626:13:0",
             "nodeType": "VariableDeclaration",
-            "scope": 696,
+            "scope": 668,
             "src": "611:28:0",
             "stateVariable": true,
             "storageLocation": "default",
@@ -998,7 +998,7 @@
             "name": "Event",
             "nameLocation": "732:5:0",
             "nodeType": "StructDefinition",
-            "scope": 696,
+            "scope": 668,
             "src": "725:309:0",
             "visibility": "public"
           },
@@ -2835,7 +2835,7 @@
               "parameters": [],
               "src": "1999:0:0"
             },
-            "scope": 696,
+            "scope": 668,
             "src": "1724:969:0",
             "stateMutability": "nonpayable",
             "virtual": false,
@@ -3241,7 +3241,7 @@
               "parameters": [],
               "src": "2842:0:0"
             },
-            "scope": 696,
+            "scope": 668,
             "src": "2697:343:0",
             "stateMutability": "nonpayable",
             "virtual": false,
@@ -3330,7 +3330,7 @@
               ],
               "src": "3089:28:0"
             },
-            "scope": 696,
+            "scope": 668,
             "src": "3044:104:0",
             "stateMutability": "view",
             "virtual": false,
@@ -3817,7 +3817,7 @@
               ],
               "src": "3226:26:0"
             },
-            "scope": 696,
+            "scope": 668,
             "src": "3183:255:0",
             "stateMutability": "view",
             "virtual": false,
@@ -3985,7 +3985,7 @@
               ],
               "src": "3592:14:0"
             },
-            "scope": 696,
+            "scope": 668,
             "src": "3492:152:0",
             "stateMutability": "view",
             "virtual": false,
@@ -5389,7 +5389,7 @@
               ],
               "src": "3771:16:0"
             },
-            "scope": 696,
+            "scope": 668,
             "src": "3695:700:0",
             "stateMutability": "view",
             "virtual": false,
@@ -6473,7 +6473,7 @@
               ],
               "src": "4497:16:0"
             },
-            "scope": 696,
+            "scope": 668,
             "src": "4446:559:0",
             "stateMutability": "view",
             "virtual": false,
@@ -7603,7 +7603,7 @@
               ],
               "src": "5188:9:0"
             },
-            "scope": 696,
+            "scope": 668,
             "src": "5062:713:0",
             "stateMutability": "payable",
             "virtual": false,
@@ -7611,297 +7611,13 @@
           },
           {
             "body": {
-              "id": 694,
+              "id": 666,
               "nodeType": "Block",
-              "src": "5907:502:0",
+              "src": "5844:411:0",
               "statements": [
                 {
-                  "assignments": [
-                    626
-                  ],
-                  "declarations": [
-                    {
-                      "constant": false,
-                      "id": 626,
-                      "mutability": "mutable",
-                      "name": "_event",
-                      "nameLocation": "5927:6:0",
-                      "nodeType": "VariableDeclaration",
-                      "scope": 694,
-                      "src": "5913:20:0",
-                      "stateVariable": false,
-                      "storageLocation": "storage",
-                      "typeDescriptions": {
-                        "typeIdentifier": "t_struct$_Event_$73_storage_ptr",
-                        "typeString": "struct ContractEvent.Event"
-                      },
-                      "typeName": {
-                        "id": 625,
-                        "nodeType": "UserDefinedTypeName",
-                        "pathNode": {
-                          "id": 624,
-                          "name": "Event",
-                          "nodeType": "IdentifierPath",
-                          "referencedDeclaration": 73,
-                          "src": "5913:5:0"
-                        },
-                        "referencedDeclaration": 73,
-                        "src": "5913:5:0",
-                        "typeDescriptions": {
-                          "typeIdentifier": "t_struct$_Event_$73_storage_ptr",
-                          "typeString": "struct ContractEvent.Event"
-                        }
-                      },
-                      "visibility": "internal"
-                    }
-                  ],
-                  "id": 630,
-                  "initialValue": {
-                    "baseExpression": {
-                      "id": 627,
-                      "name": "allEvents",
-                      "nodeType": "Identifier",
-                      "overloadedDeclarations": [],
-                      "referencedDeclaration": 39,
-                      "src": "5936:9:0",
-                      "typeDescriptions": {
-                        "typeIdentifier": "t_mapping$_t_bytes32_$_t_struct$_Event_$73_storage_$",
-                        "typeString": "mapping(bytes32 => struct ContractEvent.Event storage ref)"
-                      }
-                    },
-                    "id": 629,
-                    "indexExpression": {
-                      "id": 628,
-                      "name": "_eventID",
-                      "nodeType": "Identifier",
-                      "overloadedDeclarations": [],
-                      "referencedDeclaration": 613,
-                      "src": "5946:8:0",
-                      "typeDescriptions": {
-                        "typeIdentifier": "t_bytes32",
-                        "typeString": "bytes32"
-                      }
-                    },
-                    "isConstant": false,
-                    "isLValue": true,
-                    "isPure": false,
-                    "lValueRequested": false,
-                    "nodeType": "IndexAccess",
-                    "src": "5936:19:0",
-                    "typeDescriptions": {
-                      "typeIdentifier": "t_struct$_Event_$73_storage",
-                      "typeString": "struct ContractEvent.Event storage ref"
-                    }
-                  },
-                  "nodeType": "VariableDeclarationStatement",
-                  "src": "5913:42:0"
-                },
-                {
                   "expression": {
-                    "arguments": [
-                      {
-                        "commonType": {
-                          "typeIdentifier": "t_uint256",
-                          "typeString": "uint256"
-                        },
-                        "id": 636,
-                        "isConstant": false,
-                        "isLValue": false,
-                        "isPure": false,
-                        "lValueRequested": false,
-                        "leftExpression": {
-                          "expression": {
-                            "id": 632,
-                            "name": "_event",
-                            "nodeType": "Identifier",
-                            "overloadedDeclarations": [],
-                            "referencedDeclaration": 626,
-                            "src": "5969:6:0",
-                            "typeDescriptions": {
-                              "typeIdentifier": "t_struct$_Event_$73_storage_ptr",
-                              "typeString": "struct ContractEvent.Event storage pointer"
-                            }
-                          },
-                          "id": 633,
-                          "isConstant": false,
-                          "isLValue": true,
-                          "isPure": false,
-                          "lValueRequested": false,
-                          "memberName": "dateOfEvent",
-                          "nodeType": "MemberAccess",
-                          "referencedDeclaration": 54,
-                          "src": "5969:18:0",
-                          "typeDescriptions": {
-                            "typeIdentifier": "t_uint64",
-                            "typeString": "uint64"
-                          }
-                        },
-                        "nodeType": "BinaryOperation",
-                        "operator": ">",
-                        "rightExpression": {
-                          "expression": {
-                            "id": 634,
-                            "name": "block",
-                            "nodeType": "Identifier",
-                            "overloadedDeclarations": [],
-                            "referencedDeclaration": 4294967292,
-                            "src": "5990:5:0",
-                            "typeDescriptions": {
-                              "typeIdentifier": "t_magic_block",
-                              "typeString": "block"
-                            }
-                          },
-                          "id": 635,
-                          "isConstant": false,
-                          "isLValue": false,
-                          "isPure": false,
-                          "lValueRequested": false,
-                          "memberName": "timestamp",
-                          "nodeType": "MemberAccess",
-                          "src": "5990:15:0",
-                          "typeDescriptions": {
-                            "typeIdentifier": "t_uint256",
-                            "typeString": "uint256"
-                          }
-                        },
-                        "src": "5969:36:0",
-                        "typeDescriptions": {
-                          "typeIdentifier": "t_bool",
-                          "typeString": "bool"
-                        }
-                      },
-                      {
-                        "hexValue": "43616e6e6f742063616e63656c206576656e74206166746572206974206861732073746172746564",
-                        "id": 637,
-                        "isConstant": false,
-                        "isLValue": false,
-                        "isPure": true,
-                        "kind": "string",
-                        "lValueRequested": false,
-                        "nodeType": "Literal",
-                        "src": "6007:42:0",
-                        "typeDescriptions": {
-                          "typeIdentifier": "t_stringliteral_5a59ff3feff9c12269f73374f0fc4983563890f51eb8db43385bace50974bb4f",
-                          "typeString": "literal_string \"Cannot cancel event after it has started\""
-                        },
-                        "value": "Cannot cancel event after it has started"
-                      }
-                    ],
-                    "expression": {
-                      "argumentTypes": [
-                        {
-                          "typeIdentifier": "t_bool",
-                          "typeString": "bool"
-                        },
-                        {
-                          "typeIdentifier": "t_stringliteral_5a59ff3feff9c12269f73374f0fc4983563890f51eb8db43385bace50974bb4f",
-                          "typeString": "literal_string \"Cannot cancel event after it has started\""
-                        }
-                      ],
-                      "id": 631,
-                      "name": "require",
-                      "nodeType": "Identifier",
-                      "overloadedDeclarations": [
-                        4294967278,
-                        4294967278
-                      ],
-                      "referencedDeclaration": 4294967278,
-                      "src": "5961:7:0",
-                      "typeDescriptions": {
-                        "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
-                        "typeString": "function (bool,string memory) pure"
-                      }
-                    },
-                    "id": 638,
-                    "isConstant": false,
-                    "isLValue": false,
-                    "isPure": false,
-                    "kind": "functionCall",
-                    "lValueRequested": false,
-                    "names": [],
-                    "nodeType": "FunctionCall",
-                    "src": "5961:89:0",
-                    "tryCall": false,
-                    "typeDescriptions": {
-                      "typeIdentifier": "t_tuple$__$",
-                      "typeString": "tuple()"
-                    }
-                  },
-                  "id": 639,
-                  "nodeType": "ExpressionStatement",
-                  "src": "5961:89:0"
-                },
-                {
-                  "expression": {
-                    "arguments": [
-                      {
-                        "id": 643,
-                        "name": "_eventID",
-                        "nodeType": "Identifier",
-                        "overloadedDeclarations": [],
-                        "referencedDeclaration": 613,
-                        "src": "6089:8:0",
-                        "typeDescriptions": {
-                          "typeIdentifier": "t_bytes32",
-                          "typeString": "bytes32"
-                        }
-                      }
-                    ],
-                    "expression": {
-                      "argumentTypes": [
-                        {
-                          "typeIdentifier": "t_bytes32",
-                          "typeString": "bytes32"
-                        }
-                      ],
-                      "expression": {
-                        "id": 640,
-                        "name": "ticketContract",
-                        "nodeType": "Identifier",
-                        "overloadedDeclarations": [],
-                        "referencedDeclaration": 22,
-                        "src": "6057:14:0",
-                        "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_ITicketContract_$19",
-                          "typeString": "contract ITicketContract"
-                        }
-                      },
-                      "id": 642,
-                      "isConstant": false,
-                      "isLValue": false,
-                      "isPure": false,
-                      "lValueRequested": false,
-                      "memberName": "cancelAllTickets",
-                      "nodeType": "MemberAccess",
-                      "referencedDeclaration": 18,
-                      "src": "6057:31:0",
-                      "typeDescriptions": {
-                        "typeIdentifier": "t_function_external_nonpayable$_t_bytes32_$returns$__$",
-                        "typeString": "function (bytes32) external"
-                      }
-                    },
-                    "id": 644,
-                    "isConstant": false,
-                    "isLValue": false,
-                    "isPure": false,
-                    "kind": "functionCall",
-                    "lValueRequested": false,
-                    "names": [],
-                    "nodeType": "FunctionCall",
-                    "src": "6057:41:0",
-                    "tryCall": false,
-                    "typeDescriptions": {
-                      "typeIdentifier": "t_tuple$__$",
-                      "typeString": "tuple()"
-                    }
-                  },
-                  "id": 645,
-                  "nodeType": "ExpressionStatement",
-                  "src": "6057:41:0"
-                },
-                {
-                  "expression": {
-                    "id": 649,
+                    "id": 621,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -7909,28 +7625,28 @@
                     "nodeType": "UnaryOperation",
                     "operator": "delete",
                     "prefix": true,
-                    "src": "6104:26:0",
+                    "src": "5950:26:0",
                     "subExpression": {
                       "baseExpression": {
-                        "id": 646,
+                        "id": 618,
                         "name": "allEvents",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
                         "referencedDeclaration": 39,
-                        "src": "6111:9:0",
+                        "src": "5957:9:0",
                         "typeDescriptions": {
                           "typeIdentifier": "t_mapping$_t_bytes32_$_t_struct$_Event_$73_storage_$",
                           "typeString": "mapping(bytes32 => struct ContractEvent.Event storage ref)"
                         }
                       },
-                      "id": 648,
+                      "id": 620,
                       "indexExpression": {
-                        "id": 647,
+                        "id": 619,
                         "name": "_eventID",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
                         "referencedDeclaration": 613,
-                        "src": "6121:8:0",
+                        "src": "5967:8:0",
                         "typeDescriptions": {
                           "typeIdentifier": "t_bytes32",
                           "typeString": "bytes32"
@@ -7941,7 +7657,7 @@
                       "isPure": false,
                       "lValueRequested": true,
                       "nodeType": "IndexAccess",
-                      "src": "6111:19:0",
+                      "src": "5957:19:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_struct$_Event_$73_storage",
                         "typeString": "struct ContractEvent.Event storage ref"
@@ -7952,15 +7668,15 @@
                       "typeString": "tuple()"
                     }
                   },
-                  "id": 650,
+                  "id": 622,
                   "nodeType": "ExpressionStatement",
-                  "src": "6104:26:0"
+                  "src": "5950:26:0"
                 },
                 {
                   "body": {
-                    "id": 686,
+                    "id": 658,
                     "nodeType": "Block",
-                    "src": "6184:164:0",
+                    "src": "6030:164:0",
                     "statements": [
                       {
                         "condition": {
@@ -7968,32 +7684,32 @@
                             "typeIdentifier": "t_bytes32",
                             "typeString": "bytes32"
                           },
-                          "id": 666,
+                          "id": 638,
                           "isConstant": false,
                           "isLValue": false,
                           "isPure": false,
                           "lValueRequested": false,
                           "leftExpression": {
                             "baseExpression": {
-                              "id": 662,
+                              "id": 634,
                               "name": "eventIdsList",
                               "nodeType": "Identifier",
                               "overloadedDeclarations": [],
                               "referencedDeclaration": 46,
-                              "src": "6196:12:0",
+                              "src": "6042:12:0",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_array$_t_bytes32_$dyn_storage",
                                 "typeString": "bytes32[] storage ref"
                               }
                             },
-                            "id": 664,
+                            "id": 636,
                             "indexExpression": {
-                              "id": 663,
+                              "id": 635,
                               "name": "i",
                               "nodeType": "Identifier",
                               "overloadedDeclarations": [],
-                              "referencedDeclaration": 652,
-                              "src": "6209:1:0",
+                              "referencedDeclaration": 624,
+                              "src": "6055:1:0",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_uint256",
                                 "typeString": "uint256"
@@ -8004,7 +7720,7 @@
                             "isPure": false,
                             "lValueRequested": false,
                             "nodeType": "IndexAccess",
-                            "src": "6196:15:0",
+                            "src": "6042:15:0",
                             "typeDescriptions": {
                               "typeIdentifier": "t_bytes32",
                               "typeString": "bytes32"
@@ -8013,59 +7729,59 @@
                           "nodeType": "BinaryOperation",
                           "operator": "==",
                           "rightExpression": {
-                            "id": 665,
+                            "id": 637,
                             "name": "_eventID",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
                             "referencedDeclaration": 613,
-                            "src": "6215:8:0",
+                            "src": "6061:8:0",
                             "typeDescriptions": {
                               "typeIdentifier": "t_bytes32",
                               "typeString": "bytes32"
                             }
                           },
-                          "src": "6196:27:0",
+                          "src": "6042:27:0",
                           "typeDescriptions": {
                             "typeIdentifier": "t_bool",
                             "typeString": "bool"
                           }
                         },
-                        "id": 685,
+                        "id": 657,
                         "nodeType": "IfStatement",
-                        "src": "6192:150:0",
+                        "src": "6038:150:0",
                         "trueBody": {
-                          "id": 684,
+                          "id": 656,
                           "nodeType": "Block",
-                          "src": "6225:117:0",
+                          "src": "6071:117:0",
                           "statements": [
                             {
                               "expression": {
-                                "id": 676,
+                                "id": 648,
                                 "isConstant": false,
                                 "isLValue": false,
                                 "isPure": false,
                                 "lValueRequested": false,
                                 "leftHandSide": {
                                   "baseExpression": {
-                                    "id": 667,
+                                    "id": 639,
                                     "name": "eventIdsList",
                                     "nodeType": "Identifier",
                                     "overloadedDeclarations": [],
                                     "referencedDeclaration": 46,
-                                    "src": "6235:12:0",
+                                    "src": "6081:12:0",
                                     "typeDescriptions": {
                                       "typeIdentifier": "t_array$_t_bytes32_$dyn_storage",
                                       "typeString": "bytes32[] storage ref"
                                     }
                                   },
-                                  "id": 669,
+                                  "id": 641,
                                   "indexExpression": {
-                                    "id": 668,
+                                    "id": 640,
                                     "name": "i",
                                     "nodeType": "Identifier",
                                     "overloadedDeclarations": [],
-                                    "referencedDeclaration": 652,
-                                    "src": "6248:1:0",
+                                    "referencedDeclaration": 624,
+                                    "src": "6094:1:0",
                                     "typeDescriptions": {
                                       "typeIdentifier": "t_uint256",
                                       "typeString": "uint256"
@@ -8076,7 +7792,7 @@
                                   "isPure": false,
                                   "lValueRequested": true,
                                   "nodeType": "IndexAccess",
-                                  "src": "6235:15:0",
+                                  "src": "6081:15:0",
                                   "typeDescriptions": {
                                     "typeIdentifier": "t_bytes32",
                                     "typeString": "bytes32"
@@ -8086,49 +7802,49 @@
                                 "operator": "=",
                                 "rightHandSide": {
                                   "baseExpression": {
-                                    "id": 670,
+                                    "id": 642,
                                     "name": "eventIdsList",
                                     "nodeType": "Identifier",
                                     "overloadedDeclarations": [],
                                     "referencedDeclaration": 46,
-                                    "src": "6253:12:0",
+                                    "src": "6099:12:0",
                                     "typeDescriptions": {
                                       "typeIdentifier": "t_array$_t_bytes32_$dyn_storage",
                                       "typeString": "bytes32[] storage ref"
                                     }
                                   },
-                                  "id": 675,
+                                  "id": 647,
                                   "indexExpression": {
                                     "commonType": {
                                       "typeIdentifier": "t_uint256",
                                       "typeString": "uint256"
                                     },
-                                    "id": 674,
+                                    "id": 646,
                                     "isConstant": false,
                                     "isLValue": false,
                                     "isPure": false,
                                     "lValueRequested": false,
                                     "leftExpression": {
                                       "expression": {
-                                        "id": 671,
+                                        "id": 643,
                                         "name": "eventIdsList",
                                         "nodeType": "Identifier",
                                         "overloadedDeclarations": [],
                                         "referencedDeclaration": 46,
-                                        "src": "6266:12:0",
+                                        "src": "6112:12:0",
                                         "typeDescriptions": {
                                           "typeIdentifier": "t_array$_t_bytes32_$dyn_storage",
                                           "typeString": "bytes32[] storage ref"
                                         }
                                       },
-                                      "id": 672,
+                                      "id": 644,
                                       "isConstant": false,
                                       "isLValue": false,
                                       "isPure": false,
                                       "lValueRequested": false,
                                       "memberName": "length",
                                       "nodeType": "MemberAccess",
-                                      "src": "6266:19:0",
+                                      "src": "6112:19:0",
                                       "typeDescriptions": {
                                         "typeIdentifier": "t_uint256",
                                         "typeString": "uint256"
@@ -8138,21 +7854,21 @@
                                     "operator": "-",
                                     "rightExpression": {
                                       "hexValue": "31",
-                                      "id": 673,
+                                      "id": 645,
                                       "isConstant": false,
                                       "isLValue": false,
                                       "isPure": true,
                                       "kind": "number",
                                       "lValueRequested": false,
                                       "nodeType": "Literal",
-                                      "src": "6288:1:0",
+                                      "src": "6134:1:0",
                                       "typeDescriptions": {
                                         "typeIdentifier": "t_rational_1_by_1",
                                         "typeString": "int_const 1"
                                       },
                                       "value": "1"
                                     },
-                                    "src": "6266:23:0",
+                                    "src": "6112:23:0",
                                     "typeDescriptions": {
                                       "typeIdentifier": "t_uint256",
                                       "typeString": "uint256"
@@ -8163,21 +7879,21 @@
                                   "isPure": false,
                                   "lValueRequested": false,
                                   "nodeType": "IndexAccess",
-                                  "src": "6253:37:0",
+                                  "src": "6099:37:0",
                                   "typeDescriptions": {
                                     "typeIdentifier": "t_bytes32",
                                     "typeString": "bytes32"
                                   }
                                 },
-                                "src": "6235:55:0",
+                                "src": "6081:55:0",
                                 "typeDescriptions": {
                                   "typeIdentifier": "t_bytes32",
                                   "typeString": "bytes32"
                                 }
                               },
-                              "id": 677,
+                              "id": 649,
                               "nodeType": "ExpressionStatement",
-                              "src": "6235:55:0"
+                              "src": "6081:55:0"
                             },
                             {
                               "expression": {
@@ -8185,31 +7901,31 @@
                                 "expression": {
                                   "argumentTypes": [],
                                   "expression": {
-                                    "id": 678,
+                                    "id": 650,
                                     "name": "eventIdsList",
                                     "nodeType": "Identifier",
                                     "overloadedDeclarations": [],
                                     "referencedDeclaration": 46,
-                                    "src": "6300:12:0",
+                                    "src": "6146:12:0",
                                     "typeDescriptions": {
                                       "typeIdentifier": "t_array$_t_bytes32_$dyn_storage",
                                       "typeString": "bytes32[] storage ref"
                                     }
                                   },
-                                  "id": 680,
+                                  "id": 652,
                                   "isConstant": false,
                                   "isLValue": false,
                                   "isPure": false,
                                   "lValueRequested": false,
                                   "memberName": "pop",
                                   "nodeType": "MemberAccess",
-                                  "src": "6300:16:0",
+                                  "src": "6146:16:0",
                                   "typeDescriptions": {
                                     "typeIdentifier": "t_function_arraypop_nonpayable$_t_array$_t_bytes32_$dyn_storage_ptr_$returns$__$bound_to$_t_array$_t_bytes32_$dyn_storage_ptr_$",
                                     "typeString": "function (bytes32[] storage pointer)"
                                   }
                                 },
-                                "id": 681,
+                                "id": 653,
                                 "isConstant": false,
                                 "isLValue": false,
                                 "isPure": false,
@@ -8217,21 +7933,21 @@
                                 "lValueRequested": false,
                                 "names": [],
                                 "nodeType": "FunctionCall",
-                                "src": "6300:18:0",
+                                "src": "6146:18:0",
                                 "tryCall": false,
                                 "typeDescriptions": {
                                   "typeIdentifier": "t_tuple$__$",
                                   "typeString": "tuple()"
                                 }
                               },
-                              "id": 682,
+                              "id": 654,
                               "nodeType": "ExpressionStatement",
-                              "src": "6300:18:0"
+                              "src": "6146:18:0"
                             },
                             {
-                              "id": 683,
+                              "id": 655,
                               "nodeType": "Break",
-                              "src": "6328:5:0"
+                              "src": "6174:5:0"
                             }
                           ]
                         }
@@ -8243,18 +7959,18 @@
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
                     },
-                    "id": 658,
+                    "id": 630,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
                     "leftExpression": {
-                      "id": 655,
+                      "id": 627,
                       "name": "i",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 652,
-                      "src": "6154:1:0",
+                      "referencedDeclaration": 624,
+                      "src": "6000:1:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
                         "typeString": "uint256"
@@ -8264,51 +7980,51 @@
                     "operator": "<",
                     "rightExpression": {
                       "expression": {
-                        "id": 656,
+                        "id": 628,
                         "name": "eventIdsList",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
                         "referencedDeclaration": 46,
-                        "src": "6158:12:0",
+                        "src": "6004:12:0",
                         "typeDescriptions": {
                           "typeIdentifier": "t_array$_t_bytes32_$dyn_storage",
                           "typeString": "bytes32[] storage ref"
                         }
                       },
-                      "id": 657,
+                      "id": 629,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
                       "lValueRequested": false,
                       "memberName": "length",
                       "nodeType": "MemberAccess",
-                      "src": "6158:19:0",
+                      "src": "6004:19:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
                         "typeString": "uint256"
                       }
                     },
-                    "src": "6154:23:0",
+                    "src": "6000:23:0",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bool",
                       "typeString": "bool"
                     }
                   },
-                  "id": 687,
+                  "id": 659,
                   "initializationExpression": {
                     "assignments": [
-                      652
+                      624
                     ],
                     "declarations": [
                       {
                         "constant": false,
-                        "id": 652,
+                        "id": 624,
                         "mutability": "mutable",
                         "name": "i",
-                        "nameLocation": "6147:1:0",
+                        "nameLocation": "5993:1:0",
                         "nodeType": "VariableDeclaration",
-                        "scope": 687,
-                        "src": "6142:6:0",
+                        "scope": 659,
+                        "src": "5988:6:0",
                         "stateVariable": false,
                         "storageLocation": "default",
                         "typeDescriptions": {
@@ -8316,10 +8032,10 @@
                           "typeString": "uint256"
                         },
                         "typeName": {
-                          "id": 651,
+                          "id": 623,
                           "name": "uint",
                           "nodeType": "ElementaryTypeName",
-                          "src": "6142:4:0",
+                          "src": "5988:4:0",
                           "typeDescriptions": {
                             "typeIdentifier": "t_uint256",
                             "typeString": "uint256"
@@ -8328,17 +8044,17 @@
                         "visibility": "internal"
                       }
                     ],
-                    "id": 654,
+                    "id": 626,
                     "initialValue": {
                       "hexValue": "30",
-                      "id": 653,
+                      "id": 625,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": true,
                       "kind": "number",
                       "lValueRequested": false,
                       "nodeType": "Literal",
-                      "src": "6151:1:0",
+                      "src": "5997:1:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_rational_0_by_1",
                         "typeString": "int_const 0"
@@ -8346,11 +8062,11 @@
                       "value": "0"
                     },
                     "nodeType": "VariableDeclarationStatement",
-                    "src": "6142:10:0"
+                    "src": "5988:10:0"
                   },
                   "loopExpression": {
                     "expression": {
-                      "id": 660,
+                      "id": 632,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
@@ -8358,14 +8074,14 @@
                       "nodeType": "UnaryOperation",
                       "operator": "++",
                       "prefix": false,
-                      "src": "6179:3:0",
+                      "src": "6025:3:0",
                       "subExpression": {
-                        "id": 659,
+                        "id": 631,
                         "name": "i",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 652,
-                        "src": "6179:1:0",
+                        "referencedDeclaration": 624,
+                        "src": "6025:1:0",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint256",
                           "typeString": "uint256"
@@ -8376,23 +8092,23 @@
                         "typeString": "uint256"
                       }
                     },
-                    "id": 661,
+                    "id": 633,
                     "nodeType": "ExpressionStatement",
-                    "src": "6179:3:0"
+                    "src": "6025:3:0"
                   },
                   "nodeType": "ForStatement",
-                  "src": "6137:211:0"
+                  "src": "5983:211:0"
                 },
                 {
                   "eventCall": {
                     "arguments": [
                       {
-                        "id": 689,
+                        "id": 661,
                         "name": "_eventID",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
                         "referencedDeclaration": 613,
-                        "src": "6374:8:0",
+                        "src": "6220:8:0",
                         "typeDescriptions": {
                           "typeIdentifier": "t_bytes32",
                           "typeString": "bytes32"
@@ -8406,18 +8122,18 @@
                           "typeString": "bytes32"
                         }
                       ],
-                      "id": 688,
+                      "id": 660,
                       "name": "EventCancelled",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
                       "referencedDeclaration": 81,
-                      "src": "6359:14:0",
+                      "src": "6205:14:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_event_nonpayable$_t_bytes32_$returns$__$",
                         "typeString": "function (bytes32)"
                       }
                     },
-                    "id": 690,
+                    "id": 662,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -8425,97 +8141,42 @@
                     "lValueRequested": false,
                     "names": [],
                     "nodeType": "FunctionCall",
-                    "src": "6359:24:0",
+                    "src": "6205:24:0",
                     "tryCall": false,
                     "typeDescriptions": {
                       "typeIdentifier": "t_tuple$__$",
                       "typeString": "tuple()"
                     }
                   },
-                  "id": 691,
+                  "id": 663,
                   "nodeType": "EmitStatement",
-                  "src": "6354:29:0"
+                  "src": "6200:29:0"
                 },
                 {
                   "expression": {
-                    "id": 692,
+                    "id": 664,
                     "name": "_eventID",
                     "nodeType": "Identifier",
                     "overloadedDeclarations": [],
                     "referencedDeclaration": 613,
-                    "src": "6396:8:0",
+                    "src": "6242:8:0",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bytes32",
                       "typeString": "bytes32"
                     }
                   },
-                  "functionReturnParameters": 623,
-                  "id": 693,
+                  "functionReturnParameters": 617,
+                  "id": 665,
                   "nodeType": "Return",
-                  "src": "6389:15:0"
+                  "src": "6235:15:0"
                 }
               ]
             },
             "functionSelector": "aa26176c",
-            "id": 695,
+            "id": 667,
             "implemented": true,
             "kind": "function",
-            "modifiers": [
-              {
-                "arguments": [
-                  {
-                    "id": 616,
-                    "name": "_eventID",
-                    "nodeType": "Identifier",
-                    "overloadedDeclarations": [],
-                    "referencedDeclaration": 613,
-                    "src": "5849:8:0",
-                    "typeDescriptions": {
-                      "typeIdentifier": "t_bytes32",
-                      "typeString": "bytes32"
-                    }
-                  }
-                ],
-                "id": 617,
-                "kind": "modifierInvocation",
-                "modifierName": {
-                  "id": 615,
-                  "name": "onlyEventOwner",
-                  "nodeType": "IdentifierPath",
-                  "referencedDeclaration": 126,
-                  "src": "5834:14:0"
-                },
-                "nodeType": "ModifierInvocation",
-                "src": "5834:24:0"
-              },
-              {
-                "arguments": [
-                  {
-                    "id": 619,
-                    "name": "_eventID",
-                    "nodeType": "Identifier",
-                    "overloadedDeclarations": [],
-                    "referencedDeclaration": 613,
-                    "src": "5879:8:0",
-                    "typeDescriptions": {
-                      "typeIdentifier": "t_bytes32",
-                      "typeString": "bytes32"
-                    }
-                  }
-                ],
-                "id": 620,
-                "kind": "modifierInvocation",
-                "modifierName": {
-                  "id": 618,
-                  "name": "eventExistsModifier",
-                  "nodeType": "IdentifierPath",
-                  "referencedDeclaration": 139,
-                  "src": "5859:19:0"
-                },
-                "nodeType": "ModifierInvocation",
-                "src": "5859:29:0"
-              }
-            ],
+            "modifiers": [],
             "name": "cancelEvent",
             "nameLocation": "5787:11:0",
             "nodeType": "FunctionDefinition",
@@ -8528,10 +8189,10 @@
                   "id": 613,
                   "mutability": "mutable",
                   "name": "_eventID",
-                  "nameLocation": "5812:8:0",
+                  "nameLocation": "5807:8:0",
                   "nodeType": "VariableDeclaration",
-                  "scope": 695,
-                  "src": "5804:16:0",
+                  "scope": 667,
+                  "src": "5799:16:0",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -8542,7 +8203,7 @@
                     "id": 612,
                     "name": "bytes32",
                     "nodeType": "ElementaryTypeName",
-                    "src": "5804:7:0",
+                    "src": "5799:7:0",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bytes32",
                       "typeString": "bytes32"
@@ -8551,21 +8212,21 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "5798:26:0"
+              "src": "5798:18:0"
             },
             "returnParameters": {
-              "id": 623,
+              "id": 617,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 622,
+                  "id": 616,
                   "mutability": "mutable",
                   "name": "",
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 695,
-                  "src": "5898:7:0",
+                  "scope": 667,
+                  "src": "5835:7:0",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -8573,10 +8234,10 @@
                     "typeString": "bytes32"
                   },
                   "typeName": {
-                    "id": 621,
+                    "id": 615,
                     "name": "bytes32",
                     "nodeType": "ElementaryTypeName",
-                    "src": "5898:7:0",
+                    "src": "5835:7:0",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bytes32",
                       "typeString": "bytes32"
@@ -8585,21 +8246,21 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "5897:9:0"
+              "src": "5834:9:0"
             },
-            "scope": 696,
-            "src": "5778:631:0",
+            "scope": 668,
+            "src": "5778:477:0",
             "stateMutability": "nonpayable",
             "virtual": false,
             "visibility": "external"
           }
         ],
-        "scope": 697,
-        "src": "291:6120:0",
+        "scope": 669,
+        "src": "291:5966:0",
         "usedErrors": []
       }
     ],
-    "src": "32:6380:0"
+    "src": "32:6226:0"
   },
   "compiler": {
     "name": "solc",
@@ -8607,7 +8268,7 @@
   },
   "networks": {},
   "schemaVersion": "3.4.16",
-  "updatedAt": "2024-04-25T12:39:54.249Z",
+  "updatedAt": "2024-04-25T18:32:02.409Z",
   "devdoc": {
     "kind": "dev",
     "methods": {},

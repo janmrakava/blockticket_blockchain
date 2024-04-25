@@ -216,5 +216,7 @@
   "app.createevent.eventCreated": "Událost vytvořena!",
   "app.createevent.invalidmetamask": "Problém s připojením krypto peněženky",
 
-  "app.showmyevent.heading": "Moje Události"
+  "app.showmyevent.heading": "Moje Události",
+
+  "app.myeventpage.heading": "Moje událost"
 }
