@@ -12,6 +12,7 @@
   "app.userClick.mytickets": "My tickets",
   "app.userClick.favorites": "Favorites",
   "app.userClick.createevent": "Create new event",
+  "app.userClick.showmyevents": "My events",
   "app.userClick.support": "Support",
   "app.userClick.logout": "Logout",
   "app.choosetop.czech": "Czechia",
@@ -211,6 +212,11 @@
   "app.createevent.heading": "Create new event",
   "app.createevent.buttontext": "Create new event!",
   "app.createevent.baddate": "Bad date",
-  "app.createevent.eventCreated": "Event was created!"
+  "app.createevent.eventCreated": "Event was created!",
+  "app.createevent.invalidmetamask": "Problem with wallet connection",
+
+  "app.showmyevent.heading": "My Events"
+
+
 
 }

@@ -149,6 +149,26 @@ contract ContractEvent {
     }
     return categoryEvents;
   }
+  // Function to get events owned by the caller
+  function getEventsForOwner() external view returns (Event[] memory) {
+    uint256 count = 0;
+    for (uint256 i = 0; i < eventIdsList.length; i++) {
+      if (allEvents[eventIdsList[i]].eventOwner == msg.sender) {
+        count++;
+      }
+    }
+
+    Event[] memory ownerEvents = new Event[](count);
+    uint256 index = 0;
+
+    for (uint256 j = 0; j < eventIdsList.length; j++) {
+      if (allEvents[eventIdsList[j]].eventOwner == msg.sender) {
+        ownerEvents[index] = allEvents[eventIdsList[j]];
+        index++;
+      }
+    }
+    return ownerEvents;
+  }
   // function to buy (Create) new ticket for the user
   function buyTicket(
     bytes32 _eventID

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
 /* eslint-disable @typescript-eslint/no-confusing-void-expression */
 import {
   Alert,
@@ -25,13 +26,7 @@ import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import cs from 'date-fns/locale/de';
 import { RegisterLogo } from '../components/Register/RegisterLogo';
 import { useSDK } from '@metamask/sdk-react';
-import {
-  createNewEvent,
-  dateToUint64,
-  getAllEventsFromContract,
-  getEventInfo,
-  findEventInTransactions
-} from '../utils/smartContractFunctions/EventContract';
+import { createNewEvent, dateToUint64 } from '../utils/smartContractFunctions/EventContract';
 
 export interface INewEvent {
   eventName: string;
@@ -48,6 +43,7 @@ export interface INewEvent {
 const CreateEvent: React.FC = () => {
   const appLanguage = useSelector((state: RootState) => state.language.appLanguage);
   const [showSnackBar, setShowSnackBar] = useState<boolean>(false);
+  const [invalidMetamask, setInvalidMetamask] = useState<boolean>(false);
   const [succesfullCreateSnackBar, setSuccesfullCreateSnackBar] = useState<boolean>(false);
   const [account, setAccount] = useState<string>();
   const { sdk } = useSDK();
@@ -108,48 +104,38 @@ const CreateEvent: React.FC = () => {
         }, 2500);
       } else {
         const dateUINT64 = dateToUint64(newEventInfo.dateOfTheEvent);
+        if (account != null) {
+          const response = await createNewEvent(dateUINT64, newEventInfo, account);
+          console.log(response);
+          setSuccesfullCreateSnackBar(true);
+          setTimeout(() => {
+            setSuccesfullCreateSnackBar(false);
+          }, 2500);
+          setNewEventInfo({
+            eventName: '',
+            ticketPrice: 0,
+            numberOfTicket: 0,
+            dateOfTheEvent: new Date(),
+            placeName: '',
+            imageSrc: '',
+            description: '',
+            category: '',
+            popular: false
+          });
+        } else {
+          setInvalidMetamask(true);
+          setTimeout(() => {
+            setInvalidMetamask(false);
+          }, 2500);
+        }
 
-        const response = await createNewEvent(dateUINT64, newEventInfo, account);
         // eslint-disable-next-line @typescript-eslint/await-thenable
-        console.log(response);
-        setSuccesfullCreateSnackBar(true);
-        setTimeout(() => {
-          setSuccesfullCreateSnackBar(false);
-        }, 2500);
-        setNewEventInfo({
-          eventName: '',
-          ticketPrice: 0,
-          numberOfTicket: 0,
-          dateOfTheEvent: new Date(),
-          placeName: '',
-          imageSrc: '',
-          description: '',
-          category: '',
-          popular: false
-        });
       }
     } catch (error) {
       console.log('Event with this ID already exists', error);
     }
   };
 
-  const handleGetEventsFromFromContract = async (): Promise<void> => {
-    const response = await getAllEventsFromContract();
-    console.log(response);
-  };
-  // EXAMPLE METHOD
-  const handleGetInfoOneEvent = async (): Promise<void> => {
-    const response = await getEventInfo(
-      '0x4e46205245414c204d5553495343000000000000000000000000000000000000'
-    );
-    console.log(response);
-  };
-  // EXAMPLE
-  const handleGetTransactions = async (): Promise<void> => {
-    await findEventInTransactions(
-      '0x56696b746f7220536865656e0000000000000000000000000000000000000000'
-    );
-  };
   return (
     <LocalizationProvider dateAdapter={AdapterDateFns} adapterLocale={cs}>
       <Grid
@@ -321,28 +307,6 @@ const CreateEvent: React.FC = () => {
             <Button
               variant="contained"
               // eslint-disable-next-line @typescript-eslint/no-misused-promises
-              onClick={handleGetEventsFromFromContract}
-              sx={{ width: '100%', marginTop: '20px' }}>
-              Všechny eventy
-            </Button>
-            <Button
-              variant="contained"
-              // eslint-disable-next-line @typescript-eslint/no-misused-promises
-              onClick={handleGetInfoOneEvent}
-              sx={{ width: '100%', marginTop: '20px' }}>
-              Jeden Event s ID
-            </Button>
-
-            <Button
-              variant="contained"
-              // eslint-disable-next-line @typescript-eslint/no-misused-promises
-              onClick={handleGetTransactions}
-              sx={{ width: '100%', marginTop: '20px' }}>
-              Dej mi transakce
-            </Button>
-            <Button
-              variant="contained"
-              // eslint-disable-next-line @typescript-eslint/no-misused-promises
               onClick={handleCreateEvent}
               sx={{ width: '100%', marginTop: '20px' }}>
               <FormattedMessage id="app.createevent.buttontext" />
@@ -356,6 +320,14 @@ const CreateEvent: React.FC = () => {
         anchorOrigin={{ vertical: 'top', horizontal: 'center' }}>
         <Alert severity="error" variant="filled" sx={{ width: '100%' }}>
           <FormattedMessage id={`app.createevent.baddate`} />
+        </Alert>
+      </Snackbar>
+      <Snackbar
+        open={invalidMetamask}
+        autoHideDuration={5000}
+        anchorOrigin={{ vertical: 'top', horizontal: 'center' }}>
+        <Alert severity="error" variant="filled" sx={{ width: '100%' }}>
+          <FormattedMessage id={`app.createevent.invalidmetamask`} />
         </Alert>
       </Snackbar>
       <Snackbar

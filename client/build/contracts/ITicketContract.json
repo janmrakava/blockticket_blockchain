@@ -44,7 +44,7 @@
       "type": "function"
     }
   ],
-  "metadata": "{\"compiler\":{\"version\":\"0.8.10+commit.fc410830\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"eventID\",\"type\":\"bytes32\"}],\"name\":\"cancelAllTickets\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"eventID\",\"type\":\"bytes32\"},{\"internalType\":\"address\",\"name\":\"buyer\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"ticketPrice\",\"type\":\"uint256\"}],\"name\":\"createNewTicket\",\"outputs\":[{\"internalType\":\"bytes32\",\"name\":\"\",\"type\":\"bytes32\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/Event.sol\":\"ITicketContract\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/Event.sol\":{\"keccak256\":\"0x6c0514a3fe93f0b63f27220a7d2d44d156a6563ccb38d286026d4f142b41a5dd\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://ff1794523fea4453730628e4ee2bec597b94b604aa0239f8b36d9148ce8c867a\",\"dweb:/ipfs/QmUX4c7XAdZeTuYz5B5vdt8EbMsZkRXLKAfdcviVgkmbuA\"]},\"project:/contracts/Ticket.sol\":{\"keccak256\":\"0x8123ea3acd80ca02ecbeb63e9ab4cfe66b899bcf7a95cc59ad2f789eac22a4b2\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://c090566d1e2a5b9db7057860aff49403389eda6811504095ca9a74ea629ffb63\",\"dweb:/ipfs/QmbbPEKLoDQ8CcNdM8MdTc5o8Y1m71YJ6JB9UxWf23kKHZ\"]}},\"version\":1}",
+  "metadata": "{\"compiler\":{\"version\":\"0.8.10+commit.fc410830\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"eventID\",\"type\":\"bytes32\"}],\"name\":\"cancelAllTickets\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"eventID\",\"type\":\"bytes32\"},{\"internalType\":\"address\",\"name\":\"buyer\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"ticketPrice\",\"type\":\"uint256\"}],\"name\":\"createNewTicket\",\"outputs\":[{\"internalType\":\"bytes32\",\"name\":\"\",\"type\":\"bytes32\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/Event.sol\":\"ITicketContract\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/Event.sol\":{\"keccak256\":\"0x432f3f3ef5e46be6122a6a54f34209802612a397ced7d381804e70f0224e6f8c\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://53a648186ed1f838d92867ac9e27ae4289b67c410b7c8007472a3417844ff149\",\"dweb:/ipfs/QmPZi9pnn8arXuYWnqxNYuBRHkv1awufGZ89qEhD4ZyZ3W\"]},\"project:/contracts/Ticket.sol\":{\"keccak256\":\"0x8123ea3acd80ca02ecbeb63e9ab4cfe66b899bcf7a95cc59ad2f789eac22a4b2\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://c090566d1e2a5b9db7057860aff49403389eda6811504095ca9a74ea629ffb63\",\"dweb:/ipfs/QmbbPEKLoDQ8CcNdM8MdTc5o8Y1m71YJ6JB9UxWf23kKHZ\"]}},\"version\":1}",
   "bytecode": "0x",
   "deployedBytecode": "0x",
   "immutableReferences": {},
@@ -52,22 +52,22 @@
   "deployedGeneratedSources": [],
   "sourceMap": "",
   "deployedSourceMap": "",
-  "source": "// SPDX-License-Identifier: MIT\npragma solidity ^0.8.10;\nimport './Ticket.sol';\n\ninterface ITicketContract {\n  function createNewTicket(\n    bytes32 eventID,\n    address buyer,\n    uint256 ticketPrice\n  ) external returns (bytes32);\n  function cancelAllTickets(bytes32 eventID) external;\n}\n\ncontract ContractEvent {\n  ITicketContract ticketContract;\n\n  function setTicketContractAddress(address _ticketAddress) external {\n    ticketContract = ITicketContract(_ticketAddress);\n  }\n\n  mapping(bytes32 => Event) public allEvents;\n  mapping(bytes32 => bool) public eventExists;\n\n  bytes32[] public eventIdsList;\n\n  address public ticketAddress;\n\n  // All attributes for the Events (Maybe i need to add number of sell tickets?)\n  struct Event {\n    bytes32 eventID;\n    string eventName;\n    uint64 dateOfEvent;\n    uint64 numberOfTickets;\n    uint64 ticketPrice;\n    uint64 ticketsLeft;\n    string placeName;\n    string eventDescription;\n    string eventCategory;\n    address eventOwner;\n    string eventImage;\n    uint64 soldTickets;\n  }\n\n  event EventCreated(bytes32 eventID);\n  event EventCancelled(bytes32 eventID);\n\n  event TicketPriceUpdated(bytes32 eventID, uint64 newTicketPrice);\n  event TicketBought(bytes32 eventID, bytes32 ticketID);\n\n  modifier isEnoughTickets(bytes32 _eventID) {\n    require(allEvents[_eventID].ticketsLeft > 0, 'There is no remaining tickets!');\n    _;\n  }\n\n  modifier onlyEventOwner(bytes32 _eventID) {\n    require(\n      allEvents[_eventID].eventOwner == msg.sender,\n      'Only the event owner can perform this action'\n    );\n    _;\n  }\n  modifier eventExistsModifier(bytes32 _eventID) {\n    require(eventExists[_eventID], 'Event does not exist');\n    _;\n  }\n  //function to create an event\n  function createEvent(\n    string memory _eventName,\n    uint64 _dateOfEvent,\n    uint64 _numberOfTickets,\n    uint64 _ticketPrice,\n    string memory _placeName,\n    string memory _eventDescription,\n    string memory _eventCategory,\n    string memory _eventImage\n  ) external {\n    bytes32 _eventID = keccak256(abi.encodePacked(_eventName, block.timestamp));\n    require(!eventExists[_eventID], 'Event with this ID already exists');\n\n    allEvents[_eventID] = Event({\n      eventID: _eventID,\n      eventName: _eventName,\n      dateOfEvent: _dateOfEvent,\n      numberOfTickets: _numberOfTickets,\n      ticketPrice: _ticketPrice,\n      ticketsLeft: _numberOfTickets,\n      placeName: _placeName,\n      eventDescription: _eventDescription,\n      eventCategory: _eventCategory,\n      eventOwner: msg.sender,\n      eventImage: _eventImage,\n      soldTickets: 0\n    });\n\n    eventIdsList.push(_eventID);\n    eventExists[_eventID] = true;\n\n    emit EventCreated(_eventID);\n  }\n\n  function updateTicketPrice(\n    bytes32 _eventID,\n    uint64 _newTicketPrice\n  ) external onlyEventOwner(_eventID) eventExistsModifier(_eventID) {\n    require(_newTicketPrice > 0, 'New ticket price must be greater than zero.');\n\n    allEvents[_eventID].ticketPrice = _newTicketPrice;\n    emit TicketPriceUpdated(_eventID, _newTicketPrice);\n  }\n\n  function getEventIDs() external view returns (bytes32[] memory eventList) {\n    return eventIdsList;\n  }\n\n  //function to get all events\n  function getEvents() external view returns (Event[] memory eventList) {\n    eventList = new Event[](eventIdsList.length);\n    for (uint i = 0; i < eventIdsList.length; i++) {\n      eventList[i] = allEvents[eventIdsList[i]];\n    }\n    return eventList;\n  }\n  //function to get info about event with given ID\n  function getEventInfo(\n    bytes32 _eventID\n  ) external view eventExistsModifier(_eventID) returns (Event memory) {\n    return allEvents[_eventID];\n  }\n  //function to get events by selected category\n  function getEventsByCategory(string memory _category) external view returns (Event[] memory) {\n    uint256 count = 0;\n    for (uint256 i = 0; i < eventIdsList.length; i++) {\n      if (\n        keccak256(bytes(allEvents[eventIdsList[i]].eventCategory)) == keccak256(bytes(_category))\n      ) {\n        count++;\n      }\n    }\n    Event[] memory categoryEvents = new Event[](count);\n    uint256 index = 0;\n\n    for (uint256 j = 0; j < eventIdsList.length; j++) {\n      if (\n        keccak256(bytes(allEvents[eventIdsList[j]].eventCategory)) == keccak256(bytes(_category))\n      ) {\n        categoryEvents[index] = allEvents[eventIdsList[j]];\n        index++;\n      }\n    }\n    return categoryEvents;\n  }\n  // function to buy (Create) new ticket for the user\n  function buyTicket(\n    bytes32 _eventID\n  ) external payable isEnoughTickets(_eventID) eventExistsModifier(_eventID) returns (bytes32) {\n    Event storage _event = allEvents[_eventID];\n    require(msg.value >= _event.ticketPrice, 'Insufficient funds sent');\n\n    uint256 overpaidAmount = msg.value - _event.ticketPrice;\n\n    bytes32 ticketID = ticketContract.createNewTicket(_eventID, msg.sender, _event.ticketPrice);\n    _event.ticketsLeft -= 1;\n    _event.soldTickets += 1;\n\n    emit TicketBought(_eventID, ticketID);\n    if (overpaidAmount > 0) {\n      (bool refunded, ) = msg.sender.call{value: overpaidAmount}('');\n      require(refunded, 'Failed to refund overpaid amount');\n    }\n\n    return ticketID;\n  }\n  function cancelEvent(\n    bytes32 _eventID\n  ) external onlyEventOwner(_eventID) eventExistsModifier(_eventID) returns (bytes32) {\n    Event storage _event = allEvents[_eventID];\n    require(_event.dateOfEvent > block.timestamp, 'Cannot cancel event after it has started');\n\n    ticketContract.cancelAllTickets(_eventID);\n    delete allEvents[_eventID];\n\n    for (uint i = 0; i < eventIdsList.length; i++) {\n      if (eventIdsList[i] == _eventID) {\n        eventIdsList[i] = eventIdsList[eventIdsList.length - 1];\n        eventIdsList.pop();\n        break;\n      }\n    }\n\n    emit EventCancelled(_eventID);\n    return _eventID;\n  }\n}\n",
+  "source": "// SPDX-License-Identifier: MIT\npragma solidity ^0.8.10;\nimport './Ticket.sol';\n\ninterface ITicketContract {\n  function createNewTicket(\n    bytes32 eventID,\n    address buyer,\n    uint256 ticketPrice\n  ) external returns (bytes32);\n  function cancelAllTickets(bytes32 eventID) external;\n}\n\ncontract ContractEvent {\n  ITicketContract ticketContract;\n\n  function setTicketContractAddress(address _ticketAddress) external {\n    ticketContract = ITicketContract(_ticketAddress);\n  }\n\n  mapping(bytes32 => Event) public allEvents;\n  mapping(bytes32 => bool) public eventExists;\n\n  bytes32[] public eventIdsList;\n\n  address public ticketAddress;\n\n  // All attributes for the Events (Maybe i need to add number of sell tickets?)\n  struct Event {\n    bytes32 eventID;\n    string eventName;\n    uint64 dateOfEvent;\n    uint64 numberOfTickets;\n    uint64 ticketPrice;\n    uint64 ticketsLeft;\n    string placeName;\n    string eventDescription;\n    string eventCategory;\n    address eventOwner;\n    string eventImage;\n    uint64 soldTickets;\n  }\n\n  event EventCreated(bytes32 eventID);\n  event EventCancelled(bytes32 eventID);\n\n  event TicketPriceUpdated(bytes32 eventID, uint64 newTicketPrice);\n  event TicketBought(bytes32 eventID, bytes32 ticketID);\n\n  modifier isEnoughTickets(bytes32 _eventID) {\n    require(allEvents[_eventID].ticketsLeft > 0, 'There is no remaining tickets!');\n    _;\n  }\n\n  modifier onlyEventOwner(bytes32 _eventID) {\n    require(\n      allEvents[_eventID].eventOwner == msg.sender,\n      'Only the event owner can perform this action'\n    );\n    _;\n  }\n  modifier eventExistsModifier(bytes32 _eventID) {\n    require(eventExists[_eventID], 'Event does not exist');\n    _;\n  }\n  //function to create an event\n  function createEvent(\n    string memory _eventName,\n    uint64 _dateOfEvent,\n    uint64 _numberOfTickets,\n    uint64 _ticketPrice,\n    string memory _placeName,\n    string memory _eventDescription,\n    string memory _eventCategory,\n    string memory _eventImage\n  ) external {\n    bytes32 _eventID = keccak256(abi.encodePacked(_eventName, block.timestamp));\n    require(!eventExists[_eventID], 'Event with this ID already exists');\n\n    allEvents[_eventID] = Event({\n      eventID: _eventID,\n      eventName: _eventName,\n      dateOfEvent: _dateOfEvent,\n      numberOfTickets: _numberOfTickets,\n      ticketPrice: _ticketPrice,\n      ticketsLeft: _numberOfTickets,\n      placeName: _placeName,\n      eventDescription: _eventDescription,\n      eventCategory: _eventCategory,\n      eventOwner: msg.sender,\n      eventImage: _eventImage,\n      soldTickets: 0\n    });\n\n    eventIdsList.push(_eventID);\n    eventExists[_eventID] = true;\n\n    emit EventCreated(_eventID);\n  }\n\n  function updateTicketPrice(\n    bytes32 _eventID,\n    uint64 _newTicketPrice\n  ) external onlyEventOwner(_eventID) eventExistsModifier(_eventID) {\n    require(_newTicketPrice > 0, 'New ticket price must be greater than zero.');\n\n    allEvents[_eventID].ticketPrice = _newTicketPrice;\n    emit TicketPriceUpdated(_eventID, _newTicketPrice);\n  }\n\n  function getEventIDs() external view returns (bytes32[] memory eventList) {\n    return eventIdsList;\n  }\n\n  //function to get all events\n  function getEvents() external view returns (Event[] memory eventList) {\n    eventList = new Event[](eventIdsList.length);\n    for (uint i = 0; i < eventIdsList.length; i++) {\n      eventList[i] = allEvents[eventIdsList[i]];\n    }\n    return eventList;\n  }\n  //function to get info about event with given ID\n  function getEventInfo(\n    bytes32 _eventID\n  ) external view eventExistsModifier(_eventID) returns (Event memory) {\n    return allEvents[_eventID];\n  }\n  //function to get events by selected category\n  function getEventsByCategory(string memory _category) external view returns (Event[] memory) {\n    uint256 count = 0;\n    for (uint256 i = 0; i < eventIdsList.length; i++) {\n      if (\n        keccak256(bytes(allEvents[eventIdsList[i]].eventCategory)) == keccak256(bytes(_category))\n      ) {\n        count++;\n      }\n    }\n    Event[] memory categoryEvents = new Event[](count);\n    uint256 index = 0;\n\n    for (uint256 j = 0; j < eventIdsList.length; j++) {\n      if (\n        keccak256(bytes(allEvents[eventIdsList[j]].eventCategory)) == keccak256(bytes(_category))\n      ) {\n        categoryEvents[index] = allEvents[eventIdsList[j]];\n        index++;\n      }\n    }\n    return categoryEvents;\n  }\n  // Function to get events owned by the caller\n  function getEventsForOwner() external view returns (Event[] memory) {\n    uint256 count = 0;\n    for (uint256 i = 0; i < eventIdsList.length; i++) {\n      if (allEvents[eventIdsList[i]].eventOwner == msg.sender) {\n        count++;\n      }\n    }\n\n    Event[] memory ownerEvents = new Event[](count);\n    uint256 index = 0;\n\n    for (uint256 j = 0; j < eventIdsList.length; j++) {\n      if (allEvents[eventIdsList[j]].eventOwner == msg.sender) {\n        ownerEvents[index] = allEvents[eventIdsList[j]];\n        index++;\n      }\n    }\n    return ownerEvents;\n  }\n  // function to buy (Create) new ticket for the user\n  function buyTicket(\n    bytes32 _eventID\n  ) external payable isEnoughTickets(_eventID) eventExistsModifier(_eventID) returns (bytes32) {\n    Event storage _event = allEvents[_eventID];\n    require(msg.value >= _event.ticketPrice, 'Insufficient funds sent');\n\n    uint256 overpaidAmount = msg.value - _event.ticketPrice;\n\n    bytes32 ticketID = ticketContract.createNewTicket(_eventID, msg.sender, _event.ticketPrice);\n    _event.ticketsLeft -= 1;\n    _event.soldTickets += 1;\n\n    emit TicketBought(_eventID, ticketID);\n    if (overpaidAmount > 0) {\n      (bool refunded, ) = msg.sender.call{value: overpaidAmount}('');\n      require(refunded, 'Failed to refund overpaid amount');\n    }\n\n    return ticketID;\n  }\n  function cancelEvent(\n    bytes32 _eventID\n  ) external onlyEventOwner(_eventID) eventExistsModifier(_eventID) returns (bytes32) {\n    Event storage _event = allEvents[_eventID];\n    require(_event.dateOfEvent > block.timestamp, 'Cannot cancel event after it has started');\n\n    ticketContract.cancelAllTickets(_eventID);\n    delete allEvents[_eventID];\n\n    for (uint i = 0; i < eventIdsList.length; i++) {\n      if (eventIdsList[i] == _eventID) {\n        eventIdsList[i] = eventIdsList[eventIdsList.length - 1];\n        eventIdsList.pop();\n        break;\n      }\n    }\n\n    emit EventCancelled(_eventID);\n    return _eventID;\n  }\n}\n",
   "sourcePath": "/Users/janmrakava/Documents/GitHub/blockticket_blockchain/client/contracts/Event.sol",
   "ast": {
     "absolutePath": "project:/contracts/Event.sol",
     "exportedSymbols": {
       "ContractEvent": [
-        602
+        696
       ],
       "ITicketContract": [
         19
       ],
       "TicketContract": [
-        1710
+        1804
       ]
     },
-    "id": 603,
+    "id": 697,
     "license": "MIT",
     "nodeType": "SourceUnit",
     "nodes": [
@@ -88,8 +88,8 @@
         "id": 2,
         "nameLocation": "-1:-1:-1",
         "nodeType": "ImportDirective",
-        "scope": 603,
-        "sourceUnit": 1711,
+        "scope": 697,
+        "sourceUnit": 1805,
         "src": "57:22:0",
         "symbolAliases": [],
         "unitAlias": ""
@@ -303,7 +303,7 @@
             "visibility": "external"
           }
         ],
-        "scope": 603,
+        "scope": 697,
         "src": "81:208:0",
         "usedErrors": []
       },
@@ -314,9 +314,9 @@
         "contractDependencies": [],
         "contractKind": "contract",
         "fullyImplemented": true,
-        "id": 602,
+        "id": 696,
         "linearizedBaseContracts": [
-          602
+          696
         ],
         "name": "ContractEvent",
         "nameLocation": "300:13:0",
@@ -329,7 +329,7 @@
             "name": "ticketContract",
             "nameLocation": "334:14:0",
             "nodeType": "VariableDeclaration",
-            "scope": 602,
+            "scope": 696,
             "src": "318:30:0",
             "stateVariable": true,
             "storageLocation": "default",
@@ -492,7 +492,7 @@
               "parameters": [],
               "src": "420:0:0"
             },
-            "scope": 602,
+            "scope": 696,
             "src": "353:126:0",
             "stateMutability": "nonpayable",
             "virtual": false,
@@ -506,7 +506,7 @@
             "name": "allEvents",
             "nameLocation": "516:9:0",
             "nodeType": "VariableDeclaration",
-            "scope": 602,
+            "scope": 696,
             "src": "483:42:0",
             "stateVariable": true,
             "storageLocation": "default",
@@ -560,7 +560,7 @@
             "name": "eventExists",
             "nameLocation": "561:11:0",
             "nodeType": "VariableDeclaration",
-            "scope": 602,
+            "scope": 696,
             "src": "529:43:0",
             "stateVariable": true,
             "storageLocation": "default",
@@ -607,7 +607,7 @@
             "name": "eventIdsList",
             "nameLocation": "594:12:0",
             "nodeType": "VariableDeclaration",
-            "scope": 602,
+            "scope": 696,
             "src": "577:29:0",
             "stateVariable": true,
             "storageLocation": "default",
@@ -644,7 +644,7 @@
             "name": "ticketAddress",
             "nameLocation": "626:13:0",
             "nodeType": "VariableDeclaration",
-            "scope": 602,
+            "scope": 696,
             "src": "611:28:0",
             "stateVariable": true,
             "storageLocation": "default",
@@ -998,7 +998,7 @@
             "name": "Event",
             "nameLocation": "732:5:0",
             "nodeType": "StructDefinition",
-            "scope": 602,
+            "scope": 696,
             "src": "725:309:0",
             "visibility": "public"
           },
@@ -2835,7 +2835,7 @@
               "parameters": [],
               "src": "1999:0:0"
             },
-            "scope": 602,
+            "scope": 696,
             "src": "1724:969:0",
             "stateMutability": "nonpayable",
             "virtual": false,
@@ -3241,7 +3241,7 @@
               "parameters": [],
               "src": "2842:0:0"
             },
-            "scope": 602,
+            "scope": 696,
             "src": "2697:343:0",
             "stateMutability": "nonpayable",
             "virtual": false,
@@ -3330,7 +3330,7 @@
               ],
               "src": "3089:28:0"
             },
-            "scope": 602,
+            "scope": 696,
             "src": "3044:104:0",
             "stateMutability": "view",
             "virtual": false,
@@ -3817,7 +3817,7 @@
               ],
               "src": "3226:26:0"
             },
-            "scope": 602,
+            "scope": 696,
             "src": "3183:255:0",
             "stateMutability": "view",
             "virtual": false,
@@ -3985,7 +3985,7 @@
               ],
               "src": "3592:14:0"
             },
-            "scope": 602,
+            "scope": 696,
             "src": "3492:152:0",
             "stateMutability": "view",
             "virtual": false,
@@ -5389,7 +5389,7 @@
               ],
               "src": "3771:16:0"
             },
-            "scope": 602,
+            "scope": 696,
             "src": "3695:700:0",
             "stateMutability": "view",
             "virtual": false,
@@ -5397,24 +5397,1108 @@
           },
           {
             "body": {
-              "id": 516,
+              "id": 522,
               "nodeType": "Block",
-              "src": "4588:577:0",
+              "src": "4514:491:0",
               "statements": [
                 {
                   "assignments": [
-                    444
+                    437
                   ],
                   "declarations": [
                     {
                       "constant": false,
+                      "id": 437,
+                      "mutability": "mutable",
+                      "name": "count",
+                      "nameLocation": "4528:5:0",
+                      "nodeType": "VariableDeclaration",
+                      "scope": 522,
+                      "src": "4520:13:0",
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      },
+                      "typeName": {
+                        "id": 436,
+                        "name": "uint256",
+                        "nodeType": "ElementaryTypeName",
+                        "src": "4520:7:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      },
+                      "visibility": "internal"
+                    }
+                  ],
+                  "id": 439,
+                  "initialValue": {
+                    "hexValue": "30",
+                    "id": 438,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": true,
+                    "kind": "number",
+                    "lValueRequested": false,
+                    "nodeType": "Literal",
+                    "src": "4536:1:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_rational_0_by_1",
+                      "typeString": "int_const 0"
+                    },
+                    "value": "0"
+                  },
+                  "nodeType": "VariableDeclarationStatement",
+                  "src": "4520:17:0"
+                },
+                {
+                  "body": {
+                    "id": 465,
+                    "nodeType": "Block",
+                    "src": "4593:97:0",
+                    "statements": [
+                      {
+                        "condition": {
+                          "commonType": {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                          },
+                          "id": 459,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "leftExpression": {
+                            "expression": {
+                              "baseExpression": {
+                                "id": 451,
+                                "name": "allEvents",
+                                "nodeType": "Identifier",
+                                "overloadedDeclarations": [],
+                                "referencedDeclaration": 39,
+                                "src": "4605:9:0",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_mapping$_t_bytes32_$_t_struct$_Event_$73_storage_$",
+                                  "typeString": "mapping(bytes32 => struct ContractEvent.Event storage ref)"
+                                }
+                              },
+                              "id": 455,
+                              "indexExpression": {
+                                "baseExpression": {
+                                  "id": 452,
+                                  "name": "eventIdsList",
+                                  "nodeType": "Identifier",
+                                  "overloadedDeclarations": [],
+                                  "referencedDeclaration": 46,
+                                  "src": "4615:12:0",
+                                  "typeDescriptions": {
+                                    "typeIdentifier": "t_array$_t_bytes32_$dyn_storage",
+                                    "typeString": "bytes32[] storage ref"
+                                  }
+                                },
+                                "id": 454,
+                                "indexExpression": {
+                                  "id": 453,
+                                  "name": "i",
+                                  "nodeType": "Identifier",
+                                  "overloadedDeclarations": [],
+                                  "referencedDeclaration": 441,
+                                  "src": "4628:1:0",
+                                  "typeDescriptions": {
+                                    "typeIdentifier": "t_uint256",
+                                    "typeString": "uint256"
+                                  }
+                                },
+                                "isConstant": false,
+                                "isLValue": true,
+                                "isPure": false,
+                                "lValueRequested": false,
+                                "nodeType": "IndexAccess",
+                                "src": "4615:15:0",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_bytes32",
+                                  "typeString": "bytes32"
+                                }
+                              },
+                              "isConstant": false,
+                              "isLValue": true,
+                              "isPure": false,
+                              "lValueRequested": false,
+                              "nodeType": "IndexAccess",
+                              "src": "4605:26:0",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_struct$_Event_$73_storage",
+                                "typeString": "struct ContractEvent.Event storage ref"
+                              }
+                            },
+                            "id": 456,
+                            "isConstant": false,
+                            "isLValue": true,
+                            "isPure": false,
+                            "lValueRequested": false,
+                            "memberName": "eventOwner",
+                            "nodeType": "MemberAccess",
+                            "referencedDeclaration": 68,
+                            "src": "4605:37:0",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_address",
+                              "typeString": "address"
+                            }
+                          },
+                          "nodeType": "BinaryOperation",
+                          "operator": "==",
+                          "rightExpression": {
+                            "expression": {
+                              "id": 457,
+                              "name": "msg",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 4294967281,
+                              "src": "4646:3:0",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_magic_message",
+                                "typeString": "msg"
+                              }
+                            },
+                            "id": 458,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": false,
+                            "lValueRequested": false,
+                            "memberName": "sender",
+                            "nodeType": "MemberAccess",
+                            "src": "4646:10:0",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_address",
+                              "typeString": "address"
+                            }
+                          },
+                          "src": "4605:51:0",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_bool",
+                            "typeString": "bool"
+                          }
+                        },
+                        "id": 464,
+                        "nodeType": "IfStatement",
+                        "src": "4601:83:0",
+                        "trueBody": {
+                          "id": 463,
+                          "nodeType": "Block",
+                          "src": "4658:26:0",
+                          "statements": [
+                            {
+                              "expression": {
+                                "id": 461,
+                                "isConstant": false,
+                                "isLValue": false,
+                                "isPure": false,
+                                "lValueRequested": false,
+                                "nodeType": "UnaryOperation",
+                                "operator": "++",
+                                "prefix": false,
+                                "src": "4668:7:0",
+                                "subExpression": {
+                                  "id": 460,
+                                  "name": "count",
+                                  "nodeType": "Identifier",
+                                  "overloadedDeclarations": [],
+                                  "referencedDeclaration": 437,
+                                  "src": "4668:5:0",
+                                  "typeDescriptions": {
+                                    "typeIdentifier": "t_uint256",
+                                    "typeString": "uint256"
+                                  }
+                                },
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_uint256",
+                                  "typeString": "uint256"
+                                }
+                              },
+                              "id": 462,
+                              "nodeType": "ExpressionStatement",
+                              "src": "4668:7:0"
+                            }
+                          ]
+                        }
+                      }
+                    ]
+                  },
+                  "condition": {
+                    "commonType": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    },
+                    "id": 447,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftExpression": {
                       "id": 444,
+                      "name": "i",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 441,
+                      "src": "4563:1:0",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "nodeType": "BinaryOperation",
+                    "operator": "<",
+                    "rightExpression": {
+                      "expression": {
+                        "id": 445,
+                        "name": "eventIdsList",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 46,
+                        "src": "4567:12:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_array$_t_bytes32_$dyn_storage",
+                          "typeString": "bytes32[] storage ref"
+                        }
+                      },
+                      "id": 446,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "length",
+                      "nodeType": "MemberAccess",
+                      "src": "4567:19:0",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "src": "4563:23:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "id": 466,
+                  "initializationExpression": {
+                    "assignments": [
+                      441
+                    ],
+                    "declarations": [
+                      {
+                        "constant": false,
+                        "id": 441,
+                        "mutability": "mutable",
+                        "name": "i",
+                        "nameLocation": "4556:1:0",
+                        "nodeType": "VariableDeclaration",
+                        "scope": 466,
+                        "src": "4548:9:0",
+                        "stateVariable": false,
+                        "storageLocation": "default",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        },
+                        "typeName": {
+                          "id": 440,
+                          "name": "uint256",
+                          "nodeType": "ElementaryTypeName",
+                          "src": "4548:7:0",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          }
+                        },
+                        "visibility": "internal"
+                      }
+                    ],
+                    "id": 443,
+                    "initialValue": {
+                      "hexValue": "30",
+                      "id": 442,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": true,
+                      "kind": "number",
+                      "lValueRequested": false,
+                      "nodeType": "Literal",
+                      "src": "4560:1:0",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_rational_0_by_1",
+                        "typeString": "int_const 0"
+                      },
+                      "value": "0"
+                    },
+                    "nodeType": "VariableDeclarationStatement",
+                    "src": "4548:13:0"
+                  },
+                  "loopExpression": {
+                    "expression": {
+                      "id": 449,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "nodeType": "UnaryOperation",
+                      "operator": "++",
+                      "prefix": false,
+                      "src": "4588:3:0",
+                      "subExpression": {
+                        "id": 448,
+                        "name": "i",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 441,
+                        "src": "4588:1:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      },
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "id": 450,
+                    "nodeType": "ExpressionStatement",
+                    "src": "4588:3:0"
+                  },
+                  "nodeType": "ForStatement",
+                  "src": "4543:147:0"
+                },
+                {
+                  "assignments": [
+                    471
+                  ],
+                  "declarations": [
+                    {
+                      "constant": false,
+                      "id": 471,
+                      "mutability": "mutable",
+                      "name": "ownerEvents",
+                      "nameLocation": "4711:11:0",
+                      "nodeType": "VariableDeclaration",
+                      "scope": 522,
+                      "src": "4696:26:0",
+                      "stateVariable": false,
+                      "storageLocation": "memory",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_array$_t_struct$_Event_$73_memory_ptr_$dyn_memory_ptr",
+                        "typeString": "struct ContractEvent.Event[]"
+                      },
+                      "typeName": {
+                        "baseType": {
+                          "id": 469,
+                          "nodeType": "UserDefinedTypeName",
+                          "pathNode": {
+                            "id": 468,
+                            "name": "Event",
+                            "nodeType": "IdentifierPath",
+                            "referencedDeclaration": 73,
+                            "src": "4696:5:0"
+                          },
+                          "referencedDeclaration": 73,
+                          "src": "4696:5:0",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_struct$_Event_$73_storage_ptr",
+                            "typeString": "struct ContractEvent.Event"
+                          }
+                        },
+                        "id": 470,
+                        "nodeType": "ArrayTypeName",
+                        "src": "4696:7:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_array$_t_struct$_Event_$73_storage_$dyn_storage_ptr",
+                          "typeString": "struct ContractEvent.Event[]"
+                        }
+                      },
+                      "visibility": "internal"
+                    }
+                  ],
+                  "id": 478,
+                  "initialValue": {
+                    "arguments": [
+                      {
+                        "id": 476,
+                        "name": "count",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 437,
+                        "src": "4737:5:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      ],
+                      "id": 475,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": true,
+                      "lValueRequested": false,
+                      "nodeType": "NewExpression",
+                      "src": "4725:11:0",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_objectcreation_pure$_t_uint256_$returns$_t_array$_t_struct$_Event_$73_memory_ptr_$dyn_memory_ptr_$",
+                        "typeString": "function (uint256) pure returns (struct ContractEvent.Event memory[] memory)"
+                      },
+                      "typeName": {
+                        "baseType": {
+                          "id": 473,
+                          "nodeType": "UserDefinedTypeName",
+                          "pathNode": {
+                            "id": 472,
+                            "name": "Event",
+                            "nodeType": "IdentifierPath",
+                            "referencedDeclaration": 73,
+                            "src": "4729:5:0"
+                          },
+                          "referencedDeclaration": 73,
+                          "src": "4729:5:0",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_struct$_Event_$73_storage_ptr",
+                            "typeString": "struct ContractEvent.Event"
+                          }
+                        },
+                        "id": 474,
+                        "nodeType": "ArrayTypeName",
+                        "src": "4729:7:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_array$_t_struct$_Event_$73_storage_$dyn_storage_ptr",
+                          "typeString": "struct ContractEvent.Event[]"
+                        }
+                      }
+                    },
+                    "id": 477,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "4725:18:0",
+                    "tryCall": false,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_array$_t_struct$_Event_$73_memory_ptr_$dyn_memory_ptr",
+                      "typeString": "struct ContractEvent.Event memory[] memory"
+                    }
+                  },
+                  "nodeType": "VariableDeclarationStatement",
+                  "src": "4696:47:0"
+                },
+                {
+                  "assignments": [
+                    480
+                  ],
+                  "declarations": [
+                    {
+                      "constant": false,
+                      "id": 480,
+                      "mutability": "mutable",
+                      "name": "index",
+                      "nameLocation": "4757:5:0",
+                      "nodeType": "VariableDeclaration",
+                      "scope": 522,
+                      "src": "4749:13:0",
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      },
+                      "typeName": {
+                        "id": 479,
+                        "name": "uint256",
+                        "nodeType": "ElementaryTypeName",
+                        "src": "4749:7:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      },
+                      "visibility": "internal"
+                    }
+                  ],
+                  "id": 482,
+                  "initialValue": {
+                    "hexValue": "30",
+                    "id": 481,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": true,
+                    "kind": "number",
+                    "lValueRequested": false,
+                    "nodeType": "Literal",
+                    "src": "4765:1:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_rational_0_by_1",
+                      "typeString": "int_const 0"
+                    },
+                    "value": "0"
+                  },
+                  "nodeType": "VariableDeclarationStatement",
+                  "src": "4749:17:0"
+                },
+                {
+                  "body": {
+                    "id": 518,
+                    "nodeType": "Block",
+                    "src": "4823:154:0",
+                    "statements": [
+                      {
+                        "condition": {
+                          "commonType": {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                          },
+                          "id": 502,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "leftExpression": {
+                            "expression": {
+                              "baseExpression": {
+                                "id": 494,
+                                "name": "allEvents",
+                                "nodeType": "Identifier",
+                                "overloadedDeclarations": [],
+                                "referencedDeclaration": 39,
+                                "src": "4835:9:0",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_mapping$_t_bytes32_$_t_struct$_Event_$73_storage_$",
+                                  "typeString": "mapping(bytes32 => struct ContractEvent.Event storage ref)"
+                                }
+                              },
+                              "id": 498,
+                              "indexExpression": {
+                                "baseExpression": {
+                                  "id": 495,
+                                  "name": "eventIdsList",
+                                  "nodeType": "Identifier",
+                                  "overloadedDeclarations": [],
+                                  "referencedDeclaration": 46,
+                                  "src": "4845:12:0",
+                                  "typeDescriptions": {
+                                    "typeIdentifier": "t_array$_t_bytes32_$dyn_storage",
+                                    "typeString": "bytes32[] storage ref"
+                                  }
+                                },
+                                "id": 497,
+                                "indexExpression": {
+                                  "id": 496,
+                                  "name": "j",
+                                  "nodeType": "Identifier",
+                                  "overloadedDeclarations": [],
+                                  "referencedDeclaration": 484,
+                                  "src": "4858:1:0",
+                                  "typeDescriptions": {
+                                    "typeIdentifier": "t_uint256",
+                                    "typeString": "uint256"
+                                  }
+                                },
+                                "isConstant": false,
+                                "isLValue": true,
+                                "isPure": false,
+                                "lValueRequested": false,
+                                "nodeType": "IndexAccess",
+                                "src": "4845:15:0",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_bytes32",
+                                  "typeString": "bytes32"
+                                }
+                              },
+                              "isConstant": false,
+                              "isLValue": true,
+                              "isPure": false,
+                              "lValueRequested": false,
+                              "nodeType": "IndexAccess",
+                              "src": "4835:26:0",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_struct$_Event_$73_storage",
+                                "typeString": "struct ContractEvent.Event storage ref"
+                              }
+                            },
+                            "id": 499,
+                            "isConstant": false,
+                            "isLValue": true,
+                            "isPure": false,
+                            "lValueRequested": false,
+                            "memberName": "eventOwner",
+                            "nodeType": "MemberAccess",
+                            "referencedDeclaration": 68,
+                            "src": "4835:37:0",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_address",
+                              "typeString": "address"
+                            }
+                          },
+                          "nodeType": "BinaryOperation",
+                          "operator": "==",
+                          "rightExpression": {
+                            "expression": {
+                              "id": 500,
+                              "name": "msg",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 4294967281,
+                              "src": "4876:3:0",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_magic_message",
+                                "typeString": "msg"
+                              }
+                            },
+                            "id": 501,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": false,
+                            "lValueRequested": false,
+                            "memberName": "sender",
+                            "nodeType": "MemberAccess",
+                            "src": "4876:10:0",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_address",
+                              "typeString": "address"
+                            }
+                          },
+                          "src": "4835:51:0",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_bool",
+                            "typeString": "bool"
+                          }
+                        },
+                        "id": 517,
+                        "nodeType": "IfStatement",
+                        "src": "4831:140:0",
+                        "trueBody": {
+                          "id": 516,
+                          "nodeType": "Block",
+                          "src": "4888:83:0",
+                          "statements": [
+                            {
+                              "expression": {
+                                "id": 511,
+                                "isConstant": false,
+                                "isLValue": false,
+                                "isPure": false,
+                                "lValueRequested": false,
+                                "leftHandSide": {
+                                  "baseExpression": {
+                                    "id": 503,
+                                    "name": "ownerEvents",
+                                    "nodeType": "Identifier",
+                                    "overloadedDeclarations": [],
+                                    "referencedDeclaration": 471,
+                                    "src": "4898:11:0",
+                                    "typeDescriptions": {
+                                      "typeIdentifier": "t_array$_t_struct$_Event_$73_memory_ptr_$dyn_memory_ptr",
+                                      "typeString": "struct ContractEvent.Event memory[] memory"
+                                    }
+                                  },
+                                  "id": 505,
+                                  "indexExpression": {
+                                    "id": 504,
+                                    "name": "index",
+                                    "nodeType": "Identifier",
+                                    "overloadedDeclarations": [],
+                                    "referencedDeclaration": 480,
+                                    "src": "4910:5:0",
+                                    "typeDescriptions": {
+                                      "typeIdentifier": "t_uint256",
+                                      "typeString": "uint256"
+                                    }
+                                  },
+                                  "isConstant": false,
+                                  "isLValue": true,
+                                  "isPure": false,
+                                  "lValueRequested": true,
+                                  "nodeType": "IndexAccess",
+                                  "src": "4898:18:0",
+                                  "typeDescriptions": {
+                                    "typeIdentifier": "t_struct$_Event_$73_memory_ptr",
+                                    "typeString": "struct ContractEvent.Event memory"
+                                  }
+                                },
+                                "nodeType": "Assignment",
+                                "operator": "=",
+                                "rightHandSide": {
+                                  "baseExpression": {
+                                    "id": 506,
+                                    "name": "allEvents",
+                                    "nodeType": "Identifier",
+                                    "overloadedDeclarations": [],
+                                    "referencedDeclaration": 39,
+                                    "src": "4919:9:0",
+                                    "typeDescriptions": {
+                                      "typeIdentifier": "t_mapping$_t_bytes32_$_t_struct$_Event_$73_storage_$",
+                                      "typeString": "mapping(bytes32 => struct ContractEvent.Event storage ref)"
+                                    }
+                                  },
+                                  "id": 510,
+                                  "indexExpression": {
+                                    "baseExpression": {
+                                      "id": 507,
+                                      "name": "eventIdsList",
+                                      "nodeType": "Identifier",
+                                      "overloadedDeclarations": [],
+                                      "referencedDeclaration": 46,
+                                      "src": "4929:12:0",
+                                      "typeDescriptions": {
+                                        "typeIdentifier": "t_array$_t_bytes32_$dyn_storage",
+                                        "typeString": "bytes32[] storage ref"
+                                      }
+                                    },
+                                    "id": 509,
+                                    "indexExpression": {
+                                      "id": 508,
+                                      "name": "j",
+                                      "nodeType": "Identifier",
+                                      "overloadedDeclarations": [],
+                                      "referencedDeclaration": 484,
+                                      "src": "4942:1:0",
+                                      "typeDescriptions": {
+                                        "typeIdentifier": "t_uint256",
+                                        "typeString": "uint256"
+                                      }
+                                    },
+                                    "isConstant": false,
+                                    "isLValue": true,
+                                    "isPure": false,
+                                    "lValueRequested": false,
+                                    "nodeType": "IndexAccess",
+                                    "src": "4929:15:0",
+                                    "typeDescriptions": {
+                                      "typeIdentifier": "t_bytes32",
+                                      "typeString": "bytes32"
+                                    }
+                                  },
+                                  "isConstant": false,
+                                  "isLValue": true,
+                                  "isPure": false,
+                                  "lValueRequested": false,
+                                  "nodeType": "IndexAccess",
+                                  "src": "4919:26:0",
+                                  "typeDescriptions": {
+                                    "typeIdentifier": "t_struct$_Event_$73_storage",
+                                    "typeString": "struct ContractEvent.Event storage ref"
+                                  }
+                                },
+                                "src": "4898:47:0",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_struct$_Event_$73_memory_ptr",
+                                  "typeString": "struct ContractEvent.Event memory"
+                                }
+                              },
+                              "id": 512,
+                              "nodeType": "ExpressionStatement",
+                              "src": "4898:47:0"
+                            },
+                            {
+                              "expression": {
+                                "id": 514,
+                                "isConstant": false,
+                                "isLValue": false,
+                                "isPure": false,
+                                "lValueRequested": false,
+                                "nodeType": "UnaryOperation",
+                                "operator": "++",
+                                "prefix": false,
+                                "src": "4955:7:0",
+                                "subExpression": {
+                                  "id": 513,
+                                  "name": "index",
+                                  "nodeType": "Identifier",
+                                  "overloadedDeclarations": [],
+                                  "referencedDeclaration": 480,
+                                  "src": "4955:5:0",
+                                  "typeDescriptions": {
+                                    "typeIdentifier": "t_uint256",
+                                    "typeString": "uint256"
+                                  }
+                                },
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_uint256",
+                                  "typeString": "uint256"
+                                }
+                              },
+                              "id": 515,
+                              "nodeType": "ExpressionStatement",
+                              "src": "4955:7:0"
+                            }
+                          ]
+                        }
+                      }
+                    ]
+                  },
+                  "condition": {
+                    "commonType": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    },
+                    "id": 490,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftExpression": {
+                      "id": 487,
+                      "name": "j",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 484,
+                      "src": "4793:1:0",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "nodeType": "BinaryOperation",
+                    "operator": "<",
+                    "rightExpression": {
+                      "expression": {
+                        "id": 488,
+                        "name": "eventIdsList",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 46,
+                        "src": "4797:12:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_array$_t_bytes32_$dyn_storage",
+                          "typeString": "bytes32[] storage ref"
+                        }
+                      },
+                      "id": 489,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "length",
+                      "nodeType": "MemberAccess",
+                      "src": "4797:19:0",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "src": "4793:23:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "id": 519,
+                  "initializationExpression": {
+                    "assignments": [
+                      484
+                    ],
+                    "declarations": [
+                      {
+                        "constant": false,
+                        "id": 484,
+                        "mutability": "mutable",
+                        "name": "j",
+                        "nameLocation": "4786:1:0",
+                        "nodeType": "VariableDeclaration",
+                        "scope": 519,
+                        "src": "4778:9:0",
+                        "stateVariable": false,
+                        "storageLocation": "default",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        },
+                        "typeName": {
+                          "id": 483,
+                          "name": "uint256",
+                          "nodeType": "ElementaryTypeName",
+                          "src": "4778:7:0",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          }
+                        },
+                        "visibility": "internal"
+                      }
+                    ],
+                    "id": 486,
+                    "initialValue": {
+                      "hexValue": "30",
+                      "id": 485,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": true,
+                      "kind": "number",
+                      "lValueRequested": false,
+                      "nodeType": "Literal",
+                      "src": "4790:1:0",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_rational_0_by_1",
+                        "typeString": "int_const 0"
+                      },
+                      "value": "0"
+                    },
+                    "nodeType": "VariableDeclarationStatement",
+                    "src": "4778:13:0"
+                  },
+                  "loopExpression": {
+                    "expression": {
+                      "id": 492,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "nodeType": "UnaryOperation",
+                      "operator": "++",
+                      "prefix": false,
+                      "src": "4818:3:0",
+                      "subExpression": {
+                        "id": 491,
+                        "name": "j",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 484,
+                        "src": "4818:1:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      },
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "id": 493,
+                    "nodeType": "ExpressionStatement",
+                    "src": "4818:3:0"
+                  },
+                  "nodeType": "ForStatement",
+                  "src": "4773:204:0"
+                },
+                {
+                  "expression": {
+                    "id": 520,
+                    "name": "ownerEvents",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [],
+                    "referencedDeclaration": 471,
+                    "src": "4989:11:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_array$_t_struct$_Event_$73_memory_ptr_$dyn_memory_ptr",
+                      "typeString": "struct ContractEvent.Event memory[] memory"
+                    }
+                  },
+                  "functionReturnParameters": 435,
+                  "id": 521,
+                  "nodeType": "Return",
+                  "src": "4982:18:0"
+                }
+              ]
+            },
+            "functionSelector": "db0817c5",
+            "id": 523,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getEventsForOwner",
+            "nameLocation": "4455:17:0",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 430,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "4472:2:0"
+            },
+            "returnParameters": {
+              "id": 435,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 434,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 523,
+                  "src": "4498:14:0",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_array$_t_struct$_Event_$73_memory_ptr_$dyn_memory_ptr",
+                    "typeString": "struct ContractEvent.Event[]"
+                  },
+                  "typeName": {
+                    "baseType": {
+                      "id": 432,
+                      "nodeType": "UserDefinedTypeName",
+                      "pathNode": {
+                        "id": 431,
+                        "name": "Event",
+                        "nodeType": "IdentifierPath",
+                        "referencedDeclaration": 73,
+                        "src": "4498:5:0"
+                      },
+                      "referencedDeclaration": 73,
+                      "src": "4498:5:0",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_struct$_Event_$73_storage_ptr",
+                        "typeString": "struct ContractEvent.Event"
+                      }
+                    },
+                    "id": 433,
+                    "nodeType": "ArrayTypeName",
+                    "src": "4498:7:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_array$_t_struct$_Event_$73_storage_$dyn_storage_ptr",
+                      "typeString": "struct ContractEvent.Event[]"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "4497:16:0"
+            },
+            "scope": 696,
+            "src": "4446:559:0",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "body": {
+              "id": 610,
+              "nodeType": "Block",
+              "src": "5198:577:0",
+              "statements": [
+                {
+                  "assignments": [
+                    538
+                  ],
+                  "declarations": [
+                    {
+                      "constant": false,
+                      "id": 538,
                       "mutability": "mutable",
                       "name": "_event",
-                      "nameLocation": "4608:6:0",
+                      "nameLocation": "5218:6:0",
                       "nodeType": "VariableDeclaration",
-                      "scope": 516,
-                      "src": "4594:20:0",
+                      "scope": 610,
+                      "src": "5204:20:0",
                       "stateVariable": false,
                       "storageLocation": "storage",
                       "typeDescriptions": {
@@ -5422,17 +6506,17 @@
                         "typeString": "struct ContractEvent.Event"
                       },
                       "typeName": {
-                        "id": 443,
+                        "id": 537,
                         "nodeType": "UserDefinedTypeName",
                         "pathNode": {
-                          "id": 442,
+                          "id": 536,
                           "name": "Event",
                           "nodeType": "IdentifierPath",
                           "referencedDeclaration": 73,
-                          "src": "4594:5:0"
+                          "src": "5204:5:0"
                         },
                         "referencedDeclaration": 73,
-                        "src": "4594:5:0",
+                        "src": "5204:5:0",
                         "typeDescriptions": {
                           "typeIdentifier": "t_struct$_Event_$73_storage_ptr",
                           "typeString": "struct ContractEvent.Event"
@@ -5441,28 +6525,28 @@
                       "visibility": "internal"
                     }
                   ],
-                  "id": 448,
+                  "id": 542,
                   "initialValue": {
                     "baseExpression": {
-                      "id": 445,
+                      "id": 539,
                       "name": "allEvents",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
                       "referencedDeclaration": 39,
-                      "src": "4617:9:0",
+                      "src": "5227:9:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_mapping$_t_bytes32_$_t_struct$_Event_$73_storage_$",
                         "typeString": "mapping(bytes32 => struct ContractEvent.Event storage ref)"
                       }
                     },
-                    "id": 447,
+                    "id": 541,
                     "indexExpression": {
-                      "id": 446,
+                      "id": 540,
                       "name": "_eventID",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 431,
-                      "src": "4627:8:0",
+                      "referencedDeclaration": 525,
+                      "src": "5237:8:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_bytes32",
                         "typeString": "bytes32"
@@ -5473,14 +6557,14 @@
                     "isPure": false,
                     "lValueRequested": false,
                     "nodeType": "IndexAccess",
-                    "src": "4617:19:0",
+                    "src": "5227:19:0",
                     "typeDescriptions": {
                       "typeIdentifier": "t_struct$_Event_$73_storage",
                       "typeString": "struct ContractEvent.Event storage ref"
                     }
                   },
                   "nodeType": "VariableDeclarationStatement",
-                  "src": "4594:42:0"
+                  "src": "5204:42:0"
                 },
                 {
                   "expression": {
@@ -5490,32 +6574,32 @@
                           "typeIdentifier": "t_uint256",
                           "typeString": "uint256"
                         },
-                        "id": 454,
+                        "id": 548,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": false,
                         "lValueRequested": false,
                         "leftExpression": {
                           "expression": {
-                            "id": 450,
+                            "id": 544,
                             "name": "msg",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
                             "referencedDeclaration": 4294967281,
-                            "src": "4650:3:0",
+                            "src": "5260:3:0",
                             "typeDescriptions": {
                               "typeIdentifier": "t_magic_message",
                               "typeString": "msg"
                             }
                           },
-                          "id": 451,
+                          "id": 545,
                           "isConstant": false,
                           "isLValue": false,
                           "isPure": false,
                           "lValueRequested": false,
                           "memberName": "value",
                           "nodeType": "MemberAccess",
-                          "src": "4650:9:0",
+                          "src": "5260:9:0",
                           "typeDescriptions": {
                             "typeIdentifier": "t_uint256",
                             "typeString": "uint256"
@@ -5525,18 +6609,18 @@
                         "operator": ">=",
                         "rightExpression": {
                           "expression": {
-                            "id": 452,
+                            "id": 546,
                             "name": "_event",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 444,
-                            "src": "4663:6:0",
+                            "referencedDeclaration": 538,
+                            "src": "5273:6:0",
                             "typeDescriptions": {
                               "typeIdentifier": "t_struct$_Event_$73_storage_ptr",
                               "typeString": "struct ContractEvent.Event storage pointer"
                             }
                           },
-                          "id": 453,
+                          "id": 547,
                           "isConstant": false,
                           "isLValue": true,
                           "isPure": false,
@@ -5544,13 +6628,13 @@
                           "memberName": "ticketPrice",
                           "nodeType": "MemberAccess",
                           "referencedDeclaration": 58,
-                          "src": "4663:18:0",
+                          "src": "5273:18:0",
                           "typeDescriptions": {
                             "typeIdentifier": "t_uint64",
                             "typeString": "uint64"
                           }
                         },
-                        "src": "4650:31:0",
+                        "src": "5260:31:0",
                         "typeDescriptions": {
                           "typeIdentifier": "t_bool",
                           "typeString": "bool"
@@ -5558,14 +6642,14 @@
                       },
                       {
                         "hexValue": "496e73756666696369656e742066756e64732073656e74",
-                        "id": 455,
+                        "id": 549,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": true,
                         "kind": "string",
                         "lValueRequested": false,
                         "nodeType": "Literal",
-                        "src": "4683:25:0",
+                        "src": "5293:25:0",
                         "typeDescriptions": {
                           "typeIdentifier": "t_stringliteral_ef04984094766165d0f3292abebb7fe2c98e15506095c629b0da789b5dea64bb",
                           "typeString": "literal_string \"Insufficient funds sent\""
@@ -5584,7 +6668,7 @@
                           "typeString": "literal_string \"Insufficient funds sent\""
                         }
                       ],
-                      "id": 449,
+                      "id": 543,
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
@@ -5592,13 +6676,13 @@
                         4294967278
                       ],
                       "referencedDeclaration": 4294967278,
-                      "src": "4642:7:0",
+                      "src": "5252:7:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
                         "typeString": "function (bool,string memory) pure"
                       }
                     },
-                    "id": 456,
+                    "id": 550,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -5606,31 +6690,31 @@
                     "lValueRequested": false,
                     "names": [],
                     "nodeType": "FunctionCall",
-                    "src": "4642:67:0",
+                    "src": "5252:67:0",
                     "tryCall": false,
                     "typeDescriptions": {
                       "typeIdentifier": "t_tuple$__$",
                       "typeString": "tuple()"
                     }
                   },
-                  "id": 457,
+                  "id": 551,
                   "nodeType": "ExpressionStatement",
-                  "src": "4642:67:0"
+                  "src": "5252:67:0"
                 },
                 {
                   "assignments": [
-                    459
+                    553
                   ],
                   "declarations": [
                     {
                       "constant": false,
-                      "id": 459,
+                      "id": 553,
                       "mutability": "mutable",
                       "name": "overpaidAmount",
-                      "nameLocation": "4724:14:0",
+                      "nameLocation": "5334:14:0",
                       "nodeType": "VariableDeclaration",
-                      "scope": 516,
-                      "src": "4716:22:0",
+                      "scope": 610,
+                      "src": "5326:22:0",
                       "stateVariable": false,
                       "storageLocation": "default",
                       "typeDescriptions": {
@@ -5638,10 +6722,10 @@
                         "typeString": "uint256"
                       },
                       "typeName": {
-                        "id": 458,
+                        "id": 552,
                         "name": "uint256",
                         "nodeType": "ElementaryTypeName",
-                        "src": "4716:7:0",
+                        "src": "5326:7:0",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint256",
                           "typeString": "uint256"
@@ -5650,38 +6734,38 @@
                       "visibility": "internal"
                     }
                   ],
-                  "id": 465,
+                  "id": 559,
                   "initialValue": {
                     "commonType": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
                     },
-                    "id": 464,
+                    "id": 558,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
                     "leftExpression": {
                       "expression": {
-                        "id": 460,
+                        "id": 554,
                         "name": "msg",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
                         "referencedDeclaration": 4294967281,
-                        "src": "4741:3:0",
+                        "src": "5351:3:0",
                         "typeDescriptions": {
                           "typeIdentifier": "t_magic_message",
                           "typeString": "msg"
                         }
                       },
-                      "id": 461,
+                      "id": 555,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
                       "lValueRequested": false,
                       "memberName": "value",
                       "nodeType": "MemberAccess",
-                      "src": "4741:9:0",
+                      "src": "5351:9:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
                         "typeString": "uint256"
@@ -5691,18 +6775,18 @@
                     "operator": "-",
                     "rightExpression": {
                       "expression": {
-                        "id": 462,
+                        "id": 556,
                         "name": "_event",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 444,
-                        "src": "4753:6:0",
+                        "referencedDeclaration": 538,
+                        "src": "5363:6:0",
                         "typeDescriptions": {
                           "typeIdentifier": "t_struct$_Event_$73_storage_ptr",
                           "typeString": "struct ContractEvent.Event storage pointer"
                         }
                       },
-                      "id": 463,
+                      "id": 557,
                       "isConstant": false,
                       "isLValue": true,
                       "isPure": false,
@@ -5710,35 +6794,35 @@
                       "memberName": "ticketPrice",
                       "nodeType": "MemberAccess",
                       "referencedDeclaration": 58,
-                      "src": "4753:18:0",
+                      "src": "5363:18:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint64",
                         "typeString": "uint64"
                       }
                     },
-                    "src": "4741:30:0",
+                    "src": "5351:30:0",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
                     }
                   },
                   "nodeType": "VariableDeclarationStatement",
-                  "src": "4716:55:0"
+                  "src": "5326:55:0"
                 },
                 {
                   "assignments": [
-                    467
+                    561
                   ],
                   "declarations": [
                     {
                       "constant": false,
-                      "id": 467,
+                      "id": 561,
                       "mutability": "mutable",
                       "name": "ticketID",
-                      "nameLocation": "4786:8:0",
+                      "nameLocation": "5396:8:0",
                       "nodeType": "VariableDeclaration",
-                      "scope": 516,
-                      "src": "4778:16:0",
+                      "scope": 610,
+                      "src": "5388:16:0",
                       "stateVariable": false,
                       "storageLocation": "default",
                       "typeDescriptions": {
@@ -5746,10 +6830,10 @@
                         "typeString": "bytes32"
                       },
                       "typeName": {
-                        "id": 466,
+                        "id": 560,
                         "name": "bytes32",
                         "nodeType": "ElementaryTypeName",
-                        "src": "4778:7:0",
+                        "src": "5388:7:0",
                         "typeDescriptions": {
                           "typeIdentifier": "t_bytes32",
                           "typeString": "bytes32"
@@ -5758,16 +6842,16 @@
                       "visibility": "internal"
                     }
                   ],
-                  "id": 476,
+                  "id": 570,
                   "initialValue": {
                     "arguments": [
                       {
-                        "id": 470,
+                        "id": 564,
                         "name": "_eventID",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 431,
-                        "src": "4828:8:0",
+                        "referencedDeclaration": 525,
+                        "src": "5438:8:0",
                         "typeDescriptions": {
                           "typeIdentifier": "t_bytes32",
                           "typeString": "bytes32"
@@ -5775,25 +6859,25 @@
                       },
                       {
                         "expression": {
-                          "id": 471,
+                          "id": 565,
                           "name": "msg",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
                           "referencedDeclaration": 4294967281,
-                          "src": "4838:3:0",
+                          "src": "5448:3:0",
                           "typeDescriptions": {
                             "typeIdentifier": "t_magic_message",
                             "typeString": "msg"
                           }
                         },
-                        "id": 472,
+                        "id": 566,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": false,
                         "lValueRequested": false,
                         "memberName": "sender",
                         "nodeType": "MemberAccess",
-                        "src": "4838:10:0",
+                        "src": "5448:10:0",
                         "typeDescriptions": {
                           "typeIdentifier": "t_address",
                           "typeString": "address"
@@ -5801,18 +6885,18 @@
                       },
                       {
                         "expression": {
-                          "id": 473,
+                          "id": 567,
                           "name": "_event",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 444,
-                          "src": "4850:6:0",
+                          "referencedDeclaration": 538,
+                          "src": "5460:6:0",
                           "typeDescriptions": {
                             "typeIdentifier": "t_struct$_Event_$73_storage_ptr",
                             "typeString": "struct ContractEvent.Event storage pointer"
                           }
                         },
-                        "id": 474,
+                        "id": 568,
                         "isConstant": false,
                         "isLValue": true,
                         "isPure": false,
@@ -5820,7 +6904,7 @@
                         "memberName": "ticketPrice",
                         "nodeType": "MemberAccess",
                         "referencedDeclaration": 58,
-                        "src": "4850:18:0",
+                        "src": "5460:18:0",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint64",
                           "typeString": "uint64"
@@ -5843,18 +6927,18 @@
                         }
                       ],
                       "expression": {
-                        "id": 468,
+                        "id": 562,
                         "name": "ticketContract",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
                         "referencedDeclaration": 22,
-                        "src": "4797:14:0",
+                        "src": "5407:14:0",
                         "typeDescriptions": {
                           "typeIdentifier": "t_contract$_ITicketContract_$19",
                           "typeString": "contract ITicketContract"
                         }
                       },
-                      "id": 469,
+                      "id": 563,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
@@ -5862,13 +6946,13 @@
                       "memberName": "createNewTicket",
                       "nodeType": "MemberAccess",
                       "referencedDeclaration": 13,
-                      "src": "4797:30:0",
+                      "src": "5407:30:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_external_nonpayable$_t_bytes32_$_t_address_$_t_uint256_$returns$_t_bytes32_$",
                         "typeString": "function (bytes32,address,uint256) external returns (bytes32)"
                       }
                     },
-                    "id": 475,
+                    "id": 569,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -5876,7 +6960,7 @@
                     "lValueRequested": false,
                     "names": [],
                     "nodeType": "FunctionCall",
-                    "src": "4797:72:0",
+                    "src": "5407:72:0",
                     "tryCall": false,
                     "typeDescriptions": {
                       "typeIdentifier": "t_bytes32",
@@ -5884,29 +6968,29 @@
                     }
                   },
                   "nodeType": "VariableDeclarationStatement",
-                  "src": "4778:91:0"
+                  "src": "5388:91:0"
                 },
                 {
                   "expression": {
-                    "id": 481,
+                    "id": 575,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
                     "leftHandSide": {
                       "expression": {
-                        "id": 477,
+                        "id": 571,
                         "name": "_event",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 444,
-                        "src": "4875:6:0",
+                        "referencedDeclaration": 538,
+                        "src": "5485:6:0",
                         "typeDescriptions": {
                           "typeIdentifier": "t_struct$_Event_$73_storage_ptr",
                           "typeString": "struct ContractEvent.Event storage pointer"
                         }
                       },
-                      "id": 479,
+                      "id": 573,
                       "isConstant": false,
                       "isLValue": true,
                       "isPure": false,
@@ -5914,7 +6998,7 @@
                       "memberName": "ticketsLeft",
                       "nodeType": "MemberAccess",
                       "referencedDeclaration": 60,
-                      "src": "4875:18:0",
+                      "src": "5485:18:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint64",
                         "typeString": "uint64"
@@ -5924,51 +7008,51 @@
                     "operator": "-=",
                     "rightHandSide": {
                       "hexValue": "31",
-                      "id": 480,
+                      "id": 574,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": true,
                       "kind": "number",
                       "lValueRequested": false,
                       "nodeType": "Literal",
-                      "src": "4897:1:0",
+                      "src": "5507:1:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_rational_1_by_1",
                         "typeString": "int_const 1"
                       },
                       "value": "1"
                     },
-                    "src": "4875:23:0",
+                    "src": "5485:23:0",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint64",
                       "typeString": "uint64"
                     }
                   },
-                  "id": 482,
+                  "id": 576,
                   "nodeType": "ExpressionStatement",
-                  "src": "4875:23:0"
+                  "src": "5485:23:0"
                 },
                 {
                   "expression": {
-                    "id": 487,
+                    "id": 581,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
                     "leftHandSide": {
                       "expression": {
-                        "id": 483,
+                        "id": 577,
                         "name": "_event",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 444,
-                        "src": "4904:6:0",
+                        "referencedDeclaration": 538,
+                        "src": "5514:6:0",
                         "typeDescriptions": {
                           "typeIdentifier": "t_struct$_Event_$73_storage_ptr",
                           "typeString": "struct ContractEvent.Event storage pointer"
                         }
                       },
-                      "id": 485,
+                      "id": 579,
                       "isConstant": false,
                       "isLValue": true,
                       "isPure": false,
@@ -5976,7 +7060,7 @@
                       "memberName": "soldTickets",
                       "nodeType": "MemberAccess",
                       "referencedDeclaration": 72,
-                      "src": "4904:18:0",
+                      "src": "5514:18:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint64",
                         "typeString": "uint64"
@@ -5986,52 +7070,52 @@
                     "operator": "+=",
                     "rightHandSide": {
                       "hexValue": "31",
-                      "id": 486,
+                      "id": 580,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": true,
                       "kind": "number",
                       "lValueRequested": false,
                       "nodeType": "Literal",
-                      "src": "4926:1:0",
+                      "src": "5536:1:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_rational_1_by_1",
                         "typeString": "int_const 1"
                       },
                       "value": "1"
                     },
-                    "src": "4904:23:0",
+                    "src": "5514:23:0",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint64",
                       "typeString": "uint64"
                     }
                   },
-                  "id": 488,
+                  "id": 582,
                   "nodeType": "ExpressionStatement",
-                  "src": "4904:23:0"
+                  "src": "5514:23:0"
                 },
                 {
                   "eventCall": {
                     "arguments": [
                       {
-                        "id": 490,
+                        "id": 584,
                         "name": "_eventID",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 431,
-                        "src": "4952:8:0",
+                        "referencedDeclaration": 525,
+                        "src": "5562:8:0",
                         "typeDescriptions": {
                           "typeIdentifier": "t_bytes32",
                           "typeString": "bytes32"
                         }
                       },
                       {
-                        "id": 491,
+                        "id": 585,
                         "name": "ticketID",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 467,
-                        "src": "4962:8:0",
+                        "referencedDeclaration": 561,
+                        "src": "5572:8:0",
                         "typeDescriptions": {
                           "typeIdentifier": "t_bytes32",
                           "typeString": "bytes32"
@@ -6049,18 +7133,18 @@
                           "typeString": "bytes32"
                         }
                       ],
-                      "id": 489,
+                      "id": 583,
                       "name": "TicketBought",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
                       "referencedDeclaration": 93,
-                      "src": "4939:12:0",
+                      "src": "5549:12:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_event_nonpayable$_t_bytes32_$_t_bytes32_$returns$__$",
                         "typeString": "function (bytes32,bytes32)"
                       }
                     },
-                    "id": 492,
+                    "id": 586,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -6068,16 +7152,16 @@
                     "lValueRequested": false,
                     "names": [],
                     "nodeType": "FunctionCall",
-                    "src": "4939:32:0",
+                    "src": "5549:32:0",
                     "tryCall": false,
                     "typeDescriptions": {
                       "typeIdentifier": "t_tuple$__$",
                       "typeString": "tuple()"
                     }
                   },
-                  "id": 493,
+                  "id": 587,
                   "nodeType": "EmitStatement",
-                  "src": "4934:37:0"
+                  "src": "5544:37:0"
                 },
                 {
                   "condition": {
@@ -6085,18 +7169,18 @@
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
                     },
-                    "id": 496,
+                    "id": 590,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
                     "leftExpression": {
-                      "id": 494,
+                      "id": 588,
                       "name": "overpaidAmount",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 459,
-                      "src": "4981:14:0",
+                      "referencedDeclaration": 553,
+                      "src": "5591:14:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
                         "typeString": "uint256"
@@ -6106,49 +7190,49 @@
                     "operator": ">",
                     "rightExpression": {
                       "hexValue": "30",
-                      "id": 495,
+                      "id": 589,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": true,
                       "kind": "number",
                       "lValueRequested": false,
                       "nodeType": "Literal",
-                      "src": "4998:1:0",
+                      "src": "5608:1:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_rational_0_by_1",
                         "typeString": "int_const 0"
                       },
                       "value": "0"
                     },
-                    "src": "4981:18:0",
+                    "src": "5591:18:0",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bool",
                       "typeString": "bool"
                     }
                   },
-                  "id": 513,
+                  "id": 607,
                   "nodeType": "IfStatement",
-                  "src": "4977:162:0",
+                  "src": "5587:162:0",
                   "trueBody": {
-                    "id": 512,
+                    "id": 606,
                     "nodeType": "Block",
-                    "src": "5001:138:0",
+                    "src": "5611:138:0",
                     "statements": [
                       {
                         "assignments": [
-                          498,
+                          592,
                           null
                         ],
                         "declarations": [
                           {
                             "constant": false,
-                            "id": 498,
+                            "id": 592,
                             "mutability": "mutable",
                             "name": "refunded",
-                            "nameLocation": "5015:8:0",
+                            "nameLocation": "5625:8:0",
                             "nodeType": "VariableDeclaration",
-                            "scope": 512,
-                            "src": "5010:13:0",
+                            "scope": 606,
+                            "src": "5620:13:0",
                             "stateVariable": false,
                             "storageLocation": "default",
                             "typeDescriptions": {
@@ -6156,10 +7240,10 @@
                               "typeString": "bool"
                             },
                             "typeName": {
-                              "id": 497,
+                              "id": 591,
                               "name": "bool",
                               "nodeType": "ElementaryTypeName",
-                              "src": "5010:4:0",
+                              "src": "5620:4:0",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_bool",
                                 "typeString": "bool"
@@ -6169,19 +7253,19 @@
                           },
                           null
                         ],
-                        "id": 506,
+                        "id": 600,
                         "initialValue": {
                           "arguments": [
                             {
                               "hexValue": "",
-                              "id": 504,
+                              "id": 598,
                               "isConstant": false,
                               "isLValue": false,
                               "isPure": true,
                               "kind": "string",
                               "lValueRequested": false,
                               "nodeType": "Literal",
-                              "src": "5068:2:0",
+                              "src": "5678:2:0",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_stringliteral_c5d2460186f7233c927e7db2dcc703c0e500b653ca82273b7bfad8045d85a470",
                                 "typeString": "literal_string \"\""
@@ -6205,44 +7289,44 @@
                               ],
                               "expression": {
                                 "expression": {
-                                  "id": 499,
+                                  "id": 593,
                                   "name": "msg",
                                   "nodeType": "Identifier",
                                   "overloadedDeclarations": [],
                                   "referencedDeclaration": 4294967281,
-                                  "src": "5029:3:0",
+                                  "src": "5639:3:0",
                                   "typeDescriptions": {
                                     "typeIdentifier": "t_magic_message",
                                     "typeString": "msg"
                                   }
                                 },
-                                "id": 500,
+                                "id": 594,
                                 "isConstant": false,
                                 "isLValue": false,
                                 "isPure": false,
                                 "lValueRequested": false,
                                 "memberName": "sender",
                                 "nodeType": "MemberAccess",
-                                "src": "5029:10:0",
+                                "src": "5639:10:0",
                                 "typeDescriptions": {
                                   "typeIdentifier": "t_address",
                                   "typeString": "address"
                                 }
                               },
-                              "id": 501,
+                              "id": 595,
                               "isConstant": false,
                               "isLValue": false,
                               "isPure": false,
                               "lValueRequested": false,
                               "memberName": "call",
                               "nodeType": "MemberAccess",
-                              "src": "5029:15:0",
+                              "src": "5639:15:0",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_function_barecall_payable$_t_bytes_memory_ptr_$returns$_t_bool_$_t_bytes_memory_ptr_$",
                                 "typeString": "function (bytes memory) payable returns (bool,bytes memory)"
                               }
                             },
-                            "id": 503,
+                            "id": 597,
                             "isConstant": false,
                             "isLValue": false,
                             "isPure": false,
@@ -6253,25 +7337,25 @@
                             "nodeType": "FunctionCallOptions",
                             "options": [
                               {
-                                "id": 502,
+                                "id": 596,
                                 "name": "overpaidAmount",
                                 "nodeType": "Identifier",
                                 "overloadedDeclarations": [],
-                                "referencedDeclaration": 459,
-                                "src": "5052:14:0",
+                                "referencedDeclaration": 553,
+                                "src": "5662:14:0",
                                 "typeDescriptions": {
                                   "typeIdentifier": "t_uint256",
                                   "typeString": "uint256"
                                 }
                               }
                             ],
-                            "src": "5029:38:0",
+                            "src": "5639:38:0",
                             "typeDescriptions": {
                               "typeIdentifier": "t_function_barecall_payable$_t_bytes_memory_ptr_$returns$_t_bool_$_t_bytes_memory_ptr_$value",
                               "typeString": "function (bytes memory) payable returns (bool,bytes memory)"
                             }
                           },
-                          "id": 505,
+                          "id": 599,
                           "isConstant": false,
                           "isLValue": false,
                           "isPure": false,
@@ -6279,7 +7363,7 @@
                           "lValueRequested": false,
                           "names": [],
                           "nodeType": "FunctionCall",
-                          "src": "5029:42:0",
+                          "src": "5639:42:0",
                           "tryCall": false,
                           "typeDescriptions": {
                             "typeIdentifier": "t_tuple$_t_bool_$_t_bytes_memory_ptr_$",
@@ -6287,18 +7371,18 @@
                           }
                         },
                         "nodeType": "VariableDeclarationStatement",
-                        "src": "5009:62:0"
+                        "src": "5619:62:0"
                       },
                       {
                         "expression": {
                           "arguments": [
                             {
-                              "id": 508,
+                              "id": 602,
                               "name": "refunded",
                               "nodeType": "Identifier",
                               "overloadedDeclarations": [],
-                              "referencedDeclaration": 498,
-                              "src": "5087:8:0",
+                              "referencedDeclaration": 592,
+                              "src": "5697:8:0",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_bool",
                                 "typeString": "bool"
@@ -6306,14 +7390,14 @@
                             },
                             {
                               "hexValue": "4661696c656420746f20726566756e64206f7665727061696420616d6f756e74",
-                              "id": 509,
+                              "id": 603,
                               "isConstant": false,
                               "isLValue": false,
                               "isPure": true,
                               "kind": "string",
                               "lValueRequested": false,
                               "nodeType": "Literal",
-                              "src": "5097:34:0",
+                              "src": "5707:34:0",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_stringliteral_b6afe508ad47964db1e71e5beea6b43950c783e9632f8d416c47f8373d77b301",
                                 "typeString": "literal_string \"Failed to refund overpaid amount\""
@@ -6332,7 +7416,7 @@
                                 "typeString": "literal_string \"Failed to refund overpaid amount\""
                               }
                             ],
-                            "id": 507,
+                            "id": 601,
                             "name": "require",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [
@@ -6340,13 +7424,13 @@
                               4294967278
                             ],
                             "referencedDeclaration": 4294967278,
-                            "src": "5079:7:0",
+                            "src": "5689:7:0",
                             "typeDescriptions": {
                               "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
                               "typeString": "function (bool,string memory) pure"
                             }
                           },
-                          "id": 510,
+                          "id": 604,
                           "isConstant": false,
                           "isLValue": false,
                           "isPure": false,
@@ -6354,116 +7438,116 @@
                           "lValueRequested": false,
                           "names": [],
                           "nodeType": "FunctionCall",
-                          "src": "5079:53:0",
+                          "src": "5689:53:0",
                           "tryCall": false,
                           "typeDescriptions": {
                             "typeIdentifier": "t_tuple$__$",
                             "typeString": "tuple()"
                           }
                         },
-                        "id": 511,
+                        "id": 605,
                         "nodeType": "ExpressionStatement",
-                        "src": "5079:53:0"
+                        "src": "5689:53:0"
                       }
                     ]
                   }
                 },
                 {
                   "expression": {
-                    "id": 514,
+                    "id": 608,
                     "name": "ticketID",
                     "nodeType": "Identifier",
                     "overloadedDeclarations": [],
-                    "referencedDeclaration": 467,
-                    "src": "5152:8:0",
+                    "referencedDeclaration": 561,
+                    "src": "5762:8:0",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bytes32",
                       "typeString": "bytes32"
                     }
                   },
-                  "functionReturnParameters": 441,
-                  "id": 515,
+                  "functionReturnParameters": 535,
+                  "id": 609,
                   "nodeType": "Return",
-                  "src": "5145:15:0"
+                  "src": "5755:15:0"
                 }
               ]
             },
             "functionSelector": "e5423274",
-            "id": 517,
+            "id": 611,
             "implemented": true,
             "kind": "function",
             "modifiers": [
               {
                 "arguments": [
                   {
-                    "id": 434,
+                    "id": 528,
                     "name": "_eventID",
                     "nodeType": "Identifier",
                     "overloadedDeclarations": [],
-                    "referencedDeclaration": 431,
-                    "src": "4530:8:0",
+                    "referencedDeclaration": 525,
+                    "src": "5140:8:0",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bytes32",
                       "typeString": "bytes32"
                     }
                   }
                 ],
-                "id": 435,
+                "id": 529,
                 "kind": "modifierInvocation",
                 "modifierName": {
-                  "id": 433,
+                  "id": 527,
                   "name": "isEnoughTickets",
                   "nodeType": "IdentifierPath",
                   "referencedDeclaration": 109,
-                  "src": "4514:15:0"
+                  "src": "5124:15:0"
                 },
                 "nodeType": "ModifierInvocation",
-                "src": "4514:25:0"
+                "src": "5124:25:0"
               },
               {
                 "arguments": [
                   {
-                    "id": 437,
+                    "id": 531,
                     "name": "_eventID",
                     "nodeType": "Identifier",
                     "overloadedDeclarations": [],
-                    "referencedDeclaration": 431,
-                    "src": "4560:8:0",
+                    "referencedDeclaration": 525,
+                    "src": "5170:8:0",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bytes32",
                       "typeString": "bytes32"
                     }
                   }
                 ],
-                "id": 438,
+                "id": 532,
                 "kind": "modifierInvocation",
                 "modifierName": {
-                  "id": 436,
+                  "id": 530,
                   "name": "eventExistsModifier",
                   "nodeType": "IdentifierPath",
                   "referencedDeclaration": 139,
-                  "src": "4540:19:0"
+                  "src": "5150:19:0"
                 },
                 "nodeType": "ModifierInvocation",
-                "src": "4540:29:0"
+                "src": "5150:29:0"
               }
             ],
             "name": "buyTicket",
-            "nameLocation": "4461:9:0",
+            "nameLocation": "5071:9:0",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 432,
+              "id": 526,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 431,
+                  "id": 525,
                   "mutability": "mutable",
                   "name": "_eventID",
-                  "nameLocation": "4484:8:0",
+                  "nameLocation": "5094:8:0",
                   "nodeType": "VariableDeclaration",
-                  "scope": 517,
-                  "src": "4476:16:0",
+                  "scope": 611,
+                  "src": "5086:16:0",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -6471,10 +7555,10 @@
                     "typeString": "bytes32"
                   },
                   "typeName": {
-                    "id": 430,
+                    "id": 524,
                     "name": "bytes32",
                     "nodeType": "ElementaryTypeName",
-                    "src": "4476:7:0",
+                    "src": "5086:7:0",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bytes32",
                       "typeString": "bytes32"
@@ -6483,21 +7567,21 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "4470:26:0"
+              "src": "5080:26:0"
             },
             "returnParameters": {
-              "id": 441,
+              "id": 535,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 440,
+                  "id": 534,
                   "mutability": "mutable",
                   "name": "",
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 517,
-                  "src": "4579:7:0",
+                  "scope": 611,
+                  "src": "5189:7:0",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -6505,10 +7589,10 @@
                     "typeString": "bytes32"
                   },
                   "typeName": {
-                    "id": 439,
+                    "id": 533,
                     "name": "bytes32",
                     "nodeType": "ElementaryTypeName",
-                    "src": "4579:7:0",
+                    "src": "5189:7:0",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bytes32",
                       "typeString": "bytes32"
@@ -6517,34 +7601,34 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "4578:9:0"
+              "src": "5188:9:0"
             },
-            "scope": 602,
-            "src": "4452:713:0",
+            "scope": 696,
+            "src": "5062:713:0",
             "stateMutability": "payable",
             "virtual": false,
             "visibility": "external"
           },
           {
             "body": {
-              "id": 600,
+              "id": 694,
               "nodeType": "Block",
-              "src": "5297:502:0",
+              "src": "5907:502:0",
               "statements": [
                 {
                   "assignments": [
-                    532
+                    626
                   ],
                   "declarations": [
                     {
                       "constant": false,
-                      "id": 532,
+                      "id": 626,
                       "mutability": "mutable",
                       "name": "_event",
-                      "nameLocation": "5317:6:0",
+                      "nameLocation": "5927:6:0",
                       "nodeType": "VariableDeclaration",
-                      "scope": 600,
-                      "src": "5303:20:0",
+                      "scope": 694,
+                      "src": "5913:20:0",
                       "stateVariable": false,
                       "storageLocation": "storage",
                       "typeDescriptions": {
@@ -6552,17 +7636,17 @@
                         "typeString": "struct ContractEvent.Event"
                       },
                       "typeName": {
-                        "id": 531,
+                        "id": 625,
                         "nodeType": "UserDefinedTypeName",
                         "pathNode": {
-                          "id": 530,
+                          "id": 624,
                           "name": "Event",
                           "nodeType": "IdentifierPath",
                           "referencedDeclaration": 73,
-                          "src": "5303:5:0"
+                          "src": "5913:5:0"
                         },
                         "referencedDeclaration": 73,
-                        "src": "5303:5:0",
+                        "src": "5913:5:0",
                         "typeDescriptions": {
                           "typeIdentifier": "t_struct$_Event_$73_storage_ptr",
                           "typeString": "struct ContractEvent.Event"
@@ -6571,28 +7655,28 @@
                       "visibility": "internal"
                     }
                   ],
-                  "id": 536,
+                  "id": 630,
                   "initialValue": {
                     "baseExpression": {
-                      "id": 533,
+                      "id": 627,
                       "name": "allEvents",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
                       "referencedDeclaration": 39,
-                      "src": "5326:9:0",
+                      "src": "5936:9:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_mapping$_t_bytes32_$_t_struct$_Event_$73_storage_$",
                         "typeString": "mapping(bytes32 => struct ContractEvent.Event storage ref)"
                       }
                     },
-                    "id": 535,
+                    "id": 629,
                     "indexExpression": {
-                      "id": 534,
+                      "id": 628,
                       "name": "_eventID",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 519,
-                      "src": "5336:8:0",
+                      "referencedDeclaration": 613,
+                      "src": "5946:8:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_bytes32",
                         "typeString": "bytes32"
@@ -6603,14 +7687,14 @@
                     "isPure": false,
                     "lValueRequested": false,
                     "nodeType": "IndexAccess",
-                    "src": "5326:19:0",
+                    "src": "5936:19:0",
                     "typeDescriptions": {
                       "typeIdentifier": "t_struct$_Event_$73_storage",
                       "typeString": "struct ContractEvent.Event storage ref"
                     }
                   },
                   "nodeType": "VariableDeclarationStatement",
-                  "src": "5303:42:0"
+                  "src": "5913:42:0"
                 },
                 {
                   "expression": {
@@ -6620,25 +7704,25 @@
                           "typeIdentifier": "t_uint256",
                           "typeString": "uint256"
                         },
-                        "id": 542,
+                        "id": 636,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": false,
                         "lValueRequested": false,
                         "leftExpression": {
                           "expression": {
-                            "id": 538,
+                            "id": 632,
                             "name": "_event",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 532,
-                            "src": "5359:6:0",
+                            "referencedDeclaration": 626,
+                            "src": "5969:6:0",
                             "typeDescriptions": {
                               "typeIdentifier": "t_struct$_Event_$73_storage_ptr",
                               "typeString": "struct ContractEvent.Event storage pointer"
                             }
                           },
-                          "id": 539,
+                          "id": 633,
                           "isConstant": false,
                           "isLValue": true,
                           "isPure": false,
@@ -6646,7 +7730,7 @@
                           "memberName": "dateOfEvent",
                           "nodeType": "MemberAccess",
                           "referencedDeclaration": 54,
-                          "src": "5359:18:0",
+                          "src": "5969:18:0",
                           "typeDescriptions": {
                             "typeIdentifier": "t_uint64",
                             "typeString": "uint64"
@@ -6656,31 +7740,31 @@
                         "operator": ">",
                         "rightExpression": {
                           "expression": {
-                            "id": 540,
+                            "id": 634,
                             "name": "block",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
                             "referencedDeclaration": 4294967292,
-                            "src": "5380:5:0",
+                            "src": "5990:5:0",
                             "typeDescriptions": {
                               "typeIdentifier": "t_magic_block",
                               "typeString": "block"
                             }
                           },
-                          "id": 541,
+                          "id": 635,
                           "isConstant": false,
                           "isLValue": false,
                           "isPure": false,
                           "lValueRequested": false,
                           "memberName": "timestamp",
                           "nodeType": "MemberAccess",
-                          "src": "5380:15:0",
+                          "src": "5990:15:0",
                           "typeDescriptions": {
                             "typeIdentifier": "t_uint256",
                             "typeString": "uint256"
                           }
                         },
-                        "src": "5359:36:0",
+                        "src": "5969:36:0",
                         "typeDescriptions": {
                           "typeIdentifier": "t_bool",
                           "typeString": "bool"
@@ -6688,14 +7772,14 @@
                       },
                       {
                         "hexValue": "43616e6e6f742063616e63656c206576656e74206166746572206974206861732073746172746564",
-                        "id": 543,
+                        "id": 637,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": true,
                         "kind": "string",
                         "lValueRequested": false,
                         "nodeType": "Literal",
-                        "src": "5397:42:0",
+                        "src": "6007:42:0",
                         "typeDescriptions": {
                           "typeIdentifier": "t_stringliteral_5a59ff3feff9c12269f73374f0fc4983563890f51eb8db43385bace50974bb4f",
                           "typeString": "literal_string \"Cannot cancel event after it has started\""
@@ -6714,7 +7798,7 @@
                           "typeString": "literal_string \"Cannot cancel event after it has started\""
                         }
                       ],
-                      "id": 537,
+                      "id": 631,
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
@@ -6722,13 +7806,13 @@
                         4294967278
                       ],
                       "referencedDeclaration": 4294967278,
-                      "src": "5351:7:0",
+                      "src": "5961:7:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
                         "typeString": "function (bool,string memory) pure"
                       }
                     },
-                    "id": 544,
+                    "id": 638,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -6736,27 +7820,27 @@
                     "lValueRequested": false,
                     "names": [],
                     "nodeType": "FunctionCall",
-                    "src": "5351:89:0",
+                    "src": "5961:89:0",
                     "tryCall": false,
                     "typeDescriptions": {
                       "typeIdentifier": "t_tuple$__$",
                       "typeString": "tuple()"
                     }
                   },
-                  "id": 545,
+                  "id": 639,
                   "nodeType": "ExpressionStatement",
-                  "src": "5351:89:0"
+                  "src": "5961:89:0"
                 },
                 {
                   "expression": {
                     "arguments": [
                       {
-                        "id": 549,
+                        "id": 643,
                         "name": "_eventID",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 519,
-                        "src": "5479:8:0",
+                        "referencedDeclaration": 613,
+                        "src": "6089:8:0",
                         "typeDescriptions": {
                           "typeIdentifier": "t_bytes32",
                           "typeString": "bytes32"
@@ -6771,18 +7855,18 @@
                         }
                       ],
                       "expression": {
-                        "id": 546,
+                        "id": 640,
                         "name": "ticketContract",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
                         "referencedDeclaration": 22,
-                        "src": "5447:14:0",
+                        "src": "6057:14:0",
                         "typeDescriptions": {
                           "typeIdentifier": "t_contract$_ITicketContract_$19",
                           "typeString": "contract ITicketContract"
                         }
                       },
-                      "id": 548,
+                      "id": 642,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
@@ -6790,13 +7874,13 @@
                       "memberName": "cancelAllTickets",
                       "nodeType": "MemberAccess",
                       "referencedDeclaration": 18,
-                      "src": "5447:31:0",
+                      "src": "6057:31:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_external_nonpayable$_t_bytes32_$returns$__$",
                         "typeString": "function (bytes32) external"
                       }
                     },
-                    "id": 550,
+                    "id": 644,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -6804,20 +7888,20 @@
                     "lValueRequested": false,
                     "names": [],
                     "nodeType": "FunctionCall",
-                    "src": "5447:41:0",
+                    "src": "6057:41:0",
                     "tryCall": false,
                     "typeDescriptions": {
                       "typeIdentifier": "t_tuple$__$",
                       "typeString": "tuple()"
                     }
                   },
-                  "id": 551,
+                  "id": 645,
                   "nodeType": "ExpressionStatement",
-                  "src": "5447:41:0"
+                  "src": "6057:41:0"
                 },
                 {
                   "expression": {
-                    "id": 555,
+                    "id": 649,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -6825,28 +7909,28 @@
                     "nodeType": "UnaryOperation",
                     "operator": "delete",
                     "prefix": true,
-                    "src": "5494:26:0",
+                    "src": "6104:26:0",
                     "subExpression": {
                       "baseExpression": {
-                        "id": 552,
+                        "id": 646,
                         "name": "allEvents",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
                         "referencedDeclaration": 39,
-                        "src": "5501:9:0",
+                        "src": "6111:9:0",
                         "typeDescriptions": {
                           "typeIdentifier": "t_mapping$_t_bytes32_$_t_struct$_Event_$73_storage_$",
                           "typeString": "mapping(bytes32 => struct ContractEvent.Event storage ref)"
                         }
                       },
-                      "id": 554,
+                      "id": 648,
                       "indexExpression": {
-                        "id": 553,
+                        "id": 647,
                         "name": "_eventID",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 519,
-                        "src": "5511:8:0",
+                        "referencedDeclaration": 613,
+                        "src": "6121:8:0",
                         "typeDescriptions": {
                           "typeIdentifier": "t_bytes32",
                           "typeString": "bytes32"
@@ -6857,7 +7941,7 @@
                       "isPure": false,
                       "lValueRequested": true,
                       "nodeType": "IndexAccess",
-                      "src": "5501:19:0",
+                      "src": "6111:19:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_struct$_Event_$73_storage",
                         "typeString": "struct ContractEvent.Event storage ref"
@@ -6868,15 +7952,15 @@
                       "typeString": "tuple()"
                     }
                   },
-                  "id": 556,
+                  "id": 650,
                   "nodeType": "ExpressionStatement",
-                  "src": "5494:26:0"
+                  "src": "6104:26:0"
                 },
                 {
                   "body": {
-                    "id": 592,
+                    "id": 686,
                     "nodeType": "Block",
-                    "src": "5574:164:0",
+                    "src": "6184:164:0",
                     "statements": [
                       {
                         "condition": {
@@ -6884,32 +7968,32 @@
                             "typeIdentifier": "t_bytes32",
                             "typeString": "bytes32"
                           },
-                          "id": 572,
+                          "id": 666,
                           "isConstant": false,
                           "isLValue": false,
                           "isPure": false,
                           "lValueRequested": false,
                           "leftExpression": {
                             "baseExpression": {
-                              "id": 568,
+                              "id": 662,
                               "name": "eventIdsList",
                               "nodeType": "Identifier",
                               "overloadedDeclarations": [],
                               "referencedDeclaration": 46,
-                              "src": "5586:12:0",
+                              "src": "6196:12:0",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_array$_t_bytes32_$dyn_storage",
                                 "typeString": "bytes32[] storage ref"
                               }
                             },
-                            "id": 570,
+                            "id": 664,
                             "indexExpression": {
-                              "id": 569,
+                              "id": 663,
                               "name": "i",
                               "nodeType": "Identifier",
                               "overloadedDeclarations": [],
-                              "referencedDeclaration": 558,
-                              "src": "5599:1:0",
+                              "referencedDeclaration": 652,
+                              "src": "6209:1:0",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_uint256",
                                 "typeString": "uint256"
@@ -6920,7 +8004,7 @@
                             "isPure": false,
                             "lValueRequested": false,
                             "nodeType": "IndexAccess",
-                            "src": "5586:15:0",
+                            "src": "6196:15:0",
                             "typeDescriptions": {
                               "typeIdentifier": "t_bytes32",
                               "typeString": "bytes32"
@@ -6929,59 +8013,59 @@
                           "nodeType": "BinaryOperation",
                           "operator": "==",
                           "rightExpression": {
-                            "id": 571,
+                            "id": 665,
                             "name": "_eventID",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 519,
-                            "src": "5605:8:0",
+                            "referencedDeclaration": 613,
+                            "src": "6215:8:0",
                             "typeDescriptions": {
                               "typeIdentifier": "t_bytes32",
                               "typeString": "bytes32"
                             }
                           },
-                          "src": "5586:27:0",
+                          "src": "6196:27:0",
                           "typeDescriptions": {
                             "typeIdentifier": "t_bool",
                             "typeString": "bool"
                           }
                         },
-                        "id": 591,
+                        "id": 685,
                         "nodeType": "IfStatement",
-                        "src": "5582:150:0",
+                        "src": "6192:150:0",
                         "trueBody": {
-                          "id": 590,
+                          "id": 684,
                           "nodeType": "Block",
-                          "src": "5615:117:0",
+                          "src": "6225:117:0",
                           "statements": [
                             {
                               "expression": {
-                                "id": 582,
+                                "id": 676,
                                 "isConstant": false,
                                 "isLValue": false,
                                 "isPure": false,
                                 "lValueRequested": false,
                                 "leftHandSide": {
                                   "baseExpression": {
-                                    "id": 573,
+                                    "id": 667,
                                     "name": "eventIdsList",
                                     "nodeType": "Identifier",
                                     "overloadedDeclarations": [],
                                     "referencedDeclaration": 46,
-                                    "src": "5625:12:0",
+                                    "src": "6235:12:0",
                                     "typeDescriptions": {
                                       "typeIdentifier": "t_array$_t_bytes32_$dyn_storage",
                                       "typeString": "bytes32[] storage ref"
                                     }
                                   },
-                                  "id": 575,
+                                  "id": 669,
                                   "indexExpression": {
-                                    "id": 574,
+                                    "id": 668,
                                     "name": "i",
                                     "nodeType": "Identifier",
                                     "overloadedDeclarations": [],
-                                    "referencedDeclaration": 558,
-                                    "src": "5638:1:0",
+                                    "referencedDeclaration": 652,
+                                    "src": "6248:1:0",
                                     "typeDescriptions": {
                                       "typeIdentifier": "t_uint256",
                                       "typeString": "uint256"
@@ -6992,7 +8076,7 @@
                                   "isPure": false,
                                   "lValueRequested": true,
                                   "nodeType": "IndexAccess",
-                                  "src": "5625:15:0",
+                                  "src": "6235:15:0",
                                   "typeDescriptions": {
                                     "typeIdentifier": "t_bytes32",
                                     "typeString": "bytes32"
@@ -7002,49 +8086,49 @@
                                 "operator": "=",
                                 "rightHandSide": {
                                   "baseExpression": {
-                                    "id": 576,
+                                    "id": 670,
                                     "name": "eventIdsList",
                                     "nodeType": "Identifier",
                                     "overloadedDeclarations": [],
                                     "referencedDeclaration": 46,
-                                    "src": "5643:12:0",
+                                    "src": "6253:12:0",
                                     "typeDescriptions": {
                                       "typeIdentifier": "t_array$_t_bytes32_$dyn_storage",
                                       "typeString": "bytes32[] storage ref"
                                     }
                                   },
-                                  "id": 581,
+                                  "id": 675,
                                   "indexExpression": {
                                     "commonType": {
                                       "typeIdentifier": "t_uint256",
                                       "typeString": "uint256"
                                     },
-                                    "id": 580,
+                                    "id": 674,
                                     "isConstant": false,
                                     "isLValue": false,
                                     "isPure": false,
                                     "lValueRequested": false,
                                     "leftExpression": {
                                       "expression": {
-                                        "id": 577,
+                                        "id": 671,
                                         "name": "eventIdsList",
                                         "nodeType": "Identifier",
                                         "overloadedDeclarations": [],
                                         "referencedDeclaration": 46,
-                                        "src": "5656:12:0",
+                                        "src": "6266:12:0",
                                         "typeDescriptions": {
                                           "typeIdentifier": "t_array$_t_bytes32_$dyn_storage",
                                           "typeString": "bytes32[] storage ref"
                                         }
                                       },
-                                      "id": 578,
+                                      "id": 672,
                                       "isConstant": false,
                                       "isLValue": false,
                                       "isPure": false,
                                       "lValueRequested": false,
                                       "memberName": "length",
                                       "nodeType": "MemberAccess",
-                                      "src": "5656:19:0",
+                                      "src": "6266:19:0",
                                       "typeDescriptions": {
                                         "typeIdentifier": "t_uint256",
                                         "typeString": "uint256"
@@ -7054,21 +8138,21 @@
                                     "operator": "-",
                                     "rightExpression": {
                                       "hexValue": "31",
-                                      "id": 579,
+                                      "id": 673,
                                       "isConstant": false,
                                       "isLValue": false,
                                       "isPure": true,
                                       "kind": "number",
                                       "lValueRequested": false,
                                       "nodeType": "Literal",
-                                      "src": "5678:1:0",
+                                      "src": "6288:1:0",
                                       "typeDescriptions": {
                                         "typeIdentifier": "t_rational_1_by_1",
                                         "typeString": "int_const 1"
                                       },
                                       "value": "1"
                                     },
-                                    "src": "5656:23:0",
+                                    "src": "6266:23:0",
                                     "typeDescriptions": {
                                       "typeIdentifier": "t_uint256",
                                       "typeString": "uint256"
@@ -7079,21 +8163,21 @@
                                   "isPure": false,
                                   "lValueRequested": false,
                                   "nodeType": "IndexAccess",
-                                  "src": "5643:37:0",
+                                  "src": "6253:37:0",
                                   "typeDescriptions": {
                                     "typeIdentifier": "t_bytes32",
                                     "typeString": "bytes32"
                                   }
                                 },
-                                "src": "5625:55:0",
+                                "src": "6235:55:0",
                                 "typeDescriptions": {
                                   "typeIdentifier": "t_bytes32",
                                   "typeString": "bytes32"
                                 }
                               },
-                              "id": 583,
+                              "id": 677,
                               "nodeType": "ExpressionStatement",
-                              "src": "5625:55:0"
+                              "src": "6235:55:0"
                             },
                             {
                               "expression": {
@@ -7101,31 +8185,31 @@
                                 "expression": {
                                   "argumentTypes": [],
                                   "expression": {
-                                    "id": 584,
+                                    "id": 678,
                                     "name": "eventIdsList",
                                     "nodeType": "Identifier",
                                     "overloadedDeclarations": [],
                                     "referencedDeclaration": 46,
-                                    "src": "5690:12:0",
+                                    "src": "6300:12:0",
                                     "typeDescriptions": {
                                       "typeIdentifier": "t_array$_t_bytes32_$dyn_storage",
                                       "typeString": "bytes32[] storage ref"
                                     }
                                   },
-                                  "id": 586,
+                                  "id": 680,
                                   "isConstant": false,
                                   "isLValue": false,
                                   "isPure": false,
                                   "lValueRequested": false,
                                   "memberName": "pop",
                                   "nodeType": "MemberAccess",
-                                  "src": "5690:16:0",
+                                  "src": "6300:16:0",
                                   "typeDescriptions": {
                                     "typeIdentifier": "t_function_arraypop_nonpayable$_t_array$_t_bytes32_$dyn_storage_ptr_$returns$__$bound_to$_t_array$_t_bytes32_$dyn_storage_ptr_$",
                                     "typeString": "function (bytes32[] storage pointer)"
                                   }
                                 },
-                                "id": 587,
+                                "id": 681,
                                 "isConstant": false,
                                 "isLValue": false,
                                 "isPure": false,
@@ -7133,21 +8217,21 @@
                                 "lValueRequested": false,
                                 "names": [],
                                 "nodeType": "FunctionCall",
-                                "src": "5690:18:0",
+                                "src": "6300:18:0",
                                 "tryCall": false,
                                 "typeDescriptions": {
                                   "typeIdentifier": "t_tuple$__$",
                                   "typeString": "tuple()"
                                 }
                               },
-                              "id": 588,
+                              "id": 682,
                               "nodeType": "ExpressionStatement",
-                              "src": "5690:18:0"
+                              "src": "6300:18:0"
                             },
                             {
-                              "id": 589,
+                              "id": 683,
                               "nodeType": "Break",
-                              "src": "5718:5:0"
+                              "src": "6328:5:0"
                             }
                           ]
                         }
@@ -7159,18 +8243,18 @@
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
                     },
-                    "id": 564,
+                    "id": 658,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
                     "leftExpression": {
-                      "id": 561,
+                      "id": 655,
                       "name": "i",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 558,
-                      "src": "5544:1:0",
+                      "referencedDeclaration": 652,
+                      "src": "6154:1:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
                         "typeString": "uint256"
@@ -7180,51 +8264,51 @@
                     "operator": "<",
                     "rightExpression": {
                       "expression": {
-                        "id": 562,
+                        "id": 656,
                         "name": "eventIdsList",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
                         "referencedDeclaration": 46,
-                        "src": "5548:12:0",
+                        "src": "6158:12:0",
                         "typeDescriptions": {
                           "typeIdentifier": "t_array$_t_bytes32_$dyn_storage",
                           "typeString": "bytes32[] storage ref"
                         }
                       },
-                      "id": 563,
+                      "id": 657,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
                       "lValueRequested": false,
                       "memberName": "length",
                       "nodeType": "MemberAccess",
-                      "src": "5548:19:0",
+                      "src": "6158:19:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
                         "typeString": "uint256"
                       }
                     },
-                    "src": "5544:23:0",
+                    "src": "6154:23:0",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bool",
                       "typeString": "bool"
                     }
                   },
-                  "id": 593,
+                  "id": 687,
                   "initializationExpression": {
                     "assignments": [
-                      558
+                      652
                     ],
                     "declarations": [
                       {
                         "constant": false,
-                        "id": 558,
+                        "id": 652,
                         "mutability": "mutable",
                         "name": "i",
-                        "nameLocation": "5537:1:0",
+                        "nameLocation": "6147:1:0",
                         "nodeType": "VariableDeclaration",
-                        "scope": 593,
-                        "src": "5532:6:0",
+                        "scope": 687,
+                        "src": "6142:6:0",
                         "stateVariable": false,
                         "storageLocation": "default",
                         "typeDescriptions": {
@@ -7232,10 +8316,10 @@
                           "typeString": "uint256"
                         },
                         "typeName": {
-                          "id": 557,
+                          "id": 651,
                           "name": "uint",
                           "nodeType": "ElementaryTypeName",
-                          "src": "5532:4:0",
+                          "src": "6142:4:0",
                           "typeDescriptions": {
                             "typeIdentifier": "t_uint256",
                             "typeString": "uint256"
@@ -7244,17 +8328,17 @@
                         "visibility": "internal"
                       }
                     ],
-                    "id": 560,
+                    "id": 654,
                     "initialValue": {
                       "hexValue": "30",
-                      "id": 559,
+                      "id": 653,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": true,
                       "kind": "number",
                       "lValueRequested": false,
                       "nodeType": "Literal",
-                      "src": "5541:1:0",
+                      "src": "6151:1:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_rational_0_by_1",
                         "typeString": "int_const 0"
@@ -7262,11 +8346,11 @@
                       "value": "0"
                     },
                     "nodeType": "VariableDeclarationStatement",
-                    "src": "5532:10:0"
+                    "src": "6142:10:0"
                   },
                   "loopExpression": {
                     "expression": {
-                      "id": 566,
+                      "id": 660,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
@@ -7274,14 +8358,14 @@
                       "nodeType": "UnaryOperation",
                       "operator": "++",
                       "prefix": false,
-                      "src": "5569:3:0",
+                      "src": "6179:3:0",
                       "subExpression": {
-                        "id": 565,
+                        "id": 659,
                         "name": "i",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 558,
-                        "src": "5569:1:0",
+                        "referencedDeclaration": 652,
+                        "src": "6179:1:0",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint256",
                           "typeString": "uint256"
@@ -7292,23 +8376,23 @@
                         "typeString": "uint256"
                       }
                     },
-                    "id": 567,
+                    "id": 661,
                     "nodeType": "ExpressionStatement",
-                    "src": "5569:3:0"
+                    "src": "6179:3:0"
                   },
                   "nodeType": "ForStatement",
-                  "src": "5527:211:0"
+                  "src": "6137:211:0"
                 },
                 {
                   "eventCall": {
                     "arguments": [
                       {
-                        "id": 595,
+                        "id": 689,
                         "name": "_eventID",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 519,
-                        "src": "5764:8:0",
+                        "referencedDeclaration": 613,
+                        "src": "6374:8:0",
                         "typeDescriptions": {
                           "typeIdentifier": "t_bytes32",
                           "typeString": "bytes32"
@@ -7322,18 +8406,18 @@
                           "typeString": "bytes32"
                         }
                       ],
-                      "id": 594,
+                      "id": 688,
                       "name": "EventCancelled",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
                       "referencedDeclaration": 81,
-                      "src": "5749:14:0",
+                      "src": "6359:14:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_event_nonpayable$_t_bytes32_$returns$__$",
                         "typeString": "function (bytes32)"
                       }
                     },
-                    "id": 596,
+                    "id": 690,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -7341,113 +8425,113 @@
                     "lValueRequested": false,
                     "names": [],
                     "nodeType": "FunctionCall",
-                    "src": "5749:24:0",
+                    "src": "6359:24:0",
                     "tryCall": false,
                     "typeDescriptions": {
                       "typeIdentifier": "t_tuple$__$",
                       "typeString": "tuple()"
                     }
                   },
-                  "id": 597,
+                  "id": 691,
                   "nodeType": "EmitStatement",
-                  "src": "5744:29:0"
+                  "src": "6354:29:0"
                 },
                 {
                   "expression": {
-                    "id": 598,
+                    "id": 692,
                     "name": "_eventID",
                     "nodeType": "Identifier",
                     "overloadedDeclarations": [],
-                    "referencedDeclaration": 519,
-                    "src": "5786:8:0",
+                    "referencedDeclaration": 613,
+                    "src": "6396:8:0",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bytes32",
                       "typeString": "bytes32"
                     }
                   },
-                  "functionReturnParameters": 529,
-                  "id": 599,
+                  "functionReturnParameters": 623,
+                  "id": 693,
                   "nodeType": "Return",
-                  "src": "5779:15:0"
+                  "src": "6389:15:0"
                 }
               ]
             },
             "functionSelector": "aa26176c",
-            "id": 601,
+            "id": 695,
             "implemented": true,
             "kind": "function",
             "modifiers": [
               {
                 "arguments": [
                   {
-                    "id": 522,
+                    "id": 616,
                     "name": "_eventID",
                     "nodeType": "Identifier",
                     "overloadedDeclarations": [],
-                    "referencedDeclaration": 519,
-                    "src": "5239:8:0",
+                    "referencedDeclaration": 613,
+                    "src": "5849:8:0",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bytes32",
                       "typeString": "bytes32"
                     }
                   }
                 ],
-                "id": 523,
+                "id": 617,
                 "kind": "modifierInvocation",
                 "modifierName": {
-                  "id": 521,
+                  "id": 615,
                   "name": "onlyEventOwner",
                   "nodeType": "IdentifierPath",
                   "referencedDeclaration": 126,
-                  "src": "5224:14:0"
+                  "src": "5834:14:0"
                 },
                 "nodeType": "ModifierInvocation",
-                "src": "5224:24:0"
+                "src": "5834:24:0"
               },
               {
                 "arguments": [
                   {
-                    "id": 525,
+                    "id": 619,
                     "name": "_eventID",
                     "nodeType": "Identifier",
                     "overloadedDeclarations": [],
-                    "referencedDeclaration": 519,
-                    "src": "5269:8:0",
+                    "referencedDeclaration": 613,
+                    "src": "5879:8:0",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bytes32",
                       "typeString": "bytes32"
                     }
                   }
                 ],
-                "id": 526,
+                "id": 620,
                 "kind": "modifierInvocation",
                 "modifierName": {
-                  "id": 524,
+                  "id": 618,
                   "name": "eventExistsModifier",
                   "nodeType": "IdentifierPath",
                   "referencedDeclaration": 139,
-                  "src": "5249:19:0"
+                  "src": "5859:19:0"
                 },
                 "nodeType": "ModifierInvocation",
-                "src": "5249:29:0"
+                "src": "5859:29:0"
               }
             ],
             "name": "cancelEvent",
-            "nameLocation": "5177:11:0",
+            "nameLocation": "5787:11:0",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 520,
+              "id": 614,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 519,
+                  "id": 613,
                   "mutability": "mutable",
                   "name": "_eventID",
-                  "nameLocation": "5202:8:0",
+                  "nameLocation": "5812:8:0",
                   "nodeType": "VariableDeclaration",
-                  "scope": 601,
-                  "src": "5194:16:0",
+                  "scope": 695,
+                  "src": "5804:16:0",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -7455,10 +8539,10 @@
                     "typeString": "bytes32"
                   },
                   "typeName": {
-                    "id": 518,
+                    "id": 612,
                     "name": "bytes32",
                     "nodeType": "ElementaryTypeName",
-                    "src": "5194:7:0",
+                    "src": "5804:7:0",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bytes32",
                       "typeString": "bytes32"
@@ -7467,21 +8551,21 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "5188:26:0"
+              "src": "5798:26:0"
             },
             "returnParameters": {
-              "id": 529,
+              "id": 623,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 528,
+                  "id": 622,
                   "mutability": "mutable",
                   "name": "",
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 601,
-                  "src": "5288:7:0",
+                  "scope": 695,
+                  "src": "5898:7:0",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -7489,10 +8573,10 @@
                     "typeString": "bytes32"
                   },
                   "typeName": {
-                    "id": 527,
+                    "id": 621,
                     "name": "bytes32",
                     "nodeType": "ElementaryTypeName",
-                    "src": "5288:7:0",
+                    "src": "5898:7:0",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bytes32",
                       "typeString": "bytes32"
@@ -7501,21 +8585,21 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "5287:9:0"
+              "src": "5897:9:0"
             },
-            "scope": 602,
-            "src": "5168:631:0",
+            "scope": 696,
+            "src": "5778:631:0",
             "stateMutability": "nonpayable",
             "virtual": false,
             "visibility": "external"
           }
         ],
-        "scope": 603,
-        "src": "291:5510:0",
+        "scope": 697,
+        "src": "291:6120:0",
         "usedErrors": []
       }
     ],
-    "src": "32:5770:0"
+    "src": "32:6380:0"
   },
   "compiler": {
     "name": "solc",
@@ -7523,7 +8607,7 @@
   },
   "networks": {},
   "schemaVersion": "3.4.16",
-  "updatedAt": "2024-04-21T19:40:17.002Z",
+  "updatedAt": "2024-04-25T12:39:54.249Z",
   "devdoc": {
     "kind": "dev",
     "methods": {},

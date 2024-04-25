@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/await-thenable */
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 /* eslint-disable @typescript-eslint/strict-boolean-expressions */
 /* eslint-disable @typescript-eslint/no-misused-promises */
@@ -36,6 +37,11 @@ export const getEventsByCategory = async (category: string): Promise<any> => {
   const response = await contractInstance.methods.getEventsByCategory(category).call();
   return response;
 };
+// METHOD TO GET EVENT BY OWNER
+export const getEventsByOwner = async (userAddress: string): Promise<any> => {
+  const response = await contractInstance.methods.getEventsForOwner().call({ from: userAddress });
+  return response;
+};
 
 // METHOD TO CREATE NEW EVENT
 export const createNewEvent = async (
@@ -43,6 +49,7 @@ export const createNewEvent = async (
   newEventInfo: INewEvent,
   userAddress: string
 ): Promise<any> => {
+  const gasLimit = '500000';
   const response = await contractInstance.methods
     .createEvent(
       newEventInfo.eventName,
@@ -56,7 +63,7 @@ export const createNewEvent = async (
     )
     .send({
       from: userAddress,
-      gas: '300000'
+      gas: gasLimit
     });
   return response;
 };

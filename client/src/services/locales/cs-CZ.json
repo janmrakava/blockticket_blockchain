@@ -14,6 +14,7 @@
   "app.userClick.support": "Podpora",
   "app.userClick.logout": "Odhlásit se",
   "app.userClick.createevent": "Vytvořit novou událost",
+  "app.userClick.showmyevents": "Moje události",
   "app.choosetop.czech": "Česká republika",
   "app.choosetop.slovak": "Slovenská republika",
   "app.reviewcart.heading": "Košík",
@@ -212,5 +213,8 @@
   "app.createevent.heading": "Tvorba nové události",
   "app.createevent.buttontext": "Vytvořit novou událost!",
   "app.createevent.baddate": "Špatné datum",
-  "app.createevent.eventCreated": "Událost vytvořena!"
+  "app.createevent.eventCreated": "Událost vytvořena!",
+  "app.createevent.invalidmetamask": "Problém s připojením krypto peněženky",
+
+  "app.showmyevent.heading": "Moje Události"
 }
