@@ -5,16 +5,28 @@
 import Web3, { type Transaction } from 'web3';
 import EventContract from '../../../build/contracts/ContractEvent.json';
 import EventContractAddress from '../../../contractsAddress/EventContractAddress.json';
+import TicketContract from '../../../build/contracts/TicketContract.json';
+import TicketContractAddress from '../../../contractsAddress/TicketContractAddress.json';
 import { type INewEvent } from '../../pages/CreateEvent';
 
 interface TransactionWithHash extends Transaction {
   hash: string;
 }
+// Value of 1 CZK to eth - 26.4.2024
+const ONECZKTOETH = 0.000014;
 
 const web3 = new Web3(new Web3.providers.HttpProvider('http://127.0.0.1:8545'));
-const contractABI = EventContract;
+const eventContractABI = EventContract;
+const ticketContractABI = TicketContract;
 
-const contractInstance = new web3.eth.Contract(contractABI.abi, EventContractAddress.address);
+const eventContractInstance = new web3.eth.Contract(
+  eventContractABI.abi,
+  EventContractAddress.address
+);
+const ticketContractInstance = new web3.eth.Contract(
+  ticketContractABI.abi,
+  TicketContractAddress.address
+);
 
 // METHOD TO CONVERT DATE TO UINT64 VALUE
 export const dateToUint64 = (date: Date): bigint => {
@@ -24,22 +36,24 @@ export const dateToUint64 = (date: Date): bigint => {
 
 //  METHOD TO GET INFO ABOUT ALL EVENTS
 export const getAllEventsFromContract = async (): Promise<any> => {
-  const response = await contractInstance.methods.getEvents().call();
+  const response = await eventContractInstance.methods.getEvents().call();
   return response;
 };
 // METHOD TO GET INFO ABOUT ONE EVENT WITH ID
 export const getEventInfo = async (eventID: string): Promise<any> => {
-  const response = await contractInstance.methods.getEventInfo(eventID).call();
+  const response = await eventContractInstance.methods.getEventInfo(eventID).call();
   return response;
 };
 // METHOD TO GET INFO ABOUT EVENT WITH CATEGORY
 export const getEventsByCategory = async (category: string): Promise<any> => {
-  const response = await contractInstance.methods.getEventsByCategory(category).call();
+  const response = await eventContractInstance.methods.getEventsByCategory(category).call();
   return response;
 };
 // METHOD TO GET EVENT BY OWNER
 export const getEventsByOwner = async (userAddress: string): Promise<any> => {
-  const response = await contractInstance.methods.getEventsForOwner().call({ from: userAddress });
+  const response = await eventContractInstance.methods
+    .getEventsForOwner()
+    .call({ from: userAddress });
   return response;
 };
 
@@ -50,7 +64,7 @@ export const createNewEvent = async (
   userAddress: string
 ): Promise<any> => {
   const gasLimit = '500000';
-  const response = await contractInstance.methods
+  const response = await eventContractInstance.methods
     .createEvent(
       newEventInfo.eventName,
       dateUINT64,
@@ -73,7 +87,7 @@ export const updateTicketPrice = async (
   newTicketPrice: number,
   userAddress: string
 ): Promise<any> => {
-  const response = await contractInstance.methods
+  const response = await eventContractInstance.methods
     .updateTicketPrice(eventID, newTicketPrice)
     .send({ from: userAddress });
   return response;
@@ -81,19 +95,25 @@ export const updateTicketPrice = async (
 // FUNCTION TO BUY NEW TICKET
 export const buyNewTicket = async (
   eventID: string,
-  ticketPrice: string,
+  ticketPrice: number,
   userAddress: string
 ): Promise<any> => {
-  const priceInWei = web3.utils.toWei(ticketPrice, 'ether');
-  const response = await contractInstance.methods
-    .buyTicket(eventID)
+  const priceInEth = ONECZKTOETH * Number(ticketPrice);
+  const priceInWei = web3.utils.toWei(priceInEth.toString(), 'ether');
+  console.log(priceInWei);
+  console.log(eventID);
+  console.log(userAddress);
+  const response = await eventContractInstance.methods
+    .buyTicket(eventID, priceInWei)
     .send({ from: userAddress, value: priceInWei });
   return response;
 };
 
 // FUNCTION TO CANCEL EVENT, AND RETURN ALL FUNDS TO TICKETOWNERS
 export const cancelEvent = async (eventID: string, userAddress: string): Promise<any> => {
-  const response = await contractInstance.methods.cancelEvent(eventID).send({ from: userAddress });
+  const response = await eventContractInstance.methods
+    .cancelEvent(eventID)
+    .send({ from: userAddress, gas: '500000' });
   return response;
 };
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type

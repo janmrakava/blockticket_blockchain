@@ -8,6 +8,7 @@ interface EventBannerProps {
 interface ITicketsProps {
   ticketPrice: number;
   ticketsLeft: number;
+  eventID: string;
 }
 
 interface CartState {

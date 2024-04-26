@@ -236,7 +236,7 @@ contract TicketContract {
     ticketsByEvent[_eventId].pop();
   }
   // function to delete tickets, return all eth for ticketOwners atc. when event is cancelled
-  function cancelAllTickets(bytes32 eventId) external {
+  function cancelAllTickets(bytes32 eventId) external onlyEventContract {
     bytes32[] storage tickets = ticketsByEvent[eventId];
 
     if (tickets.length == 0) {
@@ -248,12 +248,14 @@ contract TicketContract {
     for (uint i = 0; i < tickets.length; i++) {
       bytes32 ticketId = tickets[i];
       Ticket storage ticket = allTickets[ticketId];
+
       if (ticket.isValid && !ticket.isRedeemed) {
         uint256 refundAmount = ticket.originalPrice;
         address payable ticketOwner = payable(ticket.ticketOwner);
 
-        ticket.isValid = false; // Invalidujeme ticket
+        ticket.isValid = false;
 
+        require(address(this).balance >= refundAmount, 'Insufficient balance to make refunds');
         (bool sent, ) = ticketOwner.call{value: refundAmount}('');
         require(sent, 'Failed to send Ether');
 
@@ -261,6 +263,7 @@ contract TicketContract {
         removeTicketFromAllTickets(ticketId);
         totalTickets--;
       }
+
       delete allTickets[ticketId];
       delete ticketIndexInEvent[ticketId];
     }
