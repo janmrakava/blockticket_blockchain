@@ -10,7 +10,6 @@ import EventDescription from '../../components/EventPage/EventDescription';
 import { FormattedMessage } from 'react-intl';
 import { EventDescriptionDivider, SimilarEventsHeading } from './styled';
 import SimilarEventBanner from '../../components/EventPage/SimilarEventBanner';
-import { useEffect, useState } from 'react';
 import { type IEventContract } from '../Home/Home';
 
 const Event: React.FC = () => {
@@ -35,28 +34,21 @@ const Event: React.FC = () => {
     );
   });
 
-  const [route, setRoute] = useState<string>('');
+  const decireRoute =
+    event?.eventCategory === 'Sport'
+      ? 'sport'
+      : event?.eventCategory === 'Music'
+      ? 'music'
+      : event?.eventCategory === 'Family'
+      ? 'family'
+      : event?.eventCategory === 'Art'
+      ? 'art'
+      : event?.eventCategory === 'Deals'
+      ? 'deals'
+      : event?.eventCategory === 'VIP'
+      ? 'vip'
+      : '';
 
-  useEffect(() => {
-    if (event) {
-      const decideRoute =
-        event.eventCategory === 'Sport'
-          ? 'sport'
-          : event.eventCategory === 'Music'
-          ? 'music'
-          : event.eventCategory === 'Family'
-          ? 'family'
-          : event.eventCategory === 'Art'
-          ? 'art'
-          : event.eventCategory === 'Deals'
-          ? 'deals'
-          : event.eventCategory === 'VIP'
-          ? 'vip'
-          : '';
-      setRoute(decideRoute);
-    }
-  }, []);
-  console.log(event);
   return (
     <Grid container sx={{ color: 'white' }}>
       {isLoading ? (
@@ -67,11 +59,7 @@ const Event: React.FC = () => {
           <BreadcrumbNavigation
             items={[
               { to: '/', label: 'home' },
-              { to: '/event', label: 'events' },
-              {
-                to: `/event/${route}`,
-                label: `${event.eventCategory}`
-              },
+              { to: `/events/${decireRoute}`, label: `${event?.eventCategory}` },
               { to: `/event/${event.eventID}`, label: `${event.eventName}` }
             ]}
           />

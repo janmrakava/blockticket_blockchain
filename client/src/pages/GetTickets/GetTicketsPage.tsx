@@ -7,6 +7,20 @@ import { Tickets } from '../../components/GetTickets/Tickets';
 
 const GetTicketsPage: React.FC = () => {
   const { event, error, isLoading } = useGetTicketsPage();
+  const decireRoute =
+    event?.eventCategory === 'Sport'
+      ? 'sport'
+      : event?.eventCategory === 'Music'
+      ? 'music'
+      : event?.eventCategory === 'Family'
+      ? 'family'
+      : event?.eventCategory === 'Art'
+      ? 'art'
+      : event?.eventCategory === 'Deals'
+      ? 'deals'
+      : event?.eventCategory === 'VIP'
+      ? 'vip'
+      : '';
 
   return (
     <>
@@ -21,9 +35,8 @@ const GetTicketsPage: React.FC = () => {
           <BreadcrumbNavigation
             items={[
               { to: '/', label: 'home' },
-              { to: '/events', label: 'events' },
-              { to: '/events/:category', label: `${event?.eventCategory}` },
-              { to: '/event/:id"', label: `${event?.eventName}` }
+              { to: `/events/${decireRoute}`, label: `${event?.eventCategory}` },
+              { to: `/getTickets/${event?.eventID}`, label: `${event?.eventName}` }
             ]}
           />
         </Grid>
