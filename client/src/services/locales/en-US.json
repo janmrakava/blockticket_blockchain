@@ -217,7 +217,10 @@
 
   "app.showmyevent.heading": "My Events",
 
-  "app.myeventpage.heading": "My Event"
+  "app.myeventpage.heading": "My Event",
+
+  "app.myeventpage.changepriceerror": "The price could not be changed",
+  "app.myeventpage.changepricesuccess": "The price is successfully changed!"
 
 
 
