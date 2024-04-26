@@ -46,7 +46,7 @@ const GetTicketsPage: React.FC = () => {
             date={event?.dateOfEvent}
             place={event?.placeName}
           />
-          <Tickets ticketPrice={event?.ticketPrice} numberOfTickets={event?.numberOfTickets} />
+          <Tickets ticketPrice={event?.ticketPrice} ticketsLeft={event?.ticketsLeft} />
         </Grid>
         {error && <div>Něco se nepovedlo, zkuste to později.</div>}
       </Grid>

@@ -18,6 +18,7 @@ export interface IEventContract {
   numberOfTickets: number;
   placeName: string;
   ticketPrice: number;
+  soldTickets: number;
 }
 
 const Home: React.FC = () => {
@@ -30,7 +31,7 @@ const Home: React.FC = () => {
     error,
     isLoading
   } = useHome();
-
+  console.log(events);
   return (
     <>
       <Hero selectedType={activeButton} handleChange={handleChangeActiveButton} />
@@ -56,7 +57,7 @@ const Home: React.FC = () => {
                 date={event.dateOfEvent}
                 place={event.placeName}
                 popular={index % 2 === 0}
-                ticketsSold={event.numberOfTickets}
+                ticketsSold={event.soldTickets}
                 imgSrc={event.eventImage}
                 wideScreen={index % 2 === 0}
                 userLoggedIn={userLoggedIn}

@@ -129,7 +129,7 @@ const Event: React.FC = () => {
               <EventDescription
                 description={event.eventDescription}
                 ticketPrice={event.ticketPrice}
-                numberOfTickets={event.numberOfTickets}
+                ticketsLeft={event.ticketsLeft}
               />
             </Grid>
           </Grid>

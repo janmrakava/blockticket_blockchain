@@ -4,7 +4,7 @@ import { memo } from 'react';
 
 import { FormattedMessage } from 'react-intl';
 
-const TicketsBanner: React.FC<ITicketsProps> = ({ ticketPrice, numberOfTickets }) => {
+const TicketsBanner: React.FC<ITicketsProps> = ({ ticketPrice, ticketsLeft }) => {
   return (
     <Grid item xs={12} md={12} lg={12}>
       <h1>
@@ -30,7 +30,7 @@ const TicketsBanner: React.FC<ITicketsProps> = ({ ticketPrice, numberOfTickets }
         </Box>
         <Box sx={{ display: 'flex', alignItems: 'center', flexDirection: 'column' }}>
           <p style={{ fontWeight: '900' }}>Počet dostupných vstupenek</p>
-          <p style={{ marginTop: '20px' }}>{numberOfTickets?.toString()}</p>
+          <p style={{ marginTop: '20px' }}>{ticketsLeft?.toString()}</p>
         </Box>
         <Box
           sx={{

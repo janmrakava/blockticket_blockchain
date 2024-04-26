@@ -12,7 +12,7 @@ import { useState } from 'react';
 interface IEventDescriptionProps {
   description: string;
   ticketPrice: number;
-  numberOfTickets: number;
+  ticketsLeft: number;
 }
 
 interface ISection {
@@ -26,7 +26,7 @@ type SectionVisibility = Record<number, boolean>;
 const EventDescription: React.FC<IEventDescriptionProps> = ({
   description,
   ticketPrice,
-  numberOfTickets
+  ticketsLeft
 }) => {
   const renderTickets = (
     <Box>
@@ -36,7 +36,7 @@ const EventDescription: React.FC<IEventDescriptionProps> = ({
         Cena vstupenky: {ticketPrice.toString()} CZK
       </p>
       <p style={{ marginLeft: '10px', marginBottom: '20px', fontWeight: 700 }}>
-        Počet dostupných kusů: {numberOfTickets.toString()} ks
+        Počet dostupných kusů: {ticketsLeft.toString()} ks
       </p>
     </Box>
   );

@@ -7,7 +7,7 @@ interface EventBannerProps {
 
 interface ITicketsProps {
   ticketPrice: number;
-  numberOfTickets: number;
+  ticketsLeft: number;
 }
 
 interface CartState {
