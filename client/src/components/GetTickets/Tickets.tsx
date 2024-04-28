@@ -42,6 +42,7 @@ const TicketsBanner: React.FC<ITicketsProps> = ({ eventID, ticketPrice, ticketsL
     const response = await getAllTicketsForEvent(eventID);
     console.log(response);
   };
+
   return (
     <Grid item xs={12} md={12} lg={12}>
       <h1>

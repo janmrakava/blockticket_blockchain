@@ -9,11 +9,6 @@
           "type": "bytes32"
         },
         {
-          "internalType": "address",
-          "name": "_buyer",
-          "type": "address"
-        },
-        {
           "internalType": "uint256",
           "name": "_ticketPrice",
           "type": "uint256"
@@ -44,7 +39,7 @@
       "type": "function"
     }
   ],
-  "metadata": "{\"compiler\":{\"version\":\"0.8.10+commit.fc410830\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"eventId\",\"type\":\"bytes32\"}],\"name\":\"cancelAllTickets\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"_eventID\",\"type\":\"bytes32\"},{\"internalType\":\"address\",\"name\":\"_buyer\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"_ticketPrice\",\"type\":\"uint256\"}],\"name\":\"createNewTicket\",\"outputs\":[{\"internalType\":\"bytes32\",\"name\":\"\",\"type\":\"bytes32\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/ITicketContract.sol\":\"ITicketContract\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/ITicketContract.sol\":{\"keccak256\":\"0x88859e6f419a1e5e8d9e380d25688186b78ce93ac29cde92a6b9838b4b3b7573\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://803651c8490520f09d7b154761315eef8bc62bf53eb78516e0068662dcd3c0b1\",\"dweb:/ipfs/Qmbfg3yy22XZHfnFc75heZbjFWYb8rSZLLbnrVKj63JnAA\"]}},\"version\":1}",
+  "metadata": "{\"compiler\":{\"version\":\"0.8.10+commit.fc410830\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"eventId\",\"type\":\"bytes32\"}],\"name\":\"cancelAllTickets\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"_eventID\",\"type\":\"bytes32\"},{\"internalType\":\"uint256\",\"name\":\"_ticketPrice\",\"type\":\"uint256\"}],\"name\":\"createNewTicket\",\"outputs\":[{\"internalType\":\"bytes32\",\"name\":\"\",\"type\":\"bytes32\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/ITicketContract.sol\":\"ITicketContract\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/ITicketContract.sol\":{\"keccak256\":\"0x20a186f27c3279c1793fbbc9aa7771de8a347fbaab0ced79a0f972073833af2e\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://edfe8a4ee180a8ddf6e409fbe3be2c3ae41a9938e1135357e37e17a814d47bbc\",\"dweb:/ipfs/QmdghjkBMy7RFAd3gg64RGztNsm4AFx7e9P8YCMhNtmFqi\"]}},\"version\":1}",
   "bytecode": "0x",
   "deployedBytecode": "0x",
   "immutableReferences": {},
@@ -52,21 +47,21 @@
   "deployedGeneratedSources": [],
   "sourceMap": "",
   "deployedSourceMap": "",
-  "source": "// SPDX-License-Identifier: MIT\npragma solidity ^0.8.10;\n\ninterface ITicketContract {\n  function createNewTicket(\n    bytes32 _eventID,\n    address _buyer,\n    uint256 _ticketPrice\n  ) external returns (bytes32);\n\n  function cancelAllTickets(bytes32 eventId) external;\n}\n",
+  "source": "// SPDX-License-Identifier: MIT\npragma solidity ^0.8.10;\n\ninterface ITicketContract {\n  function createNewTicket(bytes32 _eventID, uint256 _ticketPrice) external returns (bytes32);\n\n  function cancelAllTickets(bytes32 eventId) external;\n}\n",
   "sourcePath": "/Users/janmrakava/Documents/GitHub/blockticket_blockchain/client/contracts/ITicketContract.sol",
   "ast": {
     "absolutePath": "project:/contracts/ITicketContract.sol",
     "exportedSymbols": {
       "ITicketContract": [
-        689
+        697
       ]
     },
-    "id": 690,
+    "id": 698,
     "license": "MIT",
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 672,
+        "id": 682,
         "literals": [
           "solidity",
           "^",
@@ -83,17 +78,17 @@
         "contractDependencies": [],
         "contractKind": "interface",
         "fullyImplemented": false,
-        "id": 689,
+        "id": 697,
         "linearizedBaseContracts": [
-          689
+          697
         ],
         "name": "ITicketContract",
         "nameLocation": "68:15:1",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
-            "functionSelector": "cfe632ef",
-            "id": 683,
+            "functionSelector": "526a98ac",
+            "id": 691,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
@@ -101,18 +96,18 @@
             "nameLocation": "97:15:1",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 679,
+              "id": 687,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 674,
+                  "id": 684,
                   "mutability": "mutable",
                   "name": "_eventID",
-                  "nameLocation": "126:8:1",
+                  "nameLocation": "121:8:1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 683,
-                  "src": "118:16:1",
+                  "scope": 691,
+                  "src": "113:16:1",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -120,10 +115,10 @@
                     "typeString": "bytes32"
                   },
                   "typeName": {
-                    "id": 673,
+                    "id": 683,
                     "name": "bytes32",
                     "nodeType": "ElementaryTypeName",
-                    "src": "118:7:1",
+                    "src": "113:7:1",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bytes32",
                       "typeString": "bytes32"
@@ -133,41 +128,13 @@
                 },
                 {
                   "constant": false,
-                  "id": 676,
-                  "mutability": "mutable",
-                  "name": "_buyer",
-                  "nameLocation": "148:6:1",
-                  "nodeType": "VariableDeclaration",
-                  "scope": 683,
-                  "src": "140:14:1",
-                  "stateVariable": false,
-                  "storageLocation": "default",
-                  "typeDescriptions": {
-                    "typeIdentifier": "t_address",
-                    "typeString": "address"
-                  },
-                  "typeName": {
-                    "id": 675,
-                    "name": "address",
-                    "nodeType": "ElementaryTypeName",
-                    "src": "140:7:1",
-                    "stateMutability": "nonpayable",
-                    "typeDescriptions": {
-                      "typeIdentifier": "t_address",
-                      "typeString": "address"
-                    }
-                  },
-                  "visibility": "internal"
-                },
-                {
-                  "constant": false,
-                  "id": 678,
+                  "id": 686,
                   "mutability": "mutable",
                   "name": "_ticketPrice",
-                  "nameLocation": "168:12:1",
+                  "nameLocation": "139:12:1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 683,
-                  "src": "160:20:1",
+                  "scope": 691,
+                  "src": "131:20:1",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -175,10 +142,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 677,
+                    "id": 685,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "160:7:1",
+                    "src": "131:7:1",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -187,21 +154,21 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "112:72:1"
+              "src": "112:40:1"
             },
             "returnParameters": {
-              "id": 682,
+              "id": 690,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 681,
+                  "id": 689,
                   "mutability": "mutable",
                   "name": "",
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 683,
-                  "src": "203:7:1",
+                  "scope": 691,
+                  "src": "171:7:1",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -209,10 +176,10 @@
                     "typeString": "bytes32"
                   },
                   "typeName": {
-                    "id": 680,
+                    "id": 688,
                     "name": "bytes32",
                     "nodeType": "ElementaryTypeName",
-                    "src": "203:7:1",
+                    "src": "171:7:1",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bytes32",
                       "typeString": "bytes32"
@@ -221,36 +188,36 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "202:9:1"
+              "src": "170:9:1"
             },
-            "scope": 689,
-            "src": "88:124:1",
+            "scope": 697,
+            "src": "88:92:1",
             "stateMutability": "nonpayable",
             "virtual": false,
             "visibility": "external"
           },
           {
             "functionSelector": "bf3f733e",
-            "id": 688,
+            "id": 696,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "cancelAllTickets",
-            "nameLocation": "225:16:1",
+            "nameLocation": "193:16:1",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 686,
+              "id": 694,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 685,
+                  "id": 693,
                   "mutability": "mutable",
                   "name": "eventId",
-                  "nameLocation": "250:7:1",
+                  "nameLocation": "218:7:1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 688,
-                  "src": "242:15:1",
+                  "scope": 696,
+                  "src": "210:15:1",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -258,10 +225,10 @@
                     "typeString": "bytes32"
                   },
                   "typeName": {
-                    "id": 684,
+                    "id": 692,
                     "name": "bytes32",
                     "nodeType": "ElementaryTypeName",
-                    "src": "242:7:1",
+                    "src": "210:7:1",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bytes32",
                       "typeString": "bytes32"
@@ -270,27 +237,27 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "241:17:1"
+              "src": "209:17:1"
             },
             "returnParameters": {
-              "id": 687,
+              "id": 695,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "267:0:1"
+              "src": "235:0:1"
             },
-            "scope": 689,
-            "src": "216:52:1",
+            "scope": 697,
+            "src": "184:52:1",
             "stateMutability": "nonpayable",
             "virtual": false,
             "visibility": "external"
           }
         ],
-        "scope": 690,
-        "src": "58:212:1",
+        "scope": 698,
+        "src": "58:180:1",
         "usedErrors": []
       }
     ],
-    "src": "32:239:1"
+    "src": "32:207:1"
   },
   "compiler": {
     "name": "solc",
@@ -298,7 +265,7 @@
   },
   "networks": {},
   "schemaVersion": "3.4.16",
-  "updatedAt": "2024-04-26T18:55:16.097Z",
+  "updatedAt": "2024-04-27T18:24:34.771Z",
   "devdoc": {
     "kind": "dev",
     "methods": {},

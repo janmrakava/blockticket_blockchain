@@ -85,17 +85,20 @@ contract TicketContract {
   // @param _buyer is address of user, which ticket buy
   // @param _tickerPrice is price of the ticket
   // @ return - ID of new ticket
+  // Definice Solidity eventů pro debugging
+  event Debug(bytes32 indexed message, bytes32 data);
+  event DebugUint(string message, uint256 data);
+
   function createNewTicket(
     bytes32 _eventID,
-    address _buyer,
     uint256 _ticketPrice
-  ) external onlyEventContract returns (bytes32) {
-    bytes32 ticketID = keccak256(abi.encodePacked(_eventID, _buyer, block.timestamp));
+  ) external payable onlyEventContract returns (bytes32) {
+    bytes32 ticketID = keccak256(abi.encodePacked(_eventID, msg.sender, block.timestamp));
     uint64 _purchasedDate = uint64(block.timestamp);
     allTickets[ticketID] = Ticket({
       ticketID: ticketID,
       eventID: _eventID,
-      ticketOwner: _buyer,
+      ticketOwner: msg.sender,
       purchasedDate: _purchasedDate,
       isRedeemed: false,
       isValid: true,
@@ -110,7 +113,7 @@ contract TicketContract {
 
     ticketIndexInEvent[ticketID] = ticketsByEvent[_eventID].length - 1;
 
-    emit TicketCreated(ticketID, _eventID, _purchasedDate, _buyer, _ticketPrice);
+    emit TicketCreated(ticketID, _eventID, _purchasedDate, msg.sender, _ticketPrice);
 
     return ticketID;
   }

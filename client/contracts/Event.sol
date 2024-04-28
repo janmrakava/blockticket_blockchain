@@ -1,12 +1,12 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.10;
-import './Ticket.sol';
+import './ITicketContract.sol';
 
 contract ContractEvent {
-  TicketContract ticketContract;
+  ITicketContract ticketContract;
 
   function setTicketContractAddress(address _ticketAddress) external {
-    ticketContract = TicketContract(_ticketAddress);
+    ticketContract = ITicketContract(_ticketAddress);
   }
 
   mapping(bytes32 => Event) public allEvents;
@@ -161,7 +161,7 @@ contract ContractEvent {
     return ownerEvents;
   }
   // function to buy (Create) new ticket for the user
-  function buyTicket(
+  /* function buyTicket(
     bytes32 _eventID
   ) external payable isEnoughTickets(_eventID) eventExistsModifier(_eventID) returns (bytes32) {
     Event storage _event = allEvents[_eventID];
@@ -169,18 +169,19 @@ contract ContractEvent {
 
     uint256 overpaidAmount = msg.value - _event.ticketPrice;
 
-    bytes32 ticketID = ticketContract.createNewTicket(_eventID, msg.sender, _event.ticketPrice);
+    bytes32 ticketID = ticketContract.createNewTicket(_eventID, _event.ticketPrice);
     _event.ticketsLeft -= 1;
     _event.soldTickets += 1;
 
-    emit TicketBought(_eventID, ticketID);
+    //emit TicketBought(_eventID, ticketID);
     if (overpaidAmount > 0) {
       (bool refunded, ) = msg.sender.call{value: overpaidAmount}('');
       require(refunded, 'Failed to refund overpaid amount');
     }
 
-    return ticketID;
-  }
+    return _eventID;
+  } */
+
   function cancelEvent(
     bytes32 _eventID
   ) external onlyEventOwner(_eventID) eventExistsModifier(_eventID) returns (bytes32) {
@@ -199,6 +200,18 @@ contract ContractEvent {
     }
 
     emit EventCancelled(_eventID);
-    return _eventID;
+  }
+  function cancellEvent(
+    bytes32 _eventID
+  ) external onlyEventOwner(_eventID) eventExistsModifier(_eventID) returns (bytes32) {
+    Event storage _event = allEvents[_eventID];
+
+    bytes32 ticketID = ticketContract.createNewTicket(_eventID, _event.ticketPrice);
+    _event.ticketsLeft -= 1;
+    _event.soldTickets += 1;
+
+    emit TicketBought(_eventID, ticketID);
+
+    return ticketID;
   }
 }

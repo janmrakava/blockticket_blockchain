@@ -108,7 +108,7 @@ export const buyNewTicket = async (
   const priceInWei = web3.utils.toWei(priceInEth.toString(), 'ether');
   console.log(eventID, priceInWei, userAddress);
   const response = await contractInstance.methods
-    .createNewTicket(eventID, userAddress, priceInWei)
-    .send({ from: userAddress, gas: '1000000' });
+    .createNewTicket(eventID, priceInWei)
+    .send({ from: userAddress, value: priceInWei });
   return response;
 };

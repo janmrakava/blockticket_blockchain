@@ -100,13 +100,15 @@ export const buyNewTicket = async (
 ): Promise<any> => {
   const priceInEth = ONECZKTOETH * Number(ticketPrice);
   const priceInWei = web3.utils.toWei(priceInEth.toString(), 'ether');
-  console.log(priceInWei);
-  console.log(eventID);
-  console.log(userAddress);
-  const response = await eventContractInstance.methods
-    .buyTicket(eventID, priceInWei)
-    .send({ from: userAddress, value: priceInWei });
-  return response;
+  try {
+    const response = await eventContractInstance.methods
+      .cancellEvent(eventID)
+      .send({ from: userAddress, value: priceInWei });
+    console.log('Transaction successful:', response);
+    return response;
+  } catch (error) {
+    console.error('Transaction failed:', error);
+  }
 };
 
 // FUNCTION TO CANCEL EVENT, AND RETURN ALL FUNDS TO TICKETOWNERS
