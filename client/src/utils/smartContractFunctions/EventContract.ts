@@ -94,7 +94,7 @@ export const updateTicketPrice = async (
 export const buyNewTicket = async (eventID: string, userAddress: string): Promise<any> => {
   try {
     const response = await eventContractInstance.methods
-      .buyTicket(eventID)
+      .buyTicket(eventID, userAddress)
       .send({ from: userAddress, gas: '500000' });
     console.log('Transaction successful:', response);
     return response;

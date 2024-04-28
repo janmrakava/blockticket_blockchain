@@ -72,7 +72,7 @@ export const usePreviousOrders = (): any => {
               const numberOfTickets = ticketIDs.length;
               const transactionDate = new Date(transaction.date);
               const yyyy = transactionDate.getFullYear();
-              const mm = transactionDate.getMonth() + 1; // Měsíce začínají od 0
+              const mm = transactionDate.getMonth() + 1;
               const dd = transactionDate.getDate();
               const formattedDate = `${dd}.${mm}.${yyyy}`;
               return (

@@ -91,14 +91,15 @@ contract TicketContract {
 
   function createNewTicket(
     bytes32 _eventID,
-    uint256 _ticketPrice
+    uint256 _ticketPrice,
+    address userAddress // Přidáme adresu uživatele jako parametr
   ) external payable onlyEventContract returns (bytes32) {
-    bytes32 ticketID = keccak256(abi.encodePacked(_eventID, msg.sender, block.timestamp));
+    bytes32 ticketID = keccak256(abi.encodePacked(_eventID, userAddress, block.timestamp));
     uint64 _purchasedDate = uint64(block.timestamp);
     allTickets[ticketID] = Ticket({
       ticketID: ticketID,
       eventID: _eventID,
-      ticketOwner: msg.sender,
+      ticketOwner: userAddress, // Nastavíme `userAddress` jako `ticketOwner`
       purchasedDate: _purchasedDate,
       isRedeemed: false,
       isValid: true,
@@ -113,10 +114,11 @@ contract TicketContract {
 
     ticketIndexInEvent[ticketID] = ticketsByEvent[_eventID].length - 1;
 
-    emit TicketCreated(ticketID, _eventID, _purchasedDate, msg.sender, _ticketPrice);
+    emit TicketCreated(ticketID, _eventID, _purchasedDate, userAddress, _ticketPrice);
 
     return ticketID;
   }
+
   // function to change ownership of the ticket, its for selling tickets between users
   // @param _eventID is ID of event, for which is ticket
   // @param _buyer is address of user, which ticket buy

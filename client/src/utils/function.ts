@@ -9,7 +9,11 @@ export const countDate = (date: Date): string => {
   return goodDate;
 };
 
-export const convertToDate = (bigIntValue: string): Date => {
+export const convertToDate = (bigIntValue: bigint): Date => {
   const date = new Date(Number(bigIntValue));
+  return date;
+};
+export const convertRetardedDate = (bigIntValue: bigint): Date => {
+  const date = new Date(Number(bigIntValue) * 1000);
   return date;
 };

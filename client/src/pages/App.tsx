@@ -18,7 +18,7 @@ import Register from './Register';
 import EventsByCategory from './EventCategory/EventsByCategory';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoutes';
 import Favorites from './Favorites';
-import MyTickets from './MyTickets';
+import MyTickets from './MyAllTickets/MyTickets';
 import PreviousOrders from './PreviousOrders';
 import TicketInfo from './TicketInfo';
 import TransactionInfo from './TransactionInfo';

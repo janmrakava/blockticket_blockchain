@@ -183,11 +183,13 @@ contract ContractEvent {
   }
   // function to buyticket
   function buyTicket(
-    bytes32 _eventID
+    bytes32 _eventID,
+    address userAddress // Přidáme adresu uživatele jako parametr
   ) external onlyEventOwner(_eventID) eventExistsModifier(_eventID) returns (bytes32) {
     Event storage _event = allEvents[_eventID];
 
-    bytes32 ticketID = ticketContract.createNewTicket(_eventID, _event.ticketPrice);
+    // Předáme adresu uživatele místo `msg.sender`
+    bytes32 ticketID = ticketContract.createNewTicket(_eventID, _event.ticketPrice, userAddress);
     _event.ticketsLeft -= 1;
     _event.soldTickets += 1;
 
