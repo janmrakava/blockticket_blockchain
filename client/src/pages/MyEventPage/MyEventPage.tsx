@@ -5,11 +5,12 @@ import { useSDK } from '@metamask/sdk-react';
 import { Alert, Box, Button, CircularProgress, Grid, Snackbar, Typography } from '@mui/material';
 import { useEffect, useState } from 'react';
 import { FormattedMessage } from 'react-intl';
-import { cancelEvent, getEventsByOwner } from '../../utils/smartContractFunctions/EventContract';
+import { cancelEvent, getEventInfo } from '../../utils/smartContractFunctions/EventContract';
 import { convertToDate } from '../../utils/function';
 import { InfoEventContainer } from './styled';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import UpdateTicketPrice from '../../components/MyEventPage/UpdateTicketPriceBanner';
+import { cancelAllTickets } from '../../utils/smartContractFunctions/TicketContract';
 
 interface IMyEvent {
   dateOfEvent: any;
@@ -26,7 +27,7 @@ interface IMyEvent {
 }
 
 const MyEventPage: React.FC = () => {
-  const [myEvent, setMyEvent] = useState<IMyEvent[]>();
+  const [myEvent, setMyEvent] = useState<IMyEvent>();
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [isError, setIsError] = useState<boolean>(false);
   const [showUpdateTicketPrice, setShowUpdateTicketPrice] = useState<boolean>(false);
@@ -39,6 +40,8 @@ const MyEventPage: React.FC = () => {
     setNewTicketPrice(Number(value));
   };
 
+  const params = useParams();
+  console.log(params.eventID);
   const [account, setAccount] = useState<string>();
   const { sdk } = useSDK();
 
@@ -65,8 +68,10 @@ const MyEventPage: React.FC = () => {
         return;
       }
       try {
-        const event = await getEventsByOwner(account);
-        setMyEvent(event);
+        if (params.eventID) {
+          const event = await getEventInfo(params.eventID);
+          setMyEvent(event);
+        }
       } catch (error) {
         console.log(error);
         setIsError(true);
@@ -78,7 +83,7 @@ const MyEventPage: React.FC = () => {
     void fetchMyEvents();
   }, [account, showSuccessSnackBar]);
 
-  const convertedDate = convertToDate(myEvent && myEvent[0].dateOfEvent);
+  const convertedDate = convertToDate(myEvent && myEvent.dateOfEvent);
   const renderDate = `${convertedDate.getDate()}.${
     convertedDate.getMonth() + 1
   }.${convertedDate.getFullYear()}`;
@@ -89,10 +94,13 @@ const MyEventPage: React.FC = () => {
 
   const navigate = useNavigate();
 
+  console.log(myEvent);
+
   const handleCancelEvent = async (): Promise<void> => {
     if (myEvent && account) {
-      const response = await cancelEvent(myEvent[0].eventID, account);
-      console.log(response);
+      const response = await cancelEvent(myEvent.eventID, account);
+      const response2 = await cancelAllTickets(myEvent.eventID, account);
+      console.log(response, response2);
       navigate('/showmyevents');
     }
   };
@@ -162,15 +170,15 @@ const MyEventPage: React.FC = () => {
             gap: '50px',
             filter: showUpdateTicketPrice ? 'blur(4px)' : 'none'
           }}>
-          <img src={myEvent[0]?.eventImage} alt="Image of event" style={{ width: '100%' }} />
+          <img src={myEvent?.eventImage} alt="Image of event" style={{ width: '100%' }} />
           <Box sx={{ width: '100%', display: 'flex', flexDirection: 'column', gap: '20px' }}>
             <InfoEventContainer>
               <Typography sx={{ width: '50%' }}>ID události:</Typography>
-              <Typography>{myEvent[0].eventID}</Typography>
+              <Typography>{myEvent.eventID}</Typography>
             </InfoEventContainer>
             <InfoEventContainer>
               <Typography sx={{ width: '42%' }}>Název události:</Typography>
-              <Typography>{myEvent[0]?.eventName}</Typography>
+              <Typography>{myEvent.eventName}</Typography>
             </InfoEventContainer>
             <InfoEventContainer>
               <Typography sx={{ width: '42%' }}>Datum konání události:</Typography>
@@ -178,31 +186,31 @@ const MyEventPage: React.FC = () => {
             </InfoEventContainer>
             <InfoEventContainer>
               <Typography sx={{ width: '42%' }}>Kategorie události:</Typography>
-              <Typography>{myEvent[0].eventCategory}</Typography>
+              <Typography>{myEvent.eventCategory}</Typography>
             </InfoEventContainer>
             <InfoEventContainer>
               <Typography sx={{ width: '42%' }}>Vlastník události:</Typography>
-              <Typography>{myEvent[0].eventOwner}</Typography>
+              <Typography>{myEvent.eventOwner}</Typography>
             </InfoEventContainer>
             <InfoEventContainer>
               <Typography sx={{ width: '42%' }}>Celkový počet vstupenek:</Typography>
-              <Typography>{myEvent[0].numberOfTickets.toString()} ks</Typography>
+              <Typography>{myEvent.numberOfTickets.toString()} ks</Typography>
             </InfoEventContainer>
             <InfoEventContainer>
               <Typography sx={{ width: '42%' }}>Počet dostupných vstupenek:</Typography>
-              <Typography>{myEvent[0].soldTickets.toString()} ks</Typography>
+              <Typography>{myEvent.soldTickets.toString()} ks</Typography>
             </InfoEventContainer>
             <InfoEventContainer>
               <Typography sx={{ width: '42%' }}>Počet prodaných vstupenek:</Typography>
-              <Typography>{myEvent[0].soldTickets.toString()} ks </Typography>
+              <Typography>{myEvent.soldTickets.toString()} ks </Typography>
             </InfoEventContainer>
             <InfoEventContainer>
               <Typography sx={{ width: '42%' }}>Cena vstupenky:</Typography>
-              <Typography>{myEvent[0].ticketPrice.toString()} CZK </Typography>
+              <Typography>{myEvent.ticketPrice.toString()} CZK </Typography>
             </InfoEventContainer>
             <InfoEventContainer>
               <Typography sx={{ width: '42%' }}>Místo konání události</Typography>
-              <Typography>{myEvent[0].placeName}</Typography>
+              <Typography>{myEvent.placeName}</Typography>
             </InfoEventContainer>
           </Box>
           <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
@@ -221,10 +229,10 @@ const MyEventPage: React.FC = () => {
       )}
       {showUpdateTicketPrice && (
         <UpdateTicketPrice
-          eventID={myEvent && myEvent[0].eventID}
+          eventID={myEvent && myEvent.eventID}
           userAddress={account}
           newTicketPrice={newTicketPrice}
-          ticketPrice={myEvent && myEvent[0].ticketPrice}
+          ticketPrice={myEvent && myEvent.ticketPrice}
           handleChange={handleChange}
           handleShowTicketPriceBanner={handleShowTicketPriceBanner}
           handleShowSuccessSnackBar={handleShowSuccessSnackBar}

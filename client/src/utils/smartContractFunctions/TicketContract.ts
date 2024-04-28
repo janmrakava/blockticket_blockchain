@@ -12,8 +12,6 @@ export interface ITicket {
   ticketPrice: number;
   originalPrice: number;
 }
-// Value of 1 CZK to eth - 26.4.2024
-const ONECZKTOETH = 0.000014;
 
 const web3 = new Web3(new Web3.providers.HttpProvider('http://127.0.0.1:8545'));
 const contractABI = TicketContract;
@@ -99,16 +97,9 @@ export const buyTicketFromMarket = async (
   return response;
 };
 
-export const buyNewTicket = async (
-  eventID: string,
-  ticketPrice: number,
-  userAddress: string
-): Promise<any> => {
-  const priceInEth = ONECZKTOETH * Number(ticketPrice);
-  const priceInWei = web3.utils.toWei(priceInEth.toString(), 'ether');
-  console.log(eventID, priceInWei, userAddress);
+export const cancelAllTickets = async (eventID: string, userAddress: string): Promise<any> => {
   const response = await contractInstance.methods
-    .createNewTicket(eventID, priceInWei)
-    .send({ from: userAddress, value: priceInWei });
+    .cancelAllTickets(eventID)
+    .send({ from: userAddress });
   return response;
 };

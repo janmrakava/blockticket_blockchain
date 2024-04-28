@@ -22,12 +22,12 @@ const MyEvent: React.FC<IMyEventProps> = ({
   const renderDate = `${convertedDate.getDate()}.${
     convertedDate.getMonth() + 1
   }.${convertedDate.getFullYear()}`;
-  console.log(renderDate);
 
   const navigate = useNavigate();
-  const handleClickEvent = (eventID: string): void => {
+  const handleClickEvent = (): void => {
     navigate(`/myeventpage/${eventID}`);
   };
+  console.log('MyEvent banner id: ', eventID);
   return (
     <Grid
       item
@@ -41,12 +41,14 @@ const MyEvent: React.FC<IMyEventProps> = ({
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         padding: '20px',
+        gap: '20px',
         display: 'flex',
         flexDirection: 'column',
-        justifyContent: 'flex-end'
+        justifyContent: 'flex-end',
+        border: '1px solid red'
       }}
       onClick={() => {
-        handleClickEvent(eventID);
+        handleClickEvent();
       }}>
       <Typography sx={{ fontSize: '20px', fontWeight: '800' }}>{eventName}</Typography>
       <Typography>{placeName}</Typography>

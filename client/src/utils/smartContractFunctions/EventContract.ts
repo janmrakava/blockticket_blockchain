@@ -12,8 +12,6 @@ import { type INewEvent } from '../../pages/CreateEvent';
 interface TransactionWithHash extends Transaction {
   hash: string;
 }
-// Value of 1 CZK to eth - 26.4.2024
-const ONECZKTOETH = 0.000014;
 
 const web3 = new Web3(new Web3.providers.HttpProvider('http://127.0.0.1:8545'));
 const eventContractABI = EventContract;
@@ -93,17 +91,11 @@ export const updateTicketPrice = async (
   return response;
 };
 // FUNCTION TO BUY NEW TICKET
-export const buyNewTicket = async (
-  eventID: string,
-  ticketPrice: number,
-  userAddress: string
-): Promise<any> => {
-  const priceInEth = ONECZKTOETH * Number(ticketPrice);
-  const priceInWei = web3.utils.toWei(priceInEth.toString(), 'ether');
+export const buyNewTicket = async (eventID: string, userAddress: string): Promise<any> => {
   try {
     const response = await eventContractInstance.methods
-      .cancellEvent(eventID)
-      .send({ from: userAddress, value: priceInWei });
+      .buyTicket(eventID)
+      .send({ from: userAddress, gas: '500000' });
     console.log('Transaction successful:', response);
     return response;
   } catch (error) {
@@ -115,7 +107,7 @@ export const buyNewTicket = async (
 export const cancelEvent = async (eventID: string, userAddress: string): Promise<any> => {
   const response = await eventContractInstance.methods
     .cancelEvent(eventID)
-    .send({ from: userAddress, gas: '500000' });
+    .send({ from: userAddress });
   return response;
 };
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type

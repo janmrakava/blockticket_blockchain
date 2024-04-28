@@ -30,7 +30,7 @@ const TicketsBanner: React.FC<ITicketsProps> = ({ eventID, ticketPrice, ticketsL
   const handleClickBuyTicket = async (): Promise<void> => {
     try {
       if (account) {
-        const response = await buyNewTicket(eventID, ticketPrice, account);
+        const response = await buyNewTicket(eventID, account);
         console.log(response);
       }
     } catch (error) {

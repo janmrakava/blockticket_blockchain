@@ -160,35 +160,14 @@ contract ContractEvent {
     }
     return ownerEvents;
   }
-  // function to buy (Create) new ticket for the user
-  /* function buyTicket(
-    bytes32 _eventID
-  ) external payable isEnoughTickets(_eventID) eventExistsModifier(_eventID) returns (bytes32) {
-    Event storage _event = allEvents[_eventID];
-    require(msg.value >= _event.ticketPrice, 'Insufficient funds sent');
-
-    uint256 overpaidAmount = msg.value - _event.ticketPrice;
-
-    bytes32 ticketID = ticketContract.createNewTicket(_eventID, _event.ticketPrice);
-    _event.ticketsLeft -= 1;
-    _event.soldTickets += 1;
-
-    //emit TicketBought(_eventID, ticketID);
-    if (overpaidAmount > 0) {
-      (bool refunded, ) = msg.sender.call{value: overpaidAmount}('');
-      require(refunded, 'Failed to refund overpaid amount');
-    }
-
-    return _eventID;
-  } */
-
+  //function to cancel event
   function cancelEvent(
     bytes32 _eventID
   ) external onlyEventOwner(_eventID) eventExistsModifier(_eventID) returns (bytes32) {
     Event storage _event = allEvents[_eventID];
     require(_event.dateOfEvent > block.timestamp, 'Cannot cancel event after it has started');
 
-    ticketContract.cancelAllTickets(_eventID);
+    //ticketContract.cancelAllTickets(_eventID);
     delete allEvents[_eventID];
 
     for (uint i = 0; i < eventIdsList.length; i++) {
@@ -200,8 +179,10 @@ contract ContractEvent {
     }
 
     emit EventCancelled(_eventID);
+    return _eventID;
   }
-  function cancellEvent(
+  // function to buyticket
+  function buyTicket(
     bytes32 _eventID
   ) external onlyEventOwner(_eventID) eventExistsModifier(_eventID) returns (bytes32) {
     Event storage _event = allEvents[_eventID];

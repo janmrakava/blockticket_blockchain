@@ -53,15 +53,15 @@
     "absolutePath": "project:/contracts/ITicketContract.sol",
     "exportedSymbols": {
       "ITicketContract": [
-        697
+        648
       ]
     },
-    "id": 698,
+    "id": 649,
     "license": "MIT",
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 682,
+        "id": 633,
         "literals": [
           "solidity",
           "^",
@@ -78,9 +78,9 @@
         "contractDependencies": [],
         "contractKind": "interface",
         "fullyImplemented": false,
-        "id": 697,
+        "id": 648,
         "linearizedBaseContracts": [
-          697
+          648
         ],
         "name": "ITicketContract",
         "nameLocation": "68:15:1",
@@ -88,7 +88,7 @@
         "nodes": [
           {
             "functionSelector": "526a98ac",
-            "id": 691,
+            "id": 642,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
@@ -96,17 +96,17 @@
             "nameLocation": "97:15:1",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 687,
+              "id": 638,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 684,
+                  "id": 635,
                   "mutability": "mutable",
                   "name": "_eventID",
                   "nameLocation": "121:8:1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 691,
+                  "scope": 642,
                   "src": "113:16:1",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -115,7 +115,7 @@
                     "typeString": "bytes32"
                   },
                   "typeName": {
-                    "id": 683,
+                    "id": 634,
                     "name": "bytes32",
                     "nodeType": "ElementaryTypeName",
                     "src": "113:7:1",
@@ -128,12 +128,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 686,
+                  "id": 637,
                   "mutability": "mutable",
                   "name": "_ticketPrice",
                   "nameLocation": "139:12:1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 691,
+                  "scope": 642,
                   "src": "131:20:1",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -142,7 +142,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 685,
+                    "id": 636,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "131:7:1",
@@ -157,17 +157,17 @@
               "src": "112:40:1"
             },
             "returnParameters": {
-              "id": 690,
+              "id": 641,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 689,
+                  "id": 640,
                   "mutability": "mutable",
                   "name": "",
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 691,
+                  "scope": 642,
                   "src": "171:7:1",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -176,7 +176,7 @@
                     "typeString": "bytes32"
                   },
                   "typeName": {
-                    "id": 688,
+                    "id": 639,
                     "name": "bytes32",
                     "nodeType": "ElementaryTypeName",
                     "src": "171:7:1",
@@ -190,7 +190,7 @@
               ],
               "src": "170:9:1"
             },
-            "scope": 697,
+            "scope": 648,
             "src": "88:92:1",
             "stateMutability": "nonpayable",
             "virtual": false,
@@ -198,7 +198,7 @@
           },
           {
             "functionSelector": "bf3f733e",
-            "id": 696,
+            "id": 647,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
@@ -206,17 +206,17 @@
             "nameLocation": "193:16:1",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 694,
+              "id": 645,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 693,
+                  "id": 644,
                   "mutability": "mutable",
                   "name": "eventId",
                   "nameLocation": "218:7:1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 696,
+                  "scope": 647,
                   "src": "210:15:1",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -225,7 +225,7 @@
                     "typeString": "bytes32"
                   },
                   "typeName": {
-                    "id": 692,
+                    "id": 643,
                     "name": "bytes32",
                     "nodeType": "ElementaryTypeName",
                     "src": "210:7:1",
@@ -240,19 +240,19 @@
               "src": "209:17:1"
             },
             "returnParameters": {
-              "id": 695,
+              "id": 646,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "235:0:1"
             },
-            "scope": 697,
+            "scope": 648,
             "src": "184:52:1",
             "stateMutability": "nonpayable",
             "virtual": false,
             "visibility": "external"
           }
         ],
-        "scope": 698,
+        "scope": 649,
         "src": "58:180:1",
         "usedErrors": []
       }
@@ -265,7 +265,7 @@
   },
   "networks": {},
   "schemaVersion": "3.4.16",
-  "updatedAt": "2024-04-27T18:24:34.771Z",
+  "updatedAt": "2024-04-28T12:35:34.352Z",
   "devdoc": {
     "kind": "dev",
     "methods": {},
