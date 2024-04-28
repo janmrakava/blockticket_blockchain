@@ -5,8 +5,8 @@
 import Web3, { type Transaction } from 'web3';
 import EventContract from '../../../build/contracts/ContractEvent.json';
 import EventContractAddress from '../../../contractsAddress/EventContractAddress.json';
-import TicketContract from '../../../build/contracts/TicketContract.json';
-import TicketContractAddress from '../../../contractsAddress/TicketContractAddress.json';
+/* import TicketContract from '../../../build/contracts/TicketContract.json';
+import TicketContractAddress from '../../../contractsAddress/TicketContractAddress.json'; */
 import { type INewEvent } from '../../pages/CreateEvent';
 
 interface TransactionWithHash extends Transaction {
@@ -15,16 +15,16 @@ interface TransactionWithHash extends Transaction {
 
 const web3 = new Web3(new Web3.providers.HttpProvider('http://127.0.0.1:8545'));
 const eventContractABI = EventContract;
-const ticketContractABI = TicketContract;
+// const ticketContractABI = TicketContract;
 
 const eventContractInstance = new web3.eth.Contract(
   eventContractABI.abi,
   EventContractAddress.address
 );
-const ticketContractInstance = new web3.eth.Contract(
+/* const ticketContractInstance = new web3.eth.Contract(
   ticketContractABI.abi,
   TicketContractAddress.address
-);
+); */
 
 // METHOD TO CONVERT DATE TO UINT64 VALUE
 export const dateToUint64 = (date: Date): bigint => {

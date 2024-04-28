@@ -1,16 +1,19 @@
 /* eslint-disable @typescript-eslint/no-misused-promises */
 /* eslint-disable @typescript-eslint/strict-boolean-expressions */
 /* eslint-disable react/prop-types */
-import { Box, Button, Divider, Grid } from '@mui/material';
+import { Alert, Box, Button, Divider, Grid, Snackbar } from '@mui/material';
 import { memo, useEffect, useState } from 'react';
 
 import { FormattedMessage } from 'react-intl';
 import { useSDK } from '@metamask/sdk-react';
-import { getAllTicketsForEvent } from '../../utils/smartContractFunctions/TicketContract';
 import { buyNewTicket } from '../../utils/smartContractFunctions/EventContract';
+import { useNavigate } from 'react-router-dom';
 
 const TicketsBanner: React.FC<ITicketsProps> = ({ eventID, ticketPrice, ticketsLeft }) => {
   const [account, setAccount] = useState<string>();
+  const [showSuccessfullSnackBar, setShowSuccessfullSnackBar] = useState<boolean>(false);
+  const [showErrorSnackBar, setShowErrorSnackBar] = useState<boolean>(false);
+
   const { sdk } = useSDK();
   useEffect(() => {
     const connect = async (): Promise<void> => {
@@ -27,20 +30,27 @@ const TicketsBanner: React.FC<ITicketsProps> = ({ eventID, ticketPrice, ticketsL
     };
     void connect();
   });
+  const navigate = useNavigate();
+
   const handleClickBuyTicket = async (): Promise<void> => {
     try {
       if (account) {
         const response = await buyNewTicket(eventID, account);
+        setShowSuccessfullSnackBar(true);
+        setTimeout(() => {
+          setShowSuccessfullSnackBar(false);
+          navigate('/mytickets');
+        }, 2500);
         console.log(response);
       }
     } catch (error) {
+      setShowErrorSnackBar(true);
+      setTimeout(() => {
+        setShowErrorSnackBar(false);
+        navigate('/mytickets');
+      }, 2500);
       console.log(error);
     }
-  };
-
-  const handleGetTickets = async (): Promise<void> => {
-    const response = await getAllTicketsForEvent(eventID);
-    console.log(response);
   };
 
   return (
@@ -84,9 +94,22 @@ const TicketsBanner: React.FC<ITicketsProps> = ({ eventID, ticketPrice, ticketsL
           </Button>
         </Box>
       </Box>
-      <Button variant="contained" sx={{ marginTop: '10px' }} onClick={handleGetTickets}>
-        dej tickets
-      </Button>
+      <Snackbar
+        open={showErrorSnackBar}
+        autoHideDuration={5000}
+        anchorOrigin={{ vertical: 'top', horizontal: 'center' }}>
+        <Alert severity="error" variant="filled" sx={{ width: '100%' }}>
+          <FormattedMessage id={`app.gettickets.errorbuy`} />
+        </Alert>
+      </Snackbar>
+      <Snackbar
+        open={showSuccessfullSnackBar}
+        autoHideDuration={5000}
+        anchorOrigin={{ vertical: 'top', horizontal: 'center' }}>
+        <Alert severity="success" variant="filled" sx={{ width: '100%' }}>
+          <FormattedMessage id={`app.gettickets.successbuy`} />
+        </Alert>
+      </Snackbar>
     </Grid>
   );
 };

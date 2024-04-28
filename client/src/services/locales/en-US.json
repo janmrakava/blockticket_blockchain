@@ -220,7 +220,12 @@
   "app.myeventpage.heading": "My Event",
 
   "app.myeventpage.changepriceerror": "The price could not be changed",
-  "app.myeventpage.changepricesuccess": "The price is successfully changed!"
+  "app.myeventpage.changepricesuccess": "The price is successfully changed!",
+
+  "app.gettickets.errorbuy": "You couldn't buy a ticket!",
+  "app.gettickets.successbuy": "The ticket has been bought!"
+
+
 
 
 
