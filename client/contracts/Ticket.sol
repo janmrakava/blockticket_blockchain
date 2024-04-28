@@ -253,16 +253,8 @@ contract TicketContract {
       Ticket storage ticket = allTickets[ticketId];
 
       if (ticket.isValid && !ticket.isRedeemed) {
-        //uint256 refundAmount = ticket.originalPrice;
-        //address payable ticketOwner = payable(ticket.ticketOwner);
-
         ticket.isValid = false;
 
-        //require(address(this).balance >= refundAmount, 'Insufficient balance to make refunds');
-        //(bool sent, ) = ticketOwner.call{value: refundAmount}('');
-        //require(sent, 'Failed to send Ether');
-
-        //emit TicketRefunded(ticketId, ticketOwner, refundAmount);
         removeTicketFromAllTickets(ticketId);
         totalTickets--;
       }
