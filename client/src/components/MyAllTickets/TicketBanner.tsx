@@ -2,7 +2,10 @@
 /* eslint-disable react/prop-types */
 import { Box, Button, Typography } from '@mui/material';
 import { convertRetardedDate } from '../../utils/function';
-import { setTicketForSale } from '../../utils/smartContractFunctions/TicketContract';
+import {
+  cancelTicketForSale,
+  setTicketForSale
+} from '../../utils/smartContractFunctions/TicketContract';
 
 interface ITicketBannerProps {
   ticketID: string;
@@ -36,6 +39,10 @@ const MyTicketBanner: React.FC<ITicketBannerProps> = ({
 
   const handleSetTicketForSale = async (): Promise<void> => {
     const response = await setTicketForSale(ticketID, 499, account);
+    console.log(response);
+  };
+  const handleSetTicketNotForSale = async (): Promise<void> => {
+    const response = await cancelTicketForSale(ticketID, account);
     console.log(response);
   };
   return (
@@ -94,7 +101,7 @@ const MyTicketBanner: React.FC<ITicketBannerProps> = ({
               Prodat vstupenku
             </Button>
           ) : (
-            <Button variant="contained" color="success">
+            <Button variant="contained" color="success" onClick={handleSetTicketNotForSale}>
               Zrušit prodej vstupenky
             </Button>
           )}
