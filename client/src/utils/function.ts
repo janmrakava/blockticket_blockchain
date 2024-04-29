@@ -13,7 +13,7 @@ export const convertToDate = (bigIntValue: bigint): Date => {
   const date = new Date(Number(bigIntValue));
   return date;
 };
-export const convertRetardedDate = (bigIntValue: bigint): Date => {
+export const convertRetardedDate = (bigIntValue: bigint | undefined): Date => {
   const date = new Date(Number(bigIntValue) * 1000);
   return date;
 };

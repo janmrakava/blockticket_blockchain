@@ -223,6 +223,10 @@
   "app.myeventpage.changepricesuccess": "Cena je úspěšně změněna!",
 
   "app.gettickets.errorbuy": "Vstupenku se nepovedlo koupit!",
-  "app.gettickets.successbuy": "Vstupenka byla koupena!"
+  "app.gettickets.successbuy": "Vstupenka byla koupena!",
+
+  "app.myticket.success": "Operace byla úspěšná!",
+  "app.myticket.error": "The operation failed!"
+
 
 }

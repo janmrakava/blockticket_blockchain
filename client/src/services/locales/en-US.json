@@ -223,7 +223,10 @@
   "app.myeventpage.changepricesuccess": "The price is successfully changed!",
 
   "app.gettickets.errorbuy": "You couldn't buy a ticket!",
-  "app.gettickets.successbuy": "The ticket has been bought!"
+  "app.gettickets.successbuy": "The ticket has been bought!",
+
+  "app.myticket.success": "The operation was a success!",
+  "app.myticket.error": "Operation was not successfull!"
 
 
 

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-misused-promises */
 /* eslint-disable @typescript-eslint/strict-boolean-expressions */
 import { CircularProgress, Grid } from '@mui/material';
 import UserSettingsMenu from '../../components/UserSettings/UserSettingsMenu';
@@ -7,7 +8,8 @@ import NothingToShowBanner from '../../components/FavoritesPage/NoFavoriteEvents
 import MyTicketBanner from '../../components/MyAllTickets/TicketBanner';
 
 const MyTickets: React.FC = () => {
-  const { account, myTickets, isLoading, isError } = useMyTickets();
+  const { myTickets, isLoading, isError } = useMyTickets();
+
   return (
     <Grid
       container
@@ -29,21 +31,7 @@ const MyTickets: React.FC = () => {
           lg={12}
           sx={{ display: 'flex', flexDirection: 'column', gap: '50px', marginTop: '20px' }}>
           {myTickets?.map((ticket: ITicketFromContract, index: number) => {
-            return (
-              <MyTicketBanner
-                key={index}
-                account={account}
-                ticketID={ticket.ticketID}
-                purchasedDate={ticket.purchasedDate}
-                forSale={ticket.forSale}
-                isValid={ticket.isValid}
-                ticketOwner={ticket.ticketOwner}
-                salePrice={ticket.salePrice}
-                originalPrice={ticket.originalPrice}
-                isRedeemed={ticket.isRedeemed}
-                ticketPrice={ticket.ticketPrice}
-              />
-            );
+            return <MyTicketBanner key={index} ticketID={ticket.ticketID} />;
           })}
         </Grid>
       </Grid>
