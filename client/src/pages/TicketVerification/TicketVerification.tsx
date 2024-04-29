@@ -1,13 +1,21 @@
 /* eslint-disable @typescript-eslint/strict-boolean-expressions */
-import { Button, Grid, TextField, Typography } from '@mui/material';
+import { Box, Button, Grid, TextField, Typography } from '@mui/material';
 
 import { useTicketVerification } from './useTicketVerification';
 import { StyledForm, StyledGridContainer, StyledGridForm } from './styled';
 
 const TicketVerification: React.FC = () => {
-  const { appLanguage, handleChange, handleSubmit, ticketID, ticketInfo, isTicketValid, txArr } =
-    useTicketVerification();
+  const {
+    appLanguage,
+    handleChange,
+    handleSubmit,
+    ticketID,
+    isTicketValid,
+    txArr,
+    renderTicketInfo
+  } = useTicketVerification();
   console.log(txArr);
+
   return (
     <StyledGridContainer container>
       <Grid item xs={12} md={12} lg={12} sx={{ marginTop: '50px' }}>
@@ -46,16 +54,31 @@ const TicketVerification: React.FC = () => {
           </Button>
         </StyledForm>
       </StyledGridForm>
-      <Grid item xs={12} md={12} lg={12} sx={{ marginTop: '50px' }}>
+      <Grid item xs={12} md={12} lg={12}>
         <Typography
           sx={{
-            fontSize: '30px',
-            fontWeight: 900,
-            padding: '20px',
-            color: isTicketValid ? 'green' : 'red'
+            fontSize: '20px',
+            fontWeight: 400,
+            padding: '20px'
           }}>
-          Vstupenka je: {isTicketValid ? 'platná' : 'neplatná'}
+          Vstupenka je:{' '}
+          <span style={{ color: isTicketValid ? 'green' : 'red', fontWeight: '900' }}>
+            {isTicketValid ? 'platná' : 'neplatná'}
+          </span>
         </Typography>
+      </Grid>
+      <Grid item xs={12} md={12} lg={12}>
+        <Typography
+          sx={{
+            fontSize: '20px',
+            fontWeight: 900,
+            padding: '20px'
+          }}>
+          Informace o vstupence
+        </Typography>
+        <Box sx={{ marginLeft: '20px' }}>
+          {!isTicketValid ? <div>Neplatná vstupenka</div> : renderTicketInfo}
+        </Box>
       </Grid>
     </StyledGridContainer>
   );

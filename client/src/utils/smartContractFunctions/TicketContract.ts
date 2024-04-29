@@ -113,7 +113,6 @@ export async function findTicketInTransactions(ticketID: string): Promise<any> {
 
   for (let i = 0; i <= latestBlock; i++) {
     const block = await web3.eth.getBlock(i, true);
-    console.log('Checking block:', i);
 
     if (block.transactions && block.transactions.length > 0) {
       for (let j = 0; j < block.transactions.length; j++) {
@@ -127,14 +126,16 @@ export async function findTicketInTransactions(ticketID: string): Promise<any> {
         const logs = receipt.logs;
 
         logs.forEach((log) => {
-          // Kontrola, zda Data obsahuje ticketID
-          if (log.data.toLowerCase().includes(ticketID.toLowerCase())) {
-            transactionsFound.push(tx); // Přidání transakce do pole
+          if (log.data) {
+            const dataHex = new Web3(web3.currentProvider).utils.toHex(log.data);
+            if (dataHex.toLowerCase().includes(ticketID.toLowerCase())) {
+              transactionsFound.push(tx);
+            }
           }
         });
       }
     }
   }
 
-  return transactionsFound; // Vrátí pole s nalezenými transakcemi
+  return transactionsFound;
 }

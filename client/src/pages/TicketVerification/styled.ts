@@ -1,4 +1,4 @@
-import { Grid } from '@mui/material';
+import { Box, Grid } from '@mui/material';
 import styled from 'styled-components';
 
 export const StyledGridContainer = styled(Grid)`
@@ -24,4 +24,13 @@ export const StyledGridForm = styled(Grid)`
   justify-content: center;
   align-items: flex-start;
   margin-left: 20px;
+`;
+export const StyledContainerTicketInfo = styled(Box)`
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #80797b;
+`;
+export const StyledContainerButtonTicket = styled(StyledContainerTicketInfo)`
+  justify-content: flex-end;
+  border: none;
 `;
