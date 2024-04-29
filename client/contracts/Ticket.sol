@@ -181,9 +181,9 @@ contract TicketContract {
     emit TicketRedeemed(_ticketID, msg.sender);
   }
   // function to verify ticket
-  function verifyTicket(bytes32 _ticketID, bytes32 _eventID) external view returns (bool) {
+  function verifyTicket(bytes32 _ticketID) external view returns (bool) {
     Ticket storage _ticket = allTickets[_ticketID];
-    if (_ticket.ticketID != 0 && _ticket.eventID == _eventID && _ticket.isValid) {
+    if (_ticket.ticketID != 0 && _ticket.isValid) {
       return true;
     } else {
       return false;

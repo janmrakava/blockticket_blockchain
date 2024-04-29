@@ -1,4 +1,5 @@
-import Web3 from 'web3';
+/* eslint-disable @typescript-eslint/strict-boolean-expressions */
+import Web3, { type Transaction } from 'web3';
 import TicketContract from '../../../build/contracts/TicketContract.json';
 import TicketContractAddress from '../../../contractsAddress/TicketContractAddress.json';
 
@@ -12,7 +13,9 @@ export interface ITicket {
   ticketPrice: number;
   originalPrice: number;
 }
-
+interface TransactionWithHash extends Transaction {
+  hash: string;
+}
 const web3 = new Web3(new Web3.providers.HttpProvider('http://127.0.0.1:8545'));
 const contractABI = TicketContract;
 
@@ -41,8 +44,8 @@ export const redeemTicket = async (ticketID: string, userAddress: string): Promi
   return response;
 };
 //  METHOD TO VERIFY TICKET FOR THE USER
-export const verifyTicket = async (ticketID: string, eventID: string): Promise<any> => {
-  const response = await contractInstance.methods.verifyTicket(ticketID, eventID).call();
+export const verifyTicket = async (ticketID: string): Promise<any> => {
+  const response = await contractInstance.methods.verifyTicket(ticketID).call();
   return response;
 };
 // METHOD TO RETURN TICKET FOR THE USER
@@ -103,3 +106,35 @@ export const cancelAllTickets = async (eventID: string, userAddress: string): Pr
     .send({ from: userAddress });
   return response;
 };
+
+export async function findTicketInTransactions(ticketID: string): Promise<any> {
+  const latestBlock = await web3.eth.getBlockNumber();
+  const transactionsFound: any = [];
+
+  for (let i = 0; i <= latestBlock; i++) {
+    const block = await web3.eth.getBlock(i, true);
+    console.log('Checking block:', i);
+
+    if (block.transactions && block.transactions.length > 0) {
+      for (let j = 0; j < block.transactions.length; j++) {
+        let tx: TransactionWithHash | string = block.transactions[j];
+
+        if (typeof tx === 'string') {
+          tx = await web3.eth.getTransaction(tx);
+        }
+
+        const receipt = await web3.eth.getTransactionReceipt(tx.hash);
+        const logs = receipt.logs;
+
+        logs.forEach((log) => {
+          // Kontrola, zda Data obsahuje ticketID
+          if (log.data.toLowerCase().includes(ticketID.toLowerCase())) {
+            transactionsFound.push(tx); // Přidání transakce do pole
+          }
+        });
+      }
+    }
+  }
+
+  return transactionsFound; // Vrátí pole s nalezenými transakcemi
+}

@@ -32,7 +32,8 @@ const MyOneTicket: React.FC = () => {
         color: '#fff',
         marginBottom: '50px',
         display: 'flex',
-        justifyContent: 'center'
+        justifyContent: 'center',
+        paddingBottom: '200px'
       }}>
       <Grid item xs={12} md={12} lg={12} sx={{ marginTop: '50px' }}>
         <Typography
@@ -55,6 +56,8 @@ const MyOneTicket: React.FC = () => {
           justifyContent: 'space-between',
           boxShadow: '#80797B 0px 0px 0px 3px'
         }}>
+        {isLoading && <div>Načítá se...</div>}
+        {isError && <div>Něco se nepovedlo. </div>}
         <Box sx={{ display: 'flex', justifyContent: 'flex-start' }}>
           <Typography sx={{ width: '50%' }}>ID Vstupenky </Typography>
           <Typography>{myTicket?.ticketID}</Typography>

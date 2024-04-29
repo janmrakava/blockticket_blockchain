@@ -25,6 +25,7 @@ import CreateEvent from './CreateEvent';
 import ShowMyEvent from './ShowMyEvent/ShowMyEvent';
 import MyEventPage from './MyEventPage/MyEventPage';
 import MyOneTicket from './MyOneTicket/MyOneTicket';
+import TicketVerification from './TicketVerification/TicketVerification';
 
 const App: React.FC = () => {
   const theme = createTheme();
@@ -44,6 +45,7 @@ const App: React.FC = () => {
               <Route path="/register" element={<Register />} />
               <Route path="/support" element={<Support />} />
               <Route path="/support/:section" element={<SupportSection />} />
+              <Route path="/verification" element={<TicketVerification />} />
               <Route
                 path="/getTickets/:eventId"
                 element={
