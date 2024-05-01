@@ -166,6 +166,27 @@ contract TicketContract {
 
     return ownedTickets;
   }
+  function getTicketsForSale() external view returns (Ticket[] memory) {
+    uint totalForSale = 0;
+
+    for (uint i = 0; i < allTicketIDs.length; i++) {
+      if (allTickets[allTicketIDs[i]].forSale) {
+        totalForSale++;
+      }
+    }
+
+    Ticket[] memory ticketsForSale = new Ticket[](totalForSale);
+    uint index = 0;
+
+    for (uint i = 0; i < allTicketIDs.length; i++) {
+      if (allTickets[allTicketIDs[i]].forSale) {
+        ticketsForSale[index] = allTickets[allTicketIDs[i]];
+        index++;
+      }
+    }
+
+    return ticketsForSale;
+  }
   // function to flag ticket as reedeemed, which means user arrive on the event, so
   // any other function cant run
   function redeemTicket(bytes32 _ticketID) external {

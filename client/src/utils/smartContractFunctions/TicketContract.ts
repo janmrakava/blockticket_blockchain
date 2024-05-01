@@ -148,3 +148,11 @@ export async function getEventsForTicketID(ticketID: string): Promise<any> {
   });
   return events;
 }
+export async function getTicketsForSale(): Promise<any> {
+  try {
+    const response = await contractInstance.methods.getTicketsForSale().call();
+    return response;
+  } catch (error) {
+    console.log(error);
+  }
+}
