@@ -21,19 +21,22 @@ const MyTickets: React.FC = () => {
         </h1>
       </Grid>
       <Grid item xs={12} md={12} lg={12} sx={{}}>
-        {isLoading && <CircularProgress />}
         {isError && <div>Něco se nepovedlo...</div>}
         {myTickets?.length === 0 && <NothingToShowBanner text="notickets" />}
-        <Grid
-          item
-          xs={12}
-          md={12}
-          lg={12}
-          sx={{ display: 'flex', flexDirection: 'column', gap: '50px', marginTop: '20px' }}>
-          {myTickets?.map((ticket: ITicketFromContract, index: number) => {
-            return <MyTicketBanner key={index} ticketID={ticket.ticketID} />;
-          })}
-        </Grid>
+        {isLoading ? (
+          <CircularProgress />
+        ) : (
+          <Grid
+            item
+            xs={12}
+            md={12}
+            lg={12}
+            sx={{ display: 'flex', flexDirection: 'column', gap: '50px', marginTop: '20px' }}>
+            {myTickets?.map((ticket: ITicketFromContract, index: number) => {
+              return <MyTicketBanner key={index} ticketID={ticket.ticketID} />;
+            })}
+          </Grid>
+        )}
       </Grid>
     </Grid>
   );
