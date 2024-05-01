@@ -139,3 +139,12 @@ export async function findTicketInTransactions(ticketID: string): Promise<any> {
 
   return transactionsFound;
 }
+
+export async function getEventsForTicketID(ticketID: string): Promise<any> {
+  const events = await contractInstance.getPastEvents('allEvents', {
+    filter: { ticketID },
+    fromBlock: 0,
+    toBlock: 'latest'
+  });
+  return events;
+}

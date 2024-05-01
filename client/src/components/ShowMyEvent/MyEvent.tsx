@@ -44,8 +44,7 @@ const MyEvent: React.FC<IMyEventProps> = ({
         gap: '20px',
         display: 'flex',
         flexDirection: 'column',
-        justifyContent: 'flex-end',
-        border: '1px solid red'
+        justifyContent: 'flex-end'
       }}
       onClick={() => {
         handleClickEvent();

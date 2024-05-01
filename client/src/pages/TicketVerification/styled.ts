@@ -34,3 +34,10 @@ export const StyledContainerButtonTicket = styled(StyledContainerTicketInfo)`
   justify-content: flex-end;
   border: none;
 `;
+export const StyledContainerTransaction = styled.div`
+  display: flex;
+  flex-direction: column;
+  box-shadow: #80797b 0px 0px 0px 3px;
+  padding: 20px;
+  gap: 10px;
+`;

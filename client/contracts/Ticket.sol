@@ -92,14 +92,14 @@ contract TicketContract {
   function createNewTicket(
     bytes32 _eventID,
     uint256 _ticketPrice,
-    address userAddress // Přidáme adresu uživatele jako parametr
+    address userAddress
   ) external payable onlyEventContract returns (bytes32) {
     bytes32 ticketID = keccak256(abi.encodePacked(_eventID, userAddress, block.timestamp));
     uint64 _purchasedDate = uint64(block.timestamp);
     allTickets[ticketID] = Ticket({
       ticketID: ticketID,
       eventID: _eventID,
-      ticketOwner: userAddress, // Nastavíme `userAddress` jako `ticketOwner`
+      ticketOwner: userAddress,
       purchasedDate: _purchasedDate,
       isRedeemed: false,
       isValid: true,

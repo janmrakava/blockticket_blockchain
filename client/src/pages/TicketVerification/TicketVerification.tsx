@@ -11,10 +11,9 @@ const TicketVerification: React.FC = () => {
     handleSubmit,
     ticketID,
     isTicketValid,
-    txArr,
-    renderTicketInfo
+    renderTicketInfo,
+    renderTransactionInfo
   } = useTicketVerification();
-  console.log(txArr);
 
   return (
     <StyledGridContainer container>
@@ -79,6 +78,24 @@ const TicketVerification: React.FC = () => {
         <Box sx={{ marginLeft: '20px' }}>
           {!isTicketValid ? <div>Neplatná vstupenka</div> : renderTicketInfo}
         </Box>
+      </Grid>
+      <Grid item xs={12} md={12} lg={12}>
+        <Typography
+          sx={{
+            fontSize: '20px',
+            fontWeight: 900,
+            padding: '20px'
+          }}>
+          Informace o transakcích
+        </Typography>
+      </Grid>
+      <Grid
+        item
+        xs={12}
+        md={12}
+        lg={12}
+        sx={{ padding: '20px', display: 'flex', flexDirection: 'column', gap: '20px' }}>
+        {!isTicketValid ? <div>Neplatná vstupenka</div> : renderTransactionInfo}
       </Grid>
     </StyledGridContainer>
   );

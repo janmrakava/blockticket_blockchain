@@ -1,25 +1,43 @@
+/* eslint-disable @typescript-eslint/no-unnecessary-boolean-literal-compare */
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 /* eslint-disable @typescript-eslint/strict-boolean-expressions */
 import { useState, type FormEvent } from 'react';
 import { useSelector } from 'react-redux';
 
 import {
-  findTicketInTransactions,
+  getEventsForTicketID,
   getOneTicketInfo,
   verifyTicket
 } from '../../utils/smartContractFunctions/TicketContract';
 import { type ITicketFromContract } from '../MyOneTicket/useMyOneTicket';
 import { type RootState } from '../store';
-import { Button, Grid, Typography } from '@mui/material';
+import { Box, Button, Grid, Typography } from '@mui/material';
 import { convertRetardedDate } from '../../utils/function';
-import { StyledContainerButtonTicket, StyledContainerTicketInfo } from './styled';
+import {
+  StyledContainerButtonTicket,
+  StyledContainerTicketInfo,
+  StyledContainerTransaction
+} from './styled';
 import { useNavigate } from 'react-router-dom';
 
 export const useTicketVerification = (): any => {
   const [ticketID, setTicketID] = useState<string>('');
   const [isTicketValid, setIsTicketValid] = useState<boolean>(false);
   const [ticketInfo, setTicketInfo] = useState<ITicketFromContract>();
-  const [transactionArray, setTransactionArray] = useState();
+  const [transactionArray, setTransactionArray] = useState<IContractTransaction[]>([]);
+
+  const eventDescriptions: Record<string, string> = {
+    TicketCreated: 'Vstupenka vytvořena',
+    TicketTransferred: 'Vstupenka změnila majitele',
+    TicketRedeemed: 'Vstupenka vyzvednuta',
+    TicketDeleted: 'Vstupenka smazána',
+    TicketReturned: 'Vstupenka vrácena',
+    TicketRefunded: 'Vstupenka vrácena',
+    EventCancelled: 'Událost byla zrušena',
+    TicketSetForSale: 'Vstupenka nastavena k prodeji',
+    TicketSaleCancelled: 'Prodej vstupenky zrušen',
+    TicketPurchasedOnMarket: 'Vstupenka koupena na tržišti' // Přidán tento řádek pro jednotnost
+  };
   const handleSubmit = async (event: FormEvent): Promise<void> => {
     event.preventDefault();
     try {
@@ -28,11 +46,11 @@ export const useTicketVerification = (): any => {
       if (response) {
         const ticketInfoSmart = await getOneTicketInfo(ticketID);
         setTicketInfo(ticketInfoSmart);
+        const array = await getEventsForTicketID(ticketID);
+        setTransactionArray(array);
       }
-      const array = await findTicketInTransactions(ticketID);
-      setTransactionArray(array);
     } catch (error) {
-      console.log(error);
+      setIsTicketValid(false);
     }
   };
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
@@ -48,6 +66,7 @@ export const useTicketVerification = (): any => {
   const handleClickToMarket = (): void => {
     navigate('/ticketsmarket');
   };
+
   const renderTicketInfo = (
     <Grid
       item
@@ -101,6 +120,37 @@ export const useTicketVerification = (): any => {
     </Grid>
   );
 
+  const renderTransactionInfo = transactionArray?.map((transaction, index) => {
+    const description = eventDescriptions[transaction.event] || 'Není definovaná událost';
+    console.log(transaction);
+    return (
+      <StyledContainerTransaction key={index}>
+        <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
+          <Typography sx={{ width: '50%' }}>Hash transankce: </Typography>
+          <Typography sx={{ width: '50%' }}>{transaction.transactionHash}</Typography>
+        </Box>
+        <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
+          <Typography sx={{ width: '50%' }}>Hash bloku: </Typography>
+          <Typography sx={{ width: '50%' }}>{transaction.blockHash}</Typography>
+        </Box>
+        <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
+          <Typography sx={{ width: '50%' }}>Číslo bloku: </Typography>
+          <Typography sx={{ width: '50%' }}>{transaction.blockNumber.toString()}</Typography>
+        </Box>
+        <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
+          <Typography sx={{ width: '50%' }}>Platnost bloku: </Typography>
+          <Typography sx={{ width: '50%' }}>
+            {transaction.removed === false ? 'Validní blok' : 'Blok již není validní'}
+          </Typography>
+        </Box>
+        <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
+          <Typography sx={{ width: '50%' }}>Typ transakce: </Typography>
+          <Typography sx={{ width: '50%' }}>{description}</Typography>
+        </Box>
+      </StyledContainerTransaction>
+    );
+  });
+
   const appLanguage = useSelector((state: RootState) => state.language.appLanguage);
   return {
     appLanguage,
@@ -110,6 +160,7 @@ export const useTicketVerification = (): any => {
     ticketInfo,
     isTicketValid,
     transactionArray,
-    renderTicketInfo
+    renderTicketInfo,
+    renderTransactionInfo
   };
 };
