@@ -3,7 +3,7 @@ import { Alert, Button, Grid, Snackbar, TextField, Typography } from '@mui/mater
 import { StyledGridForm, StyledForm } from './styled';
 import { useSelector } from 'react-redux';
 import { type RootState } from '../store';
-import { FormEvent, useEffect, useState } from 'react';
+import { type FormEvent, useEffect, useState } from 'react';
 import { redeemTicket, verifyTicket } from '../../utils/smartContractFunctions/TicketContract';
 import { useSDK } from '@metamask/sdk-react';
 
@@ -42,7 +42,6 @@ const RedeemTicket: React.FC = () => {
       const response = await verifyTicket(ticketID);
       if (response && account) {
         const redeemedTicket = await redeemTicket(ticketID, account);
-        console.log(redeemedTicket);
         if (redeemedTicket) {
           setSuccessShowSnackBar(true);
           setTimeout(() => {

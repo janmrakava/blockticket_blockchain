@@ -59,10 +59,6 @@ const ShowMyEvent: React.FC = () => {
     void fetchMyEvents();
   }, [account]);
 
-  useEffect(() => {
-    console.log(myEvents);
-  }, [myEvents]);
-
   return (
     <Grid
       container

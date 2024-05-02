@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable react/prop-types */
 /* eslint-disable @typescript-eslint/strict-boolean-expressions */
 import { Button, TextField, Typography } from '@mui/material';
@@ -26,7 +27,6 @@ const SalePriceSetupBanner: React.FC<ISalePriceSetupBannerProps> = ({
       if (userAddress && ticketID) {
         const response = await setTicketForSale(ticketID, newTicketPrice, userAddress);
         handleShowSnackBar(true);
-        console.log(response);
       }
     } catch (error) {
       handleShowSnackBar(false);

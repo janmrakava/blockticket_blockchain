@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 /* eslint-disable @typescript-eslint/no-confusing-void-expression */
 import {
@@ -106,7 +107,6 @@ const CreateEvent: React.FC = () => {
         const dateUINT64 = dateToUint64(newEventInfo.dateOfTheEvent);
         if (account != null) {
           const response = await createNewEvent(dateUINT64, newEventInfo, account);
-          console.log(response);
           setSuccesfullCreateSnackBar(true);
           setTimeout(() => {
             setSuccesfullCreateSnackBar(false);

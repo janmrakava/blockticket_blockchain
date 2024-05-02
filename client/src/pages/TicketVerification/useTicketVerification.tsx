@@ -122,7 +122,6 @@ export const useTicketVerification = (): any => {
 
   const renderTransactionInfo = transactionArray?.map((transaction, index) => {
     const description = eventDescriptions[transaction.event] || 'Není definovaná událost';
-    console.log(transaction);
     return (
       <StyledContainerTransaction key={index}>
         <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>

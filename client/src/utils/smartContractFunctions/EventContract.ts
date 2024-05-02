@@ -96,7 +96,6 @@ export const buyNewTicket = async (eventID: string, userAddress: string): Promis
     const response = await eventContractInstance.methods
       .buyTicket(eventID, userAddress)
       .send({ from: userAddress, gas: '500000' });
-    console.log('Transaction successful:', response);
     return response;
   } catch (error) {
     console.error('Transaction failed:', error);

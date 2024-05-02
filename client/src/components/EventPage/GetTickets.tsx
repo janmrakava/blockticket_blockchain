@@ -9,7 +9,6 @@ interface IGetTicketsProps {
 
 const GetTickets: React.FC<IGetTicketsProps> = ({ id }) => {
   const navigate = useNavigate();
-  console.log(id);
 
   const handleClick = (): void => {
     navigate(`/getTickets/${id}`);

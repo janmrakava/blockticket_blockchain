@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/strict-boolean-expressions */
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 import { useEffect, useState } from 'react';
@@ -22,7 +23,6 @@ export const useTicketMarkets = (): any => {
   ): Promise<any> => {
     try {
       const response = await transferTicket(ticketID, ticketPrice, userAddress);
-      console.log(response);
       void fetchTicketsForSale();
     } catch (error) {
       console.log(error);

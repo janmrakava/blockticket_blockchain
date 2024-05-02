@@ -31,7 +31,6 @@ const Home: React.FC = () => {
     error,
     isLoading
   } = useHome();
-  console.log(events);
   return (
     <>
       <Hero selectedType={activeButton} handleChange={handleChangeActiveButton} />

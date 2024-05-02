@@ -41,7 +41,6 @@ const MyEventPage: React.FC = () => {
   };
 
   const params = useParams();
-  console.log(params.eventID);
   const [account, setAccount] = useState<string>();
   const { sdk } = useSDK();
 
@@ -93,8 +92,6 @@ const MyEventPage: React.FC = () => {
   };
 
   const navigate = useNavigate();
-
-  console.log(myEvent);
 
   const handleCancelEvent = async (): Promise<void> => {
     if (myEvent && account) {
