@@ -4,9 +4,10 @@ import { Box, Button, CircularProgress, Grid, Typography } from '@mui/material';
 import { useTicketMarkets } from './useTicketsMarket';
 import { type ITicketFromContract } from '../../customHooks/useMyTickets';
 import { convertToDate } from '../../utils/function';
+import { StyledContainerButton, StyledTicketContainer, StyledTicketTextContainer } from './styled';
 
 const TicketsMarket: React.FC = () => {
-  const { ticketsForSale, events, isError, isLoading } = useTicketMarkets();
+  const { account, ticketsForSale, events, isLoading, handleClickBuyButton } = useTicketMarkets();
 
   return (
     <Grid
@@ -35,48 +36,30 @@ const TicketsMarket: React.FC = () => {
               convertedDate.getMonth() + 1
             }.${convertedDate.getFullYear()}`;
             return (
-              <Box
-                key={index}
-                sx={{
-                  display: 'flex',
-                  flexDirection: 'row',
-                  alignItems: 'center',
-                  justifyContent: 'space-evenly',
-                  boxShadow: '#80797b 0px 0px 0px 3px',
-                  padding: '20px'
-                }}>
+              <StyledTicketContainer key={index}>
                 <Box>
                   <img src={event?.eventImage} alt="Image of event" style={{ height: '200px' }} />
                 </Box>
-                <Box
-                  sx={{
-                    display: 'flex',
-                    flexDirection: 'column',
-                    alignItems: 'flex-start',
-                    justifyContent: 'space-between',
-                    height: '200px'
-                  }}>
+                <StyledTicketTextContainer>
                   <Typography sx={{ fontSize: '25px', fontWeight: '800' }}>
                     {event?.eventName}
                   </Typography>
                   <Typography>Datum konání akce: {renderDate}</Typography>
                   <Typography>ID Vstupenky: {ticket?.ticketID}</Typography>
                   <Typography>Adresa vlastníka: {ticket?.ticketOwner}</Typography>
-                  <Box
-                    sx={{
-                      display: 'flex',
-                      flexDirection: 'row',
-                      alignItems: 'center',
-                      width: '100%',
-                      justifyContent: 'space-between'
-                    }}>
+                  <StyledContainerButton>
                     <Typography>Cena za koupi: {ticket?.salePrice.toString()} CZK</Typography>
-                    <Button variant="contained" color="success">
+                    <Button
+                      variant="contained"
+                      color="success"
+                      onClick={() =>
+                        handleClickBuyButton(ticket.ticketID, ticket.salePrice.toString(), account)
+                      }>
                       Koupit za {ticket?.salePrice.toString()} CZK
                     </Button>
-                  </Box>
-                </Box>
-              </Box>
+                  </StyledContainerButton>
+                </StyledTicketTextContainer>
+              </StyledTicketContainer>
             );
           })
         )}

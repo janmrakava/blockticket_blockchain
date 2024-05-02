@@ -127,7 +127,6 @@ contract TicketContract {
     bytes32 _ticketID
   ) external payable noReentrancy isNotRedeemed(_ticketID) {
     Ticket storage ticket = allTickets[_ticketID];
-    require(msg.value == ticket.ticketPrice, 'Transfer amount must match the ticket price.');
     require(ticket.isValid, 'Ticket is not valid.');
 
     address oldOwner = ticket.ticketOwner;

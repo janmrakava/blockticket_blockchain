@@ -4,7 +4,7 @@
     "es2021": true,
     "node": true
   },
-  "ignorePatterns": [".eslintrc.cjs", "vite.config.ts", "2_initial_migrations.js", "truffle-config.js"],
+  "ignorePatterns": [".eslintrc.cjs", "vite.config.ts", "2_initial_migrations.js", "truffle-config.js", "*.ts"],
   "extends": [
     "standard-with-typescript",
     "plugin:react/recommended",

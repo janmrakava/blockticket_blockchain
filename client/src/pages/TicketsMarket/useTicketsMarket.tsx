@@ -1,10 +1,14 @@
 /* eslint-disable @typescript-eslint/strict-boolean-expressions */
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 import { useEffect, useState } from 'react';
-import { getTicketsForSale } from '../../utils/smartContractFunctions/TicketContract';
+import {
+  getTicketsForSale,
+  transferTicket
+} from '../../utils/smartContractFunctions/TicketContract';
 import { type ITicketFromContract } from '../../customHooks/useMyTickets';
 import { type IEventContract } from '../Home/Home';
 import { getEventInfo } from '../../utils/smartContractFunctions/EventContract';
+import { useSDK } from '@metamask/sdk-react';
 
 export const useTicketMarkets = (): any => {
   const [ticketsForSale, setTicketsForSale] = useState<ITicketFromContract[]>();
@@ -43,10 +47,43 @@ export const useTicketMarkets = (): any => {
       void fetchEventsForTickets();
     }
   }, [ticketsForSale]);
+
+  const handleClickBuyButton = async (
+    ticketID: string,
+    ticketPrice: string,
+    userAddress: string
+  ): Promise<any> => {
+    try {
+      const response = await transferTicket(ticketID, ticketPrice, userAddress);
+      console.log(response);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  const [account, setAccount] = useState<string>();
+  const { sdk } = useSDK();
+
+  useEffect(() => {
+    const connect = async (): Promise<void> => {
+      try {
+        const accounts = await sdk?.connect();
+        if (accounts && accounts.length > 0) {
+          setAccount(accounts[0]);
+        } else {
+          console.log('No accounts returned by SDK');
+        }
+      } catch (err) {
+        console.warn('failed to connect..', err);
+      }
+    };
+    void connect();
+  });
   return {
+    account,
     ticketsForSale,
     events,
     isError,
-    isLoading
+    isLoading,
+    handleClickBuyButton
   };
 };

@@ -62,9 +62,12 @@ export const transferTicket = async (
   ticketPrice: string,
   userAddress: string
 ): Promise<any> => {
+  console.log(userAddress)
+  const priceInEth = Number(ticketPrice) * 0.000014;
+  const priceInWei = web3.utils.toWei(priceInEth, "ether")
   const response = await contractInstance.methods
     .transferTicket(ticketID)
-    .send({ from: userAddress, value: ticketPrice });
+    .send({ from: userAddress, value: priceInWei });
   return response;
 };
 
