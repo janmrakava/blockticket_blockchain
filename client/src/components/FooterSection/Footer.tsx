@@ -27,7 +27,7 @@ const Footer: React.FC = () => {
   const [showHelp, setShowHelp] = useState<boolean>(isLargeScreen);
   const [showWhoWeAre, setShowWhoWeAre] = useState<boolean>(isLargeScreen);
 
-  const networkOptions = ['live', 'international', 'verification', 'ticketsmarket'];
+  const networkOptions = ['live', 'international', 'verification', 'ticketsmarket', 'redeemticket'];
   const helpOptions = ['support', 'delivery', 'payment', 'places', 'cancel'];
   const whoweareOptions = ['aboutus', 'career', 'logo'];
 

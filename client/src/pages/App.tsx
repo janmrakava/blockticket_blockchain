@@ -27,6 +27,7 @@ import MyEventPage from './MyEventPage/MyEventPage';
 import MyOneTicket from './MyOneTicket/MyOneTicket';
 import TicketVerification from './TicketVerification/TicketVerification';
 import TicketsMarket from './TicketsMarket/TicketsMarket';
+import RedeemTicket from './RedeemTicket/RedeemTicket';
 
 const App: React.FC = () => {
   const theme = createTheme();
@@ -148,6 +149,14 @@ const App: React.FC = () => {
                 element={
                   <ProtectedRoute>
                     <MyEventPage />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/redeemticket"
+                element={
+                  <ProtectedRoute>
+                    <RedeemTicket />
                   </ProtectedRoute>
                 }
               />
