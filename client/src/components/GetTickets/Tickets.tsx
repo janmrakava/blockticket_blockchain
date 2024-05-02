@@ -2,7 +2,7 @@
 /* eslint-disable @typescript-eslint/no-misused-promises */
 /* eslint-disable @typescript-eslint/strict-boolean-expressions */
 /* eslint-disable react/prop-types */
-import { Alert, Box, Button, Divider, Grid, Snackbar } from '@mui/material';
+import { Alert, Box, Button, Divider, Grid, Snackbar, Typography } from '@mui/material';
 import { memo, useEffect, useState } from 'react';
 
 import { FormattedMessage } from 'react-intl';
@@ -94,9 +94,13 @@ const TicketsBanner: React.FC<ITicketsProps> = ({
             marginTop: '10px'
           }}>
           <p style={{ fontWeight: '900' }}>Koupit vstupenku</p>
-          <Button variant="contained" sx={{ marginTop: '10px' }} onClick={handleClickBuyTicket}>
-            Koupit
-          </Button>
+          {ticketsLeft?.toString() === '0' ? (
+            <Typography sx={{ fontWeight: '900', marginTop: '10px' }}>VYPRODÁNO</Typography>
+          ) : (
+            <Button variant="contained" sx={{ marginTop: '10px' }} onClick={handleClickBuyTicket}>
+              Koupit
+            </Button>
+          )}
         </Box>
       </Box>
       <Snackbar

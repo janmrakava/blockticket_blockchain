@@ -58,10 +58,10 @@ const Home: React.FC = () => {
                 place={event.placeName}
                 popular={index % 2 === 0}
                 ticketsSold={event.soldTickets}
+                numberOfTickets={event.numberOfTickets}
                 imgSrc={event.eventImage}
                 wideScreen={index % 2 === 0}
                 userLoggedIn={userLoggedIn}
-                userFavoritesEvent={userData?.favorite_events ? userData.favorite_events : []}
               />
             );
           })

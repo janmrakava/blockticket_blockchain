@@ -98,6 +98,8 @@
   "app.breadcrumb.Family": "Rodinné",
   "app.breadcrumb.VIP": "VIP",
   "app.breadcrumb.Art": "Umění & Divadlo",
+  "app.breadcrumb.undefined": "Undefined",
+
 
   "app.oneevent.gettickets": "Získat vstupenky",
   "app.oneeveent.pricestarts": "Ceny od",

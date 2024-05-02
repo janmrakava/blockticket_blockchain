@@ -3,8 +3,7 @@ import { Alert, Box, IconButton, Snackbar, Typography } from '@mui/material';
 import { EventInfoBoxText, PegiContainer } from '../../pages/OneEvent/styled';
 
 import { FormattedMessage } from 'react-intl';
-import { useEffect, useState } from 'react';
-import { addToFavorites } from '../../api/users/user';
+import { useState } from 'react';
 import { ImageIconSizeBigger } from '../../styles/styles';
 import Favorite from '../../../public/icons_imgs/Favorites.png';
 import InFavorite from '../../../public/icons_imgs/InFavorite.png';
@@ -17,21 +16,17 @@ interface IEventInfoProps {
   dateOfEvent: bigint;
   ticketPrice: number;
   userId: string;
-  userFavoriteEvents: string[];
   userLoggedIn: boolean;
 }
 
 const EventInfo: React.FC<IEventInfoProps> = ({
   eventName,
-  eventID,
   dateOfEvent,
   ticketPrice,
   placeName,
-  userId,
-  userLoggedIn,
-  userFavoriteEvents
+  userLoggedIn
 }) => {
-  const convertedDate = convertToDate(dateOfEvent.toString());
+  const convertedDate = convertToDate(dateOfEvent);
   const newDate = countDate(convertedDate);
 
   const [inFavorite, setInFavorite] = useState<boolean>(false);
@@ -40,16 +35,10 @@ const EventInfo: React.FC<IEventInfoProps> = ({
     event.stopPropagation();
     setInFavorite((prev) => !prev);
     setShowSnackBar(true);
-    await addToFavorites(userId, eventID);
     setTimeout(() => {
       setShowSnackBar(false);
     }, 1000);
   };
-
-  useEffect(() => {
-    const favorite = userFavoriteEvents.includes(eventID);
-    setInFavorite(favorite);
-  }, []);
 
   return (
     <Box

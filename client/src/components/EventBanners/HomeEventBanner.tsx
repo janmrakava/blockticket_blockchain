@@ -21,9 +21,8 @@ import InFavorite from '../../../public/icons_imgs/InFavorite.png';
  */
 import { FormattedMessage } from 'react-intl';
 import { convertToDate, countDate } from '../../utils/function';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { addToFavorites } from '../../api/users/user';
 
 export interface IEventProps {
   eventId: string;
@@ -34,15 +33,14 @@ export interface IEventProps {
   category_of_event?: string;
   popular?: boolean;
   ticketsSold: number;
+  numberOfTickets: number;
   imgSrc: string;
   wideScreen?: boolean;
   userLoggedIn: boolean;
-  userFavoritesEvent: string[];
 }
 
 const HomeEventBanner: React.FC<IEventProps> = ({
   eventId,
-  userId,
   name,
   date,
   place,
@@ -51,7 +49,7 @@ const HomeEventBanner: React.FC<IEventProps> = ({
   imgSrc,
   wideScreen,
   userLoggedIn,
-  userFavoritesEvent
+  numberOfTickets
 }) => {
   const [inFavorite, setInFavorite] = useState<boolean>(false);
   const [showSnackBar, setShowSnackBar] = useState<boolean>(false);
@@ -59,27 +57,19 @@ const HomeEventBanner: React.FC<IEventProps> = ({
     event.stopPropagation();
     setInFavorite((prev) => !prev);
     setShowSnackBar(true);
-    await addToFavorites(userId, eventId);
     setTimeout(() => {
       setShowSnackBar(false);
     }, 1000);
   };
-
-  useEffect(() => {
-    const favorite = userFavoritesEvent.includes(eventId);
-    setInFavorite(favorite);
-  }, []);
 
   const navigate = useNavigate();
 
   const handleClick = (id: string): void => {
     navigate(`/event/${id}`);
   };
-  const dateToConvert = date.toString();
-  const convertedDate = convertToDate(dateToConvert);
+  const convertedDate = convertToDate(date);
 
   const newDate = countDate(convertedDate);
-  const ticketSoldUpdated = ticketsSold.toString();
 
   return (
     <MobileEventBannerGrid
@@ -99,7 +89,11 @@ const HomeEventBanner: React.FC<IEventProps> = ({
             <TypographyBold>
               <FormattedMessage id="app.eventbanner.ticketssold" />
             </TypographyBold>
-            <TypographyBold>{ticketSoldUpdated}</TypographyBold>
+            {ticketsSold === numberOfTickets ? (
+              <Typography>VYPRODÁNO</Typography>
+            ) : (
+              <TypographyBold>{ticketsSold.toString()}</TypographyBold>
+            )}
           </Box>
         </BoxFlexRowCenter>
         {userLoggedIn &&

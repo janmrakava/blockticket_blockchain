@@ -98,6 +98,7 @@
   "app.breadcrumb.Family": "Family",
   "app.breadcrumb.VIP": "VIP",
   "app.breadcrumb.Art": "Art & Theater",
+  "app.breadcrumb.undefined": "Nedostupné",
 
   "app.oneevent.gettickets": "Get Tickets",
   "app.oneeveent.pricestarts": "Price starting from",

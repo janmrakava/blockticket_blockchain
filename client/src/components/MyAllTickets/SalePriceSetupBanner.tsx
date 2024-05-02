@@ -1,15 +1,16 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable @typescript-eslint/strict-boolean-expressions */
-import { Box, Button, TextField, Typography } from '@mui/material';
+import { Button, TextField, Typography } from '@mui/material';
 import React, { useState, type FormEvent } from 'react';
 import { type RootState } from '../../pages/store';
 import { useSelector } from 'react-redux';
 import { setTicketForSale } from '../../utils/smartContractFunctions/TicketContract';
+import { SalePriceContainer } from './styled';
 
 interface ISalePriceSetupBannerProps {
   userAddress: string | undefined;
   ticketID: string | undefined;
-  ticketPrice: number;
+  ticketPrice: string;
   handleShowSnackBar: (value: boolean) => void;
 }
 
@@ -31,7 +32,7 @@ const SalePriceSetupBanner: React.FC<ISalePriceSetupBannerProps> = ({
       handleShowSnackBar(false);
     }
   };
-  const [newTicketPrice, setNewTicketPrice] = useState<number>(ticketPrice);
+  const [newTicketPrice, setNewTicketPrice] = useState<number>(Number(ticketPrice));
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
     const { value } = event.target;
     setNewTicketPrice(Number(value));
@@ -39,20 +40,7 @@ const SalePriceSetupBanner: React.FC<ISalePriceSetupBannerProps> = ({
   const appLanguage = useSelector((state: RootState) => state.language.appLanguage);
 
   return (
-    <Box
-      sx={{
-        position: 'fixed',
-        width: '400px',
-        height: '300px',
-        borderRadius: '30px',
-        padding: '20px',
-        background: '#131021',
-        filter: 'none',
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'space-evenly',
-        border: '1px solid #80797b'
-      }}>
+    <SalePriceContainer>
       <Typography sx={{ fontSize: '20px', fontWeight: '800' }}>
         {appLanguage === 'cs' ? 'Nastavení ceny pro prodej' : 'Setting the price for sale'}
       </Typography>
@@ -84,7 +72,7 @@ const SalePriceSetupBanner: React.FC<ISalePriceSetupBannerProps> = ({
           {appLanguage === 'cs' ? 'Nastavit vstupenku pro prodej' : 'Set up a ticket for sale'}
         </Button>
       </form>
-    </Box>
+    </SalePriceContainer>
   );
 };
 
