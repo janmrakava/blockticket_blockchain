@@ -13,6 +13,7 @@ contract TicketContract {
     uint256 originalPrice;
     bool forSale;
     uint256 salePrice;
+    bool boughtFromMarket;
   }
   //mapping for allTickets for the TicketContract
   mapping(bytes32 => Ticket) public allTickets;
@@ -106,7 +107,8 @@ contract TicketContract {
       ticketPrice: _ticketPrice,
       originalPrice: _ticketPrice,
       forSale: false,
-      salePrice: 0
+      salePrice: 0,
+      boughtFromMarket: false
     });
     ticketsByEvent[_eventID].push(ticketID);
     allTicketIDs.push(ticketID);
@@ -134,6 +136,7 @@ contract TicketContract {
     ticket.ticketPrice = msg.value;
     ticket.forSale = false;
     ticket.salePrice = 0;
+    ticket.boughtFromMarket = true;
 
     payable(oldOwner).transfer(msg.value);
     emit TicketTransferred(_ticketID, oldOwner, msg.sender, msg.value);

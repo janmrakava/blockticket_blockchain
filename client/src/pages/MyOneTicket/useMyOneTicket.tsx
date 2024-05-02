@@ -5,10 +5,12 @@ import { useState, useEffect } from 'react';
 import { useSDK } from '@metamask/sdk-react';
 import {
   cancelTicketForSale,
+  convertToEth,
   getOneTicketInfo
 } from '../../utils/smartContractFunctions/TicketContract';
 import { useNavigate, useParams } from 'react-router-dom';
 import { convertRetardedDate } from '../../utils/function';
+import ethToCzk from '../../ethtoczkprice/ethtoczkprice.json';
 
 export interface ITicketFromContract {
   eventID: string;
@@ -21,6 +23,7 @@ export interface ITicketFromContract {
   originalPrice: number;
   purchasedDate: bigint;
   salePrice: number;
+  boughtFromMarket: boolean;
 }
 
 export const useMyOneTicket = (): any => {
@@ -28,6 +31,7 @@ export const useMyOneTicket = (): any => {
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [isError, setIsError] = useState<boolean>(false);
   const [myTicket, setMyTicket] = useState<ITicketFromContract>();
+  const [priceToRender, setPriceToRender] = useState<number>();
 
   const [account, setAccount] = useState<string>();
   const { sdk } = useSDK();
@@ -116,9 +120,22 @@ export const useMyOneTicket = (): any => {
       navigate('/mytickets');
     }
   }, [account]);
+  useEffect(() => {
+    if (myTicket && !myTicket?.boughtFromMarket) {
+      setPriceToRender(myTicket.ticketPrice);
+    } else {
+      if (myTicket) {
+        const convertedPrice = convertToEth(myTicket.ticketPrice.toString());
+        const renderPriceInCzk = Number(convertedPrice) * ethToCzk.ethtoczkprice;
+        setPriceToRender(renderPriceInCzk);
+      }
+    }
+  }, [myTicket]);
+
   return {
     account,
     myTicket,
+    priceToRender,
     isLoading,
     isError,
     handleSetTicketNotForSale,
