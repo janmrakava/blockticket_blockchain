@@ -159,3 +159,9 @@ export async function getTicketsForSale(): Promise<any> {
     console.log(error);
   }
 }
+
+export function convertToEth(price: string): string {
+  if (!price) return '0';  
+  const convertedPrice = web3.utils.fromWei(price, "ether");
+  return convertedPrice;
+}

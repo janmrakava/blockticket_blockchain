@@ -5,6 +5,9 @@ import { useMyOneTicket } from './useMyOneTicket';
 import SalePriceSetupBanner from '../../components/MyAllTickets/SalePriceSetupBanner';
 import { FormattedMessage } from 'react-intl';
 
+import ethToCzk from '../../ethtoczkprice/ethtoczkprice.json';
+import { convertToEth } from '../../utils/smartContractFunctions/TicketContract';
+
 /*
   
 */
@@ -22,7 +25,8 @@ const MyOneTicket: React.FC = () => {
     showErrorSnackBar,
     showSetupPriceForSaleBanner
   } = useMyOneTicket();
-
+  const convertedPrice = convertToEth(myTicket?.ticketPrice);
+  const renderPriceInCzk = Number(convertedPrice) * ethToCzk.ethtoczkprice;
   return (
     <Grid
       container
@@ -72,7 +76,7 @@ const MyOneTicket: React.FC = () => {
         </Box>
         <Box sx={{ display: 'flex', justifyContent: 'flex-start' }}>
           <Typography sx={{ width: '50%' }}>Zaplacená částka </Typography>
-          <Typography>{myTicket?.ticketPrice.toString()} CZK</Typography>
+          <Typography>{renderPriceInCzk.toFixed(0)} CZK</Typography>
         </Box>
         <Box sx={{ display: 'flex', justifyContent: 'flex-start' }}>
           <Typography sx={{ width: '50%' }}>Vlastník vstupenky </Typography>
@@ -116,7 +120,7 @@ const MyOneTicket: React.FC = () => {
         <SalePriceSetupBanner
           userAddress={account}
           ticketID={myTicket.ticketID}
-          ticketPrice={myTicket.ticketPrice}
+          ticketPrice={renderPriceInCzk.toFixed(0)}
           handleShowSnackBar={handleShowSnackBar}
         />
       )}
