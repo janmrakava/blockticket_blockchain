@@ -6,7 +6,7 @@ import BreadcrumbNavigation from '../../components/EventPage/BreadcrumbNavigatio
 import { Tickets } from '../../components/GetTickets/Tickets';
 
 const GetTicketsPage: React.FC = () => {
-  const { event, error, isLoading } = useGetTicketsPage();
+  const { event, fetchEvent, error, isLoading } = useGetTicketsPage();
   const decireRoute =
     event?.eventCategory === 'Sport'
       ? 'sport'
@@ -63,6 +63,7 @@ const GetTicketsPage: React.FC = () => {
             eventID={event?.eventID}
             ticketPrice={event?.ticketPrice}
             ticketsLeft={event?.ticketsLeft}
+            fetchEvent={fetchEvent}
           />
         </Grid>
         {error && <div>Něco se nepovedlo, zkuste to později.</div>}

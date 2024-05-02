@@ -66,7 +66,7 @@ const Home: React.FC = () => {
             );
           })
         )}
-        {error && <div>Něco se nepovedlo...</div>}
+        {error && <div style={{ color: '#fff', fontSize: '36px' }}>Něco se nepovedlo...</div>}
         {events?.length === 0 && (
           <div style={{ color: '#fff', fontSize: '36px' }}>
             Žádné eventy daté kategorie neexistují.

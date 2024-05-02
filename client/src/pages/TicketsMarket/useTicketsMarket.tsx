@@ -15,15 +15,30 @@ export const useTicketMarkets = (): any => {
   const [events, setEvents] = useState<Record<string, IEventContract>>({});
   const [isError, setIsError] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(true);
+  const handleClickBuyButton = async (
+    ticketID: string,
+    ticketPrice: string,
+    userAddress: string
+  ): Promise<any> => {
+    try {
+      const response = await transferTicket(ticketID, ticketPrice, userAddress);
+      console.log(response);
+      void fetchTicketsForSale();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  const fetchTicketsForSale = async (): Promise<void> => {
+    try {
+      const tickets = await getTicketsForSale();
+      setTicketsForSale(tickets);
+    } catch (error) {
+      setIsError(true);
+    } finally {
+      setIsLoading(false);
+    }
+  };
   useEffect(() => {
-    const fetchTicketsForSale = async (): Promise<void> => {
-      try {
-        const tickets = await getTicketsForSale();
-        setTicketsForSale(tickets);
-      } catch (error) {
-        setIsError(true);
-      }
-    };
     void fetchTicketsForSale();
   }, []);
 
@@ -48,18 +63,6 @@ export const useTicketMarkets = (): any => {
     }
   }, [ticketsForSale]);
 
-  const handleClickBuyButton = async (
-    ticketID: string,
-    ticketPrice: string,
-    userAddress: string
-  ): Promise<any> => {
-    try {
-      const response = await transferTicket(ticketID, ticketPrice, userAddress);
-      console.log(response);
-    } catch (error) {
-      console.log(error);
-    }
-  };
   const [account, setAccount] = useState<string>();
   const { sdk } = useSDK();
 

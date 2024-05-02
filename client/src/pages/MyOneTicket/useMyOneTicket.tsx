@@ -7,7 +7,7 @@ import {
   cancelTicketForSale,
   getOneTicketInfo
 } from '../../utils/smartContractFunctions/TicketContract';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { convertRetardedDate } from '../../utils/function';
 
 export interface ITicketFromContract {
@@ -110,6 +110,12 @@ export const useMyOneTicket = (): any => {
     };
     void fetchUserTickets();
   }, [account, showErrorSnackBar, showSuccessSnackBar]);
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (myTicket && account !== myTicket.ticketOwner) {
+      navigate('/mytickets');
+    }
+  }, [account]);
   return {
     account,
     myTicket,

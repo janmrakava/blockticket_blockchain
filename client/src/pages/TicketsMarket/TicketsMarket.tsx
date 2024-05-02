@@ -25,6 +25,7 @@ const TicketsMarket: React.FC = () => {
         md={12}
         lg={12}
         sx={{ marginLeft: '20px', display: 'flex', flexDirection: 'column', gap: '20px' }}>
+        {ticketsForSale?.length === 0 && <div>Nejsou dostupné žádné vstupenky ke koupi.</div>}
         {isLoading ? (
           <CircularProgress />
         ) : (

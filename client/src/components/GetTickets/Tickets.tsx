@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-misused-promises */
 /* eslint-disable @typescript-eslint/strict-boolean-expressions */
 /* eslint-disable react/prop-types */
@@ -9,7 +10,12 @@ import { useSDK } from '@metamask/sdk-react';
 import { buyNewTicket } from '../../utils/smartContractFunctions/EventContract';
 import { useNavigate } from 'react-router-dom';
 
-const TicketsBanner: React.FC<ITicketsProps> = ({ eventID, ticketPrice, ticketsLeft }) => {
+const TicketsBanner: React.FC<ITicketsProps> = ({
+  eventID,
+  ticketPrice,
+  ticketsLeft,
+  fetchEvent
+}) => {
   const [account, setAccount] = useState<string>();
   const [showSuccessfullSnackBar, setShowSuccessfullSnackBar] = useState<boolean>(false);
   const [showErrorSnackBar, setShowErrorSnackBar] = useState<boolean>(false);
@@ -37,11 +43,11 @@ const TicketsBanner: React.FC<ITicketsProps> = ({ eventID, ticketPrice, ticketsL
       if (account) {
         const response = await buyNewTicket(eventID, account);
         setShowSuccessfullSnackBar(true);
+        fetchEvent();
         setTimeout(() => {
           setShowSuccessfullSnackBar(false);
           navigate('/mytickets');
         }, 2500);
-        console.log(response);
       }
     } catch (error) {
       setShowErrorSnackBar(true);
@@ -49,7 +55,6 @@ const TicketsBanner: React.FC<ITicketsProps> = ({ eventID, ticketPrice, ticketsL
         setShowErrorSnackBar(false);
         navigate('/mytickets');
       }, 2500);
-      console.log(error);
     }
   };
 

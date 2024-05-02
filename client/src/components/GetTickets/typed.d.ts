@@ -9,6 +9,7 @@ interface ITicketsProps {
   ticketPrice: number;
   ticketsLeft: number;
   eventID: string;
+  fetchEvent: () => void;
 }
 
 interface CartState {

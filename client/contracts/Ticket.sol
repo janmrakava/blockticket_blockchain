@@ -132,6 +132,8 @@ contract TicketContract {
     address oldOwner = ticket.ticketOwner;
     ticket.ticketOwner = msg.sender;
     ticket.ticketPrice = msg.value;
+    ticket.forSale = false;
+    ticket.salePrice = 0;
 
     payable(oldOwner).transfer(msg.value);
     emit TicketTransferred(_ticketID, oldOwner, msg.sender, msg.value);
