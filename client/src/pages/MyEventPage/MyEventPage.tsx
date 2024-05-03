@@ -6,11 +6,15 @@ import { Alert, Box, Button, CircularProgress, Grid, Snackbar, Typography } from
 import { useEffect, useState } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { cancelEvent, getEventInfo } from '../../utils/smartContractFunctions/EventContract';
-import { convertToDate } from '../../utils/function';
-import { InfoEventContainer } from './styled';
+import { convertRetardedDate, convertToDate } from '../../utils/function';
+import { InfoEventContainer, MyEventPageContainer, StyledContainerTickets } from './styled';
 import { useNavigate, useParams } from 'react-router-dom';
 import UpdateTicketPrice from '../../components/MyEventPage/UpdateTicketPriceBanner';
-import { cancelAllTickets } from '../../utils/smartContractFunctions/TicketContract';
+import {
+  cancelAllTickets,
+  getAllTicketsForEvent
+} from '../../utils/smartContractFunctions/TicketContract';
+import { type ITicketFromContract } from '../../customHooks/useMyTickets';
 
 interface IMyEvent {
   dateOfEvent: any;
@@ -28,6 +32,7 @@ interface IMyEvent {
 
 const MyEventPage: React.FC = () => {
   const [myEvent, setMyEvent] = useState<IMyEvent>();
+  const [ticketsForEvent, setTicketsForEvent] = useState<ITicketFromContract[]>();
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [isError, setIsError] = useState<boolean>(false);
   const [showUpdateTicketPrice, setShowUpdateTicketPrice] = useState<boolean>(false);
@@ -115,20 +120,22 @@ const MyEventPage: React.FC = () => {
     }, 2500);
   };
 
+  useEffect(() => {
+    const fetchTicketsForEvent = async (): Promise<void> => {
+      try {
+        if (params.eventID) {
+          const response = await getAllTicketsForEvent(params.eventID);
+          console.log(response);
+          setTicketsForEvent(response);
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    void fetchTicketsForEvent();
+  }, []);
   return (
-    <Grid
-      container
-      sx={{
-        color: '#fff',
-        padding: '20px',
-        maxWidth: '1228px',
-        margin: '0 auto',
-        display: 'flex',
-        flexDirection: 'row',
-        gap: '70px',
-        justifyContent: 'center',
-        paddingBottom: '200px'
-      }}>
+    <MyEventPageContainer container>
       <Grid
         item
         xs={12}
@@ -195,7 +202,11 @@ const MyEventPage: React.FC = () => {
             </InfoEventContainer>
             <InfoEventContainer>
               <Typography sx={{ width: '42%' }}>Počet dostupných vstupenek:</Typography>
-              <Typography>{myEvent.soldTickets.toString()} ks</Typography>
+              <Typography>
+                {myEvent.soldTickets.toString() === myEvent.numberOfTickets.toString()
+                  ? 'Vyprodáno'
+                  : `${myEvent.soldTickets.toString()} ks`}
+              </Typography>
             </InfoEventContainer>
             <InfoEventContainer>
               <Typography sx={{ width: '42%' }}>Počet prodaných vstupenek:</Typography>
@@ -222,6 +233,59 @@ const MyEventPage: React.FC = () => {
               Smazat událost
             </Button>
           </Box>
+          <Grid item xs={12} md={12} lg={12}>
+            <Typography sx={{ fontSize: '20px', fontWeight: 900 }}>
+              Vytvořené vstupenky na událost
+            </Typography>
+          </Grid>
+          <Grid
+            item
+            xs={12}
+            md={12}
+            lg={12}
+            sx={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+            {ticketsForEvent?.length === 0 ? (
+              <div>Žádné vstupenky neexistují</div>
+            ) : (
+              ticketsForEvent?.map((ticket, index) => {
+                const convertedDate = convertRetardedDate(ticket.purchasedDate);
+                const renderDate = `${convertedDate.getDate()}.${
+                  convertedDate.getMonth() + 1
+                }.${convertedDate.getFullYear()}`;
+                return (
+                  <StyledContainerTickets key={index}>
+                    <Box
+                      sx={{
+                        display: 'flex',
+                        flexDirection: 'row',
+                        justifyContent: 'space-between'
+                      }}>
+                      <Typography>ID Vstupenky: </Typography>
+                      <Typography>{ticket.ticketID}</Typography>
+                    </Box>
+                    <Box
+                      sx={{
+                        display: 'flex',
+                        flexDirection: 'row',
+                        justifyContent: 'space-between'
+                      }}>
+                      <Typography>Adresa vlastníka:</Typography>
+                      <Typography> {ticket.ticketOwner}</Typography>
+                    </Box>
+                    <Box
+                      sx={{
+                        display: 'flex',
+                        flexDirection: 'row',
+                        justifyContent: 'space-between'
+                      }}>
+                      <Typography>Datum vytvoření: </Typography>
+                      <Typography>{renderDate}</Typography>
+                    </Box>
+                  </StyledContainerTickets>
+                );
+              })
+            )}
+          </Grid>
         </Grid>
       )}
       {showUpdateTicketPrice && (
@@ -252,7 +316,7 @@ const MyEventPage: React.FC = () => {
           <FormattedMessage id={`app.myeventpage.changepricesuccess`} />
         </Alert>
       </Snackbar>
-    </Grid>
+    </MyEventPageContainer>
   );
 };
 

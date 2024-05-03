@@ -146,8 +146,15 @@ contract TicketContract {
     return allTickets[_ticketID];
   }
   // function to return array of tickets for one specific event
-  function getTicketsForEvent(bytes32 _eventID) external view returns (bytes32[] memory) {
-    return ticketsByEvent[_eventID];
+  function getTicketsForEvent(bytes32 _eventID) external view returns (Ticket[] memory) {
+    bytes32[] storage eventTicketIDs = ticketsByEvent[_eventID];
+    Ticket[] memory eventTickets = new Ticket[](eventTicketIDs.length);
+
+    for (uint i = 0; i < eventTicketIDs.length; i++) {
+      eventTickets[i] = allTickets[eventTicketIDs[i]];
+    }
+
+    return eventTickets;
   }
   // function to return tickets for one specific user
   function getMyTickets() external view returns (Ticket[] memory) {
