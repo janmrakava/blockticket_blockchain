@@ -7,14 +7,19 @@ import { useEffect, useState } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { cancelEvent, getEventInfo } from '../../utils/smartContractFunctions/EventContract';
 import { convertRetardedDate, convertToDate } from '../../utils/function';
-import { InfoEventContainer, MyEventPageContainer, StyledContainerTickets } from './styled';
+import {
+  InfoEventContainer,
+  MyEventPageContainer,
+  StyledContainerTickets,
+  StyledTicketItem
+} from './styled';
 import { useNavigate, useParams } from 'react-router-dom';
 import UpdateTicketPrice from '../../components/MyEventPage/UpdateTicketPriceBanner';
 import {
   cancelAllTickets,
   getAllTicketsForEvent
 } from '../../utils/smartContractFunctions/TicketContract';
-import { type ITicketFromContract } from '../../customHooks/useMyTickets';
+import { type ITicketFromContract } from '../MyOneTicket/useMyOneTicket';
 
 interface IMyEvent {
   dateOfEvent: any;
@@ -254,33 +259,30 @@ const MyEventPage: React.FC = () => {
                 }.${convertedDate.getFullYear()}`;
                 return (
                   <StyledContainerTickets key={index}>
-                    <Box
-                      sx={{
-                        display: 'flex',
-                        flexDirection: 'row',
-                        justifyContent: 'space-between'
-                      }}>
+                    <StyledTicketItem>
                       <Typography>ID Vstupenky: </Typography>
                       <Typography>{ticket.ticketID}</Typography>
-                    </Box>
-                    <Box
-                      sx={{
-                        display: 'flex',
-                        flexDirection: 'row',
-                        justifyContent: 'space-between'
-                      }}>
+                    </StyledTicketItem>
+                    <StyledTicketItem>
                       <Typography>Adresa vlastníka:</Typography>
                       <Typography> {ticket.ticketOwner}</Typography>
-                    </Box>
-                    <Box
-                      sx={{
-                        display: 'flex',
-                        flexDirection: 'row',
-                        justifyContent: 'space-between'
-                      }}>
+                    </StyledTicketItem>
+                    <StyledTicketItem>
                       <Typography>Datum vytvoření: </Typography>
                       <Typography>{renderDate}</Typography>
-                    </Box>
+                    </StyledTicketItem>
+                    <StyledTicketItem>
+                      <Typography>Uplatněná vstupenka: </Typography>
+                      <Typography>{ticket.isRedeemed ? 'Ano' : 'Ne'}</Typography>
+                    </StyledTicketItem>
+                    <StyledTicketItem>
+                      <Typography>Vstupenka k prodeji: </Typography>
+                      <Typography>{ticket.forSale ? 'Ano' : 'Ne'}</Typography>
+                    </StyledTicketItem>
+                    <StyledTicketItem>
+                      <Typography>Vstupenka z marketplace: </Typography>
+                      <Typography>{ticket.boughtFromMarket ? 'Ano' : 'Ne'}</Typography>
+                    </StyledTicketItem>
                   </StyledContainerTickets>
                 );
               })

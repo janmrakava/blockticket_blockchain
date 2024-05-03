@@ -33,4 +33,10 @@ export const StyledContainerTickets = styled(Box)`
   display: flex;
   flex-direction: column;
   gap: 10px;
+`;
+
+export const StyledTicketItem = styled(Box)`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 `
