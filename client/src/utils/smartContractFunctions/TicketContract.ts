@@ -17,9 +17,13 @@ interface TransactionWithHash extends Transaction {
   hash: string;
 }
 const web3 = new Web3(new Web3.providers.HttpProvider('http://127.0.0.1:8545'));
-const contractABI = TicketContract;
 
-const contractInstance = new web3.eth.Contract(contractABI.abi, TicketContractAddress.address);
+
+const contractABI = TicketContract.abi;
+const addressContract = TicketContract.networks[5777].address;
+
+
+const contractInstance = new web3.eth.Contract(contractABI, addressContract);
 
 //  METHOD TO GET INFO ABOUT ALL TICKETS FROM ONE EVENT
 export const getAllTicketsForEvent = async (eventID: string): Promise<any> => {
@@ -101,6 +105,7 @@ export const buyTicketFromMarket = async (
     .send({ from: userAddress, value: priceInWei });
   return response;
 };
+// METHOD TO DELETE ALL TICKETS WHEN EVENTS ARE CANCELLED
 
 export const cancelAllTickets = async (eventID: string, userAddress: string): Promise<any> => {
   const response = await contractInstance.methods
@@ -141,7 +146,7 @@ export async function findTicketInTransactions(ticketID: string): Promise<any> {
 
   return transactionsFound;
 }
-
+// METHOD TO GET ALL EMITED EVENTS FOR TICKET WITH ID
 export async function getEventsForTicketID(ticketID: string): Promise<any> {
   const events = await contractInstance.getPastEvents('allEvents', {
     filter: { ticketID },
@@ -150,6 +155,7 @@ export async function getEventsForTicketID(ticketID: string): Promise<any> {
   });
   return events;
 }
+// METHOD TO GET ALL TICKETS MARKED AS FOR SALE
 export async function getTicketsForSale(): Promise<any> {
   try {
     const response = await contractInstance.methods.getTicketsForSale().call();
@@ -158,7 +164,7 @@ export async function getTicketsForSale(): Promise<any> {
     console.log(error);
   }
 }
-
+// METHOD TO CONVERT WEI TO ETH
 export function convertToEth(price: string): string {
   if (!price) return '0';  
   const convertedPrice = web3.utils.fromWei(price, "ether");

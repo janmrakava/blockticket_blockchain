@@ -87,8 +87,6 @@ contract TicketContract {
   // @param _tickerPrice is price of the ticket
   // @ return - ID of new ticket
   // Definice Solidity eventů pro debugging
-  event Debug(bytes32 indexed message, bytes32 data);
-  event DebugUint(string message, uint256 data);
 
   function createNewTicket(
     bytes32 _eventID,
@@ -177,6 +175,7 @@ contract TicketContract {
 
     return ownedTickets;
   }
+  // function to return all tickets for sale
   function getTicketsForSale() external view returns (Ticket[] memory) {
     uint totalForSale = 0;
 

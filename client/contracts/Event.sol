@@ -16,7 +16,7 @@ contract ContractEvent {
 
   address public ticketAddress;
 
-  // All attributes for the Events (Maybe i need to add number of sell tickets?)
+  // All attributes for the Events
   struct Event {
     bytes32 eventID;
     string eventName;
@@ -38,11 +38,12 @@ contract ContractEvent {
   event TicketPriceUpdated(bytes32 eventID, uint64 newTicketPrice);
   event TicketBought(bytes32 eventID, bytes32 ticketID);
 
+  // modifier to protect the user from buying more tickets than are actually available
   modifier isEnoughTickets(bytes32 _eventID) {
     require(allEvents[_eventID].ticketsLeft > 0, 'There is no remaining tickets!');
     _;
   }
-
+  // modifiet to prevent the event from being edited by anyone other than its owner
   modifier onlyEventOwner(bytes32 _eventID) {
     require(
       allEvents[_eventID].eventOwner == msg.sender,
@@ -50,6 +51,7 @@ contract ContractEvent {
     );
     _;
   }
+  // modifier- if event with given id even exists
   modifier eventExistsModifier(bytes32 _eventID) {
     require(eventExists[_eventID], 'Event does not exist');
     _;
@@ -88,7 +90,7 @@ contract ContractEvent {
 
     emit EventCreated(_eventID);
   }
-
+  // function to update ticket price
   function updateTicketPrice(
     bytes32 _eventID,
     uint64 _newTicketPrice
@@ -98,7 +100,7 @@ contract ContractEvent {
     allEvents[_eventID].ticketPrice = _newTicketPrice;
     emit TicketPriceUpdated(_eventID, _newTicketPrice);
   }
-
+  // function to return only event ids
   function getEventIDs() external view returns (bytes32[] memory eventList) {
     return eventIdsList;
   }
@@ -167,7 +169,6 @@ contract ContractEvent {
     Event storage _event = allEvents[_eventID];
     require(_event.dateOfEvent > block.timestamp, 'Cannot cancel event after it has started');
 
-    //ticketContract.cancelAllTickets(_eventID);
     delete allEvents[_eventID];
 
     for (uint i = 0; i < eventIdsList.length; i++) {
@@ -184,11 +185,10 @@ contract ContractEvent {
   // function to buyticket
   function buyTicket(
     bytes32 _eventID,
-    address userAddress // Přidáme adresu uživatele jako parametr
+    address userAddress
   ) external onlyEventOwner(_eventID) eventExistsModifier(_eventID) returns (bytes32) {
     Event storage _event = allEvents[_eventID];
 
-    // Předáme adresu uživatele místo `msg.sender`
     bytes32 ticketID = ticketContract.createNewTicket(_eventID, _event.ticketPrice, userAddress);
     _event.ticketsLeft -= 1;
     _event.soldTickets += 1;

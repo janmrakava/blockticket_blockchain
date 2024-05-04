@@ -67,51 +67,47 @@ const EventDescription: React.FC<IEventDescriptionProps> = ({
       <Box sx={{ width: { xs: '100%', lg: '50%' } }}>
         {sections.map((section, index) => {
           return (
-            <>
-              <Box key={index}>
-                <Box
-                  sx={{
-                    display: 'flex',
-                    flexDirection: 'row',
-                    alignItems: 'center',
-                    justifyContent: 'space-between',
-                    marginTop: '15px'
+            <Box key={index}>
+              <Box
+                sx={{
+                  display: 'flex',
+                  flexDirection: 'row',
+                  alignItems: 'center',
+                  justifyContent: 'space-between',
+                  marginTop: '15px'
+                }}>
+                <EventDescriptionSectionHeading>
+                  <span style={{ marginRight: '20px' }}>0{index + 1}</span>
+                  <FormattedMessage id={section.sectionName} />
+                </EventDescriptionSectionHeading>
+                <Button
+                  onClick={() => {
+                    handleShow(index);
                   }}>
-                  <EventDescriptionSectionHeading>
-                    <span style={{ marginRight: '20px' }}>0{index + 1}</span>
-                    <FormattedMessage id={section.sectionName} />
-                  </EventDescriptionSectionHeading>
-                  <Button
-                    onClick={() => {
-                      handleShow(index);
-                    }}>
-                    <KeyboardArrowDown
-                      sx={{
-                        transform: sectionVisibility[index] ? 'rotate(180deg)' : 'rotate(0deg)',
-                        transition: '0.3s ease'
-                      }}
-                    />
-                  </Button>
-                </Box>
-                <Box sx={{ display: sectionVisibility[index] ? 'flex' : 'none' }}>
-                  <Grow
-                    in={sectionVisibility[index]}
-                    style={{ transformOrigin: '0 0 0' }}
-                    {...(sectionVisibility[index] ? { timeout: 1000 } : {})}>
-                    {section.id === 3 ? (
-                      <EventDescriptionSectionText>
-                        <FormattedMessage id="app.oneevent.parkigntext" />
-                      </EventDescriptionSectionText>
-                    ) : (
-                      <EventDescriptionSectionText>
-                        {section.sectionText}
-                      </EventDescriptionSectionText>
-                    )}
-                  </Grow>
-                </Box>
-                <EventDescriptionDivider sx={{ marginBottom: '10px' }} />
+                  <KeyboardArrowDown
+                    sx={{
+                      transform: sectionVisibility[index] ? 'rotate(180deg)' : 'rotate(0deg)',
+                      transition: '0.3s ease'
+                    }}
+                  />
+                </Button>
               </Box>
-            </>
+              <Box sx={{ display: sectionVisibility[index] ? 'flex' : 'none' }}>
+                <Grow
+                  in={sectionVisibility[index]}
+                  style={{ transformOrigin: '0 0 0' }}
+                  {...(sectionVisibility[index] ? { timeout: 1000 } : {})}>
+                  {section.id === 3 ? (
+                    <EventDescriptionSectionText>
+                      <FormattedMessage id="app.oneevent.parkigntext" />
+                    </EventDescriptionSectionText>
+                  ) : (
+                    <EventDescriptionSectionText>{section.sectionText}</EventDescriptionSectionText>
+                  )}
+                </Grow>
+              </Box>
+              <EventDescriptionDivider sx={{ marginBottom: '10px' }} />
+            </Box>
           );
         })}
       </Box>

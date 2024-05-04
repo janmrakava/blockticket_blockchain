@@ -97,7 +97,6 @@ const Event: React.FC = () => {
                 dateOfEvent={event.dateOfEvent}
                 ticketPrice={event.ticketPrice}
                 userId={userData ? userData._id : ''}
-                userFavoriteEvents={userData ? userData.favorite_event : []}
                 userLoggedIn={userLoggedIn}
               />
               <GetTickets id={event.eventID} />
