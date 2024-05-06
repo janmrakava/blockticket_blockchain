@@ -5,6 +5,7 @@ import { useState, type FormEvent } from 'react';
 import { useSelector } from 'react-redux';
 
 import {
+  extractEventData,
   getEventsForTicketID,
   getOneTicketInfo,
   verifyTicket
@@ -36,7 +37,7 @@ export const useTicketVerification = (): any => {
     EventCancelled: 'Událost byla zrušena',
     TicketSetForSale: 'Vstupenka nastavena k prodeji',
     TicketSaleCancelled: 'Prodej vstupenky zrušen',
-    TicketPurchasedOnMarket: 'Vstupenka koupena na tržišti' // Přidán tento řádek pro jednotnost
+    TicketPurchasedOnMarket: 'Vstupenka koupena na tržišti'
   };
   const handleSubmit = async (event: FormEvent): Promise<void> => {
     event.preventDefault();
@@ -46,7 +47,16 @@ export const useTicketVerification = (): any => {
       if (response) {
         const ticketInfoSmart = await getOneTicketInfo(ticketID);
         setTicketInfo(ticketInfoSmart);
-        const array = await getEventsForTicketID(ticketID);
+        let array = await getEventsForTicketID(ticketID);
+        const extractedData = await extractEventData(array);
+        console.log(array);
+        array = array.map((transaction: any, index: number) => {
+          return {
+            ...transaction,
+            timestamp: extractedData[index].timestamp
+          };
+        });
+        console.log(array);
         setTransactionArray(array);
       }
     } catch (error) {
@@ -145,6 +155,18 @@ export const useTicketVerification = (): any => {
         <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
           <Typography sx={{ width: '50%' }}>Typ transakce: </Typography>
           <Typography sx={{ width: '50%' }}>{description}</Typography>
+        </Box>
+        <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
+          <Typography sx={{ width: '50%' }}>Datum provedení transakce: </Typography>
+          <Typography sx={{ width: '50%' }}>{`${transaction.timestamp.getDate()}.${
+            transaction.timestamp.getMonth() + 1
+          }.${transaction.timestamp.getFullYear()}`}</Typography>
+        </Box>
+        <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
+          <Typography sx={{ width: '50%' }}>Čas provedení transakce: </Typography>
+          <Typography sx={{ width: '50%' }}>{`${transaction.timestamp.getHours()}:${
+            transaction.timestamp.getMinutes() + 1
+          }:${transaction.timestamp.getSeconds()}`}</Typography>
         </Box>
       </StyledContainerTransaction>
     );

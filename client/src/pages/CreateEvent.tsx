@@ -54,7 +54,7 @@ const CreateEvent: React.FC = () => {
     numberOfTicket: 0,
     dateOfTheEvent: new Date(),
     placeName: '',
-    imageSrc: '',
+    imageSrc: '/img/eventImages/nature.jpeg',
     description: '',
     category: '',
     popular: false
@@ -90,8 +90,6 @@ const CreateEvent: React.FC = () => {
 
   const theme = useTheme();
   const showLogo = useMediaQuery(theme.breakpoints.down('md'));
-
-  // WEB3 PART
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const handleCreateEvent = async (): Promise<void> => {
@@ -191,7 +189,7 @@ const CreateEvent: React.FC = () => {
                 marginTop: '10px',
                 display: 'flex',
                 flexDirection: 'column',
-                gap: '29px'
+                gap: '55px'
               }}>
               <TextField
                 label={appLanguage === 'cs' ? 'Název události' : 'Event name'}
@@ -282,19 +280,6 @@ const CreateEvent: React.FC = () => {
                 variant="filled"
                 value={newEventInfo.placeName}
                 name="placeName"
-                onChange={handleChange}
-                sx={{ background: '#4B4958', borderRadius: '5px' }}
-                InputProps={{
-                  style: { color: '#80797B' }
-                }}
-                fullWidth
-              />
-
-              <TextField
-                label={appLanguage === 'cs' ? 'Volitelný obrázek' : 'Optional image'}
-                variant="filled"
-                value={newEventInfo.imageSrc}
-                name="imageSrc"
                 onChange={handleChange}
                 sx={{ background: '#4B4958', borderRadius: '5px' }}
                 InputProps={{

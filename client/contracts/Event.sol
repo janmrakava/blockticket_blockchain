@@ -186,7 +186,7 @@ contract ContractEvent {
   function buyTicket(
     bytes32 _eventID,
     address userAddress
-  ) external onlyEventOwner(_eventID) eventExistsModifier(_eventID) returns (bytes32) {
+  ) external eventExistsModifier(_eventID) returns (bytes32) {
     Event storage _event = allEvents[_eventID];
 
     bytes32 ticketID = ticketContract.createNewTicket(_eventID, _event.ticketPrice, userAddress);

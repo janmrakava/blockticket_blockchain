@@ -175,7 +175,7 @@ contract TicketContract {
 
     return ownedTickets;
   }
-  // function to return all tickets for sale
+  // function to return all tickets for
   function getTicketsForSale() external view returns (Ticket[] memory) {
     uint totalForSale = 0;
 

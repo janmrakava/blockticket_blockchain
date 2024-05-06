@@ -1,8 +1,6 @@
 /* eslint-disable @typescript-eslint/strict-boolean-expressions */
 import Web3, { type Transaction } from 'web3';
 import TicketContract from '../../../build/contracts/TicketContract.json';
-import TicketContractAddress from '../../../contractsAddress/TicketContractAddress.json';
-
 export interface ITicket {
   ticketID: string;
   eventID: string;
@@ -16,14 +14,12 @@ export interface ITicket {
 interface TransactionWithHash extends Transaction {
   hash: string;
 }
+
 const web3 = new Web3(new Web3.providers.HttpProvider('http://127.0.0.1:8545'));
-
-
 const contractABI = TicketContract.abi;
 const addressContract = TicketContract.networks[5777].address;
-
-
 const contractInstance = new web3.eth.Contract(contractABI, addressContract);
+
 
 //  METHOD TO GET INFO ABOUT ALL TICKETS FROM ONE EVENT
 export const getAllTicketsForEvent = async (eventID: string): Promise<any> => {
@@ -154,6 +150,27 @@ export async function getEventsForTicketID(ticketID: string): Promise<any> {
     toBlock: 'latest'
   });
   return events;
+}
+async function getTransactionTimestamp(transactionHash: string): Promise<bigint> {
+  const transaction = await web3.eth.getTransaction(transactionHash);
+  const block = await web3.eth.getBlock(transaction.blockNumber);
+  return block.timestamp; 
+}
+
+// METHOD TO GET TIMESTAMP OF TRANSACTION
+export async function extractEventData(events: any[]): Promise<any[]> {
+  const extractedData: any[] = [];
+
+  for (const event of events) {
+    const timestamp = await getTransactionTimestamp(event.transactionHash);
+    const eventData = {
+      timestamp: new Date(Number(timestamp) * 1000), 
+      ticketID: event.returnValues[0], 
+    };
+    extractedData.push(eventData);
+  }
+
+  return extractedData;
 }
 // METHOD TO GET ALL TICKETS MARKED AS FOR SALE
 export async function getTicketsForSale(): Promise<any> {

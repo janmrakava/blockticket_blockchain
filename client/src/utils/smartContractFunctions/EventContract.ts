@@ -4,7 +4,6 @@
 /* eslint-disable @typescript-eslint/no-misused-promises */
 import Web3, { type Transaction } from 'web3';
 import EventContract from '../../../build/contracts/ContractEvent.json';
-import EventContractAddress from '../../../contractsAddress/EventContractAddress.json';
 
 import { type INewEvent } from '../../pages/CreateEvent';
 
@@ -14,9 +13,7 @@ interface TransactionWithHash extends Transaction {
 
 const web3 = new Web3(new Web3.providers.HttpProvider('http://127.0.0.1:8545'));
 const eventContractABI = EventContract.abi;
-
 const addressContract = EventContract.networks[5777].address;
-
 const eventContractInstance = new web3.eth.Contract(
   eventContractABI,
   addressContract

@@ -5,4 +5,5 @@ interface IContractTransaction {
   event: string;
   transactionHash: string;
   removed: boolean;
+  timestamp: Date;
 }

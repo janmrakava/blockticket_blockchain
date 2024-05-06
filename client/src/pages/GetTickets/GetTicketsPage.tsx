@@ -29,7 +29,8 @@ const GetTicketsPage: React.FC = () => {
         sx={{
           color: 'white',
           maxWidth: '1228px',
-          margin: '20px'
+          margin: '20px',
+          marginBottom: '150px'
         }}>
         <Grid item xs={12} md={12} lg={12}>
           <BreadcrumbNavigation
@@ -50,6 +51,8 @@ const GetTicketsPage: React.FC = () => {
             justifyContent: 'space-between',
             alignItems: 'center',
             gap: '50px',
+            marginBottom: '150px',
+
             marginLeft: { xs: '20px' },
             marginRight: { xs: '20px' }
           }}>

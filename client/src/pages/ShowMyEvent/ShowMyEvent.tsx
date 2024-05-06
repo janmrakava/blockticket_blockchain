@@ -78,7 +78,7 @@ const ShowMyEvent: React.FC = () => {
           <FormattedMessage id="app.showmyevent.heading" />
         </Typography>
       </Grid>
-      <Grid item xs={12} md={12} lg={12} sx={{ display: 'flex' }}>
+      <Grid item xs={12} md={12} lg={12} sx={{ display: 'flex', gap: '20px' }}>
         {isLoading && <CircularProgress />}
         {isError && <div>Něco se nepovedlo...</div>}
         {myEvents?.length === 0 && <div>Nemáte žádné události</div>}
