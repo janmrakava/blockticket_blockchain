@@ -72,8 +72,12 @@ const Login: React.FC = () => {
       }, 5000);
     }
   };
+
+  const handleClickRegister = (): void => {
+    navigate('/register');
+  };
   return (
-    <Grid container sx={{ color: '#fff' }}>
+    <Grid container sx={{ color: '#fff', marginBottom: '100px' }}>
       <Grid item xs={12} md={12} lg={12}>
         <LogoLogin />
       </Grid>
@@ -158,29 +162,23 @@ const Login: React.FC = () => {
         <Box
           sx={{
             display: 'flex',
-            flexDirection: 'row',
+            flexDirection: 'column',
             gap: '30px',
             marginTop: '20px',
             marginBottom: '50px'
           }}>
-          <img
-            src="/social_icons/facebook.png"
-            alt="Facebook icon"
-            onClick={handleClick}
-            style={{ cursor: 'pointer' }}
-          />
-          <img
-            src="/social_icons/google.png"
-            alt="Google icon"
-            onClick={handleClick}
-            style={{ cursor: 'pointer' }}
-          />
-          <img
-            src="/social_icons/twitter.png"
-            alt="Twitter icon"
-            onClick={handleClick}
-            style={{ cursor: 'pointer' }}
-          />
+          <Button
+            variant="contained"
+            onClick={handleClickRegister}
+            sx={{
+              width: '353px',
+              height: '50px',
+              fontSize: '20px',
+              fontWeight: 800,
+              textTransform: 'capitalize'
+            }}>
+            Založit účet
+          </Button>
         </Box>
       </Grid>
       <Snackbar

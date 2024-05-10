@@ -163,7 +163,7 @@
   "app.ordercompletepage.failedbuttontext": "What could be wrong?",
 
   "app.loginpage.forgotpassword": "Forgot password?",
-  "app.loginpage.orloginwith": "--------------- Or login with ---------------",
+  "app.loginpage.orloginwith": "--------------- Don't have account? ---------------",
   "app.registerpage.text": "The best place to get tickets to your favourite events.",
   "app.registerpage.registerheading": "Registration",
   "app.registerpage.personal": "Personal Information",
