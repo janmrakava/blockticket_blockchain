@@ -87,3 +87,17 @@ Proces ověření vstupenky:
 2. Tato stránka slouží k zadání ID vstupenky a zobrazení informací a historii úprav dané vstupenky. 
 3. Informace a historie se zobrazí, když se zadá platné ID. Pokud není platné, tak se nic nezobrazí. 
 
+Zobrazení informací o vstupence jakožto její majitel: 
+1. Pokud si chce uživatel zobrazit své vstupenky, tak to učiní přes ikonu profilu v pravém rohu a možnost - Moje vstupenky.
+2. Zde je možné vidět všechny vstupenky, které vlastní aktuálně zvolený účet v Metamasku. 
+3. U každé vstupenky je možné zobrazit více informací přes tlačítko. 
+4. Na této stránce je možné vidět všechny informace o vstupence. A navíc je možné nastavit vstupenku k prodeji, pokud již
+    není uplatněná. To se dělá přes tlačítko - Prodat vstupenku.
+5. Zobrazí se dialogové okno, kde je nutné nastavit prodejní cenu, potvrzením se vstupenka stane prodejnou a je možné ji najít na
+    marketplace aplikace. Ale dokud ji nikdo nekoupí, tak ji stále vlastní uživatel.
+
+Nákup vstupenky na Marketplace:
+1. V zápatí je možné vidět odkaz na Tržiště vstupenek
+2. Pokud jsou nějaké vstupenky dostupné k prodeji, tak je možné je zde najít. Nákup se provede pouze přes 
+    kliknutí na tlačítko. Tím vstupenka změní majitele. A je jím aktuálně zvolený účet na Metamasku. 
+

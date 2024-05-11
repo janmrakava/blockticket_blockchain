@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/strict-boolean-expressions */
-import Web3, { type Transaction } from 'web3';
+import Web3 from 'web3';
 import TicketContract from '../../../build/contracts/TicketContract.json';
 export interface ITicket {
   ticketID: string;
@@ -11,9 +11,7 @@ export interface ITicket {
   ticketPrice: number;
   originalPrice: number;
 }
-interface TransactionWithHash extends Transaction {
-  hash: string;
-}
+
 
 const web3 = new Web3(new Web3.providers.HttpProvider('http://127.0.0.1:8545'));
 const contractABI = TicketContract.abi;
@@ -63,7 +61,7 @@ export const transferTicket = async (
   userAddress: string
 ): Promise<any> => {
   const priceInEth = Number(ticketPrice) * 0.000014;
-  const priceInWei = web3.utils.toWei(priceInEth, "ether")
+  const priceInWei = web3.utils.toWei(String(priceInEth), "ether")
   const response = await contractInstance.methods
     .transferTicket(ticketID)
     .send({ from: userAddress, value: priceInWei, gas: "500000" });
@@ -102,13 +100,13 @@ export const buyTicketFromMarket = async (
   return response;
 };
 // METHOD TO DELETE ALL TICKETS WHEN EVENTS ARE CANCELLED
-
 export const cancelAllTickets = async (eventID: string, userAddress: string): Promise<any> => {
   const response = await contractInstance.methods
     .cancelAllTickets(eventID)
-    .send({ from: userAddress });
+    .send({ from: userAddress, gas: "300000" });
   return response;
 };
+
 
 export async function findTicketInTransactions(ticketID: string): Promise<any> {
   const latestBlock = await web3.eth.getBlockNumber();
@@ -119,7 +117,7 @@ export async function findTicketInTransactions(ticketID: string): Promise<any> {
 
     if (block.transactions && block.transactions.length > 0) {
       for (let j = 0; j < block.transactions.length; j++) {
-        let tx: TransactionWithHash | string = block.transactions[j];
+        let tx: any = block.transactions[j];
 
         if (typeof tx === 'string') {
           tx = await web3.eth.getTransaction(tx);

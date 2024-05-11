@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-misused-promises */
 /* eslint-disable @typescript-eslint/prefer-optional-chain */
 /* eslint-disable @typescript-eslint/strict-boolean-expressions */
@@ -107,7 +108,6 @@ const MyEventPage: React.FC = () => {
     if (myEvent && account) {
       const response = await cancelEvent(myEvent.eventID, account);
       const response2 = await cancelAllTickets(myEvent.eventID, account);
-      console.log(response, response2);
       navigate('/showmyevents');
     }
   };

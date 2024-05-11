@@ -2,14 +2,12 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 /* eslint-disable @typescript-eslint/strict-boolean-expressions */
 /* eslint-disable @typescript-eslint/no-misused-promises */
-import Web3, { type Transaction } from 'web3';
+import Web3 from 'web3';
 import EventContract from '../../../build/contracts/ContractEvent.json';
 
 import { type INewEvent } from '../../pages/CreateEvent';
 
-interface TransactionWithHash extends Transaction {
-  hash: string;
-}
+
 
 const web3 = new Web3(new Web3.providers.HttpProvider('http://127.0.0.1:8545'));
 const eventContractABI = EventContract.abi;
@@ -98,11 +96,10 @@ export const buyNewTicket = async (eventID: string, userAddress: string): Promis
 
 // FUNCTION TO CANCEL EVENT, AND RETURN ALL FUNDS TO TICKETOWNERS
 export const cancelEvent = async (eventID: string, userAddress: string): Promise<any> => {
-  const veryHighGasLimit = "8000000"; 
 
   const response = await eventContractInstance.methods
     .cancelEvent(eventID)
-    .send({ from: userAddress, gas: veryHighGasLimit });
+    .send({ from: userAddress });
   return response;
 };
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
@@ -115,7 +112,7 @@ export async function findEventInTransactions(eventID: string) {
 
     if (block.transactions && block.transactions.length > 0) {
       for (let j = 0; j < block.transactions.length; j++) {
-        let tx: TransactionWithHash | string = block.transactions[j];
+        let tx: any = block.transactions[j];
 
         if (typeof tx === 'string') {
           tx = await web3.eth.getTransaction(tx);
@@ -164,7 +161,7 @@ export async function findEventInTransactionsAllData(eventID: string) {
 
     if (block.transactions && block.transactions.length > 0) {
       for (let j = 0; j < block.transactions.length; j++) {
-        let tx: TransactionWithHash | string = block.transactions[j];
+        let tx: any = block.transactions[j];
 
         if (typeof tx === 'string') {
           tx = await web3.eth.getTransaction(tx);
