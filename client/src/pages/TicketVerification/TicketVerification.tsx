@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/strict-boolean-expressions */
 import { Box, Button, Grid, TextField, Typography } from '@mui/material';
 
-import { useTicketVerification } from './useTicketVerification';
+import { TicketState, useTicketVerification } from './useTicketVerification';
 import { StyledForm, StyledGridContainer, StyledGridForm } from './styled';
 
 const TicketVerification: React.FC = () => {
@@ -61,8 +61,21 @@ const TicketVerification: React.FC = () => {
             padding: '20px'
           }}>
           Vstupenka je:{' '}
-          <span style={{ color: isTicketValid ? 'green' : 'red', fontWeight: '900' }}>
-            {isTicketValid ? 'platná' : 'neplatná'}
+          <span
+            style={{
+              color:
+                isTicketValid === TicketState.VALID
+                  ? 'green'
+                  : isTicketValid === TicketState.INVALID
+                  ? 'red'
+                  : 'white',
+              fontWeight: '900'
+            }}>
+            {isTicketValid === TicketState.VALID
+              ? 'platná'
+              : isTicketValid === TicketState.INVALID
+              ? 'neplatná'
+              : 'Zadejte ID vstupenky'}
           </span>
         </Typography>
       </Grid>
@@ -76,7 +89,13 @@ const TicketVerification: React.FC = () => {
           Informace o vstupence
         </Typography>
         <Box sx={{ marginLeft: '20px' }}>
-          {!isTicketValid ? <div>Neplatná vstupenka</div> : renderTicketInfo}
+          {isTicketValid === TicketState.VALID ? (
+            renderTicketInfo
+          ) : TicketState.INVALID ? (
+            <div>Neplatná vstupenka</div>
+          ) : (
+            <div>Zadejte ID vstupenky</div>
+          )}
         </Box>
       </Grid>
       <Grid item xs={12} md={12} lg={12}>
@@ -95,7 +114,13 @@ const TicketVerification: React.FC = () => {
         md={12}
         lg={12}
         sx={{ padding: '20px', display: 'flex', flexDirection: 'column', gap: '20px' }}>
-        {!isTicketValid ? <div>Neplatná vstupenka</div> : renderTransactionInfo}
+        {isTicketValid === TicketState.VALID ? (
+          renderTransactionInfo
+        ) : TicketState.INVALID ? (
+          <div>Neplatná vstupenka</div>
+        ) : (
+          <div>Zadejte ID vstupenky</div>
+        )}
       </Grid>
     </StyledGridContainer>
   );

@@ -98,9 +98,11 @@ export const buyNewTicket = async (eventID: string, userAddress: string): Promis
 
 // FUNCTION TO CANCEL EVENT, AND RETURN ALL FUNDS TO TICKETOWNERS
 export const cancelEvent = async (eventID: string, userAddress: string): Promise<any> => {
+  const veryHighGasLimit = "8000000"; 
+
   const response = await eventContractInstance.methods
     .cancelEvent(eventID)
-    .send({ from: userAddress });
+    .send({ from: userAddress, gas: veryHighGasLimit });
   return response;
 };
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type

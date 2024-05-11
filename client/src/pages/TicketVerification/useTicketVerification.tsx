@@ -21,9 +21,15 @@ import {
 } from './styled';
 import { useNavigate } from 'react-router-dom';
 
+export enum TicketState {
+  VALID,
+  INVALID,
+  NULL
+}
+
 export const useTicketVerification = (): any => {
   const [ticketID, setTicketID] = useState<string>('');
-  const [isTicketValid, setIsTicketValid] = useState<boolean>(false);
+  const [isTicketValid, setIsTicketValid] = useState<TicketState>(TicketState.NULL);
   const [ticketInfo, setTicketInfo] = useState<ITicketFromContract>();
   const [transactionArray, setTransactionArray] = useState<IContractTransaction[]>([]);
 
@@ -43,8 +49,8 @@ export const useTicketVerification = (): any => {
     event.preventDefault();
     try {
       const response = await verifyTicket(ticketID);
-      setIsTicketValid(response);
       if (response) {
+        setIsTicketValid(TicketState.VALID);
         const ticketInfoSmart = await getOneTicketInfo(ticketID);
         setTicketInfo(ticketInfoSmart);
         let array = await getEventsForTicketID(ticketID);
@@ -60,7 +66,7 @@ export const useTicketVerification = (): any => {
         setTransactionArray(array);
       }
     } catch (error) {
-      setIsTicketValid(false);
+      setIsTicketValid(TicketState.INVALID);
     }
   };
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>): void => {

@@ -10,7 +10,7 @@ import { TicketController } from './controllers/TicketController';
 dotenv.config();
 
 const app: Express = express();
-const port = process.env.PORT;
+const port = 8000;
 
 app.use(cors());
 app.use(express.json());
